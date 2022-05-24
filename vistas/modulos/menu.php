@@ -52,16 +52,7 @@
             foreach ($items as $key => $value)
             {
                 
-             /* array_push($menudesplegado,array(
-                'servicio' => $value["nombreServicio"],
-                'idservicio' => $value["idServicio"],
-                'nombreservicio' => $value["nombreServicio"],
-                'iconoservicio' => $value["icono"],
-                'proceso'  => $value["total"]
-                      ));*/
-
-
-                  echo '<li class="nav-item has-treeview menu-close" id="servicio_'.$value["idServicio"].'">
+                           echo '<li class="nav-item has-treeview menu-close" id="servicio_'.$value["idServicio"].'">
                             <a href="#" class="nav-link active">
                               <i class="nav-icon fas '.$value["icono"].'"></i>
                               <p>
@@ -72,7 +63,6 @@
                             <ul class="nav nav-treeview">';
                             $operacionProcesoM=explode(",", $value["proceso_nombre"]);
                             $operacionidProcesoM=explode(",", $value["procesos_id"]);
-                            //$operacioniconoProcesoM = explode (",", $value["iconoProceso"]);
                           
                             for ($j=0;$j<count($operacionProcesoM); $j++)
                               {
