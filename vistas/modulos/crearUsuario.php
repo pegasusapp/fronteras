@@ -51,17 +51,12 @@
                   </div>
                </div>
                <div class="row">   
-                  <!--<div class="col-5">
-                  <button type="button" class="btn btn-rounded btn-primary"  data-toggle="modal" data-target="#modalAgregarUsuario"><i class="fas fa-user-plus" ></i> Añadir usuarios</button>
-                </div> -->
                 <div class="col-4">
                  </div>
                  <div class="col-4" >
                       <div class="icon-bar">
                         <a data-toggle="modal" data-target="#modalAgregarUsuario" onClick="starCreateUser()" id="iconAddUser"   title="Crear usuario" href="#"><i class="fas fa-user-plus" ></i></a>&nbsp; 
                         <a data-toggle="modal" data-target="#modalAgregarPerfil"  id="iconAddPerfil" title="Crear perfil"  href="#"><i class="far fa-id-card"></i></a>&nbsp; 
-                       <!--<a href="#"><i class="fas fa-lock"></i></a> &nbsp;
-                        <a href="#"><i class="fa fa-globe"></i></a> -->
                       </div>
                  </div> 
                  <div class="col-4">

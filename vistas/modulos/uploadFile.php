@@ -55,7 +55,7 @@
                  </div>
                  <div class="col-4" >
                       <div class="icon-bar">
-                        <a data-toggle="modal" data-target="#modalAgregarFactura" onClick="starCreateFactura()" id="iconAddUser"   title="Crear factura" href="#"><i class="fas fa-user-plus" ></i></a>&nbsp; 
+                        <a data-toggle="modal" data-target="#modalAgregarFactura"  id="iconAddUser"   title="Crear factura" href="#"><i class="fas fa-user-plus" ></i></a>&nbsp; 
                       </div>
                  </div> 
                  <div class="col-4">
@@ -478,15 +478,6 @@ MODAL EDITAR USUARIO
                 </select>
                </div>
             </div>
-             <!-- ENTRADA PARA LA PLANTA 
-             <div class="form-group" id="perfil_planta_div">
-               <div class="input-group">
-                      <select class="form-control select2" id="eproyecto_id" name="eproyecto_id" title="Seleccione la planta" >
-                      <option value="" >
-                      </option>
-                      </select>
-                </div>
-            </div>-->
             <!-- ENTRADA PARA EL CELULAR -->
             <div class="form-group">
               <div class="input-group">

@@ -46,32 +46,6 @@ function editarMenu(usuarioIn)
 
 	
 	$("#identificadorMenu").val(usuarioIn);
-	/*var identificador = usuarioIn;
-	var datos = new FormData();
-	datos.append("identificador", identificador);
-
-	$.ajax({
-		url: "ajax/menu.ajax.php",  
-		method: "POST",
-      	data: datos, 
-      	cache: false,
-     	contentType: false,
-     	processData: false,
-     	dataType:"json",
-     	success: function(respuesta){ 
-     		
-            $("#editaridentificador").val(respuesta["identificador"]);
-     		$("#editarnombreCompleto").val(respuesta["nombreCompleto"]);
-     	    $("#editarcelular").val(respuesta["celular"]);
-            $("#editarestado").val(respuesta["estado"]);
-            $("#editaremail").val(respuesta["email"]);
-			$("#editaridPerfilUsuarios").val(respuesta["idPerfilUsuarios"]); 
-			
-
-     	}
-
-	})*/
-
 	document.getElementById('form_editMenu').submit();
 }
 
