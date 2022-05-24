@@ -81,7 +81,6 @@
                 $items = ControladorUsuarios::ctrMostrarUsuarios($item, $valor); 
                 foreach ($items as $key => $value)
                     {
-                        $r = (1 == $value["estado"]) ? 'Activo' : 'Inactivo'; 
                         echo ' <tr>
                                     <td>'.$value["anyo"].'</td>
                                     <td>'.$value["mes"].'</td> 
@@ -176,8 +175,8 @@ MODAL AGREGAR FACTURA
 
         <?php
 
-          $crearFactura = new ControladorFactura();
-          $crearFactura -> ctrCrearFactura();
+         // $crearFactura = new ControladorFactura();
+         // $crearFactura -> ctrCrearFactura();
 
         ?>
 
