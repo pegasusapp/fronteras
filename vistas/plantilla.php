@@ -98,6 +98,7 @@ CUERPO DOCUMENTO
          $_GET["ruta"] == "datosPersonales" ||
          $_GET["ruta"] == "datosGenerados" ||
          $_GET["ruta"] == "listadoClientes" ||
+         $_GET["ruta"] == "uploadFile" ||
          $_GET["ruta"] == "dfiles" ||
          $_GET["ruta"] == "salir"){
 
