@@ -68,12 +68,9 @@
               <table class="table table-bordered table-striped dt-responsive tablas">
                 <thead>
                 <tr>
-                  <th>LOGIN</th>
-                  <th>NOMBRE</th>
-                  <th>CELULAR</th>
-                  <th>PERFIL</th>
-                  <th>ESTADO</th>
-                  <th>EMAIL</th>
+                  <th>AÑO</th>
+                  <th>MES</th>
+                  <th>ARCHIVO</th>
                   <th>OPCIONES</th>
                 </tr> 
                 </thead>
@@ -86,12 +83,9 @@
                     {
                         $r = (1 == $value["estado"]) ? 'Activo' : 'Inactivo'; 
                         echo ' <tr>
-                                    <td>'.$value["identificador"].'</td>
-                                    <td>'.$value["nombreCompleto"].'</td> 
-                                    <td>'.$value["celular"].'</td>
-                                    <td>'.$value["nombre"].'</td>
-                                    <td>'.$r.'</td> 
-                                    <td>'.$value["email"].'</td>
+                                    <td>'.$value["anyo"].'</td>
+                                    <td>'.$value["mes"].'</td> 
+                                    <td>'.$value["nameFile"].'</td>
                                     <td>
                                         <div class="btn-group">
                                           <button class="btn btn-primary px-2.5" onclick=editarUser("'.$value["identificador"].'") codigoniu="'.$value["identificador"].'" data-toggle="modal" data-target="#modalEditarUsuario"><i class="far fa-edit" aria-hidden="true"></i></button>
@@ -106,12 +100,9 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                <th>LOGIN</th>
-                  <th>NOMBRE</th>
-                  <th>CELULAR</th>
-                  <th>PERFIL</th>
-                  <th>ESTADO</th>
-                  <th>EMAIL</th>
+                  <th>AÑO</th>
+                  <th>MES</th>
+                  <th>ARCHIVO</th>
                   <th>OPCIONES</th>
                 </tr>
                 </tfoot>
@@ -128,7 +119,7 @@
 </div>
 
 <!--=====================================
-MODAL AGREGAR PERMISOS
+MODAL AGREGAR FACTURA
 ======================================-->
 <div id="modalAgregarPermisos" class="modal fade" role="dialog">
   
@@ -161,30 +152,14 @@ MODAL AGREGAR PERMISOS
         ======================================-->
 
         <div class="modal-body">
-
           <div class="box-body">
-
-          <div class="container">
-          <div id="treeview_container" class="hummingbird-treeview well h-scroll-large">
-
-              <ul id="treeview" class="hummingbird-base" id="menuUsuario">
-      
-
-
-                  
-
-
-              </ul>
-
-
-
-            </div>     
+            <div class="container">
+                <div id="treeview_container" class="hummingbird-treeview well h-scroll-large">
+                    <ul id="treeview" class="hummingbird-base" id="menuUsuario">
+                    </ul>
+                </div>     
+            </div>
           </div>
-
-            
-         
-           </div>
-
         </div>
 
         <!--=====================================
@@ -201,8 +176,8 @@ MODAL AGREGAR PERMISOS
 
         <?php
 
-          $crearPerfil = new ControladorPerfil();
-          $crearPerfil -> ctrCrearPerfil();
+          $crearFactura = new ControladorFactura();
+          $crearFactura -> ctrCrearFactura();
 
         ?>
 
@@ -308,9 +283,9 @@ MODAL AGREGAR PERFIL
 </div>
 
 <!--=====================================
-MODAL AGREGAR USUARIO
+MODAL AGREGAR FACTURA
 ======================================-->
-<div id="modalAgregarUsuario" class="modal fade" role="dialog">
+<div id="modalAgregarFactura" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <form role="form" method="post" enctype="multipart/form-data">
@@ -323,7 +298,7 @@ MODAL AGREGAR USUARIO
                       <h4 class="modal-title"><i class="fas fa-user-plus" ></i></h4>
                   </div>
                   <div class="col-4">
-                     <label>Agregar usuario</label>
+                     <label>Agregar factura</label>
                   </div>
                   <div class="col-4">
                      <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -335,42 +310,50 @@ MODAL AGREGAR USUARIO
         ======================================-->
         <div class="modal-body">
           <div class="box-body">
-            <!-- ENTRADA PARA LA CEDULA -->
+            <!-- ENTRADA PARA EL AÑO -->
             <div class="form-group">
               <div class="input-group">
-                <input type="text" class="form-control" name="identificador" id="identificador" placeholder="Ingresar login" required>
+                <input type="text" class="form-control" name="anyo" id="anyo" placeholder="Ingresar año" required>
+                  <select class="form-control select2" id="mes" name="mes" title="Seleccione el año" required >
+                        <option value="" >Seleccione el año</option>
+                        <?php
+                            $yearActual= Date(Y); 
+                            for($i=2022;$i<=$yearActual+1;$i++)
+                            {
+                              echo "<option value='".$i."'>".$i."</option>";
+                            }
+                        ?>
+                  </select>     
               </div>
             </div>
-           <!-- ENTRADA PARA LA NOMBRE -->
+           <!-- ENTRADA PARA EL MES -->
             <div class="form-group">
               <div class="input-group">
-                <input type="text" class="form-control" name="nombreCompleto" id="nombreCompleto" placeholder="Ingresar nombre completo" required>
+                    <select class="form-control select2" id="mes" name="mes" title="Seleccione el mes" required >
+                      <option value="" >Seleccione el mes</option>
+                      <option value="1">Enero</option>
+                      <option value="2">Febrero</option>
+                      <option value="3">Marzo</option>
+                      <option value="4">Abril</option>
+                      <option value="5">Mayo</option>
+                      <option value="6">Junio</option>
+                      <option value="7">Julio</option>
+                      <option value="8">Agosto</option>
+                      <option value="9">Septiembre</option>
+                      <option value="10">Octubre</option>
+                      <option value="11">Noviembre</option>
+                      <option value="12">Diciembre</option>
+                    </select>
               </div>
             </div>
-              <!-- ENTRADA PARA LA CONTRASEÑA -->
+              <!-- ENTRADA PARA EL ARCHIVO -->
             <div class="form-group">
               <div class="input-group">
-                  <input type="password" class="form-control" name="password" id="password" placeholder="Ingresar contraseña" required>
+                  <input type="file" class="form-control" name="nameFile" id="nameFile" placeholder="Ingresar archivo" required>
               </div>
             </div>
-             <!-- ENTRADA PARA LA ESTADO -->
-            <div class="form-group">
-              <div class="input-group">
-                <select class="form-control select2" name="estado" id="estado" title="Estado del usuario"  required>
-                <option value="" >Seleccione el estado del usuario...</option>
-                  <option value="1">Activo</option>
-                  <option value="0">Inactivo</option>
-                </select>  
-              </div>
-            </div>
-               <!-- ENTRADA PARA EL EMAIL -->
-            <div class="form-group">
-              <div class="input-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Ingresar email" required>
-              </div>
-            </div>
-              <!-- ENTRADA PARA EL PERFIl -->
-            <div class="form-group">
+             <!-- ENTRADA PARA LA FRONTERA -->
+             <div class="form-group">
                <div class="input-group">
                       <select class="form-control select2" id="idPerfilUsuarios"  name="idPerfilUsuarios" title="Perfil del usuario" required>
                         <option value="" >Seleccione el perfil...</option>
@@ -387,6 +370,7 @@ MODAL AGREGAR USUARIO
                       </select>
                 </div>
             </div>
+          
                <!-- ENTRADA PARA LA PLANTA -->
             <div class="form-group" id="perfil_planta_div">
                <div class="input-group">
@@ -396,12 +380,7 @@ MODAL AGREGAR USUARIO
                       </select>
                 </div>
             </div>
-                <!-- ENTRADA PARA EL CELULAR -->
-            <div class="form-group">
-              <div class="input-group">
-                <input type="text" class="form-control" name="celular" id="celular" placeholder="Ingresar celular" required>
-              </div>
-            </div>
+          
 
            </div>
 
