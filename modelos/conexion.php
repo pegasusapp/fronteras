@@ -3,7 +3,6 @@
 class Conexion{
 
 	
-	//public $lastInsertId;
 
 	static public function conectar()
 		{

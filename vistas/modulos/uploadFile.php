@@ -66,7 +66,8 @@
             <!-- /.card-header -->
             <div class="card-body">
               <table class="table table-bordered table-striped dt-responsive tablas">
-                <thead>
+              <caption>Listado de facturas de energia</caption>  
+              <thead>
                 <tr>
                   <th>AÑO</th>
                   <th>MES</th>
@@ -312,12 +313,11 @@ MODAL AGREGAR FACTURA
             <!-- ENTRADA PARA EL AÑO -->
             <div class="form-group">
               <div class="input-group">
-                <input type="text" class="form-control" name="anyo" id="anyo" placeholder="Ingresar año" required>
-                  <select class="form-control select2" id="mes" name="mes" title="Seleccione el año" required >
-                        <option value="" >Seleccione el año</option>
+                  <select class="form-control select2" id="anyoFactura" name="anyoFactura" title="Seleccione el año" required >
+                        <option value="">Seleccione el año</option>
                         <?php
                             $yearActual= Date(Y); 
-                            for($i=2022;$i<=$yearActual+1;$i++)
+                            for($i=2022;$i<=$yearActual+5;$i++)
                             {
                               echo "<option value='".$i."'>".$i."</option>";
                             }
@@ -328,7 +328,7 @@ MODAL AGREGAR FACTURA
            <!-- ENTRADA PARA EL MES -->
             <div class="form-group">
               <div class="input-group">
-                    <select class="form-control select2" id="mes" name="mes" title="Seleccione el mes" required >
+                    <select class="form-control select2" id="mesFactura" name="mesFactura" title="Seleccione el mes" required >
                       <option value="" >Seleccione el mes</option>
                       <option value="1">Enero</option>
                       <option value="2">Febrero</option>
@@ -354,8 +354,8 @@ MODAL AGREGAR FACTURA
              <!-- ENTRADA PARA LA FRONTERA -->
              <div class="form-group">
                <div class="input-group">
-                      <select class="form-control select2" id="idPerfilUsuarios"  name="idPerfilUsuarios" title="Perfil del usuario" required>
-                        <option value="" >Seleccione el perfil...</option>
+                      <select class="form-control select2" id="idFrontera"  name="idFrontera" title="Frontera usuario" required>
+                        <option value="" >Seleccione la frontera...</option>
                          <?php
 
                               $item  = null;
@@ -369,19 +369,7 @@ MODAL AGREGAR FACTURA
                       </select>
                 </div>
             </div>
-          
-               <!-- ENTRADA PARA LA PLANTA -->
-            <div class="form-group" id="perfil_planta_div">
-               <div class="input-group">
-                      <select class="form-control select2" id="proyecto_id" name="proyecto_id" title="Seleccione la planta" >
-                      <option value="" >
-                      </option>
-                      </select>
-                </div>
-            </div>
-          
-
-           </div>
+          </div>
 
         </div>
 

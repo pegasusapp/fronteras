@@ -67,15 +67,16 @@
             <!-- /.card-header -->
             <div class="card-body">
               <table class="table table-bordered table-striped dt-responsive tablas">
-                <thead>
+              <caption>Listado de usuarios</caption>
+               <thead>
                 <tr>
-                  <th>LOGIN</th>
-                  <th>NOMBRE</th>
-                  <th>CELULAR</th>
-                  <th>PERFIL</th>
-                  <th>ESTADO</th>
-                  <th>EMAIL</th>
-                  <th>OPCIONES</th>
+                  <th id ="login">LOGIN</th>
+                  <th id ="nameCrearUser">NOMBRE</th>
+                  <th id ="celularCrearUser">CELULAR</th>
+                  <th id ="perfilCrearUser">PERFIL</th>
+                  <th id ="estadoCrearUser">ESTADO</th>
+                  <th id ="emailCrearUser">EMAIL</th>
+                  <th id ="optCrearUser">OPCIONES</th>
                 </tr> 
                 </thead>
                 <tbody>
@@ -107,13 +108,13 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                <th>LOGIN</th>
-                  <th>NOMBRE</th>
-                  <th>CELULAR</th>
-                  <th>PERFIL</th>
-                  <th>ESTADO</th>
-                  <th>EMAIL</th>
-                  <th>OPCIONES</th>
+                <th id ="login">LOGIN</th>
+                  <th id ="nameCrearUser">NOMBRE</th>
+                  <th id ="celularCrearUser">CELULAR</th>
+                  <th id ="perfilCrearUser">PERFIL</th>
+                  <th id ="estadoCrearUser">ESTADO</th>
+                  <th id ="emailCrearUser">EMAIL</th>
+                  <th id ="optCrearUser">OPCIONES</th>
                 </tr>
                 </tfoot>
               </table>
@@ -162,30 +163,13 @@ MODAL AGREGAR PERMISOS
         ======================================-->
 
         <div class="modal-body">
-
           <div class="box-body">
-
-          <div class="container">
-          <div id="treeview_container" class="hummingbird-treeview well h-scroll-large">
-
-              <ul id="treeview" class="hummingbird-base" id="menuUsuario">
-      
-
-
-                  
-
-
-              </ul>
-
-
-
-            </div>     
+            <div class="container">
+              <div id="treeview_container" class="hummingbird-treeview well h-scroll-large">
+                  <ul id="treeview" class="hummingbird-base" id="menuUsuario"></ul>
+              </div>     
+            </div>
           </div>
-
-            
-         
-           </div>
-
         </div>
 
         <!--=====================================
