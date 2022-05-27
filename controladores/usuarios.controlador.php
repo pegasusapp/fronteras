@@ -287,7 +287,6 @@ class ControladorUsuarios{
 
 				$tabla = "usuario";
 
-				//$encriptar = crypt($_POST["nuevoPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
 				$random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
 				$password = hash('sha512',$_POST["password"] . $random_salt);
 				date_default_timezone_set('America/Bogota');

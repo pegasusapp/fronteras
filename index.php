@@ -20,6 +20,8 @@ require_once "controladores/gproyecto.controlador.php";
 require_once "controladores/fronteras.controlador.php";
 require_once "controladores/clienteFrontera.controlador.php";
 require_once "controladores/constantes.controlador.php";
+require_once "controladores/validaciones.controlador.php";
+require_once "controladores/utilidades.controlador.php";
 
 require_once "modelos/usuarios.modelo.php";
 require_once "modelos/menu.modelo.php";

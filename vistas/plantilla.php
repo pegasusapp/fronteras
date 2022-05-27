@@ -2,14 +2,11 @@
 session_start();
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
   <title>SoftFocus(™)</title>
-
-  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="text/html; charset=utf-8" http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -225,17 +222,14 @@ $("#treeview").on("CheckUncheckDone", function(){
 <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
-<!-- AdminLTE for demo purposes 
-<script src="dist/js/pages/dashboard.js"></script>
- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="vistas/js/plantilla.js"></script>
 <?php
 
  $paginaNiveles =  $_SERVER["REQUEST_URI"];
  $paginaSesion = explode("/", $paginaNiveles);
- //print_r($paginaSesion);
  $valor = $paginaSesion[1];
  $items = ControladorMenu::ctrMostrarMenuExpandido($valor);
+
  foreach ($items as $key => $value)
  {
    echo "<script>
