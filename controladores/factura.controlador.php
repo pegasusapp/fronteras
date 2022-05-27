@@ -45,7 +45,7 @@ class ControladorFactura
 								   "mes"=>$_POST["mesFactura"],
 				   				   "nameFile"=>$_FILES["nameFile"]["name"],
 								   "frontera_fronteraCliente"=>$_POST["idFrontera"]);
-				    $respuesta = ModeloFactura::mdlMostrarFactura($tabla,$datos);
+				    $respuesta = ModeloFactura::mdlIngresarFactura($tabla,$datos);
 				    if($respuesta == "ok"){
 						ControladorUtilidades::answerScript("Los datos han sido guardados correctamente","uploadFile");	 
 				   
