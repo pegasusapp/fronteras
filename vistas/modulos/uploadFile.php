@@ -360,10 +360,10 @@ MODAL AGREGAR FACTURA
 
                               $item  = null;
                               $valor = null;
-                              $items = ControladorPerfil::ctrMostrarPerfil($item, $valor);
+                              $items = ControladorFronteras::ctrMostrarFronteras($item, $valor);
                               foreach ($items as $key => $value)
                                  {
-                                   echo '<option value="'.$value["idPerfilUsuarios"].'">'.$value["nombre"].'  </option>';
+                                   echo '<option value="'.$value["fronteraCliente"].'">'.$value["fronteraCliente"].'  </option>';
                                  }
                           ?> 
                       </select>
