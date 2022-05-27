@@ -7,28 +7,15 @@ class ControladorFronteras
 	{
 
 		$tabla = "frontera";
-		//$tabla2 = "fuenteenergia_has_proyecto";
-
-		$respuesta = ModeloFronteras::mdlMostrarFronteras($tabla,$item, $valor);
-		//$respuesta = "ok";
-
-      	return $respuesta;
-
-
-
+		return ModeloFronteras::mdlMostrarFronteras($tabla,$item, $valor);
+      
 	} 
 
 	static public function ctrMostrarEnergiasFrontera($valor,$dia_curso,$anyo_curso,$mes_curso)
 	{
 
-
-		$respuesta = ModeloFronteras::mdlMostrarEnergiasFronteraDia($valor,$anyo_curso,$mes_curso,$dia_curso);
-		//$respuesta = "ok";
-
-      	return $respuesta;
-
-
-
+		return ModeloFronteras::mdlMostrarEnergiasFronteraDia($valor,$anyo_curso,$mes_curso,$dia_curso);
+	
 	} 
 
 
@@ -36,11 +23,8 @@ class ControladorFronteras
 	{
 	
 
-		$respuesta = ModeloFronteras::mdlMostrarEnergiasFronteraMes($valor,$anyo_curso,$mes_curso,$energia);
-		//$respuesta = "ok";
-
-      	return $respuesta;
-
+		return ModeloFronteras::mdlMostrarEnergiasFronteraMes($valor,$anyo_curso,$mes_curso,$energia);
+		
 
 
 	} 
@@ -49,11 +33,8 @@ class ControladorFronteras
 	{
 	
 
-		$respuesta = ModeloFronteras::mdlMostrarEnergiasFronteraPromedio($valor,$anyo_curso);
-		//$respuesta = "ok";
-
-      	return $respuesta;
-
+		return ModeloFronteras::mdlMostrarEnergiasFronteraPromedio($valor,$anyo_curso);
+		
 
 
 	} 
@@ -62,18 +43,16 @@ class ControladorFronteras
 	{
 	
 
-		$respuesta = ModeloFronteras::mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo_curso,$mes_curso,$energia);
+		return ModeloFronteras::mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo_curso,$mes_curso,$energia);
 	
-      	return $respuesta;
-
-
+      	
 
 	}
 
 	static public function crtMostrarTotalConsumoFronterasAnyoEnergia($valor)
 	{
-		$respuesta = ModeloFronteras::mdlMostrarTotalConsumoFronterasAnyoEnergia($valor);
-		return $respuesta;
+		return ModeloFronteras::mdlMostrarTotalConsumoFronterasAnyoEnergia($valor);
+		
 	}
 
 	static public function crtMostrarTotalConsumoFronterasAnyoMesEnergia($valor)
