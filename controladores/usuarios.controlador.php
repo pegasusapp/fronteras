@@ -28,7 +28,7 @@ class ControladorUsuarios{
 			if(preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingUsuario"]) && $_POST["ingPassword"])
 				 {
 		 		        
-					     $tabla = "usuario";
+					     
 		 				 $item = "identificador";
 						 $valor = $_POST["ingUsuario"];
 						 $respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla, $item, $valor);
@@ -62,7 +62,7 @@ class ControladorUsuarios{
 							self::ctrSessionVariable($_SERVER['HTTP_USER_AGENT'],$respuesta["identificador"],
 														 $respuesta["nombreCompleto"],$respuesta["nuevaFoto"],$respuesta["idPerfilUsuarios"],
 														 $password);
-							     $ultimoLogin = ModeloUsuarios::mdlActualizarUsuario($tabla, "ultimo_login",$fechaActual, "identificador", $respuesta["identificador"]);
+							     $ultimoLogin = ModeloUsuarios::mdlActualizarUsuario("usuario", "ultimo_login",$fechaActual, "identificador", $respuesta["identificador"]);
 							     if($ultimoLogin == "ok"){
 									 return true;
 									}  
@@ -73,7 +73,7 @@ class ControladorUsuarios{
 								   $emailDestino = $email_envio;
 								   $mensajeBody = "Cordial saludo. El usuario con identificador ".$_POST["ingUsuario"].", ha sido bloqueado, ha estado intentanto ingresar mas de 5 veces a la plataforma, por favor contactar con el administrador, para ser desbloqueado.";
 								   ControladorUtilidades::sendMail($subject,$emailDestino,$mensajeBody);	
-								   $cambioEstado = ModeloUsuarios::mdlActualizarUsuario($tabla, 'estado', '0', 'identificador', $identificador);
+								   $cambioEstado = ModeloUsuarios::mdlActualizarUsuario("usuario", 'estado', '0', 'identificador', $identificador);
 								   if ($cambioEstado=="ok"){
 										   echo Constantes::MSG_BLOQUEO;
 										    } 

@@ -170,10 +170,6 @@ class ModeloUsuarios{
 
 		}
 
-		$stmt -> close();
-
-		$stmt = null;
-
 	}
 
 	/*=============================================
