@@ -12,10 +12,9 @@ class ControladorMenu{
 			if( isset($_POST["nombreServicio"]) or $_POST["nombreServicio"] == "")
 			{
 					$tabla = "servicio";
-					//$item = "idServicio";
 					$valor = $_POST["nombreServicio"];
 					$valor2 = $_POST["plantillaServicio"];
-					$respuestaServicio = ModeloMenu::mdlCrearServicio($tabla, $valor, $valor2);
+					ModeloMenu::mdlCrearServicio($tabla, $valor, $valor2);
 			}
 
 		}	
@@ -26,11 +25,10 @@ class ControladorMenu{
 			if( (isset($_POST["nombreProceso"]) or $_POST["nombreProceso"] == "") or ( isset($_POST["Servicio_idservicio"]) or $_POST["Servicio_idservicio"]=="") )
 			{
 					$tabla = "proceso";
-					//$item = "idServicio";
 					$valor = $_POST["nombreProceso"];
 					$valor2 = $_POST["plantillaProceso"];
 					$fkvalue = $_POST["Servicio_idservicio"];
-					$respuestaProceso = ModeloMenu::mdlCrearProceso($tabla, $valor,$valor2, $fkvalue);
+					ModeloMenu::mdlCrearProceso($tabla, $valor,$valor2, $fkvalue);
 			}
 
 	}
@@ -41,11 +39,10 @@ class ControladorMenu{
 		if( (isset($_POST["nombreSubproceso"]) or $_POST["nombreSubproceso"] == "") or ( isset($_POST["Proceso_IdProceso"]) or $_POST["Proceso_IdProceso"]=="") )
 		{
 				$tabla = "subproceso";
-				//$item = "idServicio";
 				$valor = $_POST["nombreSubproceso"];
 				$valor2 = $_POST["plantillaSubproceso"];
 				$fkvalue = $_POST["Proceso_IdProceso"];
-				$respuestaSubProceso = ModeloMenu::mdlCrearSubproceso($tabla, $valor,$valor2, $fkvalue);
+				ModeloMenu::mdlCrearSubproceso($tabla, $valor,$valor2, $fkvalue);
 		}
 
 	}
@@ -59,9 +56,8 @@ class ControladorMenu{
 
 				$usuario_sesion=$valor;
 			   
-				$respuestaMenu = ModeloMenu::mdlMostrarMenu($usuario_sesion);
+				return ModeloMenu::mdlMostrarMenu($usuario_sesion);
 		
-				return $respuestaMenu;	
 
 	}
 
@@ -73,10 +69,8 @@ class ControladorMenu{
 	{
 
 			   
-				$respuestaMenu = ModeloMenu::mdlExpandirMenu($valor);
+		return ModeloMenu::mdlExpandirMenu($valor);
 		
-				return $respuestaMenu;	
-
 	}
 
 		/*=============================================
@@ -89,8 +83,7 @@ class ControladorMenu{
 				$valores_servicio = $valor1; 
 				$usuario_sesion = $valor2;
 			   
-				$respuestaMenu = ModeloMenu::mdlEditarMenuServicio($campos,$valores_servicio,$usuario_sesion);
-				return $respuestaMenu;	
+				return ModeloMenu::mdlEditarMenuServicio($campos,$valores_servicio,$usuario_sesion);
 					
 
 	}

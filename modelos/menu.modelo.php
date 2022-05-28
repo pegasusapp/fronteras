@@ -32,7 +32,6 @@ class ModeloMenu{
 																		  ORDER BY ser.nombreServicio");
 																	
 	
-				//$stmt -> bindParam(":shu.Usuario_identificador" , $valor, PDO::PARAM_STR);
 				$stmt -> execute();
 				return $stmt -> fetchAll();
 			}
@@ -171,103 +170,6 @@ class ModeloMenu{
 								
 								
 						}
-						//Inhabilitamos los servicios	
-						/*$stmt = Conexion::conectar()->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-						$stmt = Conexion::conectar()->prepare("SELECT * FROM Servicio_has_Usuario WHERE Servicio_idServicio NOT IN (".implode(",",$vector_servicios).") and $item = :$item");
-						$stmt->execute([$item => $valor2]); 
-						$data = $stmt->fetchAll();
-						
-						foreach ($data as $valor_inactivar)
-						{
-							
-							$valueOff=0;
-							$stmt_down = Conexion::conectar()->prepare("UPDATE Servicio_has_Usuario SET activo = :activo, lectura = :lectura, escritura = :escritura, fechaActualizacion = NOW() WHERE Servicio_idServicio = :Servicio_idServicio AND Usuario_identificador = :Usuario_identificador");
-							$stmt_down->bindParam(":activo", $valueOff , PDO::PARAM_INT);
-							$stmt_down->bindParam(":lectura", $valueOff , PDO::PARAM_INT);
-							$stmt_down->bindParam(":escritura", $valueOff , PDO::PARAM_INT);
-							$stmt_down->bindParam(":Servicio_idServicio", $valor_inactivar["Servicio_idServicio"], PDO::PARAM_INT);
-							$stmt_down->bindParam(":Usuario_identificador", $valor2, PDO::PARAM_STR);
-							$stmt_down->execute();
-						}
-						
-						$stmt_down = null;
-						$stmt = null;
-					
-						//Fin inhabilitar servicios
-						//Habilitamos los servicios	
-						
-						$stmt_b = Conexion::conectar()->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-						$stmt_b = Conexion::conectar()->prepare("SELECT * FROM Servicio_has_Usuario WHERE Servicio_idServicio  IN (".implode(",",$vector_servicios).") and $item = :$item");
-						$stmt_b->execute([$item => $valor2]); 
-						$data_b = $stmt_b->fetchAll();
-									
-						foreach ($data_b as $valor_activar)
-							{
-										
-								$valueOn=1;
-								$stmt_up = Conexion::conectar()->prepare("UPDATE Servicio_has_Usuario SET activo = :activo, lectura = :lectura, escritura = :escritura, fechaActualizacion = NOW() WHERE Servicio_idServicio = :Servicio_idServicio AND Usuario_identificador = :Usuario_identificador");
-								$stmt_up->bindParam(":activo", $valueOn , PDO::PARAM_INT);
-								$stmt_up->bindParam(":lectura", $valueOn , PDO::PARAM_INT);
-								$stmt_up->bindParam(":escritura", $valueOn , PDO::PARAM_INT);
-								$stmt_up->bindParam(":Servicio_idServicio", $valor_activar["Servicio_idServicio"], PDO::PARAM_INT);
-								$stmt_up->bindParam(":Usuario_identificador", $valor2, PDO::PARAM_STR);
-								$stmt_up->execute();
-							}
-
-
-							
-									
-							$stmt_up = null;
-							$stmt_b = null; 
-						//Fin inhabilitar servicios
-			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-						//Inhabilitamos los procesos	
-						$stmt_c = Conexion::conectar()->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-						$stmt_c = Conexion::conectar()->prepare("SELECT * FROM Proceso_has_Usuario WHERE Proceso_idProceso NOT IN (".implode(",",$vector_procesos).") and $item = :$item");
-						$stmt_c->execute([$item => $valor2]); 
-						$data_procesos = $stmt_c->fetchAll();
-						
-						foreach ($data_procesos as $valor_inactivar_procesos)
-						{
-							
-							$valueOff=0;
-							$stmt_down_procesos = Conexion::conectar()->prepare("UPDATE Proceso_has_Usuario SET activo = :activo, lectura = :lectura, escritura = :escritura, fechaActualizacion = NOW() WHERE Proceso_idProceso = :Proceso_idProceso AND Usuario_identificador = :Usuario_identificador");
-							$stmt_down_procesos->bindParam(":activo", $valueOff , PDO::PARAM_INT);
-							$stmt_down_procesos->bindParam(":lectura", $valueOff , PDO::PARAM_INT);
-							$stmt_down_procesos->bindParam(":escritura", $valueOff , PDO::PARAM_INT);
-							$stmt_down_procesos->bindParam(":Proceso_idProceso", $valor_inactivar_procesos["Proceso_idProceso"], PDO::PARAM_INT);
-							$stmt_down_procesos->bindParam(":Usuario_identificador", $valor2, PDO::PARAM_STR);
-							$stmt_down_procesos->execute();
-						}
-						
-						
-						$stmt_down_procesos = null;
-						$stmt_c = null;
-						//Fin inhabilitar procesos
-						//Habilitamos los procesos	
-						$stmt_d = Conexion::conectar()->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-						$stmt_d = Conexion::conectar()->prepare("SELECT * FROM Proceso_has_Usuario WHERE Proceso_idProceso  IN (".implode(",",$vector_procesos).") and $item = :$item");
-						$stmt_d->execute([$item => $valor2]); 
-						$data_d = $stmt_d->fetchAll();
-									
-						foreach ($data_d as $valor_activar_procesos)
-							{
-										
-								$valueOn=1;
-								$stmt_up_procesos = Conexion::conectar()->prepare("UPDATE Proceso_has_Usuario SET activo = :activo, lectura = :lectura, escritura = :escritura, fechaActualizacion = NOW() WHERE Proceso_idProceso = :Proceso_idProceso AND Usuario_identificador = :Usuario_identificador");
-								$stmt_up_procesos->bindParam(":activo", $valueOn , PDO::PARAM_INT);
-								$stmt_up_procesos->bindParam(":lectura", $valueOn , PDO::PARAM_INT);
-								$stmt_up_procesos->bindParam(":escritura", $valueOn , PDO::PARAM_INT);
-								$stmt_up_procesos->bindParam(":Proceso_idProceso", $valor_activar_procesos["Proceso_idProceso"], PDO::PARAM_INT);
-								$stmt_up_procesos->bindParam(":Usuario_identificador", $valor2, PDO::PARAM_STR);
-								$stmt_up_procesos->execute();
-							}
-							$stmt_up_procesos = null;
-							$stmt_d = null;
-							*/
-						//Fin habilitar procesos 
-			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-						//Inhabilitamos los subprocesos	
 						$stmt_e = Conexion::conectar()->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 						$stmt_e = Conexion::conectar()->prepare("SELECT * FROM subproceso_has_usuario WHERE Subproceso_idSubproceso NOT IN (".implode(",",$vector_subprocesos).") and $item = :$item");
 						$stmt_e->execute([$item => $valor2]); 

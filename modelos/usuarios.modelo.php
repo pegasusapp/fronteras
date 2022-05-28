@@ -10,31 +10,21 @@ class ModeloUsuarios{
 
 	static public function mdlMostrarUsuarios($tabla, $item, $valor){
 
+		
+
 		if($item != null){
-
 			$stmt = Conexion::conectar()->prepare("SELECT identificador,nombreCompleto,celular,perfilusuarios.idPerfilUsuarios,estado,email,salt,password,perfilusuarios.nombre,nuevaFoto,proyecto_id FROM $tabla left join perfilusuarios on usuario.PerfilUsuarios_idPerfilUsuarios=perfilusuarios.idPerfilUsuarios WHERE $item = :$item");
-
 			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
-
 			$stmt -> execute();
-
 			return $stmt -> fetch();
 
 		}else{
-
 			$stmt = Conexion::conectar()->prepare("SELECT identificador,nombreCompleto,celular,nombre,estado,email,salt,password,perfilusuarios.nombre,nuevaFoto,proyecto_id FROM $tabla left join perfilusuarios on usuario.PerfilUsuarios_idPerfilUsuarios=perfilusuarios.idPerfilUsuarios");
-
 			$stmt -> execute();
-
 			return $stmt -> fetchAll();
 
 		}
-
-
-		$stmt -> close();
-
-		$stmt = null;
-
+	
 	}
 
 
@@ -56,11 +46,7 @@ class ModeloUsuarios{
 			  $fecha = date('Y-m-d');
 			  $hora =  date('H:i:s');  
 			  $fechaActual = $fecha.' '.$hora; 
-			  /*if($datos["PerfilUsuarios_idPerfilUsuarios"] == 11)
-			     {
-					$stmt->execute([13,$datos["identificador"],1,1,1,$fechaActual]);
-					$stmt->execute([19,$datos["identificador"],1,1,1,$fechaActual]);
-			 	 }*/
+			
 			  if($datos["PerfilUsuarios_idPerfilUsuarios"] == 10)
 			   {
 					$stmt->execute([13,$datos["identificador"],1,1,1,$fechaActual]);

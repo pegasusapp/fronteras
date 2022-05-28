@@ -1,9 +1,5 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-require 'PHPMailer-master/src/Exception.php';
-require 'PHPMailer-master/src/PHPMailer.php';
-require 'PHPMailer-master/src/SMTP.php';
+
 
 class ControladorUsuarios{
 
@@ -18,19 +14,10 @@ class ControladorUsuarios{
 	    $now->modify('-2 hours');
 	    $tiempo= $now->format('Y-m-d H:i:s');
 	    // Todos los intentos de inicio de sesión se cuentan desde las 2 horas anteriores.
-	    //$valid_attempts = $now - (2 * 60 * 60);
         $respuesta_fecha = ModeloLogin_attempts::mdlMostrarLoginAttempsFecha($identificador,$tiempo);
-
-	        // Si ha habido más de 5 intentos de inicio de sesión fallidos.
-			if ($respuesta_fecha > 5) 
-			{
-	            return true;
-			} 
-			else 
-			{
-	            return false;
-	        }
-	    }
+		return $respuesta_fecha > 5; 
+			
+	  }
 
 
 
@@ -38,186 +25,91 @@ class ControladorUsuarios{
 
 		if(isset($_POST["ingUsuario"]))
 		   {
-			date_default_timezone_set('America/Bogota');
-			$fecha = date('Y-m-d');
-			$hora = date('H:i:s');
-			$fechaActual = $fecha.' '.$hora;
-
 			if(preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingUsuario"]) && $_POST["ingPassword"])
 				 {
 		 		        
-		 		         $tabla = "usuario";
+					     $tabla = "usuario";
 		 				 $item = "identificador";
 						 $valor = $_POST["ingUsuario"];
 						 $respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla, $item, $valor);
-						 $email_envio = $respuesta["email"];
-						 $identificador=$respuesta["identificador"];
-						 $password = hash('sha512', $_POST["ingPassword"].$respuesta["salt"]);
-					
-						 if($respuesta["estado"] == 1) 
-						  {	
-									if ($respuesta["password"] == $password)
-											{
-													// ¡La contraseña es correcta!
-													// Obtén el agente de usuario del usuario.
-													$user_browser = $_SERVER['HTTP_USER_AGENT'];
-													//  Protección XSS ya que podríamos imprimir este valor.
-													$identificador = preg_replace("/[^0-9]+/", "", $respuesta["identificador"]);
-													$_SESSION['identificador'] = $respuesta["identificador"];
-													$_SESSION['nombreCompleto'] = $respuesta["nombreCompleto"];
-													$_SESSION['nuevaFoto'] = $respuesta["nuevaFoto"];
-													$_SESSION['login_string'] = hash('sha512',$password.$user_browser);
-													$_SESSION["iniciarSesion"] = "ok";
-													$_SESSION["perfilSesion"] = $respuesta["idPerfilUsuarios"];
+						 if(ctrUserIn($respuesta)){
+							echo '<script>window.location = "inicio";</script>';
+						 }
+	
+				  }
+			   	  else{
+						 echo Constantes::MGS_ERROR_INGRESO;
+			 			 return false;
+   				      }
+		    }
+	}
 
-												
-													$item1 = "ultimo_login";
-													$valor1 = $fechaActual;
-													$item2 = "identificador";
-													$valor2 = $respuesta["identificador"];
-													$ultimoLogin = ModeloUsuarios::mdlActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);
-													$tablaSesion="usuario_sesion";
-													$ipUsuarioSesion=$_SERVER['REMOTE_ADDR'];
-													$user_agent = $_SERVER['HTTP_USER_AGENT'];
-													$nroSesion = session_id();
-													$_SESSION['sesion_usuario'] = $nroSesion; 
+	/*=============================================
+	LOGIN USER 
+	===============================================*/
 
-													$datosAcceso = array("horaIngreso" => $fechaActual,
-																		 "horaSalida" =>$fechaActual,
-																		 "dirIP" => $ipUsuarioSesion,
-																		 "nroSesion" => $nroSesion,
-																		 "navegador" => $user_agent,"Usuario_identificador" => $respuesta["identificador"]);
-													$datosAccesoUsuario = ModeloUsuarios::mdlAccesoUsuario($tablaSesion,$datosAcceso);
-													
-													if($ultimoLogin == "ok")
-															{
-																echo '<script>
-																window.location = "inicio";
-																</script>';
-															}
+	static public function ctrUserIn($respuesta){
 
-											}
-									else
-											{
-													// La contraseña no es correcta.
-													// Se graba este intento en la base de datos.
-													
-													$identificador = $_POST["ingUsuario"];
-													$datos_login_fallido = array("fecha" => $fechaActual,"Usuario_identificador" => $identificador);
-													$intentoLogin = ModeloLogin_attempts::mdlIngresarLoginAttemps('login_attempts', $datos_login_fallido);
-													if ($this->checkbrute($identificador) == true)
-														{							
-															// La cuenta está bloqueada.
-															$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
-															try {
-																	//Server settings
-																	//$mail->SMTPDebug = 2;                                 // Enable verbose debug output
-																	//Enable SMTP debugging.
-																	//$mail->SMTPDebug = 3;  
-																	$mail->isSMTP();                                      // Set mailer to use SMTP
-																	$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-																	$mail->SMTPAuth = true;                               // Enable SMTP authentication
-																	$mail->Username = 'notificaciones.sistemas@ruitoqueesp.com';                 // SMTP username
-																	$mail->Password = 'od2001601';                           // SMTP password
-																	$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-																	$mail->Port = 587;                                     // TCP port to connect to
-																	//$mail->setFrom('notificaciones.sistemas@ruitoqueesp.com', 'Ruitoque SA ESP');
-																	$mail->From = "notificaciones.sistemas@ruitoqueesp.com";
-																	$mail->FromName = "Ruitoque SA ESP- Fronteras de energía";
-																	$mail->addAddress($email_envio, 'Usuario :');     // Add a recipient
-																	$mail->isHTML(true);                                                      // Set email format to HTML
-																	$mail->Subject = 'Bloqueo de usuario';
-																	$mail->Body    = 'Cordial saludo. El usuario con identificador  '.$identificador.', ha sido bloqueado, ha estado intentanto ingresar mas de 5 veces a la plataforma, por favor contactar con el administrador, para ser desbloqueado.';
-																	$mail->send();
-																	echo '<br><div class="alert alert-danger">Usted ha sido bloqueado</div>';
-																} 
-															catch (Exception $e)
-																{
-																		echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
-																}
-														// actualizamos el estado del usuarios
-																$cambioEstado = ModeloUsuarios::mdlActualizarUsuario($tabla, 'estado', '0', 'identificador', $identificador);
-																if ($cambioEstado=="ok")
-																		{
-											
-																			return false;
-																			echo '<br><div class="alert alert-danger">Usted ha sido bloqueado</div>';
-
-																		} 
-														}
-														else
-														{
-
-																echo '<br><div class="alert alert-danger">Error al ingresar, vuelve a intentarlo</div>';
-
-														}
-
-											}
-						}
-						else
+		date_default_timezone_set('America/Bogota');
+		$fechaActual = date('Y-m-d').' '.date('H:i:s');
+		$email_envio = $respuesta["email"];
+		$password = hash('sha512', $_POST["ingPassword"].$respuesta["salt"]);
+		if($respuesta["estado"] == 1) 
+		 {	
+				   if ($respuesta["password"] == $password)
 						   {
-  						 	 echo '<br><div class="alert alert-danger">Su usuario se encuentra inactivo</div>';
-							}	
-				}
-				else
-				   {
+							   
+							   ctrSessionVariable($_SERVER['HTTP_USER_AGENT'],$respuesta["identificador"],
+														 $respuesta["nombreCompleto"],$respuesta["nuevaFoto"],$respuesta["idPerfilUsuarios"],
+														 $password);
+							     $ultimoLogin = ModeloUsuarios::mdlActualizarUsuario($tabla, "ultimo_login",$fechaActual, "identificador", $respuesta["identificador"]);
+							     if($ultimoLogin == "ok"){
+									 return true;
+									}  
+						    }
+				   else{
+							   if (checkbrute($_POST["ingUsuario"])){							
+								   $subject = "Bloqueo de usuario";
+								   $emailDestino = $email_envio;
+								   $mensajeBody = "Cordial saludo. El usuario con identificador ".$_POST["ingUsuario"].", ha sido bloqueado, ha estado intentanto ingresar mas de 5 veces a la plataforma, por favor contactar con el administrador, para ser desbloqueado.";
+								   ControladorUtilidades::sendMail($subject,$emailDestino,$mensajeBody);	
+								   $cambioEstado = ModeloUsuarios::mdlActualizarUsuario($tabla, 'estado', '0', 'identificador', $identificador);
+								   if ($cambioEstado=="ok"){
+										   echo Constantes::MSG_BLOQUEO;
+										    } 
+							   }
+						   else{
+								   echo Constantes::MSG_ERROR_INGRESO; 
+							   }
+							   return false;
+					   }
+		 }
+		else{
+			   echo Constantes::MSG_INACTIVO;
+			   return false;
+		   }
 
-						
-										 // La contraseña no es correcta.
-										 // Se graba este intento en la base de datos.
-										 $now = time();
-										 $identificador=$_POST["ingUsuario"];
-										 $datos_login_fallido = array("fecha" => $now,"Usuario_identificador" => $identificador);
-										 $intentoLogin = ModeloLogin_attempts::mdlIngresarLoginAttemps('login_attempts', $identificador);
-										 if ($this->checkbrute($identificador) == true)
-		 									{							
-												// La cuenta está bloqueada.
-												$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
-												try {
-														//Server settings
-														//$mail->SMTPDebug = 2;                                 // Enable verbose debug output
-														$mail->isSMTP();                                      // Set mailer to use SMTP
-														$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-														$mail->SMTPAuth = true;                               // Enable SMTP authentication
-														$mail->Username = 'notificaciones.italener@gmail.com';                 // SMTP username
-														$mail->Password = 'Od2001601.';                           // SMTP password
-														$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-														$mail->Port = 587;                                    // TCP port to connect to
-														$mail->setFrom('notificaciones.italener@gmail.com', 'Italener');
-														$mail->addAddress($email_envio, 'Usuario :');     // Add a recipient
-														$mail->isHTML(true);                                  // Set email format to HTML
-														$mail->Subject = 'Bloqueo de usuario';
-														$mail->Body    = 'Cordial saludo. El usuario con identificador  '.$identificador.', ha sido bloqueado, ha estado intentanto ingresar mas de 5 veces a la plataforma, por favor contactar con el administrador, para ser desbloqueado.';
-														$mail->send();
-														
-													} catch (Exception $e) {
-															echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
-													}
-													echo '<br><div class="alert alert-danger">Usted ha sido bloqueado</div>';
-				  							// actualizamos el estado del usuarios
-													$cambioEstado = ModeloUsuarios::mdlActualizarUsuario($tabla, 'estado', '0', 'identificador', $identificador);
-													if ($cambioEstado=="ok")
-															 {
-								
-																return false;
-																
+	}
 
-															 } 
-								 			}
-								 			else
-											   {
+	/*=============================================
+	CREATE SESSION VARIABLE
+	=============================================*/
+	 public function ctrSessionVariable($user_agent,$identify,$nombreCompleto,$foto,$idPerfil,$clave){
 
-													echo '<br><div class="alert alert-danger">Error al ingresar, vuelve a intentarlo</div>';
-
-												}
-
-					}
-			
-
-		}
+		$user_browser = $user_agent;
+		$_SESSION['identificador'] = $identify;
+		$_SESSION['nombreCompleto'] = $nombreCompleto;
+		$_SESSION['nuevaFoto'] = $foto;
+		$_SESSION['login_string'] = hash('sha512',$clave.$user_browser);
+		$_SESSION["iniciarSesion"] = "ok";
+		$_SESSION["perfilSesion"] = $idPerfil;
+		$nroSesion = session_id();
+		$_SESSION['sesion_usuario'] = $nroSesion; 
 		
 
 	}
+
+
 
 	/*=============================================
 	REGISTRO DE USUARIO
@@ -239,7 +131,7 @@ class ControladorUsuarios{
 				VALIDAR IMAGEN
 				=============================================*/
                 
-				$ruta = "vistas/img/usuarios/default/anonymous.png";
+				$ruta = Constantes::DIR_IMG_USR_DEFAULT;
 
 				if(isset($_FILES["nuevaFoto"]["tmp_name"]))
 				{
@@ -253,7 +145,7 @@ class ControladorUsuarios{
 					CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO DEL USUARIO
 					=============================================*/
                 
-					$directorio = "vistas/img/usuarios/".$_POST["identificador"];
+					$directorio = Constantes::DIR_IMG.$_POST["identificador"];
 
 					mkdir($directorio, 0755);
 
@@ -270,7 +162,7 @@ class ControladorUsuarios{
 
 						$aleatorio = mt_rand(100,999);
 
-						$ruta = "vistas/img/usuarios/".$_POST["identificador"]."/".$aleatorio.".png";
+						$ruta = Constantes::DIR_IMG_USR.$_POST["identificador"]."/".$aleatorio.".png";
 
 						$origen = imagecreatefrompng($_FILES["nuevaFoto"]["tmp_name"]);
 
@@ -399,9 +291,8 @@ class ControladorUsuarios{
 
 		$tabla = "usuario";
 
-		$respuesta = ModeloUsuarios::MdlMostrarUsuarios($tabla, $item, $valor);
+		return ModeloUsuarios::MdlMostrarUsuarios($tabla, $item, $valor);
 
-		return $respuesta;
 	}
 
 
@@ -436,7 +327,7 @@ class ControladorUsuarios{
 				$ruta = $_POST["editarnuevaFoto"];
 		
 				
-				if(isset($_FILES["nuevaFoto"]["name"]) and ($_FILES["nuevaFoto"]["name"] <> null))
+				if(isset($_FILES["nuevaFoto"]["name"]) && ($_FILES["nuevaFoto"]["name"] <> null))
 					{
 						
 						list($ancho, $alto) = getimagesize($_FILES["nuevaFoto"]["tmp_name"]);
@@ -448,41 +339,22 @@ class ControladorUsuarios{
 						CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO DEL USUARIO
 						=============================================*/
 					
-						$directorio = "vistas/img/usuarios/".$_POST["editaridentificador"];
+						$directorio = Constantes::DIR_IMG_USR.$_POST["editaridentificador"];
 						if (!file_exists($directorio))  
 							{ 
 								mkdir($directorio, 0755);
 							} 
-							
-							
-
 						/*=============================================
-						DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
-						=============================================*/
-
-
-
-						
-							/*=============================================
 							GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 							=============================================*/
 
 							$aleatorio = mt_rand(100,999);
-							$ruta = "vistas/img/usuarios/".$_POST["editaridentificador"]."/".$aleatorio.".png";
+							$ruta = Constantes::DIR_IMG_USR.$_POST["editaridentificador"]."/".$aleatorio.".png";
 							$origen = imagecreatefrompng($_FILES["nuevaFoto"]["tmp_name"]);
 							$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
 							imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
 							imagepng($destino, $ruta);
-						
-
-					
-
 					} 
-		   			
-		
-
-
-
 				$tabla = "usuario";
 
 				if($_POST["editarpassword"] != "")
@@ -560,7 +432,11 @@ class ControladorUsuarios{
 			  
                
 				$respuesta = ModeloUsuarios::mdlEditarUsuario($tabla, $datos);
-				if(isset($_POST["paginar"])){$paginar="datosPersonales";}else{$paginar="crearUsuario";};
+				if(isset($_POST["paginar"])){
+					$paginar="datosPersonales";
+				}else{
+					$paginar="crearUsuario";
+				}
 
 				if($respuesta == "ok"){
 
@@ -615,7 +491,7 @@ class ControladorUsuarios{
 			if($_GET["fotoUsuario"] != ""){
 
 				unlink($_GET["fotoUsuario"]);
-				rmdir('vistas/img/usuarios/'.$_GET["usuario"]);
+				rmdir(Constantes::DIR_IMG_USR.$_GET["usuario"]);
 
 			}
 
