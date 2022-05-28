@@ -59,7 +59,7 @@ class ControladorUsuarios{
 				   if ($respuesta["password"] == $password)
 						   {
 							   
-							   ctrSessionVariable($_SERVER['HTTP_USER_AGENT'],$respuesta["identificador"],
+							   $this->ctrSessionVariable($_SERVER['HTTP_USER_AGENT'],$respuesta["identificador"],
 														 $respuesta["nombreCompleto"],$respuesta["nuevaFoto"],$respuesta["idPerfilUsuarios"],
 														 $password);
 							     $ultimoLogin = ModeloUsuarios::mdlActualizarUsuario($tabla, "ultimo_login",$fechaActual, "identificador", $respuesta["identificador"]);
@@ -68,7 +68,7 @@ class ControladorUsuarios{
 									}  
 						    }
 				   else{
-							   if (checkbrute($_POST["ingUsuario"])){							
+							   if ($this->checkbrute($_POST["ingUsuario"])){							
 								   $subject = "Bloqueo de usuario";
 								   $emailDestino = $email_envio;
 								   $mensajeBody = "Cordial saludo. El usuario con identificador ".$_POST["ingUsuario"].", ha sido bloqueado, ha estado intentanto ingresar mas de 5 veces a la plataforma, por favor contactar con el administrador, para ser desbloqueado.";
