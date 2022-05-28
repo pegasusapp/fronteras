@@ -94,7 +94,7 @@ class ControladorUsuarios{
 	/*=============================================
 	CREATE SESSION VARIABLE
 	=============================================*/
-	 public function ctrSessionVariable($user_agent,$identify,$nombreCompleto,$foto,$idPerfil,$clave){
+	 static public function ctrSessionVariable($user_agent,$identify,$nombreCompleto,$foto,$idPerfil,$clave){
 
 		$user_browser = $user_agent;
 		$_SESSION['identificador'] = $identify;
