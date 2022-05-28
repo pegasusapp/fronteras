@@ -69,7 +69,7 @@ class ControladorFactura
 		$tabla = "facturas";
 		$item = NULL;
 		$valor = NULL;
-		return ModeloFactura::mdlMostrarFactura($tabla,$item,$valor);
+		return ModeloFactura::mdlMostrarFacturas($tabla,$item,$valor);
     
 
 	}
