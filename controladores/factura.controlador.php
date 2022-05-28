@@ -30,18 +30,18 @@ class ControladorFactura
 				if(!ControladorValidaciones::validateFile($_FILES["nameFile"]["tmp_name"],"application/pdf") )
 				{
 					echo ControladorUtilidades::answerScript("El tipo de archivo que intenta subir no es permitido","uploadFile");	
-					return false;
+					//return false;
 						
 				}
 				if ($_FILES["nameFile"]["size"] > Constantes::FILE_SIZE) {
 
 					echo ControladorUtilidades::answerScript("El tipo de archivo que intenta subir es mayor a 5 MEGAS, baje el tamaño del archivo","uploadFile");	
-					return false;
+					//return false;
 
 				}
 				if (file_exists($directorio."/".$_FILES["nameFile"]["name"])) {
 					echo ControladorUtilidades::answerScript("El archivo que esta intentando subir ya existe,cambie el nombre del archivo","uploadFile");	
-					return false;
+					//return false;
 				  }
 				
 				if (move_uploaded_file($_FILES["nameFile"]["tmp_name"], $target_file)) {
