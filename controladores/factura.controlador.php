@@ -24,7 +24,10 @@ class ControladorFactura
                 $folder = $_POST["anyoFactura"].$_POST["mesFactura"];
 				$directorio = "docs/facturas/".$_POST["idFrontera"]."/".$folder;
 				$target_file = $directorio."/".basename($_FILES["nameFile"]["name"]);
-				mkdir($directorio, 0755);
+				if (!is_dir($directorio)) {
+					mkdir($directorio, 0755,true);
+				}
+				
 				if(!ControladorValidaciones::validateFile($_FILES["nameFile"]["tmp_name"],"application/pdf"))
 				{
 					echo ControladorUtilidades::answerScript("El tipo de archivo que intenta subir no es permitido","uploadFile");	
