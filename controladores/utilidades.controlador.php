@@ -59,7 +59,7 @@ class ControladorUtilidades
 				$mail->Port = 587;                                     // TCP port to connect to
 				$mail->From = Constantes::EMAIL_COMPANY;
 				$mail->FromName = Constantes::FROM_NAME_EMAIL;
-				$mail->addAddress($email_envio, 'Usuario :');     // Add a recipient
+				$mail->addAddress($emailDestino, 'Usuario :');     // Add a recipient
 				$mail->isHTML(true);                                                      // Set email format to HTML
 				$mail->Subject = $subject;
 				$mail->Body    = $mensajeBody;
