@@ -70,7 +70,6 @@
                   <th id="anyo_tag">AÑO</th>
                   <th id="mes_tag">MES</th>
                   <th id="frontera_tag">FRONTERA</th>
-                  <th id="archivo_tag">ARCHIVO</th>
                   <th id="opciones_tag">OPCIONES</th>
                 </tr> 
                 </thead>
