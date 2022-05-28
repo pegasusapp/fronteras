@@ -21,6 +21,7 @@ class ControladorFactura
 				=============================================*/
                 
 				$directorio = "docs/facturas/".$_POST["idFrontera"];
+				echo "--->".$directorio;
 				$target_file = $directorio . basename($_FILES["nameFile"]["name"]);
 				mkdir($directorio, 0755);
 
