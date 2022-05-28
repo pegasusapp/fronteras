@@ -55,7 +55,7 @@
                  </div>
                  <div class="col-4" >
                       <div class="icon-bar">
-                        <a data-toggle="modal" data-target="#modalAgregarFactura"  id="iconAddUser"   title="Crear factura" href="#"><em class="fas fa-user-plus" ></em></a>&nbsp; 
+                        <a data-toggle="modal" data-target="#modalAgregarFactura"  id="iconAddUser"   title="Crear factura" href="#"><em class="fas fa-user-plus" ></em></a> 
                       </div>
                  </div> 
                  <div class="col-4">
@@ -79,7 +79,7 @@
                 <?php
                 $item = null;
                 $valor = null;
-                $items = ControladorUsuarios::ctrMostrarUsuarios($item, $valor); 
+                $items = ControladorFactura::ctrMostrarFactura($item, $valor); 
                 foreach ($items as $key => $value)
                     {
                         echo ' <tr>
@@ -206,13 +206,10 @@ MODAL AGREGAR FACTURA
                 </div>
             </div>
           </div>
-
         </div>
-
         <!--=====================================
         PIE DEL MODAL
         ======================================-->
-
         <div class="modal-footer">
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
           <button type="submit" class="btn btn-primary">Guardar item</button>
