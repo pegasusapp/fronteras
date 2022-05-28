@@ -19,8 +19,6 @@
   background-color: #ffffff;
  
 }
-
-
 </style>
 <div class="content-wrapper">
     <section class="content-header">
@@ -107,15 +105,14 @@
                 </tr>
                 </tfoot>
               </table>
-              </div>
+            </div>
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
         </div>
         <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </section>
+  </div>
+  </section>
 </div>
 
 <!--=====================================
@@ -221,6 +218,7 @@ MODAL AGREGAR FACTURA
       </form>
     </div>
   </div>
+</div> 
 <form method="post" name="form_editMenu" id="form_editMenu" action="editMenu">    
     <input id="identificadorMenu" name="identificadorMenu" type="hidden" value="" />
 </form>

@@ -10,12 +10,13 @@ class ControladorFactura
 
 	static public function ctrCrearFactura()
 	{
-		echo "******************>";
+		
 
 				
 		if(isset($_POST["nameFile"]))
 		{
-				$tabla = "facturas";
+				
+			$tabla = "facturas";
 				
 				/*=============================================
 				VALIDAR DOCUMENTO
