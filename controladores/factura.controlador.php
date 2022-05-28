@@ -27,7 +27,7 @@ class ControladorFactura
 				$target_file = $directorio."/".basename($_FILES["nameFile"]["name"]);
 				mkdir($directorio, 0755);
 				echo "/////---////".mime_content_type($_FILES["nameFile"]["tmp_name"]);
-				if(!ControladorValidaciones::validateFile($_FILES["nameFile"]["tmp_name"],"application/pdf") )
+				if(!ControladorValidaciones::validateFile($_FILES["nameFile"]["tmp_name"],"application/pdf"))
 				{
 					echo ControladorUtilidades::answerScript("El tipo de archivo que intenta subir no es permitido","uploadFile");	
 					//return false;
@@ -51,6 +51,7 @@ class ControladorFactura
 				   				   "nameFile"=>$_FILES["nameFile"]["name"],
 								   "frontera_fronteraCliente"=>$_POST["idFrontera"]);
 				    $respuesta = ModeloFactura::mdlIngresarFactura($tabla,$datos);
+					echo "--------->".$respuesta;
 				    if($respuesta == "ok"){
 						ControladorUtilidades::answerScript("Los datos han sido guardados correctamente","uploadFile");	 
 				   
