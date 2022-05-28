@@ -9,7 +9,7 @@ class ControladorMenu{
 	static public function ctrCrearServicio()
 		{
 
-			if( isset($_POST["nombreServicio"]) or $_POST["nombreServicio"] == "")
+			if( isset($_POST["nombreServicio"]) || $_POST["nombreServicio"] == "")
 			{
 					$tabla = "servicio";
 					$valor = $_POST["nombreServicio"];
@@ -22,7 +22,7 @@ class ControladorMenu{
 
 	static public function ctrCrearProceso(){
 
-			if( (isset($_POST["nombreProceso"]) or $_POST["nombreProceso"] == "") or ( isset($_POST["Servicio_idservicio"]) or $_POST["Servicio_idservicio"]=="") )
+			if( (isset($_POST["nombreProceso"]) || $_POST["nombreProceso"] == "") || ( isset($_POST["Servicio_idservicio"]) || $_POST["Servicio_idservicio"]=="") )
 			{
 					$tabla = "proceso";
 					$valor = $_POST["nombreProceso"];
@@ -36,7 +36,7 @@ class ControladorMenu{
 	static public function ctrCrearSubProceso()
 	{
 
-		if( (isset($_POST["nombreSubproceso"]) or $_POST["nombreSubproceso"] == "") or ( isset($_POST["Proceso_IdProceso"]) or $_POST["Proceso_IdProceso"]=="") )
+		if( (isset($_POST["nombreSubproceso"]) || $_POST["nombreSubproceso"] == "") || ( isset($_POST["Proceso_IdProceso"]) || $_POST["Proceso_IdProceso"]=="") )
 		{
 				$tabla = "subproceso";
 				$valor = $_POST["nombreSubproceso"];

@@ -303,10 +303,8 @@ class ControladorUsuarios{
 	static public function ctrSalidaUsuario($item, $valor){
 
 	
-
-		$respuesta = ModeloUsuarios::mdlSalidaUsuario($item, $valor);
+		return ModeloUsuarios::mdlSalidaUsuario($item, $valor);
        
-		return $respuesta;
 	}
 
 	/*=============================================
@@ -381,36 +379,8 @@ class ControladorUsuarios{
 					else
 					{ 
 
-						echo'<script>
-
-
-						swal("¡El usuario no puede ir vacío o llevar caracteres especiales!", {
-								buttons: 
-								{
-								catch: 
-								{
-								text: "Cerrar",
-								value: "ok",
-								}
-								},
-							})
-							.then((value) => {
-								switch (value)
-								{
-									case "ok":
-											window.location = "crearUsuario";
-									break;
-							
-									default:
-											window.location = "crearUsuario";
-								}
-							});
-
-
-							
-
-						  	</script>';
-
+						echo ControladorUtilidades::answerScript("¡El usuario no puede ir vacío o llevar caracteres especiales!","crearUsuario");	 
+						
 					}
 
 				}
@@ -440,33 +410,10 @@ class ControladorUsuarios{
 
 				if($respuesta == "ok"){
 
-					echo'<script>
 
-					swal("¡El usuario ha sido editado correctamentu!", {
-						buttons: 
-						{
-						 catch: 
-						   {
-						   text: "Cerrar",
-						   value: "ok",
-						   }
-						},
-					  })
-					  .then((value) => {
-						switch (value)
-						{
-					        case "ok":
-						            window.location = "'.$paginar.'";
-							break;
-					   
-						    default:
-						            window.location = "'.$paginar.'";
-						}
-					  });
+					echo ControladorUtilidades::answerScript("El usuario ha sido editado correctamente!",$paginar);	 
 
-
-					</script>';
-
+				
 				}
 
 
