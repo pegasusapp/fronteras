@@ -31,7 +31,7 @@ class ControladorUsuarios{
 					     
 		 				 $item = "identificador";
 						 $valor = $_POST["ingUsuario"];
-						 $respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla, $item, $valor);
+						 $respuesta = ModeloUsuarios::mdlMostrarUsuarios("usuario", $item, $valor);
 						 if($this->ctrUserIn($respuesta)){
 							echo '<script>window.location = "inicio";</script>';
 						 }
