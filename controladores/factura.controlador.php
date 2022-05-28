@@ -10,6 +10,7 @@ class ControladorFactura
 
 	static public function ctrCrearFactura()
 	{
+		echo "******************>";
 
 				
 		if(isset($_POST["nameFile"]))
