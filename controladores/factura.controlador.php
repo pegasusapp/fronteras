@@ -23,25 +23,23 @@ class ControladorFactura
 				=============================================*/
                 
 				$directorio = "docs/facturas/".$_POST["idFrontera"];
-				echo "--->".$directorio;
 				$target_file = $directorio."/".basename($_FILES["nameFile"]["name"]);
 				mkdir($directorio, 0755);
-				echo "/////---////".mime_content_type($_FILES["nameFile"]["tmp_name"]);
 				if(!ControladorValidaciones::validateFile($_FILES["nameFile"]["tmp_name"],"application/pdf"))
 				{
 					echo ControladorUtilidades::answerScript("El tipo de archivo que intenta subir no es permitido","uploadFile");	
-					//return false;
+					return false;
 						
 				}
 				if ($_FILES["nameFile"]["size"] > Constantes::FILE_SIZE) {
 
 					echo ControladorUtilidades::answerScript("El tipo de archivo que intenta subir es mayor a 5 MEGAS, baje el tamaño del archivo","uploadFile");	
-					//return false;
+					return false;
 
 				}
 				if (file_exists($directorio."/".$_FILES["nameFile"]["name"])) {
 					echo ControladorUtilidades::answerScript("El archivo que esta intentando subir ya existe,cambie el nombre del archivo","uploadFile");	
-					//return false;
+					return false;
 				  }
 				
 				if (move_uploaded_file($_FILES["nameFile"]["tmp_name"], $target_file)) {
@@ -51,9 +49,8 @@ class ControladorFactura
 				   				   "nameFile"=>$_FILES["nameFile"]["name"],
 								   "frontera_fronteraCliente"=>$_POST["idFrontera"]);
 				    $respuesta = ModeloFactura::mdlIngresarFactura($tabla,$datos);
-					echo "--------->".$respuesta;
 				    if($respuesta == "ok"){
-						ControladorUtilidades::answerScript("Los datos han sido guardados correctamente","uploadFile");	 
+						echo ControladorUtilidades::answerScript("Los datos han sido guardados correctamente","uploadFile");	 
 				   
 					} 
 
