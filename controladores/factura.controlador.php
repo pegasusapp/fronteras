@@ -27,7 +27,7 @@ class ControladorFactura
 				$target_file = $directorio . basename($_FILES["nameFile"]["name"]);
 				mkdir($directorio, 0755);
 
-				if(isset($_FILES["nameFile"]["tmp_name"]) || !ControladorValidaciones::validateFile("nameFile","application/pdf") )
+				if(isset($_FILES["nameFile"]["tmp_name"]) || !ControladorValidaciones::validateFile($_FILES["nameFile"]["tmp_name"],"application/pdf") )
 				{
 					echo ControladorUtilidades::answerScript("El tipo de archivo que intenta subir no es permitido","uploadFile");	
 						
