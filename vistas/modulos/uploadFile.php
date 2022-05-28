@@ -69,6 +69,7 @@
                 <tr>
                   <th id="anyo_tag">AÑO</th>
                   <th id="mes_tag">MES</th>
+                  <th id="frontera_tag">FRONTERA</th>
                   <th id="archivo_tag">ARCHIVO</th>
                   <th id="opciones_tag">OPCIONES</th>
                 </tr> 
@@ -83,15 +84,12 @@
                         echo ' <tr>
                                     <td>'.$value["anyo"].'</td>
                                     <td>'.$value["mes"].'</td> 
-                                    <td>'.$value["nameFile"].'</td>
+                                    <td><a href="/docs/facturas/'.$value["frontera_fronteraCliente"].'/'.$value["nameFile"].'">'.$value["frontera_fronteraCliente"].'</a></td> 
                                     <td>
                                         <div class="btn-group">
-                                          <button class="btn btn-primary px-2.5" onclick=editarUser("'.$value["identificador"].'") codigoniu="'.$value["identificador"].'" data-toggle="modal" data-target="#modalEditarUsuario"><i class="far fa-edit" aria-hidden="true"></i></button>
+                                          <button class="btn btn-primary px-2.5" onclick=editarUser("'.$value["anyo"].'","'.$value["mes"].'","'.$value["frontera_fronteraCliente"].'")  data-toggle="modal" data-target="#modalEditarFactura"><i class="far fa-edit" aria-hidden="true"></i></button>
                                         </div> 
-                                      <div class="btn-group">
-                                          <button class="btn btn-primary px-2.5"  onclick=editarMenu("'.$value["identificador"].'") codigoniu="'.$value["identificador"].'" ><i class="fas fa-lock" aria-hidden="true"></i></button>
-                                      </div>     
-                                    </td>
+                                     </td>
                                 </tr>';
                     }
                 ?> 
@@ -100,7 +98,7 @@
                 <tr>
                   <th id="anyo_tag">AÑO</th>
                   <th id="mes_tag">MES</th>
-                  <th id="archivo_tag">ARCHIVO</th>
+                  <th id="frontera_tag">FRONTERA</th>
                   <th id="opciones_tag">OPCIONES</th>
                 </tr>
                 </tfoot>
