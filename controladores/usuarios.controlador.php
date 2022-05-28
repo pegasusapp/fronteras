@@ -59,7 +59,7 @@ class ControladorUsuarios{
 				   if ($respuesta["password"] == $password)
 						   {
 							   
-							   $this->ctrSessionVariable($_SERVER['HTTP_USER_AGENT'],$respuesta["identificador"],
+							  ctrSessionVariable($_SERVER['HTTP_USER_AGENT'],$respuesta["identificador"],
 														 $respuesta["nombreCompleto"],$respuesta["nuevaFoto"],$respuesta["idPerfilUsuarios"],
 														 $password);
 							     $ultimoLogin = ModeloUsuarios::mdlActualizarUsuario($tabla, "ultimo_login",$fechaActual, "identificador", $respuesta["identificador"]);
