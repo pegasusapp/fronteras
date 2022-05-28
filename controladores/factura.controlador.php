@@ -21,8 +21,8 @@ class ControladorFactura
 				/*=============================================
 				VALIDAR DOCUMENTO
 				=============================================*/
-                
-				$directorio = "docs/facturas/".$_POST["idFrontera"];
+                $folder = $_POST["anyoFactura"].$_POST["mesFactura"];
+				$directorio = "docs/facturas/".$_POST["idFrontera"]."/".$folder;
 				$target_file = $directorio."/".basename($_FILES["nameFile"]["name"]);
 				mkdir($directorio, 0755);
 				if(!ControladorValidaciones::validateFile($_FILES["nameFile"]["tmp_name"],"application/pdf"))
