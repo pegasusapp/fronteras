@@ -13,7 +13,7 @@ class ControladorFactura
 		
 
 				
-		if(isset($_POST["anyoFactura"]) && empty($_FILES))
+		if($_POST["submit"])
 		{
 				
 			$tabla = "facturas";
