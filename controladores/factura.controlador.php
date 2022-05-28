@@ -13,7 +13,7 @@ class ControladorFactura
 		
 
 				
-		if(isset($_POST["anyoFactura"]))
+		if(isset($_POST["anyoFactura"]) && empty($_FILES))
 		{
 				
 			$tabla = "facturas";
@@ -27,7 +27,7 @@ class ControladorFactura
 				$target_file = $directorio."/".basename($_FILES["nameFile"]["name"]);
 				mkdir($directorio, 0755);
 				echo "/////---////".mime_content_type($_FILES["nameFile"]["tmp_name"]);
-				if(isset($_FILES["nameFile"]["tmp_name"]) || !ControladorValidaciones::validateFile($_FILES["nameFile"]["tmp_name"],"application/pdf") )
+				if(!ControladorValidaciones::validateFile($_FILES["nameFile"]["tmp_name"],"application/pdf") )
 				{
 					echo ControladorUtilidades::answerScript("El tipo de archivo que intenta subir no es permitido","uploadFile");	
 					return false;
