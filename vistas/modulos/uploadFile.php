@@ -83,7 +83,7 @@
                         echo ' <tr>
                                     <td>'.$value["anyo"].'</td>
                                     <td>'.$value["mes"].'</td> 
-                                    <td><a href="/docs/facturas/'.$value["frontera_fronteraCliente"].'/'.$value["nameFile"].'">'.$value["frontera_fronteraCliente"].'</a></td> 
+                                    <td><a href="/docs/facturas/'.$value["frontera_fronteraCliente"].'/'.$value["anyo"].$value["mes"].'/'.$value["nameFile"].'">'.$value["frontera_fronteraCliente"].'</a></td> 
                                     <td>
                                         <div class="btn-group">
                                           <button class="btn btn-primary px-2.5" onclick=editarUser("'.$value["anyo"].'","'.$value["mes"].'","'.$value["frontera_fronteraCliente"].'")  data-toggle="modal" data-target="#modalEditarFactura"><i class="far fa-edit" aria-hidden="true"></i></button>
