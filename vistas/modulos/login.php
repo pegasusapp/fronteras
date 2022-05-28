@@ -2,7 +2,7 @@
 
 <div class="login-box">
   <div class="login-logo">
-    <img src="vistas/img/plantilla/logo-blanco-bloque.png" class="img-responsive" style="padding:30px 100px 0px 50px">
+    <img src="vistas/img/plantilla/logo-blanco-bloque.png" alt="logo empresa" class="img-responsive" style="padding:30px 100px 0px 50px">
   </div>
   <!-- /.login-logo -->
   <div class="card">

@@ -55,7 +55,7 @@
                  </div>
                  <div class="col-4" >
                       <div class="icon-bar">
-                        <a data-toggle="modal" data-target="#modalAgregarFactura"  id="iconAddUser"   title="Crear factura" href="#"><i class="fas fa-user-plus" ></i></a>&nbsp; 
+                        <a data-toggle="modal" data-target="#modalAgregarFactura"  id="iconAddUser"   title="Crear factura" href="#"><em class="fas fa-user-plus" ></em></a>&nbsp; 
                       </div>
                  </div> 
                  <div class="col-4">
@@ -69,10 +69,10 @@
               <caption>Listado de facturas de energia</caption>  
               <thead>
                 <tr>
-                  <th>AÑO</th>
-                  <th>MES</th>
-                  <th>ARCHIVO</th>
-                  <th>OPCIONES</th>
+                  <th id="anyo_tag">AÑO</th>
+                  <th id="mes_tag">MES</th>
+                  <th id="archivo_tag">ARCHIVO</th>
+                  <th id="opciones_tag">OPCIONES</th>
                 </tr> 
                 </thead>
                 <tbody>
@@ -100,10 +100,10 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>AÑO</th>
-                  <th>MES</th>
-                  <th>ARCHIVO</th>
-                  <th>OPCIONES</th>
+                  <th id="anyo_tag">AÑO</th>
+                  <th id="mes_tag">MES</th>
+                  <th id="archivo_tag">ARCHIVO</th>
+                  <th id="opciones_tag">OPCIONES</th>
                 </tr>
                 </tfoot>
               </table>
@@ -121,181 +121,17 @@
 <!--=====================================
 MODAL AGREGAR FACTURA
 ======================================-->
-<div id="modalAgregarPermisos" class="modal fade" role="dialog">
-  
-  <div class="modal-dialog">
-
-    <div class="modal-content">
-
-      <form role="form" method="post" enctype="multipart/form-data">
-
-        <!--=====================================
-        CABEZA DEL MODAL
-        ======================================-->
-
-        <div class="modal-header" style="background:#3c8dbc; color:white">
-
-                  <div class="col-4">
-                      <i class="far fa-id-card" ></i>
-                  </div>
-                  <div class="col-4">
-                     <label>Agregar perfil</label>
-                  </div>
-                  <div class="col-4">
-                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  </div>       
-
-        </div>
-
-        <!--=====================================
-        CUERPO DEL MODAL
-        ======================================-->
-
-        <div class="modal-body">
-          <div class="box-body">
-            <div class="container">
-                <div id="treeview_container" class="hummingbird-treeview well h-scroll-large">
-                    <ul id="treeview" class="hummingbird-base" id="menuUsuario">
-                    </ul>
-                </div>     
-            </div>
-          </div>
-        </div>
-
-        <!--=====================================
-        PIE DEL MODAL
-        ======================================-->
-
-        <div class="modal-footer">
-
-          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-
-          <button type="submit" class="btn btn-primary">Guardar item</button>
-
-        </div>
-
-        <?php
-
-         // $crearFactura = new ControladorFactura();
-         // $crearFactura -> ctrCrearFactura();
-
-        ?>
-
-      </form>
-
-    </div>
-
-  </div>
-
-</div>
-
-<!--=====================================
-MODAL AGREGAR PERFIL
-======================================-->
-
-<div id="modalAgregarPerfil" class="modal fade" role="dialog">
-  
-  <div class="modal-dialog">
-
-    <div class="modal-content">
-
-      <form role="form" method="post" enctype="multipart/form-data">
-
-        <!--=====================================
-        CABEZA DEL MODAL
-        ======================================-->
-
-        <div class="modal-header" style="background:#3c8dbc; color:white">
-
-                  <div class="col-4">
-                      <i class="far fa-id-card" ></i>
-                  </div>
-                  <div class="col-4">
-                     <label>Agregar perfil</label>
-                  </div>
-                  <div class="col-4">
-                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  </div>       
-
-        </div>
-
-        <!--=====================================
-        CUERPO DEL MODAL
-        ======================================-->
-
-        <div class="modal-body">
-
-          <div class="box-body">
-
-            <!-- ENTRADA PARA EL NOMBRE -->
-            
-            <div class="form-group">
-              
-              <div class="input-group">
-              
-               <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingresar nombre" required>
-
-              </div>
-
-            </div>
-
-                            <!-- ENTRADA PARA LA DESCRIPCION -->
-            
-            <div class="form-group">
-              
-              <div class="input-group">
-              
-
-                <textarea class="form-control" name="descripcion" id="descripcion" placeholder="Descripción" required></textarea>
-
-              </div>
-
-            </div>
-           </div>
-
-        </div>
-
-        <!--=====================================
-        PIE DEL MODAL
-        ======================================-->
-
-        <div class="modal-footer">
-
-          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-
-          <button type="submit" class="btn btn-primary">Guardar item</button>
-
-        </div>
-
-        <?php
-
-          $crearPerfil = new ControladorPerfil();
-          $crearPerfil -> ctrCrearPerfil();
-
-        ?>
-
-      </form>
-
-    </div>
-
-  </div>
-
-</div>
-
-<!--=====================================
-MODAL AGREGAR FACTURA
-======================================-->
 <div id="modalAgregarFactura" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form role="form" method="post" enctype="multipart/form-data">
+      <form aria-label="Formulario de ingreso de facturas" role="form" method="post" enctype="multipart/form-data">
         <!--=====================================
         CABEZA DEL MODAL
         ======================================-->
         <div class="modal-header" style="background:#3c8dbc; color:white">
          
                   <div class="col-4">
-                      <h4 class="modal-title"><i class="fas fa-user-plus" ></i></h4>
+                      <h4 class="modal-title"><em class="fas fa-user-plus" ></em></h4>
                   </div>
                   <div class="col-4">
                      <label>Agregar factura</label>
@@ -316,7 +152,7 @@ MODAL AGREGAR FACTURA
                   <select class="form-control select2" id="anyoFactura" name="anyoFactura" title="Seleccione el año" required >
                         <option value="">Seleccione el año</option>
                         <?php
-                            $yearActual= Date(Y); 
+                            $yearActual= Date('Y' ); 
                             for($i=2022;$i<=$yearActual+5;$i++)
                             {
                               echo "<option value='".$i."'>".$i."</option>";
@@ -382,123 +218,12 @@ MODAL AGREGAR FACTURA
           <button type="submit" class="btn btn-primary">Guardar item</button>
         </div>
         <?php
-          $crearUsuario = new ControladorUsuarios();
-          $crearUsuario -> ctrCrearUsuario();
+          $crearFactura = new ControladorFactura();
+          $crearFactura -> ctrCrearFactura();
         ?>
       </form>
     </div>
   </div>
-</div>
-<!--=====================================
-MODAL EDITAR USUARIO
-======================================-->
-<div id="modalEditarUsuario" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <form role="form" method="post">
-          <input type="hidden"  name="editaridentificador" id="editaridentificador">
-      <!--=====================================
-        CABEZA DEL MODAL
-        ======================================-->
-       
-
-        <div class="modal-header" style="background:#3c8dbc; color:white">
-         
-         <div class="col-4">
-             <h4 class="modal-title"><i class="far fa-edit"></i></h4>
-         </div>
-         <div class="col-4">
-            <label>Editar usuario</label>
-         </div>
-         <div class="col-4">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-         </div>        
-
-</div>
-        
-        <!--=====================================
-        CUERPO DEL MODAL
-        ======================================-->
-        <div class="modal-body">
-          <div class="box-body">
-           <!-- ENTRADA PARA LA NOMBRE -->
-           <div class="form-group">
-              <div class="input-group">
-                <input type="text" class="form-control" name="editarnombreCompleto" id="editarnombreCompleto" required>
-              </div>
-            </div>
-              <!-- ENTRADA PARA LA CONTRASEÑA -->
-            <div class="form-group">
-              <div class="input-group">
-                <input type="password" class="form-control" name="editarpassword" placeholder="Nueva contraseña" id="editarpassword" alt="contraseña" >
-              </div>
-            </div>
-             <!-- ENTRADA PARA LA ESTADO -->
-            <div class="form-group">
-              <div class="input-group">
-                  <select class="form-control" name="editarestado" id="editarestado"  required>
-                      <option value="1">Activo</option>
-                      <option value="0">Inactivo</option>
-                  </select>  
-              </div>
-            </div>
-               <!-- ENTRADA PARA EL EMAIL -->
-            <div class="form-group">
-              <div class="input-group">
-                <input type="email" class="form-control" name="editaremail" id="editaremail" placeholder="Nuevo email"  required>
-              </div>
-            </div>
-              <!-- ENTRADA PARA EL PERFIl -->
-            <div class="form-group">
-               <div class="input-group">
-                 <select class="form-control" id="editaridPerfilUsuarios" Onchange="opcionPerfil(this.value)" name="editaridPerfilUsuarios" required>
-                      <option value="" >Seleccione el perfil...</option>
-                     <?php
-                          $item  = null;
-                          $valor = null;
-                          $items = ControladorPerfil::ctrMostrarPerfil($item, $valor);
-                         foreach ($items as $key => $value)
-                           {
-                             echo '<option value="'.$value["idPerfilUsuarios"].'">'.$value["nombre"].'  </option>';
-                           }
-                       ?> 
-                </select>
-               </div>
-            </div>
-            <!-- ENTRADA PARA EL CELULAR -->
-            <div class="form-group">
-              <div class="input-group">
-                  <input type="text" class="form-control" name="editarcelular" id="editarcelular" placeholder="Nuevo numero celular"  required>
-              </div>
-            </div>
-<!------------------------------------------>
-
-           </div>
-
-        </div>
-        <!--=====================================
-        PIE DEL MODAL
-        ======================================-->
-
-        <div class="modal-footer">
-
-          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-
-          <button type="submit" class="btn btn-primary">Guardar cambios</button>
-
-        </div>
-
-      <?php
-
-          $editarUsuario = new ControladorUsuarios();
-          $editarUsuario -> ctrEditarUsuario();
-            
-        ?> 
-
-      </form>
-    </div>
-  </div>
-</div>
 <form method="post" name="form_editMenu" id="form_editMenu" action="editMenu">    
     <input id="identificadorMenu" name="identificadorMenu" type="hidden" value="" />
 </form>

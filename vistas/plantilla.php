@@ -34,7 +34,7 @@ session_start();
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- sweet alert -->
-  <link rel="stylesheet" href="/plugins/sweetalert2/sweetalert2.min.css">
+  <link rel="stylesheet" href="plugins/sweetalert2/sweetalert2.min.css">
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="plugins/tree/js/hummingbird-treeview.js"></script> 
@@ -224,12 +224,9 @@ $("#treeview").on("CheckUncheckDone", function(){
 <script src="dist/js/adminlte.js"></script>
 <script src="vistas/js/plantilla.js"></script>
 <?php
-
  $paginaNiveles =  $_SERVER["REQUEST_URI"];
  $paginaSesion = explode("/", $paginaNiveles);
- $valor = $paginaSesion[1];
  $items = ControladorMenu::ctrMostrarMenuExpandido($valor);
-
  foreach ($items as $key => $value)
  {
    echo "<script>
@@ -239,7 +236,5 @@ $("#treeview").on("CheckUncheckDone", function(){
          </script>";
  }
 ?>
-
- 
 </body>
 </html>
