@@ -10,14 +10,19 @@ class ControladorFactura
 
 	static public function ctrCrearFactura()
 	{
-		
-
-				
 		if(isset($_POST["anyoFactura"]))
 		{
 				
-			$tabla = "facturas";
-				
+			    $tabla = "facturas";
+				/*=============================================
+				VALIDAR SI EXISTE DOCUMENTO
+				=============================================*/
+				if(self::ctrSearchFactura($tabla,"anyo", $_POST["anyoFactura"],"mes", $_POST["mesFactura"],"frontera_fronteraCliente", $_POST["idFrontera"]) > 0)
+				{
+					echo ControladorUtilidades::answerScript("Ya existe un registro para estas condiciones","uploadFile");	
+					return false;
+				}
+
 				/*=============================================
 				VALIDAR DOCUMENTO
 				=============================================*/
