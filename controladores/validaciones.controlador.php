@@ -3,7 +3,7 @@
 class ControladorValidaciones
 {
 
-	public $monthName = [
+	private static $monthName = [
 		"1" => "Enero",
 		"2" => "Febrero",
 		"3" => "Marzo",
