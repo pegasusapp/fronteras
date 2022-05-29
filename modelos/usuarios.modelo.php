@@ -77,14 +77,9 @@ class ModeloUsuarios{
 		catch (PDOException $ex) 
 			{
 				$pdo->rollBack();
-				//return "Error presentado en: ".$ex->__toString();
 				return "Error presentado en: ".$ex->getMessage();
 			}
 		return "ok";		
-
-		$pdo = null;	
-	    
-
 
 	}
 
@@ -140,12 +135,6 @@ class ModeloUsuarios{
 	 {
 	    return	 "An error occured: " . $e -> getMessage();
 	 }
-	
-	
-		
-	
-	
-
 	}
 
 
@@ -191,12 +180,6 @@ class ModeloUsuarios{
 			return "error";
 
 		}
-
-		$stmt -> close();
-
-		$stmt = null;
-
-
 	}
 
 
@@ -226,11 +209,6 @@ class ModeloUsuarios{
 			return "error";
 
 		}
-
-		$stmt->close();
-
-		$stmt = null;
-
 	}
 	/*=============================================
 	SALIDA DE USUARIO
@@ -251,11 +229,6 @@ class ModeloUsuarios{
 			return "error";
 
 		}
-
-		$stmt->close();
-
-		$stmt = null;
-
 	}
 
 }

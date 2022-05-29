@@ -161,6 +161,11 @@ class ControladorFactura
 		return ModeloFactura::mdlBorrarFactura($tabla,$item, $valor,$item1, $valor1,$item2, $valor2);
 	}
 
+	static public function ctrSearchFactura($tabla,$item, $valor,$item1, $valor1,$item2, $valor2){
+
+		return ModeloFactura::mdlSearchFactura($tabla,$item, $valor,$item1, $valor1,$item2, $valor2);
+	}
+
 
 }
 

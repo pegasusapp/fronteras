@@ -197,7 +197,6 @@ class ModeloMenu{
 						$stmt_f = Conexion::conectar()->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 						foreach($vector_subprocesos as $id_subproceso_unitario )
 						{
-							//$stmt_f = Conexion::conectar()->prepare("SELECT * FROM Subproceso_has_Usuario WHERE Subproceso_idSubproceso  IN (".implode(",",$vector_subprocesos).") and $item = :$item");
 							$stmt_f = Conexion::conectar()->prepare("SELECT * FROM subproceso_has_usuario WHERE Subproceso_idSubproceso=".$id_subproceso_unitario." and $item = :$item");
 							$stmt_f->execute([$item => $valor2]); 
 							$data_f = $stmt_f->fetchAll();
@@ -213,9 +212,7 @@ class ModeloMenu{
 											$stmt_up_subprocesos->bindParam(":Subproceso_idSubproceso", $valor_activar_subprocesos["Subproceso_idSubproceso"], PDO::PARAM_INT);
 											$stmt_up_subprocesos->bindParam(":Usuario_identificador", $valor2, PDO::PARAM_STR);
 											$stmt_up_subprocesos->execute();
-											/*$arr = $stmt_up_subprocesos->errorInfo();
-											print_r($arr);
-											*/
+									
 									}
 							}
 							else
