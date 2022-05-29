@@ -25,34 +25,6 @@ function borrarFactura(anyo,mes,frontera,filename){
 	  }
 }
 
-function searchFactura(anyo,mes,frontera){
-
-		var datos = new FormData();
-		datos.append("anyoSearch", anyo);
-		datos.append("mesSearch", mes);
-	    datos.append("fronteraSearch", frontera);
-   	   $.ajax({
-   			   url:"ajax/factura.ajax.php",
-			   method: "POST",
-			   data: datos,
-			   cache: false,
-			   contentType: false,
-			   processData: false,
-			   success: function(respuesta){
-			   if(respuesta){
-				alert("Ya existe un registro para esta frontera el año y el mes");	 
-				window.location = "uploadFile";
-					 }
-					 
-					
-					},
-   			   // Error handling 
-			   error: function (error) {
-			   console.log(`Error ${error}`);
-					   }
-			 })
-	  
-}
 
 
 
