@@ -87,9 +87,14 @@
                                     <td><a href="/docs/facturas/'.$value["frontera_fronteraCliente"].'/'.$value["anyo"].$value["mes"].'/'.$value["nameFile"].'" target="_blank">'.$value["frontera_fronteraCliente"].'</a></td> 
                                     <td>
                                         <div class="btn-group">
-                                          <button class="btn btn-primary px-2.5" onclick=editarUser("'.$value["anyo"].'","'.$value["mes"].'","'.$value["frontera_fronteraCliente"].'")  data-toggle="modal" data-target="#modalEditarFactura"><i class="far fa-edit" aria-hidden="true"></i></button>
+                                          <button class="btn btn-primary px-2.5" onclick=editarUser("'.$value["anyo"].'","'.$value["mes"].'","'.$value["frontera_fronteraCliente"].'")  data-toggle="modal" data-target="#modalEditarFactura"><em class="far fa-edit" aria-hidden="true"></em></button>
                                         </div> 
                                      </td>
+                                     <td>
+                                     <div class="btn-group">
+                                       <button class="btn btn-primary px-2.5" onclick=borrarFactura("'.$value["anyo"].'","'.$value["mes"].'","'.$value["frontera_fronteraCliente"].'","'.$value["nameFile"].'")  data-toggle="modal"><em class="fas fa-trash-alt"></em></button>
+                                     </div> 
+                                  </td>
                                 </tr>';
                     }
                 ?> 
