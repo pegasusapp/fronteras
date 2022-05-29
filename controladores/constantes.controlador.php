@@ -12,5 +12,5 @@ class Constantes{
 	const MGS_ERROR_INGRESO = '<br><div class="alert alert-danger">Error al ingresar, vuelve a intentarlo</div>';
 	const DIR_IMG_USR = "vistas/img/usuarios/";
 	const DIR_IMG_USR_DEFAULT = "vistas/img/usuarios/default/anonymous.png";
-
+	
 }
