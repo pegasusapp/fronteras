@@ -30,7 +30,7 @@ class ControladorValidaciones
 		return false;
 	}
 
-	public function monthSelect($month){
+	static public function monthSelect($month){
 		
 		return self::$monthName[$month];
 
