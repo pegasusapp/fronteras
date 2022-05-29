@@ -31,7 +31,7 @@ class AjaxFacturas{
 		if($respuesta){
 			$file_pointer = $this->filename;
   			// Use unlink() function to delete a file
-			if (!unlink("docs/facturas/".$this->frontera."/".$folder."/".$file_pointer)) {
+			if (!unlink($_SERVER['DOCUMENT_ROOT']."/docs/facturas/".$this->frontera."/".$folder."/".$file_pointer)) {
 				echo json_encode(false);
 			}
 			else {
