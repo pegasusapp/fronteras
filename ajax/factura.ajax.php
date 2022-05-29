@@ -72,6 +72,7 @@ if(isset($_POST["anyo"]) && isset($_POST["mes"]) && isset($_POST["frontera"])){
 	$borrar -> anyo = $_POST["anyo"];
 	$borrar -> mes = $_POST["mes"];
 	$borrar -> frontera = $_POST["frontera"];
+	$borrar -> filename = $_POST["filename"];
 	$borrar -> ajaxBorrarFactura();
 
 }
