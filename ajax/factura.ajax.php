@@ -16,7 +16,7 @@ class AjaxFacturas{
 
     public function ajaxBorrarFactura(){
 
-		$tabla = "factura";
+		$tabla = "facturas";
 		$item = "anyo";
 		$valor = $this->anyo;
 		$item1 = "mes";
