@@ -27,7 +27,6 @@ class AjaxFacturas{
 
 		$respuesta = ControladorFactura::ctrBorrarFactura($tabla,$item, $valor,$item1, $valor1,$item2, $valor2);
 		$folder = $this->anyo.$this->mes;
-		$directorio = "docs/facturas/".$this->frontera."/".$folder;
 		if($respuesta){
 			$file_pointer = $this->filename;
   			// Use unlink() function to delete a file
