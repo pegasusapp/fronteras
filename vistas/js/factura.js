@@ -39,31 +39,46 @@ function borrarFactura(anyo,mes,frontera,filename){
   	datos.append("mes", mes);
 	datos.append("frontera", frontera);
 	datos.append("filename", filename);
+	swal({
+		title: '¿Está seguro de borrar el usuario?',
+		text: "¡Si no lo está puede cancelar la accíón!",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  cancelButtonText: 'Cancelar',
+		  confirmButtonText: 'Si, borrar usuario!'
+	  }).then((result)=>{
+	
+		if(result.value){
 
-	$.ajax({
+						$.ajax({
 
-		url:"ajax/factura.ajax.php",
-		method: "POST",
-		data: datos,
-		cache: false,
-		contentType: false,
-		processData: false,
-		success: function(respuesta){
-  
-		  if(respuesta)
-		  {
-			//window.location = "uploadFile";
-		  }
-  
-		},
+							url:"ajax/factura.ajax.php",
+							method: "POST",
+							data: datos,
+							cache: false,
+							contentType: false,
+							processData: false,
+							success: function(respuesta){
+					
+							if(respuesta)
+							{
+								window.location = "uploadFile";
+							}
+					
+							},
 
-		// Error handling 
-		error: function (error) {
-			console.log(`Error ${error}`);
-		}
-  
-		})
+							// Error handling 
+							error: function (error) {
+								console.log(`Error ${error}`);
+							}
+					
+							})
 
+						}
+
+					})
 
 
 }
