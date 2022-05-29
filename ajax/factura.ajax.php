@@ -42,21 +42,22 @@ class AjaxFacturas{
 
 	}
 
+	public function ajaxSearchFactura(){
+		$tabla = "facturas";
+		$item = "anyo";
+		$valor = $this->anyo;
+		$item1 = "mes";
+		$valor1 = $this->mes;
+		$item2 = "frontera_fronteraCliente";
+		$valor2 = $this->frontera;
 
-	/*=============================================
-	VALIDAR NO REPETIR FACTURA
-	=============================================*/	
-
-	public $validarUsuario;
-
-	public function ajaxValidarUsuario(){
-
-		$item = "Usuario";
-		$valor = $this->validarUsuario;
-
-		$respuesta = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
-
-		echo json_encode($respuesta);
+		$respuesta = ControladorFactura::ctrSearchFactura($tabla,$item, $valor,$item1, $valor1,$item2, $valor2);
+		if($respuesta > 0){
+			echo json_encode(true);
+		}
+		else{
+			echo json_encode(false);
+		}
 
 	}
 }
@@ -73,6 +74,16 @@ if(isset($_POST["anyo"]) && isset($_POST["mes"]) && isset($_POST["frontera"])){
 	$borrar -> frontera = $_POST["frontera"];
 	$borrar -> filename = $_POST["filename"];
 	$borrar -> ajaxBorrarFactura();
+
+}
+
+if(isset($_POST["anyoSearch"]) && isset($_POST["mesSearch"]) && isset($_POST["fronteraSearch"])){
+
+	$search = new AjaxFacturas();
+	$search -> anyo = $_POST["anyoSearch"];
+	$search -> mes = $_POST["mesSearch"];
+	$search -> frontera = $_POST["fronteraSearch"];
+	$search -> ajaxSearchFactura();
 
 }
 
