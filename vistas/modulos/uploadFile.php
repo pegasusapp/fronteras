@@ -88,13 +88,9 @@
                                     <td>
                                         <div class="btn-group">
                                           <button class="btn btn-primary px-2.5" onclick=editarUser("'.$value["anyo"].'","'.$value["mes"].'","'.$value["frontera_fronteraCliente"].'")  data-toggle="modal" data-target="#modalEditarFactura"><em class="far fa-edit" aria-hidden="true"></em></button>
-                                        </div> 
+                                          <button class="btn btn-primary px-2.5" onclick=borrarFactura("'.$value["anyo"].'","'.$value["mes"].'","'.$value["frontera_fronteraCliente"].'","'.$value["nameFile"].'")  data-toggle="modal"><em class="fas fa-trash-alt"></em></button>
+                                          </div> 
                                      </td>
-                                     <td>
-                                     <div class="btn-group">
-                                       <button class="btn btn-primary px-2.5" onclick=borrarFactura("'.$value["anyo"].'","'.$value["mes"].'","'.$value["frontera_fronteraCliente"].'","'.$value["nameFile"].'")  data-toggle="modal"><em class="fas fa-trash-alt"></em></button>
-                                     </div> 
-                                  </td>
                                 </tr>';
                     }
                 ?> 
