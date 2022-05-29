@@ -52,6 +52,7 @@ function borrarFactura(anyo,mes,frontera,filename){
 	  }).then((result)=>{
 	
 		if(result.value){
+			alert("ss");
 	
 			$.ajax({
 
@@ -68,7 +69,12 @@ function borrarFactura(anyo,mes,frontera,filename){
 					window.location = "uploadFile";
 				  }
 		  
-				}
+				},
+  
+                // Error handling 
+                error: function (error) {
+                    console.log(`Error ${error}`);
+                }
 		  
 				})	
 		}
