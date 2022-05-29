@@ -52,7 +52,7 @@ function borrarFactura(anyo,mes,frontera,filename){
   
 		  if(respuesta)
 		  {
-			window.location = "uploadFile";
+			//window.location = "uploadFile";
 		  }
   
 		},
