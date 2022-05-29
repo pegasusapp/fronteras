@@ -88,19 +88,22 @@ class ModeloFactura{
 	BORRAR FACTURA
 	=============================================*/
 
-	static public function mdlBorrarFactura($tabla, $datos){
+	static public function mdlBorrarFactura($tabla,$item, $valor, $item1, $valor1, $item2, $valor2){
 
-		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
+		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE $item = :$item AND $item1 = :$item1 AND $item2 = :$item2");
 
-		$stmt -> bindParam(":id", $datos, PDO::PARAM_INT);
+		$stmt -> bindParam(":".$item, $valor, PDO::PARAM_INT);
+		$stmt -> bindParam(":".$item1, $valor1, PDO::PARAM_INT);
+		$stmt -> bindParam(":".$item2, $valor2, PDO::PARAM_INT);
+
 
 		if($stmt -> execute()){
 
-			return "ok";
+			return true;
 
 		}else{
 
-			return "error";
+			return false;
 
 		}
 
