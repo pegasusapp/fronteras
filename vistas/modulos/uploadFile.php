@@ -53,7 +53,7 @@
                  </div>
                  <div class="col-4" >
                       <div class="icon-bar">
-                        <a data-toggle="modal" data-target="#modalAgregarFactura"  id="iconAddUser"   title="Crear factura" href="#"><em class="fas fa-user-plus" ></em></a> 
+                        <a data-toggle="modal" data-target="#modalAgregarFactura"  id="iconAddUser"   title="Crear factura" href="#"><em class="fas fa-file-invoice"></em></a> 
                       </div>
                  </div> 
                  <div class="col-4">
