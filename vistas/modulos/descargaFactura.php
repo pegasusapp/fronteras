@@ -73,8 +73,8 @@
                 </thead>
                 <tbody>
                 <?php
-                $item = null;
-                $valor = null;
+                $item = "frontera_fronteraCliente";
+                $valor = $_SESSION["identificador"];
                 
                 $items = ControladorFactura::ctrMostrarFactura($item, $valor); 
                 foreach ($items as $key => $value)
