@@ -45,6 +45,17 @@ class ControladorUtilidades
 
 	 }	
 
+	 static public function answerBad($error){
+		return "<script>
+						Swal.fire({
+									icon: 'error',
+									title: 'Oops...algo salió mal',
+									html: \"".$error."\",
+									footer: '<a href=\"errores\">Por favor reportar este error</a>'
+								})
+				</script>";
+	 }
+
 	 static public function sendMail($subject,$emailDestino,$mensajeBody)
 	 {
 	// La cuenta está bloqueada.

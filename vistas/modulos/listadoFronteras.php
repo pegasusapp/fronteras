@@ -89,9 +89,6 @@ tr.shown td.details-control {
                     </thead>
                     <tbody>
                         <?php
-                     
-
-
                       $items = ControladorFronteras::ctrMostrarFronteras($item, $valor);
                       foreach ($items as $key => $value)
                       {

@@ -27,8 +27,6 @@ class ControladorUsuarios{
 		   {
 			if(preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingUsuario"]) && $_POST["ingPassword"])
 				 {
-		 		        
-					     
 		 				 $item = "identificador";
 						 $valor = $_POST["ingUsuario"];
 						 $respuesta = ModeloUsuarios::mdlMostrarUsuarios("usuario", $item, $valor);
@@ -108,18 +106,12 @@ class ControladorUsuarios{
 		
 
 	}
-
-
-
 	/*=============================================
 	REGISTRO DE USUARIO
 	=============================================*/
 
 	 public function ctrCrearUsuario()
 	 {
-
-	
-		
 		if(isset($_POST["identificador"]))
 		{
 
@@ -127,10 +119,6 @@ class ControladorUsuarios{
 			   preg_match('/^[a-zA-Z0-9]+$/', $_POST["identificador"]))
 			   {
 
-			   	/*=============================================
-				VALIDAR IMAGEN
-				=============================================*/
-                
 				$ruta = Constantes::DIR_IMG_USR_DEFAULT;
 
 				if(isset($_FILES["nuevaFoto"]["tmp_name"]))
@@ -140,45 +128,20 @@ class ControladorUsuarios{
 
 					$nuevoAncho = 50;
 					$nuevoAlto = 50;
-
-					/*=============================================
-					CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO DEL USUARIO
-					=============================================*/
-                
 					$directorio = Constantes::DIR_IMG.$_POST["identificador"];
-
 					mkdir($directorio, 0755);
-
-					/*=============================================
-					DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
-					=============================================*/
-
 					if($_FILES["nuevaFoto"]["type"] == "image/png")
 					{
-
-						/*=============================================
-						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
-						=============================================*/
-
 						$aleatorio = mt_rand(100,999);
-
 						$ruta = Constantes::DIR_IMG_USR.$_POST["identificador"]."/".$aleatorio.".png";
-
 						$origen = imagecreatefrompng($_FILES["nuevaFoto"]["tmp_name"]);
-
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-
 						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-
 						imagepng($destino, $ruta);
-
 					}
 
 				} 
-				
-
 				$tabla = "usuario";
-
 				$random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
 				$password = hash('sha512',$_POST["password"] . $random_salt);
 				date_default_timezone_set('America/Bogota');
@@ -197,83 +160,17 @@ class ControladorUsuarios{
 							   "nuevaFoto"=>$ruta);
 
 				$respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
-				
 				if($respuesta == "ok"){
-
-					echo '<script>
-
-					swal("¡El usuario ha sido guardado correctamente!", {
-						buttons: 
-						{
-						 catch: 
-						   {
-						   text: "Cerrar",
-						   value: "ok",
-						   }
-						},
-					  })
-					  .then((value) => {
-						switch (value)
-						{
-					        case "ok":
-						            window.location = "crearUsuario";
-							break;
-					   
-						    default:
-						            window.location = "crearUsuario";
-						}
-					  });
-
-
-					</script>';
-
-
+					echo ControladorUtilidades::answerScript("¡El usuario ha sido guardado correctamente!","crearUsuario");	 
 				}
-				else
-				{
-					echo "<script>
-
-					Swal.fire({
-						icon: 'error',
-						title: 'Oops...algo salió mal',
-						html: \"".$respuesta."\",
-						footer: '<a href=\"errores\">Por favor reportar este error haciendo click aqui</a>'
-					})
-
-					</script>";
+				else{
+					echo ControladorUtilidades::answerBad($respuesta);	 
 				}
 
 
 			}
 			else{
-
-				echo '<script>
-
-
-				swal("¡El usuario no puede ir vacío o llevar caracteres especiales!", {
-					buttons: 
-					{
-					 catch: 
-					   {
-					   text: "Cerrar",
-					   value: "ok",
-					   }
-					},
-				  })
-				  .then((value) => {
-					switch (value)
-					{
-						case "ok":
-								window.location = "crearUsuario";
-						break;
-				   
-						default:
-								window.location = "crearUsuario";
-					}
-				  });
-
-			</script>';
-
+				echo ControladorUtilidades::answerScript("¡El usuario no puede ir vacío o llevar caracteres especiales!","crearUsuario");	 
 			}
 
 
@@ -376,11 +273,8 @@ class ControladorUsuarios{
 
 
 					}
-					else
-					{ 
-
-						echo ControladorUtilidades::answerScript("¡El usuario no puede ir vacío o llevar caracteres especiales!","crearUsuario");	 
-						
+					else{ 
+							echo ControladorUtilidades::answerScript("¡El usuario no puede ir vacío o llevar caracteres especiales!","crearUsuario");	 
 					}
 
 				}
@@ -409,15 +303,8 @@ class ControladorUsuarios{
 				}
 
 				if($respuesta == "ok"){
-
-
 					echo ControladorUtilidades::answerScript("El usuario ha sido editado correctamente!",$paginar);	 
-
-				
 				}
-
-
-
 
 		}
 		
@@ -445,24 +332,7 @@ class ControladorUsuarios{
 			$respuesta = ModeloUsuarios::mdlBorrarUsuario($tabla, $datos);
 
 			if($respuesta == "ok"){
-
-				echo'<script>
-
-				swal({
-					  type: "success",
-					  title: "El usuario ha sido borrado correctamente",
-					  showConfirmButton: true,
-					  confirmButtonText: "Cerrar",
-					  closeOnConfirm: false
-					  }).then((result) => {
-								if (result.value) {
-
-								window.location = "usuarios";
-
-								}
-							})
-
-				</script>';
+				echo ControladorUtilidades::answerScript("El usuario ha sido borrado correctamente","usuarios");	 
 
 			}
 
