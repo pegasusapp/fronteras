@@ -195,13 +195,13 @@ class ControladorLogLectura
 	MOSTRAR Facturas
 	=============================================*/
 
-	static public function ctrMostrarFactura()
+	static public function ctrMostrarLogLectura()
 	{
 
-		$tabla = "facturas";
+		$tabla = "logLecturas";
 		$item = NULL;
 		$valor = NULL;
-		return ModeloFactura::mdlMostrarFacturas($tabla,$item,$valor);
+		return ModeloLogLectura::mdlMostrarLogLecturas($tabla,$item,$valor);
     
 
 	}

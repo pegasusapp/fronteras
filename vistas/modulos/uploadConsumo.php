@@ -71,6 +71,8 @@
                   <th id="mes_tag">MES</th>
                   <th id="dia_tag">DIA</th>
                   <th id="frontera_tag">FRONTERA</th>
+                  <th id="insert_tag">INSERCIÓN</th>
+                  <th id="update_tag">ACTUALIZACIÓN</th>
                   <th id="opciones_tag">OPCIONES</th>
                 </tr> 
                 </thead>
@@ -85,7 +87,10 @@
                         echo ' <tr>
                                     <td>'.$value["anyo"].'</td>
                                     <td>'.ControladorValidaciones::monthSelect($value["mes"]).'</td> 
-                                    <td><a href="/docs/facturas/'.$value["frontera_fronteraCliente"].'/'.$value["anyo"].$value["mes"].'/'.$value["nameFile"].'" target="_blank">'.$value["frontera_fronteraCliente"].'</a></td> 
+                                    <td>'.$value["dia"].'</td>
+                                    <td>'.$value["frontera_fronteraCliente"].'</td>
+                                    <td>'.$value["fechaInsert"].'</td>
+                                    <td>'.$value["fechaUpdate"].'</td>
                                     <td>
                                         <div class="btn-group">
                                           <button class="btn btn-primary px-2.5" onclick=borrarFactura("'.$value["anyo"].'","'.$value["mes"].'","'.$value["frontera_fronteraCliente"].'","'.$value["nameFile"].'")  data-toggle="modal"><em class="fas fa-trash-alt"></em></button>
@@ -97,10 +102,12 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th id="anyo_tag">AÑO</th>
+                <th id="anyo_tag">AÑO</th>
                   <th id="mes_tag">MES</th>
                   <th id="dia_tag">DIA</th>
                   <th id="frontera_tag">FRONTERA</th>
+                  <th id="insert_tag">INSERCIÓN</th>
+                  <th id="update_tag">ACTUALIZACIÓN</th>
                   <th id="opciones_tag">OPCIONES</th>
                 </tr>
                 </tfoot>
@@ -116,12 +123,12 @@
 </div>
 
 <!--=====================================
-MODAL AGREGAR FACTURA
+MODAL AGREGAR LECTURA
 ======================================-->
-<div id="modalAgregarFactura" class="modal fade" role="dialog">
+<div id="modalAgregarLectura" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form aria-label="Formulario de ingreso de facturas" role="form" method="post" enctype="multipart/form-data">
+      <form aria-label="Formulario de ingreso de lecturas" role="form" method="post" enctype="multipart/form-data">
         <!--=====================================
         CABEZA DEL MODAL
         ======================================-->
@@ -146,7 +153,7 @@ MODAL AGREGAR FACTURA
             <!-- ENTRADA PARA EL AÑO -->
             <div class="form-group">
               <div class="input-group">
-                  <select class="form-control select2" id="anyoFactura" name="anyoFactura" title="Seleccione el año" required >
+                  <select class="form-control select2" id="anyo" name="anyo" title="Seleccione el año" required >
                         <option value="">Seleccione el año</option>
                         <?php
                             $yearActual= Date('Y' ); 
@@ -161,7 +168,7 @@ MODAL AGREGAR FACTURA
            <!-- ENTRADA PARA EL MES -->
             <div class="form-group">
               <div class="input-group">
-                    <select class="form-control select2" id="mesFactura" name="mesFactura" title="Seleccione el mes" required >
+                    <select class="form-control select2" id="mes" name="mes" title="Seleccione el mes" required >
                       <option value="" >Seleccione el mes</option>
                       <option value="1">Enero</option>
                       <option value="2">Febrero</option>
@@ -176,6 +183,21 @@ MODAL AGREGAR FACTURA
                       <option value="11">Noviembre</option>
                       <option value="12">Diciembre</option>
                     </select>
+              </div>
+            </div>
+            <!-- ENTRADA PARA EL DIA -->
+            <div class="form-group">
+              <div class="input-group">
+                  <select class="form-control select2" id="dia" name="dia" title="Seleccione el dia" required >
+                        <option value="">Seleccione el dia</option>
+                        <?php
+                            
+                            for($i=1;$i<=31;$i++)
+                            {
+                              echo "<option value='".$i."'>".$i."</option>";
+                            }
+                        ?>
+                  </select>     
               </div>
             </div>
               <!-- ENTRADA PARA EL ARCHIVO -->
@@ -212,8 +234,8 @@ MODAL AGREGAR FACTURA
           <button type="submit" class="btn btn-primary">Guardar item</button>
         </div>
         <?php
-          $crearFactura = new ControladorFactura();
-          $crearFactura -> ctrCrearFactura();
+          $crearLectura = new ControladorLogLectura();
+          $crearLectura -> ctrCrearLogLectura();
         ?>
       </form>
     </div>
