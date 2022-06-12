@@ -64,114 +64,38 @@ class ControladorLogLectura
 													   "frontera_fronteraCliente"=>$data[0],
 													   "tipoMedidor"=>"P",
 													   "fechaCompleta"=>$data[3]);	
+								$horaEA = 1;		
+								$datosLecturasEnergiaActiva = array();
+								for($i=5;$i<=28;$i++){
+									$datosLecturasEnergiaActiva += ["H".$horaEA => $data[$i]];
+									$horaEA++;
+								}
+								$datosLecturasEnergiaActiva +=["tipoEnergia"=>"A"];
+							    
+								$horaEE = 1;
+								$datosLecturasEnergiaExportada = array();
+								for($i=29;$i<=52;$i++){
+									$datosLecturasEnergiaExportada += ["H".$horaEE => $data[$i]];
+									$horaEE++;
+								}
+								$datosLecturasEnergiaExportada +=["tipoEnergia"=>"E"];
 
-								$datosLecturasEnergiaActiva = array(
-															  "H1"=>$data[5], 
-															  "H2"=>$data[6], 
-															  "H3"=>$data[7], 
-															  "H4"=>$data[8], 
-															  "H5"=>$data[9], 
-															  "H6"=>$data[10], 
-															  "H7"=>$data[11], 
-															  "H8"=>$data[12], 
-															  "H9"=>$data[13], 
-															  "H10"=>$data[14], 
-															  "H11"=>$data[15], 
-															  "H12"=>$data[16], 
-															  "H13"=>$data[17], 
-															  "H14"=>$data[18], 
-															  "H15"=>$data[19], 
-															  "H16"=>$data[20], 
-															  "H17"=>$data[21], 
-															  "H18"=>$data[22], 
-															  "H19"=>$data[23], 
-															  "H20"=>$data[24], 
-															  "H21"=>$data[25], 
-															  "H22"=>$data[26], 
-															  "H23"=>$data[27], 
-															  "H24"=>$data[28],
-															  "tipoEnergia"=>"A");	
+								$horaER = 1;
+								$datosLecturasEnergiaReactiva = array();
+								for($i=53;$i<=76;$i++){
+									$datosLecturasEnergiaReactiva += ["H".$horaER => $data[$i]];
+									$horaER++;
+								}
+								$datosLecturasEnergiaReactiva +=["tipoEnergia"=>"R"];
 
-							 $datosLecturasEnergiaExportada = array(
-															  "H1"=>$data[29], 
-															  "H2"=>$data[30], 
-															  "H3"=>$data[31], 
-															  "H4"=>$data[32], 
-															  "H5"=>$data[33], 
-															  "H6"=>$data[34], 
-															  "H7"=>$data[35], 
-															  "H8"=>$data[36], 
-															  "H9"=>$data[37], 
-															  "H10"=>$data[38], 
-															  "H11"=>$data[39], 
-															  "H12"=>$data[40], 
-															  "H13"=>$data[41], 
-															  "H14"=>$data[42], 
-															  "H15"=>$data[43], 
-															  "H16"=>$data[44], 
-															  "H17"=>$data[45], 
-															  "H18"=>$data[46], 
-															  "H19"=>$data[47], 
-															  "H20"=>$data[48], 
-															  "H21"=>$data[49], 
-															  "H22"=>$data[50], 
-															  "H23"=>$data[51], 
-															  "H24"=>$data[52],
-															  "tipoEnergia"=>"E");	
-
-							 $datosLecturasEnergiaReactiva = array(
-															  "H1"=>$data[53], 
-															  "H2"=>$data[54], 
-															  "H3"=>$data[55], 
-															  "H4"=>$data[56], 
-															  "H5"=>$data[57], 
-															  "H6"=>$data[58], 
-															  "H7"=>$data[59], 
-															  "H8"=>$data[60], 
-															  "H9"=>$data[61], 
-															  "H10"=>$data[62], 
-															  "H11"=>$data[63], 
-															  "H12"=>$data[64], 
-															  "H13"=>$data[65], 
-															  "H14"=>$data[66], 
-															  "H15"=>$data[67], 
-															  "H16"=>$data[68], 
-															  "H17"=>$data[69], 
-															  "H18"=>$data[70], 
-															  "H19"=>$data[71], 
-															  "H20"=>$data[72], 
-															  "H21"=>$data[73], 
-															  "H22"=>$data[74], 
-															  "H23"=>$data[75], 
-															  "H24"=>$data[76],
-															  "tipoEnergia"=>"R");	
-
-							$datosLecturasEnergiaCapacitiva = array(
-																"H1"=>$data[77], 
-																"H2"=>$data[78], 
-																"H3"=>$data[79], 
-																"H4"=>$data[80], 
-																"H5"=>$data[81], 
-																"H6"=>$data[82], 
-																"H7"=>$data[83], 
-																"H8"=>$data[84], 
-																"H9"=>$data[85], 
-																"H10"=>$data[86], 
-																"H11"=>$data[87], 
-																"H12"=>$data[88], 
-																"H13"=>$data[89], 
-																"H14"=>$data[90], 
-																"H15"=>$data[91], 
-																"H16"=>$data[92], 
-																"H17"=>$data[93], 
-																"H18"=>$data[94], 
-																"H19"=>$data[95], 
-																"H20"=>$data[96], 
-																"H21"=>$data[97], 
-																"H22"=>$data[98], 
-																"H23"=>$data[99], 
-																"H24"=>$data[100],
-																"tipoEnergia"=>"C");									  							  
+								$horaEC = 1;
+								$datosLecturasEnergiaCapacitiva = array();
+								for($i=77;$i<=100;$i++){
+									$datosLecturasEnergiaCapacitiva += ["H".$horaEC => $data[$i]];
+									$horaEC++;
+								}
+								$datosLecturasEnergiaCapacitiva +=["tipoEnergia"=>"C"];
+							  							  
 															  
 							if(!ModeloLogLectura::mdlIngresarLogLecturas($tabla,$datosLog,$datosMedidor,$datosLecturasEnergiaActiva,$datosLecturasEnergiaExportada,$datosLecturasEnergiaReactiva,$datosLecturasEnergiaCapacitiva))
 							{
@@ -192,7 +116,7 @@ class ControladorLogLectura
 		}
 	}
 	/*=============================================
-	MOSTRAR Facturas
+	MOSTRAR Lecturas
 	=============================================*/
 
 	static public function ctrMostrarLogLectura()
@@ -208,7 +132,7 @@ class ControladorLogLectura
 
 
 	/*=============================================
-	EDITAR Facturas
+	EDITAR Lecturas
 	=============================================*/
 
 	static public function ctrEditarFactura()
