@@ -31,11 +31,9 @@ class ModeloFronteras{
 		catch (PDOException $ex) 
 		{
 				$pdo->rollBack();
-				//return "Error presentado en: ".$ex->__toString();
 				return "Error presentado en: ".$ex->getMessage();
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
-		$pdo = null;
 	}
 	static public function mdlMostrarEnergiasFronteraDia($valor,$anyo_curso,$mes_curso,$dia_curso)
 	{
@@ -58,11 +56,9 @@ class ModeloFronteras{
 		catch (PDOException $ex) 
 		{
 				$pdo->rollBack();
-				//return "Error presentado en: ".$ex->__toString();
 				return "Error presentado en: ".$ex->getMessage();
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
-		$pdo = null;
 	}
 	static public function mdlMostrarEnergiasFronteraMes($valor,$anyo_curso,$mes_curso,$energia)
 	{
@@ -100,11 +96,10 @@ class ModeloFronteras{
 		catch (PDOException $ex) 
 		{
 				$pdo->rollBack();
-				//return "Error presentado en: ".$ex->__toString();
 				return "Error presentado en: ".$ex->getMessage();
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
-		$pdo = null;
+
 	}
 
 
@@ -121,18 +116,15 @@ static public function mdlMostrarEnergiasFronteraPromedio($valor,$anyo_curso)
 									and  fechaCompleta BETWEEN date_sub(date_format(curdate(), '%Y-%m-01'), interval 6 month) and date_format(LAST_DAY(date_add(now(),interval -1 month)), '%Y-%m-%d') 
 									GROUP BY anyoLectura, mesLectura, tipoEnergia");
 			$stmt ->bindParam(":frontera_fronteraCliente", $valor, PDO::PARAM_STR);
-			//$stmt ->bindParam(":anyoLectura", $anyo_curso, PDO::PARAM_INT);
 			$stmt ->execute();
 			$pdo->commit();
 		}
 		catch (PDOException $ex) 
 		{
 				$pdo->rollBack();
-				//return "Error presentado en: ".$ex->__toString();
 				return "Error presentado en: ".$ex->getMessage();
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
-		$pdo = null;
 	}
 
 static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo_curso,$mes_curso,$energia)
@@ -187,11 +179,9 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 		catch (PDOException $ex) 
 		{
 				$pdo->rollBack();
-				//return "Error presentado en: ".$ex->__toString();
 				return "Error presentado en: ".$ex->getMessage();
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
-		$pdo = null;
 	}
 
 	static public function mdlMostrarTotalConsumoFronterasAnyoEnergia($valor)
@@ -212,11 +202,9 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 		catch (PDOException $ex) 
 		{
 				$pdo->rollBack();
-				//return "Error presentado en: ".$ex->__toString();
 				return "Error presentado en: ".$ex->getMessage();
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
-		$pdo = null;
 	}
 
 	static public function mdlMostrarTotalConsumoFronterasAnyoMesEnergia($valor)
@@ -237,11 +225,9 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 		catch (PDOException $ex) 
 		{
 				$pdo->rollBack();
-				//return "Error presentado en: ".$ex->__toString();
 				return "Error presentado en: ".$ex->getMessage();
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
-		$pdo = null;
 	}
 
 
@@ -263,11 +249,9 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 		catch (PDOException $ex) 
 		{
 				$pdo->rollBack();
-				//return "Error presentado en: ".$ex->__toString();
 				return "Error presentado en: ".$ex->getMessage();
 		}
 		return "ok";
-		$pdo = null;
 	}
 
 	static public function mdlConsultarFronteraReportarXM($valor,$energia)
@@ -295,11 +279,9 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 		catch (PDOException $ex) 
 		{
 				$pdo->rollBack();
-				//return "Error presentado en: ".$ex->__toString();
 				return "Error presentado en: ".$ex->getMessage();
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
-		$pdo = null;
 	}
 
 	static public function mdlCrearFronteraPenalizada($anyo,$mes,$dia,$frontera,$valor)
@@ -325,11 +307,9 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 		catch (PDOException $ex) 
 		{
 				$pdo->rollBack();
-				//return "Error presentado en: ".$ex->__toString();
 				return "Error presentado en: ".$ex->getMessage();
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
-		$pdo = null;
 	}
 
 
@@ -354,11 +334,9 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 		catch (PDOException $ex) 
 		{
 				$pdo->rollBack();
-				//return "Error presentado en: ".$ex->__toString();
 				return "Error presentado en: ".$ex->getMessage();
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
-		$pdo = null;
 	}
 
 }

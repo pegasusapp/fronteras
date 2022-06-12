@@ -24,7 +24,7 @@ class ControladorValidaciones
  
 	static public function validateFile($file,$fileType)
 	{
-		if (mime_content_type($file) == $fileType){
+		if(in_array($file,$fileType)){
 			return true;
 		}
 		return false;
