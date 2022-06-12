@@ -81,7 +81,7 @@
                 $item = null;
                 $valor = null;
                 
-                $items = ControladorLogLectura::ctrCrearLogLectura($item, $valor); 
+                $items = ControladorLogLectura::ctrMostrarLogLectura($item, $valor); 
                 foreach ($items as $key => $value)
                     {
                         echo ' <tr>
