@@ -7,20 +7,15 @@ class ControladorLogLectura
 
 	static public function ctrCrearLogLectura()
 	{
-		if(isset($_POST["frontera_fronteraCliente"]))
+		if(isset($_POST["nameFile"]))
 		{
 				
 			    $tabla = "logLecturas";
 				/*=============================================
 				VALIDAR SI EXISTE DOCUMENTO
 				=============================================*/
-				if(self::ctrSearchLogLectura($tabla,"frontera_fronteraCliente", $_POST["idFrontera"]) > 0)
-				{
-					//update proceso
-				}
-				else{
-                
-				$directorio = "docs/lecturas/".$_POST["idFrontera"];
+               
+				$directorio = "docs/lecturas/";
 				$target_file = $directorio."/".basename($_FILES["nameFile"]["name"]);
 				if (!is_dir($directorio)) {
 					mkdir($directorio, 0755,true);
@@ -43,75 +38,28 @@ class ControladorLogLectura
 				  }
 				
 				if (move_uploaded_file($_FILES["nameFile"]["tmp_name"], $target_file)){
+					
+					$datosLog = array("nameFile"=>$_FILES["nameFile"]["name"],
+					"upload"=>0);
 
-						$row = 1;
-						if (($handle = fopen($_FILES["nameFile"]["name"], "r")) !== FALSE) {
-						while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-							
-							$row++;
-							if($row > 3){
-								$datosLog = array("frontera_fronteraCliente"=>$_POST["idFrontera"],
-												  "nameFile"=>$_FILES["nameFile"]["name"],
-												  "upload"=>0);
+					 if(ModeloLogLectura::mdlIngresarLogLecturas($tabla,$datosLog))
+					 {
+						echo ControladorUtilidades::answerScript("Archivo subido correctamente","uploadFile");	
 
-								$fecha = explode("/",$data[3]);
+					 }
+					 else{
+						echo ControladorUtilidades::answerScript("Problemas al subir el archivo","uploadFile");	
 
-								$datosMedidor = array("diaLectura"=>$fecha[1], 
-													   "mesLectura"=>$fecha[0], 
-													   "anyoLectura"=>$fecha[2], 
-													   "medidorFrontera"=>$data[2], 
-													   "frontera_fronteraCliente"=>$data[0],
-													   "tipoMedidor"=>"P",
-													   "fechaCompleta"=>$data[3]);	
-								$horaEA = 1;		
-								$datosLecturasEnergiaActiva = array();
-								for($i=5;$i<=28;$i++){
-									$datosLecturasEnergiaActiva += ["H".$horaEA => $data[$i]];
-									$horaEA++;
-								}
-								$datosLecturasEnergiaActiva +=["tipoEnergia"=>"A"];
-							    
-								$horaEE = 1;
-								$datosLecturasEnergiaExportada = array();
-								for($i=29;$i<=52;$i++){
-									$datosLecturasEnergiaExportada += ["H".$horaEE => $data[$i]];
-									$horaEE++;
-								}
-								$datosLecturasEnergiaExportada +=["tipoEnergia"=>"E"];
+					 }
 
-								$horaER = 1;
-								$datosLecturasEnergiaReactiva = array();
-								for($i=53;$i<=76;$i++){
-									$datosLecturasEnergiaReactiva += ["H".$horaER => $data[$i]];
-									$horaER++;
-								}
-								$datosLecturasEnergiaReactiva +=["tipoEnergia"=>"R"];
+					
+					
+					//Buscar primero si ya existen los registros
 
-								$horaEC = 1;
-								$datosLecturasEnergiaCapacitiva = array();
-								for($i=77;$i<=100;$i++){
-									$datosLecturasEnergiaCapacitiva += ["H".$horaEC => $data[$i]];
-									$horaEC++;
-								}
-								$datosLecturasEnergiaCapacitiva +=["tipoEnergia"=>"C"];
-							  							  
-															  
-							if(!ModeloLogLectura::mdlIngresarLogLecturas($tabla,$datosLog,$datosMedidor,$datosLecturasEnergiaActiva,$datosLecturasEnergiaExportada,$datosLecturasEnergiaReactiva,$datosLecturasEnergiaCapacitiva))
-							{
-								echo ControladorUtilidades::answerScript("Ocurrio un error en el archivo","uploadConsumo");	 
-	
-							}
 
-							}
-							
-						}
-						fclose($handle);
-						}
-					  } 
 
 				}
 
- 
 		}
 	}
 	/*=============================================
