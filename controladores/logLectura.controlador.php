@@ -7,6 +7,8 @@ class ControladorLogLectura
 
 	static public function ctrCrearLogLectura()
 	{
+		
+		echo "----->0";
 		if(isset($_POST["nameFile"]))
 		{
 				

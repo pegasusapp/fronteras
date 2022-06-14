@@ -161,8 +161,8 @@ MODAL AGREGAR LECTURA
           <button type="submit" class="btn btn-primary">Guardar item</button>
         </div>
         <?php
-          $crearLectura = new ControladorLogLectura();
-          $crearLectura -> ctrCrearLogLectura();
+          $crearLog = new ControladorLogLectura();
+          $crearLog -> ctrCrearLogLectura();
         ?>
       </form>
     </div>
