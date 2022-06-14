@@ -1,8 +1,9 @@
-function deleteFile(idlectura){
+function deleteFile(idlectura,nameFile){
 
 	if (confirm('Esta seguro de borrar el archivo?')) {
 		var datos = new FormData();
 		datos.append("id", idlectura);
+		datos.append("nameFile", nameFile);
    	   $.ajax({
    			   url:"ajax/logLectura.ajax.php",
 			   method: "POST",
