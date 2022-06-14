@@ -57,7 +57,7 @@ class ControladorLogLectura
 	MOSTRAR Logs
 	=============================================*/
 
-	static public function ctrMostrarLogLectura():string
+	static public function ctrMostrarLogLectura():array
 	{
 
 		$tabla = "logLecturas";
