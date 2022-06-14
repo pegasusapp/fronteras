@@ -19,7 +19,7 @@ class AjaxlogLectura{
 		$valor = $this->idlog;
 		$file_pointer = $this->file;
 
-		if(ControladorFactura::ctrBorrarLogLectura($tabla,$item, $valor)){
+		if(ControladorLogLectura::ctrBorrarLogLectura($tabla,$item, $valor)){
 			
   			// Use unlink() function to delete a file
 			if (!unlink($_SERVER['DOCUMENT_ROOT']."/docs/lecturas/".$file_pointer)) {
