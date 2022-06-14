@@ -85,7 +85,6 @@
                     {
                         echo ' <tr>
                                     <td>'.$value["idlogLecturas"].'</td>
-                                    <td>'.$value["frontera_fronteraCliente"].'</td>
                                     <td>'.$value["fechaInsert"].'</td>
                                     <td>'.$value["nameFile"].'</td>
                                     <td>
@@ -101,7 +100,6 @@
                 <tfoot>
                 <tr>
                   <th id="idlog">ID</th>
-                  <th id="frontera_tag">FRONTERA</th>
                   <th id="archivo_tag">ARCHIVO</th>
                   <th id="date_tag">FECHA</th>
                   <th id="estado_tag">ESTADO</th>
