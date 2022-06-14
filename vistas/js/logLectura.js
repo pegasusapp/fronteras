@@ -13,6 +13,8 @@ function deleteFile(idlectura,nameFile){
 			   processData: false,
 			   success: function(respuesta){
 			   if(respuesta){
+
+				 alert(respuesta);
 					 window.location = "uploadConsumo";
 					 }},
    			   // Error handling 
