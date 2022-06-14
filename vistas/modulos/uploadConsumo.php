@@ -68,7 +68,6 @@
               <thead>
                 <tr>
                   <th id="idlog">ID</th>
-                  <th id="frontera_tag">FRONTERA</th>
                   <th id="archivo_tag">ARCHIVO</th>
                   <th id="date_tag">FECHA</th>
                   <th id="estado_tag">ESTADO</th>
@@ -87,6 +86,7 @@
                                     <td>'.$value["idlogLecturas"].'</td>
                                     <td>'.$value["fechaInsert"].'</td>
                                     <td>'.$value["nameFile"].'</td>
+                                    <td>'.$value["upload"].'</td>
                                     <td>
                                         <div class="btn-group">
                                           <button class="btn btn-primary px-2.5" onclick=deleteFile("'.$value["idlogLecturas"].'")  data-toggle="modal"><em class="fas fa-trash-alt"></em></button>
