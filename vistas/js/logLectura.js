@@ -4,7 +4,7 @@ function deleteFile(idlectura){
 		var datos = new FormData();
 		datos.append("id", idlectura);
    	   $.ajax({
-   			   url:"ajax/lectura.ajax.php",
+   			   url:"ajax/logLectura.ajax.php",
 			   method: "POST",
 			   data: datos,
 			   cache: false,
