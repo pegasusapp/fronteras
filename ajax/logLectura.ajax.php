@@ -17,10 +17,10 @@ class AjaxlogLectura{
 		$tabla = "logLecturas";
 		$item = "idLogLecturas";
 		$valor = $this->idlog;
-
+		$file_pointer = $this->file;
 
 		if(ControladorFactura::ctrBorrarLogLectura($tabla,$item, $valor)){
-			$file_pointer = $this->file;
+			
   			// Use unlink() function to delete a file
 			if (!unlink($_SERVER['DOCUMENT_ROOT']."/docs/lecturas/".$file_pointer)) {
 				echo json_encode(false);
@@ -42,7 +42,7 @@ BORRAR LOG
 if(isset($_POST["id"])){
 
 	$borrar = new AjaxlogLectura();
-	$borrar -> id = $_POST["id"];
+	$borrar -> idlog = $_POST["id"];
 	$borrar -> file = $_POST["nameFile"];
 	$borrar -> ajaxBorrarLog();
 
