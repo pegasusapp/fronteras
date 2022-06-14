@@ -25,7 +25,7 @@ class ControladorLogLectura
 				if(!ControladorValidaciones::validateFile($_FILES["nameFile"]["tmp_name"],$filetype))
 				{
 					echo ControladorUtilidades::answerScript("El tipo de archivo que intenta subir no es permitido","uploadConsumo");	
-						
+					return false;	
 				}
 				if ($_FILES["nameFile"]["size"] > Constantes::FILE_SIZE) {
 
@@ -34,7 +34,8 @@ class ControladorLogLectura
 				}
 				if (file_exists($directorio."/".$_FILES["nameFile"]["name"])){
 					echo ControladorUtilidades::answerScript("El archivo que esta intentando subir ya existe,cambie el nombre del archivo","uploadConsumo");	
-				  }
+					return false; 
+				}
 				if (move_uploaded_file($_FILES["nameFile"]["tmp_name"], $target_file)){
 					
 					$datosLog = array("nameFile"=>$_FILES["nameFile"]["name"],
