@@ -8,7 +8,6 @@ class ControladorLogLectura
 	static public function ctrCrearLogLectura()
 	{
 		
-		echo "----->0";
 		if(isset($_FILES["nameFile"]["name"]))
 		{
 				
@@ -16,34 +15,28 @@ class ControladorLogLectura
 				/*=============================================
 				VALIDAR SI EXISTE DOCUMENTO
 				=============================================*/
-				echo "----->1";
                
 				$directorio = "docs/lecturas/";
 				$target_file = $directorio."/".basename($_FILES["nameFile"]["name"]);
 				if (!is_dir($directorio)) {
 					mkdir($directorio, 0755,true);
 				}
-				echo "----->2";
 				$filetype = array('application/vnd.ms-excel','text/plain','text/csv','text/tsv');
 
 				if(!ControladorValidaciones::validateFile($_FILES["nameFile"]["tmp_name"],$filetype))
 				{
-					echo ControladorUtilidades::answerScript("El tipo de archivo que intenta subir no es permitido","uploadFile");	
+					echo ControladorUtilidades::answerScript("El tipo de archivo que intenta subir no es permitido","uploadConsumo");	
 						
 				}
-				echo "----->3";
 				if ($_FILES["nameFile"]["size"] > Constantes::FILE_SIZE) {
 
-					echo ControladorUtilidades::answerScript("El tipo de archivo que intenta subir es mayor a 5 MEGAS, baje el tamaño del archivo","uploadFile");	
+					echo ControladorUtilidades::answerScript("El tipo de archivo que intenta subir es mayor a 5 MEGAS, baje el tamaño del archivo","uploadConsumo");	
 
 				}
-				echo "----->4";
 				if (file_exists($directorio."/".$_FILES["nameFile"]["name"])){
-					echo ControladorUtilidades::answerScript("El archivo que esta intentando subir ya existe,cambie el nombre del archivo","uploadFile");	
+					echo ControladorUtilidades::answerScript("El archivo que esta intentando subir ya existe,cambie el nombre del archivo","uploadConsumo");	
 				  }
-				  echo "----->5";
 				if (move_uploaded_file($_FILES["nameFile"]["tmp_name"], $target_file)){
-					echo "----->6";
 					
 					$datosLog = array("nameFile"=>$_FILES["nameFile"]["name"],
 					"upload"=>0);
