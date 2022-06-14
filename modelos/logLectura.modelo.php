@@ -47,13 +47,11 @@ class ModeloLogLectura{
 	
 	}
 
-	static public function mdlBorrarLogLecturas($tabla,$item, $valor, $item1, $valor1, $item2, $valor2){
+	static public function mdlBorrarLogLecturas($tabla,$item, $valor): boolean{
 
-		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE $item = :$item AND $item1 = :$item1 AND $item2 = :$item2");
+		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE $item = :$item");
 
 		$stmt -> bindParam(":".$item, $valor, PDO::PARAM_INT);
-		$stmt -> bindParam(":".$item1, $valor1, PDO::PARAM_INT);
-		$stmt -> bindParam(":".$item2, $valor2, PDO::PARAM_INT);
 
         return $stmt -> execute(); 
 		

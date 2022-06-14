@@ -5,8 +5,7 @@ class ControladorLogLectura
 
 
 
-	static public function ctrCrearLogLectura()
-	{
+	static public function ctrCrearLogLectura():string{
 		
 		if(isset($_FILES["nameFile"]["name"]))
 		{
@@ -50,22 +49,15 @@ class ControladorLogLectura
 						echo ControladorUtilidades::answerScript("Problemas al subir el archivo","uploadConsumo");	
 
 					 }
-
-					
-					
-					//Buscar primero si ya existen los registros
-
-
-
-				}
+			}
 
 		}
 	}
 	/*=============================================
-	MOSTRAR Lecturas
+	MOSTRAR Logs
 	=============================================*/
 
-	static public function ctrMostrarLogLectura()
+	static public function ctrMostrarLogLectura():string
 	{
 
 		$tabla = "logLecturas";
@@ -77,40 +69,14 @@ class ControladorLogLectura
 	}
 
 
-	/*=============================================
-	EDITAR Lecturas
-	=============================================*/
+	static public function ctrBorrarLogLectura($tabla,$item, $valor):boolean{
 
-	static public function ctrEditarFactura()
-	{
-
-		if(isset($_POST["editarnitCliente"]))
-		{
-				$tabla = "clienteFrontera";
-			    $item = "contactoCliente";
-				$item2 = "nitCliente";
-				$item3 = "emailCliente";
-				$item4 = "activo";
-				$datos = array("nitCliente"=>$_POST["editarnitCliente"],"contactoCliente"=>$_POST["editarcontactoCliente"],"emailCliente"=>$_POST["editaremailCliente"],"activo"=>$_POST["editaractivo"]);
-				$respuesta = ModeloClientesFrontera::mdlEditarClientes($tabla, $datos,$item,$item2,$item3,$item4);
-				if($respuesta == "ok"){
-					echo ControladorUtilidades::answerScript("¡El cliente ha sido guardado correctamente!","listadoClientes");	
-				}
-				else{
-					echo ControladorUtilidades::answerBad($respuesta);
-				}
-		}
- 
+		return ModeloLogLectura::mdlBorrarLogLecturas($tabla,$item,$valor);
 	}
 
-	static public function ctrBorrarFactura($tabla,$item, $valor,$item1, $valor1,$item2, $valor2){
+	static public function ctrSearchLogLectura($tabla,$item, $valor){
 
-		return ModeloFactura::mdlBorrarFactura($tabla,$item, $valor,$item1, $valor1,$item2, $valor2);
-	}
-
-	static public function ctrSearchLogLectura($tabla,$item, $valor,$item1, $valor1,$item2, $valor2,$item3, $valor3){
-
-		return ModeloFactura::mdlSearchLogLectura($tabla,$item, $valor,$item1, $valor1,$item2, $valor2,$item3, $valor3);
+		return ModeloFactura::mdlSearchLogLectura($tabla,$item, $valor);
 	}
 
 

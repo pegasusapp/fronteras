@@ -89,7 +89,7 @@
                                     <td>'.$value["upload"].'</td>
                                     <td>
                                         <div class="btn-group">
-                                          <button class="btn btn-primary px-2.5" onclick=deleteFile("'.$value["idlogLecturas"].'")  data-toggle="modal"><em class="fas fa-trash-alt"></em></button>
+                                          <button class="btn btn-primary px-2.5" onclick=deleteFile("'.$value["idlogLecturas"].'","'.$value["nameFile"].'")  data-toggle="modal"><em class="fas fa-trash-alt"></em></button>
                                           <button class="btn btn-primary px-2.5" onclick=insertFile("'.$value["idlogLecturas"].'")  data-toggle="modal"><em class="fas fa-upload"></em></button>
                                         </div> 
                                      </td>
