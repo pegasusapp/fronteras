@@ -86,10 +86,6 @@ class ModeloClientes{
 		}
 		
 
-											   
-		//$stmt -> bindParam(":".$item1, $valor1, PDO::PARAM_STR);
-		//$stmt -> bindParam(":".$item2, $valor2, PDO::PARAM_STR);
-
 		$stmt -> execute();
 
 		return $stmt -> fetchAll();

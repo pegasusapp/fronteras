@@ -290,10 +290,6 @@ class ModeloProduccion{
 			 }	
 	
 
-		$stmt->close();
-
-		$stmt = null;
-
 	}
 
 
