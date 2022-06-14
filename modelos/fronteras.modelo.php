@@ -103,7 +103,7 @@ class ModeloFronteras{
 	}
 
 
-static public function mdlMostrarEnergiasFronteraPromedio($valor,$anyo_curso)
+static public function mdlMostrarEnergiasFronteraPromedio($valor)
 	{
 		$pdo = Conexion::conectar();
 		$pdo ->beginTransaction();
@@ -313,7 +313,7 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 	}
 
 
-	static public function mdlMostrarMatrizEnergiaDatos($tabla,$item, $valor,$item2,$valor2,$valor21,$item3,$valor3)
+	static public function mdlMostrarMatrizEnergiaDatos($tabla,$item, $valor,$valor2,$valor21,$item3,$valor3)
 	{
 		$pdo = Conexion::conectar();
 		$pdo ->beginTransaction();
@@ -338,5 +338,7 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
 	}
+
+
 
 }
