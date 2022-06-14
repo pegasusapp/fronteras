@@ -14,13 +14,13 @@ class ControladorLogLectura
 				/*=============================================
 				VALIDAR SI EXISTE DOCUMENTO
 				=============================================*/
-				if(self::ctrSearchLogLectura($tabla,"anyo", $_POST["anyo"],"mes", $_POST["mes"],"dia", $_POST["dia"],"frontera_fronteraCliente", $_POST["idFrontera"]) > 0)
+				if(self::ctrSearchLogLectura($tabla,"frontera_fronteraCliente", $_POST["idFrontera"]) > 0)
 				{
 					//update proceso
 				}
 				else{
-                $folder = $_POST["anyo"].$_POST["mes"].$_POST["dia"];
-				$directorio = "docs/lecturas/".$_POST["idFrontera"]."/".$folder;
+                
+				$directorio = "docs/lecturas/".$_POST["idFrontera"];
 				$target_file = $directorio."/".basename($_FILES["nameFile"]["name"]);
 				if (!is_dir($directorio)) {
 					mkdir($directorio, 0755,true);
@@ -50,10 +50,9 @@ class ControladorLogLectura
 							
 							$row++;
 							if($row > 3){
-								$datosLog = array("anyo"=>$_POST["anyo"],
-												  "mes"=>$_POST["mes"],
-								   				  "dia"=>$_POST["dia"],
-								                  "frontera_fronteraCliente"=>$_POST["idFrontera"]);
+								$datosLog = array("frontera_fronteraCliente"=>$_POST["idFrontera"],
+												  "nameFile"=>$_FILES["nameFile"]["name"],
+												  "upload"=>0);
 
 								$fecha = explode("/",$data[3]);
 

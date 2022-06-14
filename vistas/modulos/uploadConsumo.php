@@ -67,12 +67,11 @@
               <caption>Listado de lecturas de energia</caption>  
               <thead>
                 <tr>
-                  <th id="anyo_tag">AÑO</th>
-                  <th id="mes_tag">MES</th>
-                  <th id="dia_tag">DIA</th>
+                  <th id="idlog">ID</th>
                   <th id="frontera_tag">FRONTERA</th>
-                  <th id="insert_tag">INSERCIÓN</th>
-                  <th id="update_tag">ACTUALIZACIÓN</th>
+                  <th id="archivo_tag">ARCHIVO</th>
+                  <th id="date_tag">FECHA</th>
+                  <th id="estado_tag">ESTADO</th>
                   <th id="opciones_tag">OPCIONES</th>
                 </tr> 
                 </thead>
@@ -85,15 +84,14 @@
                 foreach ($items as $key => $value)
                     {
                         echo ' <tr>
-                                    <td>'.$value["anyo"].'</td>
-                                    <td>'.ControladorValidaciones::monthSelect($value["mes"]).'</td> 
-                                    <td>'.$value["dia"].'</td>
+                                    <td>'.$value["idlogLecturas"].'</td>
                                     <td>'.$value["frontera_fronteraCliente"].'</td>
                                     <td>'.$value["fechaInsert"].'</td>
-                                    <td>'.$value["fechaUpdate"].'</td>
+                                    <td>'.$value["nameFile"].'</td>
                                     <td>
                                         <div class="btn-group">
-                                          <button class="btn btn-primary px-2.5" onclick=borrarFactura("'.$value["anyo"].'","'.$value["mes"].'","'.$value["frontera_fronteraCliente"].'","'.$value["nameFile"].'")  data-toggle="modal"><em class="fas fa-trash-alt"></em></button>
+                                          <button class="btn btn-primary px-2.5" onclick=deleteFile("'.$value["idlogLecturas"].'")  data-toggle="modal"><em class="fas fa-trash-alt"></em></button>
+                                          <button class="btn btn-primary px-2.5" onclick=insertFile("'.$value["idlogLecturas"].'")  data-toggle="modal"><em class="fas fa-upload"></em></button>
                                         </div> 
                                      </td>
                                 </tr>';
@@ -102,12 +100,11 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                <th id="anyo_tag">AÑO</th>
-                  <th id="mes_tag">MES</th>
-                  <th id="dia_tag">DIA</th>
+                  <th id="idlog">ID</th>
                   <th id="frontera_tag">FRONTERA</th>
-                  <th id="insert_tag">INSERCIÓN</th>
-                  <th id="update_tag">ACTUALIZACIÓN</th>
+                  <th id="archivo_tag">ARCHIVO</th>
+                  <th id="date_tag">FECHA</th>
+                  <th id="estado_tag">ESTADO</th>
                   <th id="opciones_tag">OPCIONES</th>
                 </tr>
                 </tfoot>
@@ -150,79 +147,11 @@ MODAL AGREGAR LECTURA
         ======================================-->
         <div class="modal-body">
           <div class="box-body">
-            <!-- ENTRADA PARA EL AÑO -->
-            <div class="form-group">
-              <div class="input-group">
-                  <select class="form-control select2" id="anyo" name="anyo" title="Seleccione el año" required >
-                        <option value="">Seleccione el año</option>
-                        <?php
-                            $yearActual= Date('Y' ); 
-                            for($i=2022;$i<=$yearActual+5;$i++)
-                            {
-                              echo "<option value='".$i."'>".$i."</option>";
-                            }
-                        ?>
-                  </select>     
-              </div>
-            </div>
-           <!-- ENTRADA PARA EL MES -->
-            <div class="form-group">
-              <div class="input-group">
-                    <select class="form-control select2" id="mes" name="mes" title="Seleccione el mes" required >
-                      <option value="" >Seleccione el mes</option>
-                      <option value="1">Enero</option>
-                      <option value="2">Febrero</option>
-                      <option value="3">Marzo</option>
-                      <option value="4">Abril</option>
-                      <option value="5">Mayo</option>
-                      <option value="6">Junio</option>
-                      <option value="7">Julio</option>
-                      <option value="8">Agosto</option>
-                      <option value="9">Septiembre</option>
-                      <option value="10">Octubre</option>
-                      <option value="11">Noviembre</option>
-                      <option value="12">Diciembre</option>
-                    </select>
-              </div>
-            </div>
-            <!-- ENTRADA PARA EL DIA -->
-            <div class="form-group">
-              <div class="input-group">
-                  <select class="form-control select2" id="dia" name="dia" title="Seleccione el dia" required >
-                        <option value="">Seleccione el dia</option>
-                        <?php
-                            
-                            for($i=1;$i<=31;$i++)
-                            {
-                              echo "<option value='".$i."'>".$i."</option>";
-                            }
-                        ?>
-                  </select>     
-              </div>
-            </div>
-              <!-- ENTRADA PARA EL ARCHIVO -->
+           <!-- ENTRADA PARA EL ARCHIVO -->
             <div class="form-group">
               <div class="input-group">
                   <input type="file" class="form-control" name="nameFile" id="nameFile" placeholder="Ingresar archivo" required>
               </div>
-            </div>
-             <!-- ENTRADA PARA LA FRONTERA -->
-             <div class="form-group">
-               <div class="input-group">
-                      <select class="form-control select2" id="idFrontera"  name="idFrontera" title="Frontera usuario" required>
-                        <option value="" >Seleccione la frontera...</option>
-                         <?php
-
-                              $item  = null;
-                              $valor = null;
-                              $items = ControladorFronteras::ctrMostrarFronteras($item, $valor);
-                              foreach ($items as $key => $value)
-                                 {
-                                   echo '<option value="'.$value["fronteraCliente"].'">'.$value["fronteraCliente"].'  </option>';
-                                 }
-                          ?> 
-                      </select>
-                </div>
             </div>
           </div>
         </div>
