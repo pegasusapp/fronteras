@@ -5,7 +5,7 @@ class ControladorLogLectura
 
 
 
-	static public function ctrCrearLogLectura():string{
+	static public function ctrCrearLogLectura(){
 		
 		if(isset($_FILES["nameFile"]["name"]))
 		{
