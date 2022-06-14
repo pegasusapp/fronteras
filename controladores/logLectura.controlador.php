@@ -9,7 +9,7 @@ class ControladorLogLectura
 	{
 		
 		echo "----->0";
-		if(isset($_POST["nameFile"]))
+		if(isset($_FILES["nameFile"]["name"]))
 		{
 				
 			    $tabla = "logLecturas";
