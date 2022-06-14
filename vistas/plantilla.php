@@ -146,6 +146,7 @@ CUERPO DOCUMENTO
 <script src="vistas/js/permisos.js"></script> 
 <script src="vistas/js/gproyecto.js"></script> 
 <script src="vistas/js/factura.js"></script> 
+<script src="vistas/js/logLectura.js"></script> 
 
 <script>
 
