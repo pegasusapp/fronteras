@@ -35,7 +35,7 @@ class ModeloLogLectura{
 		$pdo ->beginTransaction();
 		try 
 		{
-			  $stmt = $pdo->prepare("INSERT INTO $tabla(anyo, mes, dia, frontera_fronteraCliente, fechaInsert, fechaUpdate) VALUES (:anyo, :mes, :dia, :frontera_fronteraCliente,NOW(),NOW())");
+			  $stmt = $pdo->prepare("INSERT INTO $tabla(frontera_fronteraCliente, fechaInsert, nameFile, upload) VALUES (:frontera_fronteraCliente,NOW(),:nameFile,:upload)");
 			  $stmt->execute($datosLog);
 
 			  $result_activa = [$datosMedidor,...$datosLecturasEnergiaActiva];
