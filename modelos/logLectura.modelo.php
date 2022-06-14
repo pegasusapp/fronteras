@@ -29,25 +29,22 @@ class ModeloLogLectura{
 
 	}
 
-	static public function mdlIngresarLogLecturas($tabla,$datosLog){
+	static public function mdlIngresarLogLecturas($tabla,$datosLog): boolean{
 
-		$pdo = Conexion::conectar();
-		$pdo ->beginTransaction();
-		try 
+		$stmt =  Conexion::conectar()->prepare("INSERT INTO $tabla(fechaInsert, nameFile, upload) VALUES (NOW(),:nameFile,:upload)");
+		
+		$stmt->bindParam(":nameFile", $datosLog["nameFile"], PDO::PARAM_STR);
+		$stmt->bindParam(":upload", $datosLog["upload"], PDO::PARAM_INT);
+		if($stmt->execute())
 		{
-			  $stmt = $pdo->prepare("INSERT INTO $tabla(fechaInsert, nameFile, upload) VALUES (NOW(),:nameFile,:upload)");
-			  $stmt->execute($datosLog);
-			  $pdo->commit();
-		}		
-		catch (PDOException $ex) 
-			{
-				$pdo->rollBack();
-				return "Error presentado en: ".$ex->getMessage();
-			}
-		return true;		
-   
-
-
+			return true;
+		
+		}
+		
+			return false;
+	
+			
+	
 	}
 
 	static public function mdlBorrarLogLecturas($tabla,$item, $valor, $item1, $valor1, $item2, $valor2){

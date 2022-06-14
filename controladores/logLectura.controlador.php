@@ -50,11 +50,11 @@ class ControladorLogLectura
 
 					 if(ModeloLogLectura::mdlIngresarLogLecturas($tabla,$datosLog))
 					 {
-						echo ControladorUtilidades::answerScript("Archivo subido correctamente","uploadFile");	
+						echo ControladorUtilidades::answerScript("Archivo subido correctamente","uploadConsumo");	
 
 					 }
 					 else{
-						echo ControladorUtilidades::answerScript("Problemas al subir el archivo","uploadFile");	
+						echo ControladorUtilidades::answerScript("Problemas al subir el archivo","uploadConsumo");	
 
 					 }
 
