@@ -345,19 +345,19 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 		$pdo ->beginTransaction();
 		try 
 		{
-		      $result_activa = [$datosMedidor,...$datosLecturasEnergiaActiva];
+		      $result_activa = array_merge($datosMedidor,$datosLecturasEnergiaActiva);
 			  $stmt = $pdo->prepare("INSERT INTO lecturaFrontera(diaLectura, mesLectura, anyoLectura, H1, H2, H3, H4, H5, H6, H7, H8, H9, H10, H11, H12, H13, H14, H15, H16, H17, H18, H19, H20, H21, H22, H23, H24, medidorFrontera, frontera_fronteraCliente, tipoEnergia, tipoMedidor, fechaCompleta) VALUES (:diaLectura, :mesLectura, :anyoLectura,:H1, :H2,:H3, :H4, :H5, :H6, :H7, :H8, :H9, :H10, :H11, :H12, :H13, :H14, :H15, :H16, :H17, :H18, :H19, :H20, :H21, :H22, :H23, :H24, :medidorFrontera, :frontera_fronteraCliente, :tipoEnergia, :tipoMedidor, :fechaCompleta)");
 			  $stmt->execute($result_activa); 
 			  
-			  $result_exportada = [$datosMedidor,...$datosLecturasEnergiaExportada];
+			  $result_exportada = array_merge($datosMedidor,$datosLecturasEnergiaExportada);
 			  $stmt = $pdo->prepare("INSERT INTO lecturaFrontera(diaLectura, mesLectura, anyoLectura, H1, H2, H3, H4, H5, H6, H7, H8, H9, H10, H11, H12, H13, H14, H15, H16, H17, H18, H19, H20, H21, H22, H23, H24, medidorFrontera, frontera_fronteraCliente, tipoEnergia, tipoMedidor, fechaCompleta) VALUES (:diaLectura, :mesLectura, :anyoLectura,:H1, :H2,:H3, :H4, :H5, :H6, :H7, :H8, :H9, :H10, :H11, :H12, :H13, :H14, :H15, :H16, :H17, :H18, :H19, :H20, :H21, :H22, :H23, :H24, :medidorFrontera, :frontera_fronteraCliente, :tipoEnergia, :tipoMedidor, :fechaCompleta)");
 			  $stmt->execute($result_exportada);
 
-			  $result_reactiva = [$datosMedidor,...$datosLecturasEnergiaReactiva];
+			  $result_reactiva = array_merge($datosMedidor,$datosLecturasEnergiaReactiva);
 			  $stmt = $pdo->prepare("INSERT INTO lecturaFrontera(diaLectura, mesLectura, anyoLectura, H1, H2, H3, H4, H5, H6, H7, H8, H9, H10, H11, H12, H13, H14, H15, H16, H17, H18, H19, H20, H21, H22, H23, H24, medidorFrontera, frontera_fronteraCliente, tipoEnergia, tipoMedidor, fechaCompleta) VALUES (:diaLectura, :mesLectura, :anyoLectura,:H1, :H2,:H3, :H4, :H5, :H6, :H7, :H8, :H9, :H10, :H11, :H12, :H13, :H14, :H15, :H16, :H17, :H18, :H19, :H20, :H21, :H22, :H23, :H24, :medidorFrontera, :frontera_fronteraCliente, :tipoEnergia, :tipoMedidor, :fechaCompleta)");
 			  $stmt->execute($result_reactiva);
 
-			  $result_capacitiva = [$datosMedidor,...$datosLecturasEnergiaCapacitiva];
+			  $result_capacitiva = array_merge($datosMedidor,$datosLecturasEnergiaCapacitiva);
 			  $stmt = $pdo->prepare("INSERT INTO lecturaFrontera(diaLectura, mesLectura, anyoLectura, H1, H2, H3, H4, H5, H6, H7, H8, H9, H10, H11, H12, H13, H14, H15, H16, H17, H18, H19, H20, H21, H22, H23, H24, medidorFrontera, frontera_fronteraCliente, tipoEnergia, tipoMedidor, fechaCompleta) VALUES (:diaLectura, :mesLectura, :anyoLectura,:H1, :H2,:H3, :H4, :H5, :H6, :H7, :H8, :H9, :H10, :H11, :H12, :H13, :H14, :H15, :H16, :H17, :H18, :H19, :H20, :H21, :H22, :H23, :H24, :medidorFrontera, :frontera_fronteraCliente, :tipoEnergia, :tipoMedidor, :fechaCompleta)");
 			  $stmt->execute($result_capacitiva);
 			  $pdo->commit();
