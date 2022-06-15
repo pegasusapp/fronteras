@@ -149,7 +149,7 @@ class ControladorFronteras
 										"medidorFrontera"=>$data[2], 
 										"frontera_fronteraCliente"=>$data[0],
 										"tipoMedidor"=>"P",
-										"fechaCompleta"=>$data[3]);	
+										"fechaCompleta"=>date_format($data[3],"Y-m-d"));	
 					$horaEA = 1;		
 					$datosLecturasEnergiaActiva = array();
 					for($i=5;$i<=28;$i++){
@@ -184,11 +184,11 @@ class ControladorFronteras
 					
 					if(ModeloFronteras::mdlInsertLecturasFrontera($datosMedidor,$datosLecturasEnergiaActiva,$datosLecturasEnergiaExportada,$datosLecturasEnergiaReactiva,$datosLecturasEnergiaCapacitiva))
 					{
-						$flagInsert += [$fecha => true];
+						$flagInsert += [$data[3] => true];
 					}
 					else
 					{
-						$flagInsert += [$fecha => false];
+						$flagInsert += [$data[3] => false];
 					}
 				}
 			}
