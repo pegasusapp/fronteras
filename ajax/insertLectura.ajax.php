@@ -14,7 +14,7 @@ class AjaxInsertLectura{
 		$valor = $this->idlog;
 		$file_pointer = $this->file;
 
-		if(ControladorFronteras::ctrInsertLecturasFrontera($valor,$_SERVER['DOCUMENT_ROOT']."/docs/lecturas/",$file_pointer)){
+		if(ControladorFronteras::ctrInsertLecturasFrontera($valor,"/docs/lecturas/",$file_pointer)){
 			
 			echo json_encode(true);
 		}
