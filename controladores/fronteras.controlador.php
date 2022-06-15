@@ -134,6 +134,7 @@ class ControladorFronteras
 
 		$row = 1;
 		$flagInsert = array();
+		echo "-->".$ruta.$file;
 		if (($handle = fopen($ruta.$file, "r")) !== FALSE) {
 		while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 			
