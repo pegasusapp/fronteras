@@ -1,7 +1,7 @@
 <?php
 
-require_once "../controladores/logLectura.controlador.php";
-require_once "../modelos/logLectura.modelo.php";
+require_once "../controladores/fronteras.controlador.php";
+require_once "../modelos/fronteras.modelo.php";
 
 class AjaxInsertLectura{
 
