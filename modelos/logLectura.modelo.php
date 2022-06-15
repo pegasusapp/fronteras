@@ -5,7 +5,7 @@ require_once "conexion.php";
 class ModeloLogLectura{
 
 
-	static public function mdlMostrarLogLecturas($tabla, $item, $valor){
+	static public function mdlMostrarLogLecturas($tabla, $item, $valor):array{
 
 		if($item != null){
 
@@ -29,7 +29,7 @@ class ModeloLogLectura{
 
 	}
 
-	static public function mdlIngresarLogLecturas($tabla,$datosLog): boolean{
+	static public function mdlIngresarLogLecturas($tabla,$datosLog): bool{
 
 		$stmt =  Conexion::conectar()->prepare("INSERT INTO $tabla(fechaInsert, nameFile, upload) VALUES (NOW(),:nameFile,:upload)");
 		
@@ -47,7 +47,7 @@ class ModeloLogLectura{
 	
 	}
 
-	static public function mdlBorrarLogLecturas($tabla,$item, $valor): boolean{
+	static public function mdlBorrarLogLecturas($tabla,$item, $valor): bool{
 
 		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE $item = :$item");
 
