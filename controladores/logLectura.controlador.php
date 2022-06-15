@@ -70,7 +70,7 @@ class ControladorLogLectura
 	}
 
 
-	static public function ctrBorrarLogLectura($tabla,$item, $valor):boolean{
+	static public function ctrBorrarLogLectura($tabla,$item, $valor):bool{
 
 		return ModeloLogLectura::mdlBorrarLogLecturas($tabla,$item,$valor);
 	}
