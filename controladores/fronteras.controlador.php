@@ -142,7 +142,7 @@ class ControladorFronteras
 			if($row > 3){
 	
 					$fecha = explode("/",$data[3]);
-					$myDateTime = createFromFormat('m/d/Y', $data[3]);
+					$myDateTime = now()->createFromFormat('m/d/Y', $data[3]);
 					$formattedweddingdate = $myDateTime->format('Y-m-d');
 
 					$datosMedidor = array("diaLectura"=>$fecha[1], 
