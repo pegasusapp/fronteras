@@ -22,7 +22,7 @@ class ControladorLogLectura
 				}
 				$filetype = array('application/vnd.ms-excel','text/plain','text/csv','text/tsv');
 
-				if(!ControladorValidaciones::validateFile($_FILES["nameFile"]["tmp_name"],$filetype))
+				if(!ControladorValidaciones::validateFile($_FILES['nameFile']['type'],$filetype))
 				{
 					echo ControladorUtilidades::answerScript("El tipo de archivo que intenta subir no es permitido","uploadConsumo");	
 					return false;	
