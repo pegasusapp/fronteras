@@ -142,6 +142,8 @@ class ControladorFronteras
 			if($row > 3){
 	
 					$fecha = explode("/",$data[3]);
+					$myDateTime = DateTime::createFromFormat('m-d-Y', $data[3]);
+					$formattedweddingdate = $myDateTime->format('Y-m-d');
 
 					$datosMedidor = array("diaLectura"=>$fecha[1], 
 										"mesLectura"=>$fecha[0], 
@@ -149,7 +151,7 @@ class ControladorFronteras
 										"medidorFrontera"=>$data[2], 
 										"frontera_fronteraCliente"=>$data[0],
 										"tipoMedidor"=>"P",
-										"fechaCompleta"=>date_format($data[3],"Y-m-d"));	
+										"fechaCompleta"=>$formattedweddingdate);	
 					$horaEA = 1;		
 					$datosLecturasEnergiaActiva = array();
 					for($i=5;$i<=28;$i++){
