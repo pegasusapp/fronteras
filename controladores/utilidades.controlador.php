@@ -13,7 +13,7 @@ class ControladorUtilidades
 	/*============================================
 	 Respuesta generica
 	 =============================================*/
-	 static public function answerScript($texto,$back){
+	 static public function answerScript($texto,$back):string{
 
 		return '<script>
 
@@ -45,7 +45,7 @@ class ControladorUtilidades
 
 	 }	
 
-	 static public function answerBad($error){
+	 static public function answerBad($error):string{
 		return "<script>
 						Swal.fire({
 									icon: 'error',

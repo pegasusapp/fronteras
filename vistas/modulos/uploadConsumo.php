@@ -82,16 +82,20 @@
                 $items = ControladorLogLectura::ctrMostrarLogLectura($item, $valor); 
                 foreach ($items as $key => $value)
                     {
-                        echo ' <tr>
+                        $textUpload = ($value["upload"] == 0) ? "NO" : "SI";
+                         echo ' <tr>
                                     <td>'.$value["idlogLecturas"].'</td>
                                     <td>'.$value["fechaInsert"].'</td>
                                     <td>'.$value["nameFile"].'</td>
-                                    <td>'.$value["upload"].'</td>
+                                    <td>'.$textUpload.'</td>
                                     <td>
                                         <div class="btn-group">
-                                          <button class="btn btn-primary px-2.5" onclick=deleteFile("'.$value["idlogLecturas"].'","'.$value["nameFile"].'")  data-toggle="modal"><em class="fas fa-trash-alt"></em></button>
-                                          <button class="btn btn-primary px-2.5" onclick=insertFile("'.$value["idlogLecturas"].'")  data-toggle="modal"><em class="fas fa-upload"></em></button>
-                                        </div> 
+                                          <button class="btn btn-primary px-2.5" onclick=deleteFile("'.$value["idlogLecturas"].'","'.$value["nameFile"].'")  data-toggle="modal"><em class="fas fa-trash-alt"></em></button>';
+                                         if($textUpload==0){
+                                            echo '<button class="btn btn-primary px-2.5" onclick=insertData("'.$value["idlogLecturas"].'","'.$value["nameFile"].'")  data-toggle="modal"><em class="fas fa-upload"></em></button>';
+                                         } 
+                                          
+                                    echo    '</div> 
                                      </td>
                                 </tr>';
                     }

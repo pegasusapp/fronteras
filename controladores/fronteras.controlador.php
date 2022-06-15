@@ -21,53 +21,36 @@ class ControladorFronteras
 
 	static public function ctrMostrarEnergiasFronteraM($valor,$anyo_curso,$mes_curso,$energia)
 	{
-	
-
 		return ModeloFronteras::mdlMostrarEnergiasFronteraMes($valor,$anyo_curso,$mes_curso,$energia);
-		
-
-
 	} 
 
 	static public function ctrMostrarEnergiasFronteraProm($valor,$anyo_curso)
 	{
-	
-
 		return ModeloFronteras::mdlMostrarEnergiasFronteraPromedio($valor,$anyo_curso);
-		
-
-
 	} 
 
 	static public function ajaxCheckFronteraDetalleMes($fronteraEnvio,$anyo_curso,$mes_curso,$energia)
 	{
-	
-
 		return ModeloFronteras::mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo_curso,$mes_curso,$energia);
-	
-      	
-
 	}
 
 	static public function crtMostrarTotalConsumoFronterasAnyoEnergia($valor)
 	{
 		return ModeloFronteras::mdlMostrarTotalConsumoFronterasAnyoEnergia($valor);
-		
 	}
 
 	static public function crtMostrarTotalConsumoFronterasAnyoMesEnergia($valor)
 	{
-		$respuesta = ModeloFronteras::mdlMostrarTotalConsumoFronterasAnyoMesEnergia($valor);
-		return $respuesta;
+		return ModeloFronteras::mdlMostrarTotalConsumoFronterasAnyoMesEnergia($valor);
 	}
+
 	static public function crtMostrarMatrizEnergiaDatos($item, $valor,$item2,$valor2,$valor21,$item3,$valor3)
 	{	
 		$tabla = "lecturaFrontera";
 		$valor2 = date("Y-m-d",strtotime($valor2));	
 		$valor21 = date("Y-m-d",strtotime($valor21));	
-		$respuesta = ModeloFronteras::mdlMostrarMatrizEnergiaDatos($tabla,$item, $valor,$item2,$valor2,$valor21,$item3,$valor3);
+		return ModeloFronteras::mdlMostrarMatrizEnergiaDatos($tabla,$item, $valor,$item2,$valor2,$valor21,$item3,$valor3);
 	
-		return $respuesta;
 	}
 
 	static public function ctrEditarFrontera()
@@ -136,14 +119,71 @@ class ControladorFronteras
 
 	static public function ctrConsultarFronteraReportarXM($valor,$energia)
 	{
-		$respuesta = ModeloFronteras::mdlConsultarFronteraReportarXM($valor,$energia);
-		return $respuesta;
+		return ModeloFronteras::mdlConsultarFronteraReportarXM($valor,$energia);
+		
 	}
 	
 	static public function ctrCrearFronteraPenalizada($anyo,$mes,$dia,$frontera,$valor)
 	{
-		$respuesta = ModeloFronteras::mdlCrearFronteraPenalizada($anyo,$mes,$dia,$frontera,$valor);
-		return $respuesta;
+		return ModeloFronteras::mdlCrearFronteraPenalizada($anyo,$mes,$dia,$frontera,$valor);
+		
+	}
+
+	static public function ctrInsertLecturasFrontera($id,$ruta,$file){
+
+
+		$row = 1;
+		if (($handle = fopen($ruta.$file, "r")) !== FALSE) {
+		while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+			
+			$row++;
+			if($row > 3){
+	
+				$fecha = explode("/",$data[3]);
+
+				$datosMedidor = array("diaLectura"=>$fecha[1], 
+									   "mesLectura"=>$fecha[0], 
+									   "anyoLectura"=>$fecha[2], 
+									   "medidorFrontera"=>$data[2], 
+									   "frontera_fronteraCliente"=>$data[0],
+									   "tipoMedidor"=>"P",
+									   "fechaCompleta"=>$data[3]);	
+				$horaEA = 1;		
+				$datosLecturasEnergiaActiva = array();
+				for($i=5;$i<=28;$i++){
+					$datosLecturasEnergiaActiva += ["H".$horaEA => $data[$i]];
+					$horaEA++;
+				}
+				$datosLecturasEnergiaActiva +=["tipoEnergia"=>"A"];
+				
+				$horaEE = 1;
+				$datosLecturasEnergiaExportada = array();
+				for($i=29;$i<=52;$i++){
+					$datosLecturasEnergiaExportada += ["H".$horaEE => $data[$i]];
+					$horaEE++;
+				}
+				$datosLecturasEnergiaExportada +=["tipoEnergia"=>"E"];
+
+				$horaER = 1;
+				$datosLecturasEnergiaReactiva = array();
+				for($i=53;$i<=76;$i++){
+					$datosLecturasEnergiaReactiva += ["H".$horaER => $data[$i]];
+					$horaER++;
+				}
+				$datosLecturasEnergiaReactiva +=["tipoEnergia"=>"R"];
+
+				$horaEC = 1;
+				$datosLecturasEnergiaCapacitiva = array();
+				for($i=77;$i<=100;$i++){
+					$datosLecturasEnergiaCapacitiva += ["H".$horaEC => $data[$i]];
+					$horaEC++;
+				}
+				$datosLecturasEnergiaCapacitiva +=["tipoEnergia"=>"C"];
+				
+				return ModeloFronteras::mdlInsertLecturasFrontera($datosMedidor,$datosLecturasEnergiaActiva,$datosLecturasEnergiaExportada,$datosLecturasEnergiaReactiva,$datosLecturasEnergiaCapacitiva);
+				}
+			}
+		}
 	}
 
 }
