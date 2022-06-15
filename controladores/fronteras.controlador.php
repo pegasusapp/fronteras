@@ -129,7 +129,7 @@ class ControladorFronteras
 		
 	}
 
-	static public function ctrInsertLecturasFrontera($ruta,$file):bool{
+	static public function ctrInsertLecturasFrontera($ruta,$file,$id):bool{
 
 
 		$row = 1;
@@ -194,7 +194,13 @@ class ControladorFronteras
 				}
 			}
 		}
-		 return empty(array_search(false, $flagInsert));
+		 if (empty(array_search(false, $flagInsert)))
+		  {
+			return ControladorLogLectura::ctrEditLogLectura("logLecturas","idlogLecturas",$id);
+		
+		  }
+		  return false;
+		  
 				
 		 
 	}

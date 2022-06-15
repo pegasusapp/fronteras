@@ -14,7 +14,7 @@ class AjaxInsertLectura{
 		$valor = $this->idlog;
 		$file_pointer = $this->file;
 
-		if(ControladorFronteras::ctrInsertLecturasFrontera("/docs/lecturas/",$file_pointer)){
+		if(ControladorFronteras::ctrInsertLecturasFrontera("/docs/lecturas/",$file_pointer,$id)){
 			
 			echo json_encode(true);
 		}
@@ -22,10 +22,6 @@ class AjaxInsertLectura{
 	}
 }
 
-
-/*=============================================
-BORRAR LOG
-=============================================*/
 if(isset($_POST["id"])){
 
 	$borrar = new AjaxInsertLectura();
