@@ -13,10 +13,15 @@ function deleteFile(idlectura,nameFile){
 			   processData: false,
 			   success: function(respuesta){
 			   if(respuesta){
-
-				 alert(respuesta);
-					 window.location = "uploadConsumo";
-					 }},
+					alert("Archivo borrado.");
+					window.location = "uploadConsumo";
+				 	 
+					 }
+				else{
+					alert("Problemas de borrado fisico del archivo.");
+				}	 
+					
+					},
    			   // Error handling 
 			   error: function (error) {
 			   console.log(`Error ${error}`);
