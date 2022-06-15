@@ -22,15 +22,12 @@ class ControladorValidaciones
 	Validar tipo de archivo pdf
 	=============================================*/
  
-	static public function validateFile($file,$fileType)
+	static public function validateFile($file,$fileType): bool
 	{
-		if(in_array($file,$fileType)){
-			return true;
-		}
-		return false;
+		return in_array($file,$fileType);
 	}
 
-	static public function monthSelect($month){
+	static public function monthSelect($month):string{
 		
 		return self::$monthName[$month];
 
