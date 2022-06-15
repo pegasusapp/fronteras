@@ -129,61 +129,72 @@ class ControladorFronteras
 		
 	}
 
-	static public function ctrInsertLecturasFrontera($id,$ruta,$file){
+	static public function ctrInsertLecturasFrontera($ruta,$file):bool{
 
 
 		$row = 1;
+		$flagInsert = array();
 		if (($handle = fopen($ruta.$file, "r")) !== FALSE) {
 		while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 			
 			$row++;
 			if($row > 3){
 	
-				$fecha = explode("/",$data[3]);
+					$fecha = explode("/",$data[3]);
 
-				$datosMedidor = array("diaLectura"=>$fecha[1], 
-									   "mesLectura"=>$fecha[0], 
-									   "anyoLectura"=>$fecha[2], 
-									   "medidorFrontera"=>$data[2], 
-									   "frontera_fronteraCliente"=>$data[0],
-									   "tipoMedidor"=>"P",
-									   "fechaCompleta"=>$data[3]);	
-				$horaEA = 1;		
-				$datosLecturasEnergiaActiva = array();
-				for($i=5;$i<=28;$i++){
-					$datosLecturasEnergiaActiva += ["H".$horaEA => $data[$i]];
-					$horaEA++;
-				}
-				$datosLecturasEnergiaActiva +=["tipoEnergia"=>"A"];
-				
-				$horaEE = 1;
-				$datosLecturasEnergiaExportada = array();
-				for($i=29;$i<=52;$i++){
-					$datosLecturasEnergiaExportada += ["H".$horaEE => $data[$i]];
-					$horaEE++;
-				}
-				$datosLecturasEnergiaExportada +=["tipoEnergia"=>"E"];
+					$datosMedidor = array("diaLectura"=>$fecha[1], 
+										"mesLectura"=>$fecha[0], 
+										"anyoLectura"=>$fecha[2], 
+										"medidorFrontera"=>$data[2], 
+										"frontera_fronteraCliente"=>$data[0],
+										"tipoMedidor"=>"P",
+										"fechaCompleta"=>$data[3]);	
+					$horaEA = 1;		
+					$datosLecturasEnergiaActiva = array();
+					for($i=5;$i<=28;$i++){
+						$datosLecturasEnergiaActiva += ["H".$horaEA => $data[$i]];
+						$horaEA++;
+					}
+					$datosLecturasEnergiaActiva +=["tipoEnergia"=>"A"];
+					
+					$horaEE = 1;
+					$datosLecturasEnergiaExportada = array();
+					for($i=29;$i<=52;$i++){
+						$datosLecturasEnergiaExportada += ["H".$horaEE => $data[$i]];
+						$horaEE++;
+					}
+					$datosLecturasEnergiaExportada +=["tipoEnergia"=>"E"];
 
-				$horaER = 1;
-				$datosLecturasEnergiaReactiva = array();
-				for($i=53;$i<=76;$i++){
-					$datosLecturasEnergiaReactiva += ["H".$horaER => $data[$i]];
-					$horaER++;
-				}
-				$datosLecturasEnergiaReactiva +=["tipoEnergia"=>"R"];
+					$horaER = 1;
+					$datosLecturasEnergiaReactiva = array();
+					for($i=53;$i<=76;$i++){
+						$datosLecturasEnergiaReactiva += ["H".$horaER => $data[$i]];
+						$horaER++;
+					}
+					$datosLecturasEnergiaReactiva +=["tipoEnergia"=>"R"];
 
-				$horaEC = 1;
-				$datosLecturasEnergiaCapacitiva = array();
-				for($i=77;$i<=100;$i++){
-					$datosLecturasEnergiaCapacitiva += ["H".$horaEC => $data[$i]];
-					$horaEC++;
-				}
-				$datosLecturasEnergiaCapacitiva +=["tipoEnergia"=>"C"];
-				
-				return ModeloFronteras::mdlInsertLecturasFrontera($datosMedidor,$datosLecturasEnergiaActiva,$datosLecturasEnergiaExportada,$datosLecturasEnergiaReactiva,$datosLecturasEnergiaCapacitiva);
+					$horaEC = 1;
+					$datosLecturasEnergiaCapacitiva = array();
+					for($i=77;$i<=100;$i++){
+						$datosLecturasEnergiaCapacitiva += ["H".$horaEC => $data[$i]];
+						$horaEC++;
+					}
+					$datosLecturasEnergiaCapacitiva +=["tipoEnergia"=>"C"];
+					
+					if(ModeloFronteras::mdlInsertLecturasFrontera($datosMedidor,$datosLecturasEnergiaActiva,$datosLecturasEnergiaExportada,$datosLecturasEnergiaReactiva,$datosLecturasEnergiaCapacitiva))
+					{
+						$flagInsert += [$fecha => true];
+					}
+					else
+					{
+						$flagInsert += [$fecha => false];
+					}
 				}
 			}
 		}
+		 return empty(array_search(false, $flagInsert));
+				
+		 
 	}
 
 }

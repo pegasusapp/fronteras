@@ -11,7 +11,6 @@ class AjaxInsertLectura{
 
     public function ajaxInsertFile(){
 
-		$tabla = "lecturaFrontera";
 		$valor = $this->idlog;
 		$file_pointer = $this->file;
 
