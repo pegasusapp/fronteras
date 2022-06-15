@@ -75,11 +75,11 @@ class ControladorLogLectura
 		return ModeloLogLectura::mdlBorrarLogLecturas($tabla,$item,$valor);
 	}
 
-	static public function ctrSearchLogLectura($tabla,$item, $valor){
 
-		return ModeloFactura::mdlSearchLogLectura($tabla,$item, $valor);
+	static public function ctrEditLogLectura($tabla,$item, $valor):bool{
+
+		return ModeloLogLectura::mdlEditLogLectura($tabla,$item, $valor);
 	}
-
 
 }
 

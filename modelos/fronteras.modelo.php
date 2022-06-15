@@ -365,10 +365,8 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 		catch (PDOException $ex) 
 			{
 					$pdo->rollBack();
-					//return "Error presentado en: ".$ex->getMessage();
 					return false;
 			}
-		//return $stmt -> fetchAll(PDO::FETCH_ASSOC);
 		return true;		
 
 	}
