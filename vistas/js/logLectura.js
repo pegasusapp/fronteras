@@ -39,7 +39,7 @@ function ajaxLecturas(idlectura,nameFile,route,flag){
 								processData: false,
 								success: function(rta){
 											if(rta){
-												alert("Acción ejecutada exitosamente1.");
+												alert("Acción ejecutada exitosamente.");
 												window.location = "uploadConsumo";
 
 											}
@@ -51,7 +51,7 @@ function ajaxLecturas(idlectura,nameFile,route,flag){
 							
 						   }
 						   else{
-							alert("Acción ejecutada exitosamente2.");
+							alert("Acción ejecutada exitosamente.");
 							window.location = "uploadConsumo";
 						   }
 						}
