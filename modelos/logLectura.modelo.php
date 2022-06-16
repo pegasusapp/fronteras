@@ -47,7 +47,7 @@ class ModeloLogLectura{
 
 	static public function mdlEditLogLectura($tabla,$item, $valor): bool{
 
-		$stmt = Conexion::conectar()->prepare("UPDATE FROM $tabla SET upload=1 WHERE $item = :$item");
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET upload=1 WHERE $item = :$item");
 		$stmt -> bindParam(":".$item, $valor, PDO::PARAM_INT);
         return $stmt -> execute(); 
 	}
