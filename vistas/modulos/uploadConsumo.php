@@ -70,7 +70,7 @@
                   <th id="idlog">ID</th>
                   <th id="archivo_tag">ARCHIVO</th>
                   <th id="date_tag">FECHA</th>
-                  <th id="estado_tag">ESTADO</th>
+                  <th id="estado_tag">SUBIDO</th>
                   <th id="opciones_tag">OPCIONES</th>
                 </tr> 
                 </thead>
@@ -106,7 +106,7 @@
                   <th id="idlog">ID</th>
                   <th id="archivo_tag">ARCHIVO</th>
                   <th id="date_tag">FECHA</th>
-                  <th id="estado_tag">ESTADO</th>
+                  <th id="estado_tag">SUBIDO</th>
                   <th id="opciones_tag">OPCIONES</th>
                 </tr>
                 </tfoot>
