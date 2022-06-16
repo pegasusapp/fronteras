@@ -405,10 +405,10 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 														tipoMedidor = :tipoMedidor,
 														fechaCompleta = :fechaCompleta
 														WHERE
-														diaLectura = :diaLectura,
-														mesLectura = :mesLectura,
-														anyoLectura = :anyoLectura,
-														frontera_fronteraCliente = :frontera_fronteraCliente,
+														diaLectura = :diaLectura AND
+														mesLectura = :mesLectura AND
+														anyoLectura = :anyoLectura AND
+														frontera_fronteraCliente = :frontera_fronteraCliente AND
 														tipoEnergia = :tipoEnergia");
 									$stmt ->bindParam(":H1", $resultado_gral[$i]["H1"], PDO::PARAM_STR);
 									$stmt ->bindParam(":H2", $resultado_gral[$i]["H2"], PDO::PARAM_INT);
