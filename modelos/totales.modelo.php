@@ -66,20 +66,9 @@ class ModeloTotales{
 	
 
 		$stmt = Conexion::conectar()->prepare("SELECT  anyo, sum(costo)as total FROM $tabla  GROUP BY $item");
-
-											   
-		//$stmt -> bindParam(":".$item1, $valor1, PDO::PARAM_STR);
-		//$stmt -> bindParam(":".$item2, $valor2, PDO::PARAM_STR);
-
 		$stmt -> execute();
 
 		return $stmt -> fetchAll();
-
-
-
-	$stmt -> close();
-
-	$stmt = null;
 
 } 
  
@@ -102,19 +91,11 @@ class ModeloTotales{
 		}
 		
 
-											   
-		//$stmt -> bindParam(":".$item1, $valor1, PDO::PARAM_STR);
-		//$stmt -> bindParam(":".$item2, $valor2, PDO::PARAM_STR);
 
 		$stmt -> execute();
 
 		return $stmt -> fetchAll();
 
-
-
-	$stmt -> close();
-
-	$stmt = null;
 
 }
 
