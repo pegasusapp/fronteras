@@ -11,10 +11,10 @@ class AjaxInsertLectura{
 
     public function ajaxInsertFile(){
 
-		$valor = $this->idlog;
+	
 		$file_pointer = $this->file;
 
-		if(ControladorFronteras::ctrInsertLecturasFrontera("/docs/lecturas/",$file_pointer,$id)){
+		if(ControladorFronteras::ctrInsertLecturasFrontera("/docs/lecturas/",$file_pointer)){
 			
 			echo json_encode(true);
 		}

@@ -64,9 +64,8 @@ class AjaxFrontera
 						$mes_curso = date("n") - 1;
 					}
 				}  
-			//$mes_curso = $this->mes;
-			$energia = $this->energia;
-			$respuesta = ControladorFronteras::ctrMostrarEnergiasFronteraM($valor,$anyo_curso,$mes_curso,$energia);
+			$energy = $this->energia;
+			$respuesta = ControladorFronteras::ctrMostrarEnergiasFronteraM($valor,$anyo_curso,$mes_curso,$energy);
 	
 			echo json_encode($respuesta);
 		}
@@ -75,16 +74,6 @@ class AjaxFrontera
 		
 			$valor = $this->frontera;
 			$anyo_curso = date("Y");
-			/*if($this->mes == "actual")
-				{
-					$mes_curso = date("n");
-				} 
-				elseif($this->mes == "atras")
-				{
-					$mes_curso = date("n") - 1;
-				} */ 
-			//$mes_curso = $this->mes;
-			//$energia = $this->energia;
 			$respuesta = ControladorFronteras::ctrMostrarEnergiasFronteraProm($valor,$anyo_curso);
 	
 			echo json_encode($respuesta);
@@ -96,8 +85,8 @@ class AjaxFrontera
 			$fronteraEnvio = $this->frontera;
 			$anyo_curso = $this->anyo;
 			$mes_curso = $this->mes;
-			$energia = $this->energia;
-			$respuesta = ControladorFronteras::ajaxCheckFronteraDetalleMes($fronteraEnvio,$anyo_curso,$mes_curso,$energia);
+			$energia1 = $this->energia;
+			$respuesta = ControladorFronteras::ajaxCheckFronteraDetalleMes($fronteraEnvio,$anyo_curso,$mes_curso,$energia1);
 	
 			echo json_encode($respuesta);
 		}
