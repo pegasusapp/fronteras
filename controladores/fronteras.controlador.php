@@ -1,6 +1,6 @@
 <?php
-require_once "logLectura.controlador.php";
-require_once "../modelos/logLectura.modelo.php";
+require "logLectura.controlador.php";
+require "../modelos/logLectura.modelo.php";
 
 class ControladorFronteras
 {
