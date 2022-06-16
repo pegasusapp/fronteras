@@ -89,10 +89,10 @@
                                     <td>'.$value["nameFile"].'</td>
                                     <td>'.$textUpload.'</td>
                                     <td>
-                                        <div class="btn-group">
-                                          <button class="btn btn-primary px-2.5" onclick=deleteFile("'.$value["idlogLecturas"].'","'.$value["nameFile"].'")  data-toggle="modal"><em class="fas fa-trash-alt"></em></button>';
+                                        <div class="btn-group">';
                                          if($textUpload==="NO"){
                                             echo '<button class="btn btn-primary px-2.5" onclick=insertData("'.$value["idlogLecturas"].'","'.$value["nameFile"].'")  data-toggle="modal"><em class="fas fa-upload"></em></button>';
+                                            echo '<button class="btn btn-primary px-2.5" onclick=deleteFile("'.$value["idlogLecturas"].'","'.$value["nameFile"].'")  data-toggle="modal"><em class="fas fa-trash-alt"></em></button>';
                                          } 
                                           
                                     echo    '</div> 
