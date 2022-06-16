@@ -1,4 +1,6 @@
 <?php
+require_once "logLectura.controlador.php";
+
 class ControladorFronteras
 {
 
