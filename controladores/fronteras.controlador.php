@@ -1,5 +1,4 @@
 <?php
-require_once "logLectura.controlador.php";
 
 class ControladorFronteras
 {
@@ -131,7 +130,7 @@ class ControladorFronteras
 		
 	}
 
-	static public function ctrInsertLecturasFrontera($ruta,$file,$id):bool{
+	static public function ctrInsertLecturasFrontera($ruta,$file):bool{
 
 
 		$row = 1;
@@ -196,12 +195,8 @@ class ControladorFronteras
 				}
 			}
 		}
-		 if (empty(array_search(false, $flagInsert)))
-		  {
-			return ControladorLogLectura::ctrEditLogLectura("logLecturas","idlogLecturas",$id);
-		
-		  }
-		  return false;
+		 return empty(array_search(false, $flagInsert));
+		  
 		  
 				
 		 
