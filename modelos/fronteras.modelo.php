@@ -454,7 +454,6 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 			{
 					
 				    $pdo->rollBack();
-					echo "-->".$ex;
 					return false;
 			}
 		return true;		
