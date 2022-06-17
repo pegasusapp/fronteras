@@ -82,7 +82,7 @@ tr.shown td.details-control {
                       <th scope="col"></th>
                       <th scope="col">FRONTERA</th>
                       <th scope="col">DESCRIPCION FRONTERA</th>
-                      <th scope="col">NIU RUITOQUE</th>
+                      <th scope="col">NIU ITALENER</th>
                       <th scope="col">NIU OPERADOR</th>
                       <?php echo $adicion; ?>
                      </tr> 
@@ -142,7 +142,7 @@ tr.shown td.details-control {
                         <th></th>
                         <th>FRONTERA</th>
                         <th>DESCRIPCION FRONTERA</th>
-                        <th>NIU RUITOQUE</th>
+                        <th>NIU ITALENER</th>
                         <th>NIU OPERADOR</th>
                         <?php echo $adicion; ?>
                         </tr> 
