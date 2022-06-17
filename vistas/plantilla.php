@@ -134,17 +134,10 @@ CUERPO DOCUMENTO
 
 <script src="vistas/js/usuarios.js"></script>
 <script src="vistas/js/fronteras.js"></script>
-<script src="vistas/js/solicitudes.js"></script>
 <script src="vistas/js/clientes.js"></script>
-<script src="vistas/js/area.js"></script>
-<script src="vistas/js/fuentes.js"></script>
 <script src="vistas/js/totales.js"></script> 
 <script src="vistas/js/perfiles.js"></script>
-<script src="vistas/js/equipos.js"></script>
-<script src="vistas/js/produccion.js"></script>          
-<script src="vistas/js/alterno.js"></script> 
 <script src="vistas/js/permisos.js"></script> 
-<script src="vistas/js/gproyecto.js"></script> 
 <script src="vistas/js/factura.js"></script> 
 <script src="vistas/js/logLectura.js"></script> 
 
