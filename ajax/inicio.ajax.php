@@ -14,7 +14,7 @@ class AjaxInicio
     public function ajaxDashboard()
      {
 
-		$cadena="";
+	
 		$valor = $this->idplanta;
 
         $respuesta = ControladorProduccion::ctrMostrarkhwtonDashIndividual($valor);
