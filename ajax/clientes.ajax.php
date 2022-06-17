@@ -19,7 +19,6 @@ class AjaxClientes
 			$tabla = "clienteFrontera";
 			$item = "nitCliente";
 			$valor =  $this->nitcliente;
-			//$respuesta = "ok"; 
 			$respuesta = ModeloClientesFrontera::mdlMostrarClientesFronteras($tabla,$item,$valor); 
 			echo json_encode($respuesta);
 		}
