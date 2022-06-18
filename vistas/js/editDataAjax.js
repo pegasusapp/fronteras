@@ -16,19 +16,13 @@ function ajaxProcessEdit(data,route,destiny){
 					if(answer){
 					
 						const obj = JSON.parse(answer);
-
-					
 						for (const [key, value] of Object.entries(obj)) {
 							console.log(`${key}: ${value}`);
+							$("#"+key).val(value);
 						  }
-			
-
-						//alert("Acción ejecutada exitosamente.");
-					//	window.location = destiny;
-
 						}
 						else{
-						//	alert("Problemas con el proceso.");
+								alert("Problemas con el proceso.");
 						}	 
 							
 							},

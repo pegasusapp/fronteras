@@ -146,13 +146,13 @@ MODAL AGREGAR DESVIACION
            <!-- ENTRADA PARA EL VLR MINIMO -->
             <div class="form-group">
               <div class="input-group">
-                  <input type="number" class="form-control" name="vlrMinimo" id="vlrMinimo" placeholder="Valor minimo" min="1" max="100" required>
+                  <input type="number" class="form-control" name="vlr_Minimo" id="vlr_Minimo" placeholder="Valor minimo" min="1" max="100" required>
               </div>
             </div>
           <!-- ENTRADA PARA EL VLR MAXIMO -->
             <div class="form-group">
               <div class="input-group">
-                  <input type="number" class="form-control" name="vlrMaximo" id="vlrMaximo" placeholder="Valor maximo" min="1" max="100" required>
+                  <input type="number" class="form-control" name="vlr_Maximo" id="vlr_Maximo" placeholder="Valor maximo" min="1" max="100" required>
               </div>
             </div>
           </div>
@@ -204,13 +204,13 @@ MODAL AGREGAR DESVIACION
            <!-- ENTRADA PARA EL VLR MINIMO -->
             <div class="form-group">
               <div class="input-group">
-                  <input type="number" class="form-control" name="vlrMinimoE" id="vlrMinimoE" placeholder="Valor minimo" min="1" max="100" required>
+                  <input type="number" class="form-control" name="vlrMinimo" id="vlrMinimo" placeholder="Valor minimo" min="1" max="100" required>
               </div>
             </div>
           <!-- ENTRADA PARA EL VLR MAXIMO -->
             <div class="form-group">
               <div class="input-group">
-                  <input type="number" class="form-control" name="vlrMaximoE" id="vlrMaximoE" placeholder="Valor maximo" min="1" max="100" required>
+                  <input type="number" class="form-control" name="vlrMaximo" id="vlrMaximo" placeholder="Valor maximo" min="1" max="100" required>
               </div>
             </div>
           </div>
