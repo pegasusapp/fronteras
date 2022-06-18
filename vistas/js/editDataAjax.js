@@ -16,10 +16,11 @@ function ajaxProcessEdit(data,route,destiny){
 					success: function(answer){
 					if(answer){
 
-						Object.entries(answer).forEach(([key, value]) =>{
-							console.log(`${key} ${value}`);
-
+						$.each(answer, function(i, star) {
+							console.log(`${i} ${star}`);
 						});
+
+			
 
 						//alert("Acción ejecutada exitosamente.");
 					//	window.location = destiny;
