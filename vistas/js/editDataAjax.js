@@ -17,7 +17,10 @@ function ajaxProcessEdit(data,route,destiny){
 					
 						const obj = JSON.parse(answer);
 
-						console.log(Object.keys(obj));	
+					
+						for (const [key, value] of Object.entries(obj)) {
+							console.log(`${key}: ${value}`);
+						  }
 			
 
 						//alert("Acción ejecutada exitosamente.");
