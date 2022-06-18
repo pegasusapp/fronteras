@@ -17,7 +17,7 @@ function ajaxProcessEdit(data,route,destiny){
 					if(answer){
 
 						$.each(answer.d, function(key,value) {
-							console.log(key + value)
+							alert(key + value)
 						});
 
 			
