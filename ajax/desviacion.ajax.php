@@ -15,11 +15,10 @@ class AjaxDesviacion{
 
     public function ajaxEditDesviacion(){
 
-		$tabla = "desviacion";
 		$item = "iddesviacion";
 		$valor = $this->id;
 		
-		echo json_encode(ControladorDesviacion::ctrMostrarDesviacion($tabla,$item, $valor));
+		echo json_encode(ControladorDesviacion::ctrMostrarDesviacion($item, $valor));
 		}
 
 	
