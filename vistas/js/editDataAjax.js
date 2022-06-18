@@ -17,7 +17,7 @@ function ajaxProcessEdit(data,route,destiny){
 					if(answer){
 
 						Object.entries(answer).forEach(([key, value]) =>{
-							alert(key+"-"+value);
+							alert(`${key} ${value}`);
 						});
 
 						//alert("Acción ejecutada exitosamente.");
