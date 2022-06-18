@@ -9,7 +9,7 @@ class ControladorDesviacion
 		
 			if(isset($_POST['submit'])) 
 			{
-				
+				echo "sikas";			
 			    $table = "desviacion";
 
 					$data = array("vlrMinimo"=>$_POST["vlrMinimo"],"vlrMaximo"=>$_POST["vlrMaximo"]);
@@ -23,6 +23,10 @@ class ControladorDesviacion
 
 					 }
 			}
+			else{
+				echo "nada";
+						}
+
 
 		}
 	
