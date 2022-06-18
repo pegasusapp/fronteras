@@ -41,9 +41,22 @@ class ControladorDesviacion
 	}
 
 
-	static public function ctrEditDesviacion($tabla,$data):bool{
+	static public function ctrEditDesviacion(){
+		if(isset($_POST["vlrMinimoE"])) 
+		{
+			$table = "desviacion";
 
-		return ModeloLogLectura::mdlEditLogLectura($tabla,$data);
+				$data = array("vlrMinimoE"=>$_POST["vlrMinimoE"],"vlrMaximoE"=>$_POST["vlrMaximoE"]);
+
+				 if(ModeloDesviacion::mdlEditDesviacion($table,$data)){
+					echo ControladorUtilidades::answerScript("Datos editados correctamente","desviacion");	
+
+				 }
+				 else{
+					echo ControladorUtilidades::answerScript("Problemas al editar datos","desviacion");	
+
+				 }
+		}
 	}
 
 }
