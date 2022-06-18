@@ -15,10 +15,12 @@ function ajaxProcessEdit(data,route,destiny){
 					processData: false,
 					success: function(answer){
 					if(answer){
+					
 
-						$.each(answer, function(key,value) {
-							alert(key + value)
-						});
+							for (let value of answer.d) {
+								console.log(value);
+							  }
+						
 
 			
 
