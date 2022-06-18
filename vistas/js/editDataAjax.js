@@ -3,7 +3,6 @@ function ajaxProcessEdit(data,route,destiny){
 				
 				var datos = new FormData();
 				Object.entries(data).forEach(([key, value]) =>{
-					alert(key+"-"+value);
 					datos.append(key,value);
 				});
 			$.ajax({
@@ -16,10 +15,7 @@ function ajaxProcessEdit(data,route,destiny){
 					success: function(answer){
 					if(answer){
 					
-						Object.keys(answer).forEach(function(key) {
-							console.log(answer[key]);
-						
-						});		
+						console.log(Object.keys(answer));	
 			
 
 						//alert("Acción ejecutada exitosamente.");
