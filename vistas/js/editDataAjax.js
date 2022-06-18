@@ -3,6 +3,7 @@ function ajaxProcessEdit(data,route,destiny){
 				
 				var datos = new FormData();
 				Object.keys(data).forEach(function(key,value){
+					alert(key+"-"+value);
 					datos.append(key,value);
 				});
 			$.ajax({
