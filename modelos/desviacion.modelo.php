@@ -11,8 +11,7 @@ class ModeloDesviacion{
 			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla  WHERE $item = :$item");
 			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
 			$stmt -> execute();
-			print_r($stmt -> fetch());
-			return $stmt -> fetch();
+			return $stmt -> fetchAll(PDO::FETCH_ASSOC);
 		}else{
 			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
 			$stmt -> execute();
