@@ -15,8 +15,10 @@ function ajaxProcessEdit(data,route,destiny){
 					success: function(answer){
 					if(answer){
 					
-						//console.log(Object.keys(answer));	
-						alert(typeof answer);	
+						const obj = JSON.parse(answer);
+
+						console.log(Object.keys(obj));	
+			
 
 						//alert("Acción ejecutada exitosamente.");
 					//	window.location = destiny;
