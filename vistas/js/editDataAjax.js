@@ -15,7 +15,7 @@ function ajaxProcessEdit(data,route,destiny){
 					success: function(answer){
 					if(answer){
 
-						answer.forEach(function(key,value){
+						Object.keys(answer).forEach(function(key,value){
 							alert(key+"-"+value);
 						});
 
