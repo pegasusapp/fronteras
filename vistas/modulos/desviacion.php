@@ -226,6 +226,7 @@ MODAL AGREGAR DESVIACION
           $editarDesviacion = new ControladorDesviacion();
           $editarDesviacion -> ctrEditDesviacion();
         ?>
+        <input type="hidden" id="id" name="id" value=""/>
       </form>
     </div>
   </div>
