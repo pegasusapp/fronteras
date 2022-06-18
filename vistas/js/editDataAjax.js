@@ -16,12 +16,10 @@ function ajaxProcessEdit(data,route,destiny){
 					success: function(answer){
 					if(answer){
 					
-
-							for (let value of answer) {
-								console.log(answer[value]);
-							  }
+						Object.keys(answer).forEach(function(key) {
+							console.log(jsonData[key]);
 						
-
+						}		
 			
 
 						//alert("Acción ejecutada exitosamente.");
