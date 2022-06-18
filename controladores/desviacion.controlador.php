@@ -46,7 +46,7 @@ class ControladorDesviacion
 		{
 			$table = "desviacion";
 
-				$data = array("vlrMinimo"=>$_POST["vlrMinimo"],"vlrMaximo"=>$_POST["vlrMaximo"]);
+				$data = array("iddesviacion"=>$_POST["iddesviacion"],"vlrMinimo"=>$_POST["vlrMinimo"],"vlrMaximo"=>$_POST["vlrMaximo"]);
 
 				 if(ModeloDesviacion::mdlEditDesviacion($table,$data)){
 					echo ControladorUtilidades::answerScript("Datos editados correctamente","desviacion");	
