@@ -17,9 +17,9 @@ function ajaxProcessEdit(data,route,destiny){
 					if(answer){
 					
 
-							for (let value of answer) {
-								console.log(value);
-							  }
+							
+								console.log(answer[key]+answer[value]);
+							  
 						
 
 			
