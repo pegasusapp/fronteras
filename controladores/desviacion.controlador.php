@@ -7,9 +7,8 @@ class ControladorDesviacion
 
 	static public function ctrCrearDesviacion(){
 		
-			if(isset($_POST['submit'])) 
+			if(isset($_POST["vlrMinimo"])) 
 			{
-				echo "sikas";			
 			    $table = "desviacion";
 
 					$data = array("vlrMinimo"=>$_POST["vlrMinimo"],"vlrMaximo"=>$_POST["vlrMaximo"]);
@@ -23,9 +22,7 @@ class ControladorDesviacion
 
 					 }
 			}
-			else{
-				echo "nada";
-						}
+
 
 
 		}
