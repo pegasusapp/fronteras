@@ -19,7 +19,7 @@ function ajaxProcessEdit(data,route,destiny){
 						Object.keys(answer).forEach(function(key) {
 							console.log(jsonData[key]);
 						
-						}		
+						});		
 			
 
 						//alert("Acción ejecutada exitosamente.");
