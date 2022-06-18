@@ -86,7 +86,7 @@
                                     <td><?= $value["iddesviacion"] ?> </td>
                                     <td><?= $value["vlrMaximo"].'/'.$value["vlrMinimo"] ?></td>
                                     <td><?= $value["fechaRegistro"] ?></td>
-                                    <td><?= $value["fechaActualizacion"] ?></td>
+                                    <td><?= $value["fechaUpdate"] ?></td>
                                     <td>
                                         <div class="btn-group">
                                             <button class="btn btn-primary px-2.5" onclick=editData(<?= $value["iddesviacion"] ?>)  data-toggle="modal"><em class="far fa-edit"></em></button>
@@ -116,7 +116,7 @@
 </div>
 
 <!--=====================================
-MODAL AGREGAR LECTURA
+MODAL AGREGAR DESVIACION
 ======================================-->
 <div id="modalAgregarDesviacion" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -167,6 +167,64 @@ MODAL AGREGAR LECTURA
         <?php
           $crearDesviacion = new ControladorDesviacion();
           $crearDesviacion -> ctrCrearDesviacion();
+        ?>
+      </form>
+    </div>
+  </div>
+</div> 
+
+<!--=====================================
+MODAL AGREGAR DESVIACION
+======================================-->
+<div id="modalEditarDesviacion" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form aria-label="Formulario de edicion de desviacion" role="form" method="post" enctype="multipart/form-data">
+        <!--=====================================
+        CABEZA DEL MODAL
+        ======================================-->
+        <div class="modal-header" style="background:#3c8dbc; color:white">
+         
+                  <div class="col-4">
+                      <h4 class="modal-title"><em class="fas fa-user-plus" ></em></h4>
+                  </div>
+                  <div class="col-4">
+                     <label>Editar desviacion</label>
+                  </div>
+                  <div class="col-4">
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>        
+      
+        </div>
+        <!--=====================================
+        CUERPO DEL MODAL
+        ======================================-->
+        <div class="modal-body">
+          <div class="box-body">
+           <!-- ENTRADA PARA EL VLR MINIMO -->
+            <div class="form-group">
+              <div class="input-group">
+                  <input type="number" class="form-control" name="vlrMinimoE" id="vlrMinimoE" placeholder="Valor minimo" min="1" max="100" required>
+              </div>
+            </div>
+          <!-- ENTRADA PARA EL VLR MAXIMO -->
+            <div class="form-group">
+              <div class="input-group">
+                  <input type="number" class="form-control" name="vlrMaximoE" id="vlrMaximoE" placeholder="Valor maximo" min="1" max="100" required>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--=====================================
+        PIE DEL MODAL
+        ======================================-->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+          <button type="submit" class="btn btn-primary">Guardar item</button>
+        </div>
+        <?php
+          $editarDesviacion = new ControladorDesviacion();
+          $editarDesviacion -> ctrEditDesviacion();
         ?>
       </form>
     </div>
