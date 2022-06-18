@@ -52,9 +52,20 @@
                 <div class="col-4">
                  </div>
                  <div class="col-4" >
+                 <?php
+                    $item = null;
+                    $valor = null;
+                    
+                    $items = ControladorDesviacion::ctrMostrarDesviacion($item, $valor); 
+                    if(count($items) > 0)
+                    {
+                    ?>  
                       <div class="icon-bar">
                         <a data-toggle="modal" data-target="#modalAgregarDesviacion"  id="iconAddUser"   title="Crear desviacion" href="#"><em class="fas fa-file-invoice"></em></a> 
                       </div>
+                     <?php
+                      } 
+                     ?> 
                  </div> 
                  <div class="col-4">
                  </div> 
