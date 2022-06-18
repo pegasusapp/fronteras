@@ -7,11 +7,11 @@ class ControladorDesviacion
 
 	static public function ctrCrearDesviacion(){
 		
-			if(isset($_POST["vlrMinimo"])) 
+			if(isset($_POST["vlr_Minimo"])) 
 			{
 			    $table = "desviacion";
 
-					$data = array("vlrMinimo"=>$_POST["vlrMinimo"],"vlrMaximo"=>$_POST["vlrMaximo"]);
+					$data = array("vlrMinimo"=>$_POST["vlr_Minimo"],"vlrMaximo"=>$_POST["vlr_Maximo"]);
 
 					 if(ModeloDesviacion::mdlIngresarDesviacion($table,$data)){
 						echo ControladorUtilidades::answerScript("Datos insertados correctamente","desviacion");	
@@ -42,11 +42,11 @@ class ControladorDesviacion
 
 
 	static public function ctrEditDesviacion(){
-		if(isset($_POST["vlrMinimoE"])) 
+		if(isset($_POST["vlrMinimo"])) 
 		{
 			$table = "desviacion";
 
-				$data = array("vlrMinimoE"=>$_POST["vlrMinimoE"],"vlrMaximoE"=>$_POST["vlrMaximoE"]);
+				$data = array("vlrMinimo"=>$_POST["vlrMinimo"],"vlrMaximo"=>$_POST["vlrMaximo"]);
 
 				 if(ModeloDesviacion::mdlEditDesviacion($table,$data)){
 					echo ControladorUtilidades::answerScript("Datos editados correctamente","desviacion");	
