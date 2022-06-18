@@ -89,7 +89,7 @@
                                     <td><?= $value["fechaUpdate"] ?></td>
                                     <td>
                                         <div class="btn-group">
-                                            <button class="btn btn-primary px-2.5" onclick=editData(<?= $value["iddesviacion"] ?>)  data-toggle="modal"><em class="far fa-edit"></em></button>
+                                            <button class="btn btn-primary px-2.5" onclick=editDataDesviacion(<?= $value["iddesviacion"] ?>)  data-toggle="modal"><em class="far fa-edit"></em></button>
                                        </div> 
                                     </td>
                                 </tr>
