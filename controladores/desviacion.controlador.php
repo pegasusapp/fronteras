@@ -14,8 +14,7 @@ class ControladorDesviacion
 
 					$data = array("vlrMinimo"=>$_POST["vlrMinimo"],"vlrMaximo"=>$_POST["vlrMaximo"]);
 
-					 if(ModeloDesviacion::mdlIngresarDesviacion($table,$data))
-					 {
+					 if(ModeloDesviacion::mdlIngresarDesviacion($table,$data)){
 						echo ControladorUtilidades::answerScript("Datos insertados correctamente","desviacion");	
 
 					 }
@@ -28,7 +27,7 @@ class ControladorDesviacion
 		}
 	
 	/*=============================================
-	MOSTRAR Logs
+	MOSTRAR DESVIACION
 	=============================================*/
 
 	static public function ctrMostrarDesviacion($item,$valor):array

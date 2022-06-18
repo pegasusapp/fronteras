@@ -20,11 +20,16 @@ class ModeloDesviacion{
 	}
 
 	static public function mdlIngresarDesviacion($tabla,$datosLog): bool{
+		try{
+			$stmt =  Conexion::conectar()->prepare("INSERT INTO $tabla(vlrMaximo, vlrMinimo, fechaRegistro, fechaUpdate) VALUES (:vlrMinimo,:vlrMaximo,NOW(),NOW())");
+			$stmt->bindParam(":vlrMaximo", $datosLog["vlrMaximo"], PDO::PARAM_INT);
+			$stmt->bindParam(":vlrMinimo", $datosLog["vlrMinimo"], PDO::PARAM_INT);
+			return $stmt->execute();
+		}catch(Exception $e){
+			echo $e->getMessage();
+		}
 
-		$stmt =  Conexion::conectar()->prepare("INSERT INTO $tabla(vlrMaximo, vlrMinimo, fechaRegistro, fechaUpdate) VALUES (:vlrMinimo,:vlrMaximo,NOW(),NOW())");
-		$stmt->bindParam(":vlrMaximo", $datosLog["vlrMaximo"], PDO::PARAM_INT);
-		$stmt->bindParam(":vlrMinimo", $datosLog["vlrMinimo"], PDO::PARAM_INT);
-		return $stmt->execute();
+
 		
 	}
 

@@ -68,7 +68,7 @@
               <thead>
                 <tr>
                   <th id="idlog">ID</th>
-                  <th id="archivo_tag">PORCENTAJE</th>
+                  <th id="archivo_tag">VLR MAX / VLR MIN</th>
                   <th id="date_tag">FECHA CREACION</th>
                   <th id="date_tag">FECHA ACTUALIZACIÓN</th>
                   <th id="opciones_tag">OPCIONES</th>
@@ -97,8 +97,8 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                <th id="idlog">ID</th>
-                  <th id="archivo_tag">PORCENTAJE</th>
+                  <th id="idlog">ID</th>
+                  <th id="archivo_tag">VLR MAX / VLR MIN</th>
                   <th id="date_tag">FECHA CREACION</th>
                   <th id="date_tag">FECHA ACTUALIZACIÓN</th>
                   <th id="opciones_tag">OPCIONES</th>
