@@ -2,7 +2,7 @@
 function ajaxProcessEdit(data,route,destiny){
 				
 				var datos = new FormData();
-				Object.keys(data).forEach(function(key,value){
+				Object.entries(data).forEach(([key, value]) =>{
 					alert(key+"-"+value);
 					datos.append(key,value);
 				});
@@ -16,7 +16,7 @@ function ajaxProcessEdit(data,route,destiny){
 					success: function(answer){
 					if(answer){
 
-						Object.keys(answer).forEach(function(key,value){
+						Object.entries(answer).forEach(([key, value]) =>{
 							alert(key+"-"+value);
 						});
 
