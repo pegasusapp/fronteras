@@ -45,10 +45,11 @@ class ModeloDesviacion{
 
 	static public function mdlEditDesviacion($tabla,$data): bool{
 
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET vlrMinimo=:vlrMinimo,vlrMaximo=:vlrMaximo,fechaUpdate=:NOW() WHERE iddesviacion =:iddesviacion");
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET vlrMinimo=:vlrMinimo,vlrMaximo=:vlrMaximo,fechaUpdate =:fechaUpdate WHERE iddesviacion =:iddesviacion");
 		$stmt -> bindParam(":iddesviacion", $data["iddesviacion"], PDO::PARAM_INT);
 		$stmt -> bindParam(":vlrMinimo",$data["vlrMinimo"],PDO::PARAM_INT);
 		$stmt -> bindParam(":vlrMaximo",$data["vlrMaximo"],PDO::PARAM_INT);
+		$stmt -> bindParam(":fechaUpdate",date('Y-m-d H:i:s'),PDO::PARAM_STR);
         return $stmt -> execute(); 
 	}
 
