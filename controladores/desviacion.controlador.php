@@ -5,7 +5,7 @@ class ControladorDesviacion
 
 
 
-	static public function ctrCrearDesviacion():string{
+	static public function ctrCrearDesviacion(){
 		
 			if(isset($_POST['submit'])) 
 			{
