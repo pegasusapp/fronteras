@@ -16,7 +16,7 @@ function ajaxProcessEdit(data,route,destiny){
 					success: function(answer){
 					if(answer){
 
-						$.each(answer, function(i, star) {
+						$.each(answer.data, function(i, star) {
 							console.log(`${i} ${star}`);
 						});
 
