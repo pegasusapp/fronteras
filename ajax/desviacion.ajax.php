@@ -16,20 +16,13 @@ class AjaxDesviacion{
     public function ajaxEditDesviacion(){
 
 		$tabla = "desviacion";
-		$data = array("iddesviacion" => $this->id, "vlrMinimo" => $this->vlrMinimo, "vlrMaximo" => $this->vlrMaximo);
+		$item = "iddesviacion";
+		$valor = $this->id;
 		
-		if(ControladorDesviacion::ctrEditDesviacion($tabla,$data)){
-			
-  			// Use unlink() function to delete a file
-			if (!unlink($_SERVER['DOCUMENT_ROOT']."/docs/lecturas/".$file_pointer)) {
-				echo json_encode(false);
-			}
-			else {
-				echo json_encode(true);
-			}
+		echo json_encode(ControladorDesviacion::ctrMostrarDesviacion($tabla,$item, $valor));
 		}
 
-	}
+	
 }
 
 
