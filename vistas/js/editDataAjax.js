@@ -17,7 +17,7 @@ function ajaxProcessEdit(data,route,destiny){
 					if(answer){
 					
 						Object.keys(answer).forEach(function(key) {
-							console.log(jsonData[key]);
+							console.log(answer[key]);
 						
 						});		
 			
