@@ -89,7 +89,7 @@
                                     <td><?= $value["fechaUpdate"] ?></td>
                                     <td>
                                         <div class="btn-group">
-                                            <button class="btn btn-primary px-2.5" onclick=editDataDesviacion(<?= $value["iddesviacion"] ?>)  data-toggle="modal"><em class="far fa-edit"></em></button>
+                                            <button class="btn btn-primary px-2.5" onclick=editDataDesviacion(<?= $value["iddesviacion"] ?>)  data-target="#modalEditDesviacion"><em class="far fa-edit"></em></button>
                                        </div> 
                                     </td>
                                 </tr>
@@ -176,7 +176,7 @@ MODAL AGREGAR DESVIACION
 <!--=====================================
 MODAL AGREGAR DESVIACION
 ======================================-->
-<div id="modalEditarDesviacion" class="modal fade" role="dialog">
+<div id="modalEditDesviacion" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <form aria-label="Formulario de edicion de desviacion" role="form" method="post" enctype="multipart/form-data">
