@@ -15,12 +15,16 @@ function ajaxProcessEdit(data,route,destiny){
 					success: function(answer){
 					if(answer){
 
-						alert("Acción ejecutada exitosamente.");
-						window.location = destiny;
+						answer.array.forEach(function(key,value){
+							alert(key+"-"+value);
+						});
+
+						//alert("Acción ejecutada exitosamente.");
+					//	window.location = destiny;
 
 						}
 						else{
-							alert("Problemas con el proceso.");
+						//	alert("Problemas con el proceso.");
 						}	 
 							
 							},
