@@ -99,6 +99,7 @@ CUERPO DOCUMENTO
          $_GET["ruta"] == "uploadConsumo" ||
          $_GET["ruta"] == "descargaFactura" ||
          $_GET["ruta"] == "dfiles" ||
+         $_GET["ruta"] == "desviacion" ||
          $_GET["ruta"] == "salir"){
 
         include "modulos/".$_GET["ruta"].".php";
@@ -139,7 +140,9 @@ CUERPO DOCUMENTO
 <script src="vistas/js/perfiles.js"></script>
 <script src="vistas/js/permisos.js"></script> 
 <script src="vistas/js/factura.js"></script> 
-<script src="vistas/js/logLectura.js"></script> 
+<script src="vistas/js/logLectura.js"></script>
+<script src="vistas/js/desviacion.js"></script>  
+<script src="vistas/js/editDataAjax.js"></script>  
 
 <script>
 
