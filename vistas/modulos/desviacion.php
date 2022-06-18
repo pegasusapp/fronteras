@@ -57,7 +57,7 @@
                     $valor = null;
                     
                     $items = ControladorDesviacion::ctrMostrarDesviacion($item, $valor); 
-                    if(count($items) > 0)
+                    if(count($items) == 0)
                     {
                     ?>  
                       <div class="icon-bar">
