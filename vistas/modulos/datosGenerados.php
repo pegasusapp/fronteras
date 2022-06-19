@@ -67,8 +67,9 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-striped table-bordered tablas" id="tabla_total_ids"  style="width:100%">
-                  <thead>
+                <table class="table table-striped table-bordered tablas" id="tabla_total_ids"   style="width:100%">
+                 <caption>Lista de lecturas x frontera</caption> 
+                 <thead>
                   <tr>
                     <th>AÑO</th>
                     <th>MES</th>
@@ -115,42 +116,39 @@
                     $items = ControladorFronteras::crtMostrarMatrizEnergiaDatos($item, $valor,$item2,$valor2,$valor21,$item3,$valor3);
                     foreach ($items as $key => $value)
                     {
-                      
-                        echo ' <tr>
-                                  <td>'.$value["anyoLectura"].'</td> 
-                                  <td>'.$value["mesLectura"].'</td>
-                                  <td>'.$value["diaLectura"].'</td> 
-                                  <td>'.$value["frontera_fronteraCliente"].'</td>
-                                  <td>'.$value["H1"].'</td>
-                                  <td>'.$value["H2"].'</td> 
-                                  <td>'.$value["H3"].'</td>
-                                  <td>'.$value["H4"].'</td>
-                                  <td>'.$value["H5"].'</td> 
-                                  <td>'.$value["H6"].'</td> 
-                                  <td>'.$value["H7"].'</td>
-                                  <td>'.$value["H8"].'</td> 
-                                  <td>'.$value["H9"].'</td> 
-                                  <td>'.$value["H10"].'</td>
-                                  <td>'.$value["H11"].'</td> 
-                                  <td>'.$value["H12"].'</td> 
-                                  <td>'.$value["H13"].'</td>
-                                  <td>'.$value["H14"].'</td> 
-                                  <td>'.$value["H15"].'</td> 
-                                  <td>'.$value["H16"].'</td>
-                                  <td>'.$value["H17"].'</td> 
-                                  <td>'.$value["H18"].'</td> 
-                                  <td>'.$value["H19"].'</td>
-                                  <td>'.$value["H20"].'</td> 
-                                  <td>'.$value["H21"].'</td> 
-                                  <td>'.$value["H22"].'</td>
-                                  <td>'.$value["H23"].'</td> 
-                                  <td>'.$value["H24"].'</td> 
+                      ?>
+                         <tr>
+                                  <td><?=$value["anyoLectura"]?></td> 
+                                  <td><?=$value["mesLectura"]?></td>
+                                  <td><?=$value["diaLectura"]?></td> 
+                                  <td><?=$value["frontera_fronteraCliente"]?></td>
+                                  <td><?=$value["H1"]?></td>
+                                  <td><?=$value["H2"]?></td> 
+                                  <td><?=$value["H3"]?></td>
+                                  <td><?=$value["H4"]?></td>
+                                  <td><?=$value["H5"]?></td> 
+                                  <td><?=$value["H6"]?></td> 
+                                  <td><?=$value["H7"]?></td>
+                                  <td><?=$value["H8"]?></td> 
+                                  <td><?=$value["H9"]?></td> 
+                                  <td><?=$value["H10"]?></td>
+                                  <td><?=$value["H11"]?></td> 
+                                  <td><?=$value["H12"]?></td> 
+                                  <td><?=$value["H13"]?></td>
+                                  <td><?=$value["H14"]?></td> 
+                                  <td><?=$value["H15"]?></td> 
+                                  <td><?=$value["H16"]?></td>
+                                  <td><?=$value["H17"]?></td> 
+                                  <td><?=$value["H18"]?></td> 
+                                  <td><?=$value["H19"]?></td>
+                                  <td><?=$value["H20"]?></td> 
+                                  <td><?=$value["H21"]?></td> 
+                                  <td><?=$value["H22"]?></td>
+                                  <td><?=$value["H23"]?></td> 
+                                  <td><?=$value["H24"]?></td> 
                                  
-                              </tr>';
-                      }
-
-
-                  ?> 
+                              </tr>
+                   <?php   }  ?> 
 
                   </tbody>
                  
@@ -161,11 +159,7 @@
     </div>
   </section>
 </div>
-
-
-   
-
-      <?php
+<?php
 
          
 
