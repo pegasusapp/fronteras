@@ -2,7 +2,7 @@
 
 class ControladorFronteras
 {
-
+ 
  
 	static public function ctrMostrarFronteras($item, $valor)
 	{
