@@ -1,5 +1,5 @@
 
-function ajaxProcessEdit(data,route,destiny){
+function ajaxProcessEdit(data,route){
 				
 				var datos = new FormData();
 				Object.entries(data).forEach(([key, value]) =>{
@@ -17,7 +17,6 @@ function ajaxProcessEdit(data,route,destiny){
 					
 						const obj = JSON.parse(answer);
 						for (const [key, value] of Object.entries(obj)) {
-							console.log(`${key}: ${value}`);
 							$("#"+key).val(value);
 						  }
 						}

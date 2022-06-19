@@ -87,23 +87,26 @@
                 foreach ($items as $key => $value)
                     {
                         $r = (1 == $value["estado"]) ? 'Activo' : 'Inactivo'; 
-                        echo ' <tr>
-                                    <td>'.$value["identificador"].'</td>
-                                    <td>'.$value["nombreCompleto"].'</td> 
-                                    <td>'.$value["celular"].'</td>
-                                    <td>'.$value["nombre"].'</td>
-                                    <td>'.$r.'</td> 
-                                    <td>'.$value["email"].'</td>
+                    
+                    ?>    
+                         <tr>
+                                    <td><?= $value["identificador"] ?></td>
+                                    <td><?= $value["nombreCompleto"] ?></td> 
+                                    <td><?= $value["celular"] ?></td>
+                                    <td><?= $value["nombre"] ?></td>
+                                    <td><?= $r ?></td> 
+                                    <td><?= $value["email"] ?></td>
                                     <td>
                                         <div class="btn-group">
-                                          <button class="btn btn-primary px-2.5" onclick=editarUser("'.$value["identificador"].'") codigoniu="'.$value["identificador"].'" data-toggle="modal" data-target="#modalEditarUsuario"><i class="far fa-edit" aria-hidden="true"></i></button>
+                                          <button class="btn btn-primary px-2.5" onclick=editarUser(<?= $value["identificador"] ?>) codigoniu="<?= $value["identificador"] ?>" data-toggle="modal" data-target="#modalEditarUsuario"><i class="far fa-edit" aria-hidden="true"></i></button>
                                         </div> 
                                       <div class="btn-group">
-                                          <button class="btn btn-primary px-2.5"  onclick=editarMenu("'.$value["identificador"].'") codigoniu="'.$value["identificador"].'" ><i class="fas fa-lock" aria-hidden="true"></i></button>
+                                          <button class="btn btn-primary px-2.5"  onclick=editarMenu(<?= $value["identificador"] ?>) codigoniu="<?= $value["identificador"] ?>" ><i class="fas fa-lock" aria-hidden="true"></i></button>
                                       </div>     
                                     </td>
-                                </tr>';
-                    }
+                                </tr>
+                <?php
+                  }
                 ?> 
                 </tbody>
                 <tfoot>
@@ -138,7 +141,7 @@ MODAL AGREGAR PERMISOS
 
     <div class="modal-content">
 
-      <form role="form" method="post" enctype="multipart/form-data">
+      <form role="form" method="post" enctype="multipart/form-data" aria-labelledby="form">
 
         <!--=====================================
         CABEZA DEL MODAL
@@ -147,7 +150,7 @@ MODAL AGREGAR PERMISOS
         <div class="modal-header" style="background:#3c8dbc; color:white">
 
                   <div class="col-4">
-                      <i class="far fa-id-card" ></i>
+                      <em class="far fa-id-card" ></em>
                   </div>
                   <div class="col-4">
                      <label>Agregar perfil</label>
@@ -209,7 +212,7 @@ MODAL AGREGAR PERFIL
 
     <div class="modal-content">
 
-      <form role="form" method="post" enctype="multipart/form-data">
+      <form role="form" method="post" enctype="multipart/form-data" aria-labelledby="formdataperfil">
 
         <!--=====================================
         CABEZA DEL MODAL
@@ -218,7 +221,7 @@ MODAL AGREGAR PERFIL
         <div class="modal-header" style="background:#3c8dbc; color:white">
 
                   <div class="col-4">
-                      <i class="far fa-id-card" ></i>
+                      <em class="far fa-id-card" ></em>
                   </div>
                   <div class="col-4">
                      <label>Agregar perfil</label>
@@ -291,6 +294,15 @@ MODAL AGREGAR PERFIL
   </div>
 
 </div>
+<?php
+$item  = null;
+                              $valor = null;
+                              $items = ControladorPerfil::ctrMostrarPerfil($item, $valor);
+                              foreach ($items as $key => $value)
+                                 {
+                                   $vlrUsuarios +='<option value="'.$value["idPerfilUsuarios"].'">'.$value["nombre"].'</option>';
+                                 } 
+?> 
 
 <!--=====================================
 MODAL AGREGAR USUARIO
@@ -298,14 +310,14 @@ MODAL AGREGAR USUARIO
 <div id="modalAgregarUsuario" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form role="form" method="post" enctype="multipart/form-data">
+      <form role="form" method="post" enctype="multipart/form-data" aria-labelledby="formdatauser">
         <!--=====================================
         CABEZA DEL MODAL
         ======================================-->
         <div class="modal-header" style="background:#3c8dbc; color:white">
          
                   <div class="col-4">
-                      <h4 class="modal-title"><i class="fas fa-user-plus" ></i></h4>
+                      <h4 class="modal-title"><em class="fas fa-user-plus" ></em></h4>
                   </div>
                   <div class="col-4">
                      <label>Agregar usuario</label>
@@ -360,15 +372,8 @@ MODAL AGREGAR USUARIO
                       <select class="form-control select2" id="idPerfilUsuarios"  name="idPerfilUsuarios" title="Perfil del usuario" required>
                         <option value="" >Seleccione el perfil...</option>
                          <?php
-
-                              $item  = null;
-                              $valor = null;
-                              $items = ControladorPerfil::ctrMostrarPerfil($item, $valor);
-                              foreach ($items as $key => $value)
-                                 {
-                                   echo '<option value="'.$value["idPerfilUsuarios"].'">'.$value["nombre"].'  </option>';
-                                 }
-                          ?> 
+                            echo $vlrUsuarios;
+                         ?> 
                       </select>
                 </div>
             </div>
@@ -414,7 +419,7 @@ MODAL EDITAR USUARIO
 <div id="modalEditarUsuario" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form role="form" method="post">
+      <form role="form" method="post" aria-labelledby="formdataedituser">
           <input type="hidden"  name="editaridentificador" id="editaridentificador">
       <!--=====================================
         CABEZA DEL MODAL
@@ -424,7 +429,7 @@ MODAL EDITAR USUARIO
         <div class="modal-header" style="background:#3c8dbc; color:white">
          
          <div class="col-4">
-             <h4 class="modal-title"><i class="far fa-edit"></i></h4>
+             <h4 class="modal-title"><em class="far fa-edit"></em></h4>
          </div>
          <div class="col-4">
             <label>Editar usuario</label>
@@ -472,34 +477,16 @@ MODAL EDITAR USUARIO
                <div class="input-group">
                  <select class="form-control" id="editaridPerfilUsuarios" Onchange="opcionPerfil(this.value)" name="editaridPerfilUsuarios" required>
                       <option value="" >Seleccione el perfil...</option>
-                     <?php
-                          $item  = null;
-                          $valor = null;
-                          $items = ControladorPerfil::ctrMostrarPerfil($item, $valor);
-                         foreach ($items as $key => $value)
-                           {
-                             echo '<option value="'.$value["idPerfilUsuarios"].'">'.$value["nombre"].'  </option>';
-                           }
-                       ?> 
+                     <?php echo $vlrUsuarios; ?>
                 </select>
                </div>
             </div>
-             <!-- ENTRADA PARA LA PLANTA 
-             <div class="form-group" id="perfil_planta_div">
-               <div class="input-group">
-                      <select class="form-control select2" id="eproyecto_id" name="eproyecto_id" title="Seleccione la planta" >
-                      <option value="" >
-                      </option>
-                      </select>
-                </div>
-            </div>-->
             <!-- ENTRADA PARA EL CELULAR -->
             <div class="form-group">
               <div class="input-group">
                   <input type="text" class="form-control" name="editarcelular" id="editarcelular" placeholder="Nuevo numero celular"  required>
               </div>
             </div>
-<!------------------------------------------>
 
            </div>
 
