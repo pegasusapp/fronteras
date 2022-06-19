@@ -98,10 +98,10 @@
                                     <td><?= $value["email"] ?></td>
                                     <td>
                                         <div class="btn-group">
-                                          <button class="btn btn-primary px-2.5" onclick=editarUser(<?= $value["identificador"] ?>) codigoniu="<?= $value["identificador"] ?>" data-toggle="modal" data-target="#modalEditarUsuario"><i class="far fa-edit" aria-hidden="true"></i></button>
+                                          <button class="btn btn-primary px-2.5" onclick=editarUser("<?= $value["identificador"] ?>") codigoniu="<?= $value["identificador"] ?>" data-toggle="modal" data-target="#modalEditarUsuario"><i class="far fa-edit" aria-hidden="true"></i></button>
                                         </div> 
                                       <div class="btn-group">
-                                          <button class="btn btn-primary px-2.5"  onclick=editarMenu(<?= $value["identificador"] ?>) codigoniu="<?= $value["identificador"] ?>" ><i class="fas fa-lock" aria-hidden="true"></i></button>
+                                          <button class="btn btn-primary px-2.5"  onclick=editarMenu("<?= $value["identificador"] ?>") codigoniu="<?= $value["identificador"] ?>" ><i class="fas fa-lock" aria-hidden="true"></i></button>
                                       </div>     
                                     </td>
                                 </tr>
@@ -295,13 +295,13 @@ MODAL AGREGAR PERFIL
 
 </div>
 <?php
-$item  = null;
-                              $valor = null;
-                              $items = ControladorPerfil::ctrMostrarPerfil($item, $valor);
-                              foreach ($items as $key => $value)
-                                 {
-                                   $vlrUsuarios +='<option value="'.$value["idPerfilUsuarios"].'">'.$value["nombre"].'</option>';
-                                 } 
+      $item  = null;
+      $valor = null;
+      $items = ControladorPerfil::ctrMostrarPerfil($item, $valor);
+      foreach ($items as $key => $value)
+        {
+          $vlrUsuarios.='<option value="'.$value["idPerfilUsuarios"].'">'.$value["nombre"].'</option>';
+        } 
 ?> 
 
 <!--=====================================
