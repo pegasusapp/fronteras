@@ -295,13 +295,13 @@ MODAL AGREGAR PERFIL
 
 </div>
 <?php
-$item  = null;
-                              $valor = null;
-                              $items = ControladorPerfil::ctrMostrarPerfil($item, $valor);
-                              foreach ($items as $key => $value)
-                                 {
-                                   $vlrUsuarios +='<option value="'.$value["idPerfilUsuarios"].'">'.$value["nombre"].'</option>';
-                                 } 
+      $item  = null;
+      $valor = null;
+      $items = ControladorPerfil::ctrMostrarPerfil($item, $valor);
+      foreach ($items as $key => $value)
+        {
+          $vlrUsuarios.='<option value="'.$value["idPerfilUsuarios"].'">'.$value["nombre"].'</option>';
+        } 
 ?> 
 
 <!--=====================================
