@@ -60,11 +60,10 @@
 
 <script>
 $(document).ready(function(){
-
+ $('#create_pdf').click(function(){
   $('#hidden_html').val($('#testing').html());
-  alert($('#testing').html());
   $('#make_pdf').submit();
-
+ });
 });
 </script>
 
