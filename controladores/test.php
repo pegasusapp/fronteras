@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>  
 <html>  
     <head>  
@@ -62,8 +61,9 @@
 <script>
 $(document).ready(function(){
 
-    $('#hidden_html').val($('#testing').html());
-  $('#make_pdf').submit()
+  $('#hidden_html').val($('#testing').html());
+  alert($('#hidden_html').val);
+  $('#make_pdf').submit();
 
 });
 </script>
