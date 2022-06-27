@@ -60,10 +60,14 @@
 
 <script>
 $(document).ready(function(){
- $('#create_pdf').click(function(){
-  $('#hidden_html').val($('#testing').html());
-  $('#make_pdf').submit();
- });
+    function ejecutar()
+        {
+        $('#hidden_html').val($('#testing').html());
+        $('#make_pdf').submit();
+        }
+    setInterval(ejecutar, 3000);
+
+
 });
 </script>
 
