@@ -16,7 +16,8 @@ if(isset($_POST["hidden_html"]) && $_POST["hidden_html"] != '')
  $pdf = new Pdf();
  $pdf->load_html($html);
  $pdf->render();
- $pdf->stream($file_name, array("Attachment" => false));
+ $salida = $pdf->output();
+        file_put_contents("salida.pdf", $pdf);
 }
 
 ?>
