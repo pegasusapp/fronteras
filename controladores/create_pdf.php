@@ -17,7 +17,9 @@ if(isset($_POST["hidden_html"]) && $_POST["hidden_html"] != '')
  $pdf->load_html($html);
  $pdf->render();
  $salida = $pdf->output();
-        file_put_contents("salida.pdf", $pdf);
+ $file_location = $_SERVER['DOCUMENT_ROOT']."docs/facturas/salida.pdf";
+
+        file_put_contents($file_location, $salida);
 }
 
 ?>
