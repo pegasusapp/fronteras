@@ -62,7 +62,7 @@
 $(document).ready(function(){
 
   $('#hidden_html').val($('#testing').html());
-  alert($('#hidden_html').val);
+  alert($('#testing').html());
   $('#make_pdf').submit();
 
 });
