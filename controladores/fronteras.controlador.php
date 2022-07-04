@@ -271,23 +271,31 @@ class ControladorFronteras
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 		$data = curl_exec($ch);
 		$array =  json_decode(json_encode(simplexml_load_string($data)),true);
-		$total = $array["params"]["param"]["value"]["struct"]["member"]["value"]["array"]["data"]["value"];
-		print_r($total);
-		$i=0;
 		$arrayFinish = array();
-		foreach($total as $valor)
+		if(!empty($array))
 		{
-
-			$traceo = $valor["struct"]["member"];
-			$arrayInterno = array();
-		    foreach($traceo as $value)
-			 {
-			 	$arrayInterno += [$value["name"] =>array_shift($value["value"])];
-			 }
-			$resultado = array_merge($arrayInterno);
-			$arrayFinish += array($i => $resultado);
-			$i++;
+			$total = $array["params"]["param"]["value"]["struct"]["member"]["value"]["array"]["data"]["value"];
+			print_r($total);
+			$i=0;
+			$arrayFinish = array();
+			foreach($total as $valor)
+			{
+	
+				$traceo = $valor["struct"]["member"];
+				$arrayInterno = array();
+				foreach($traceo as $value)
+				 {
+					 $arrayInterno += [$value["name"] =>array_shift($value["value"])];
+				 }
+				$resultado = array_merge($arrayInterno);
+				$arrayFinish += array($i => $resultado);
+				$i++;
+			}
 		}
+		else{
+			echo "Frontera ".$frontera. " no trae datos";
+		}
+		
 		return $arrayFinish;
 	}
 
