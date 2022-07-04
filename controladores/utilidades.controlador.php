@@ -88,8 +88,8 @@ class ControladorUtilidades
 	 static public function anyoMesDia($dia):string{
 
 		$anyo = Date("Y");
-		$mes = Date("n")-$dia;
-		$dia = Date("j");
+		$mes =  Date("n");
+		$dia =  Date("j")-$dia;
 
 		return $anyo."-".$mes."-".$dia;
 
