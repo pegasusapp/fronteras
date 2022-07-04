@@ -239,7 +239,7 @@ class ControladorFronteras
 									<member>
 										<name>dia</name>
 										<value>
-											<int>1</int>
+											<int>$dia</int>
 										</value>
 									</member>
 									<member>
@@ -271,8 +271,9 @@ class ControladorFronteras
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 		$data = curl_exec($ch);
 		$array =  json_decode(json_encode(simplexml_load_string($data)),true);
+		var_dump($array);
 		$arrayFinish = array();
-		if(!$data || strlen(trim($data)) == 0)
+		if($array<>'1')
 		{
 			$total = $array["params"]["param"]["value"]["struct"]["member"]["value"]["array"]["data"]["value"];
 			print_r($total);
