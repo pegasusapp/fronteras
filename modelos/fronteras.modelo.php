@@ -31,10 +31,11 @@ class ModeloFronteras{
 		catch (PDOException $ex) 
 		{
 				$pdo->rollBack();
-				return "Error presentado en: ".$ex->getMessage();
+				return $ex->getMessage();
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
 	}
+	
 	static public function mdlMostrarEnergiasFronteraDia($valor,$anyo_curso,$mes_curso,$dia_curso)
 	{
 		$pdo = Conexion::conectar();
