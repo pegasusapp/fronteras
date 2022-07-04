@@ -8,7 +8,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."/controladores/constantes.controlador.ph
 
 class ControladorFronterasWS{ 
 
-    static public function ctrPrepareDataToSendWS(){
+     public function ctrPrepareDataToSendWS(){
 	 
         $fecha = explode("-",ControladorUtilidades::anyoMesDia(1));	
         $fronteras = ModeloFronteras::mdlMostrarFronteras("frontera",$item, $valor);
@@ -28,7 +28,7 @@ class ControladorFronterasWS{
            }
        }
     
-       static public function ctrConexionLecturasFronteraWS($anyo,$mes,$dia,$frontera):array{
+        public function ctrConexionLecturasFronteraWS($anyo,$mes,$dia,$frontera):array{
         
            $requestXML="<methodCall>
            <methodName>execute_kw</methodName>
@@ -140,7 +140,7 @@ class ControladorFronterasWS{
            return $arrayFinish;
        }
     
-       static public function ctrSendToSaveDataFronteraWS($datos,$anyo,$mes,$dia):bool{
+        public function ctrSendToSaveDataFronteraWS($datos,$anyo,$mes,$dia):bool{
     
            $datosLecturasEnergiaActiva = array();
            $datosLecturasEnergiaExportada = array();
@@ -180,7 +180,7 @@ class ControladorFronterasWS{
     
        }
     
-       static public function ctrChargeArrayEnergyType($vector,$siglaTenergy):array{
+        public function ctrChargeArrayEnergyType($vector,$siglaTenergy):array{
            $datosBack = array();
     
            $datosBack +=["tipoEnergia"=>$siglaTenergy];
@@ -196,7 +196,7 @@ class ControladorFronterasWS{
 
 
 }
-ControladorFronterasWS::ctrPrepareDataToSendWS();
-
+$task = new ControladorFronterasWS();
+$task -> ctrPrepareDataToSendWS();
 
 ?>
