@@ -82,8 +82,20 @@ class ControladorUtilidades
 					echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 			}
 	 }
+
+	 ///// RETORNA DIA MES AÑO ACTUAL separados por guis
+
+	 static public function anyoMesDia():string{
+
+		$anyo = Date("Y");
+		$mes = Date("n");
+		$dia = Date("j");
+
+		return $anyo."-".$mes."-".$dia;
+
+	 }
 	
 
-
+ 
 }
 

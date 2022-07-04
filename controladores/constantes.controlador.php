@@ -12,5 +12,13 @@ class Constantes{
 	const MGS_ERROR_INGRESO = '<br><div class="alert alert-danger">Error al ingresar, vuelve a intentarlo</div>';
 	const DIR_IMG_USR = "vistas/img/usuarios/";
 	const DIR_IMG_USR_DEFAULT = "vistas/img/usuarios/default/anonymous.png";
+	const USER_WS = "203";
+	const PASSW_WS = "4571";
+	const NAME_WS = "webserviceConsumosActual";
+	const DIRIN_WS = "telmetergy.webservices";
+	const SIGLA_ACTIVA = "kWhD";
+	const SIGLA_REACTIVA = "kVarhD";
+	const SIGLA_CAPACITIVA = "kVarhR";
+	const SIGLA_EXPORTADA = "kWhR";
 	
 }
