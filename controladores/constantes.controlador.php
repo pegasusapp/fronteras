@@ -20,5 +20,6 @@ class Constantes{
 	const SIGLA_REACTIVA = "kVarhD";
 	const SIGLA_CAPACITIVA = "kVarhR";
 	const SIGLA_EXPORTADA = "kWhR";
+	const URL_WS = "https://medicion.telmetergy.com.co/xmlrpc/2/object";
 	
 }

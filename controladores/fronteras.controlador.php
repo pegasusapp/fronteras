@@ -169,16 +169,20 @@ class ControladorFronteras
 
 	static public function ctrPrepareDataToSendWS(){
 	 
-	 $fecha = explode("-",ControladorUtilidades::anyoMesDia(2));	
+	 $fecha = explode("-",ControladorUtilidades::anyoMesDia(1));	
 	 $fronteras = ModeloFronteras::mdlMostrarFronteras("frontera",$item, $valor);
 	 foreach ($fronteras as $value){
 			$array = self::ctrConexionLecturasFronteraWS($fecha[0],$fecha[1],$fecha[2],$value["fronteraCliente"]);
 			if(!empty($array)){
+				$resultado = "OK";
+				$fechaParser = $fecha[0]."-".$fecha[1]."-".$fecha[2];
 				if(!self::ctrSendToSaveDataFronteraWS($array,$fecha[0],$fecha[1],$fecha[2]))
 				{
-				    echo ControladorUtilidades::answerBad("Error en la insercion en la frontera ".$value["fronteraCliente"],"inicio");
-					
+					$resultado = "ERROR";
 				}
+				$datosLog = array("fechaLectura" =>$fechaParser,"frontera"=>$value["fronteraCliente"],"resultado"=>$resultado);
+				ControladorLogLecturaWS::ctrCrearLogLecturaWS($datosLog);
+				
 			}
 		}
 	}
@@ -200,17 +204,17 @@ class ControladorFronteras
 			</param>
 			<param>
 				<value>
-					<string>4571</string>
+					<string>".Constantes::PASSW_WS."</string>
 				</value>
 			</param>
 			<param>
 				<value>
-					<string>telmetergy.webservices</string>
+					<string>".Constantes::DIRIN_WS."</string>
 				</value>
 			</param>
 			<param>
 				<value>
-					<string>webserviceConsumosActual</string>
+					<string>".Constantes::NAME_WS."</string>
 				</value>
 			</param>
 			<param>
@@ -256,7 +260,7 @@ class ControladorFronteras
 		</params>
 		</methodCall>";
 
-		$server = 'https://medicion.telmetergy.com.co/xmlrpc/2/object';
+		$server = Constantes::URL_WS;
 		$headers = [
 			"Content-type: text/xml",
 			"Content-length: " . strlen($requestXML), "Connection: close",
