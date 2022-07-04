@@ -83,17 +83,18 @@ class ControladorUtilidades
 			}
 	 }
 
-	 ///// RETORNA DIA MES AÑO ACTUAL separados por guis
+	 ///// RETORNA DIA MES AÑO ACTUAL separados por guion
 
-	 static public function anyoMesDia():string{
+	 static public function anyoMesDia($dia):string{
 
 		$anyo = Date("Y");
-		$mes = Date("n");
+		$mes = Date("n")-$dia;
 		$dia = Date("j");
 
 		return $anyo."-".$mes."-".$dia;
 
 	 }
+
 	
 
  
