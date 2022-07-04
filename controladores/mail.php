@@ -4,11 +4,11 @@ use PHPMailer\PHPMailer\Exception;
 require 'PHPMailer-master/src/Exception.php';
 require 'PHPMailer-master/src/PHPMailer.php';
 require 'PHPMailer-master/src/SMTP.php';
-require $_SERVER['DOCUMENT_ROOT']."/controladores/logLecturaWS.controlador.php";
-require $_SERVER['DOCUMENT_ROOT']."/modelos/logLecturaWS.modelo.php";
-require $_SERVER['DOCUMENT_ROOT']."/modelos/fronteras.modelo.php";
-require $_SERVER['DOCUMENT_ROOT']."/controladores/utilidades.controlador.php";
-require $_SERVER['DOCUMENT_ROOT']."/controladores/constantes.controlador.php";
+require 'logLecturaWS.controlador.php';
+require '../modelos/logLecturaWS.modelo.php';
+require '../modelos/fronteras.modelo.php';
+require 'utilidades.controlador.php';
+require 'constantes.controlador.php';
 
 class Mail{
 
