@@ -196,7 +196,7 @@ class ControladorFronterasWS{
 
 
 }
-ControladorFronteras::ctrPrepareDataToSendWS();
+ControladorFronterasWS::ctrPrepareDataToSendWS();
 
 
 ?>
