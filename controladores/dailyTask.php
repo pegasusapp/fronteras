@@ -15,11 +15,13 @@ class ControladorFronterasWS{
 
                 
         $fecha = explode("-",ControladorUtilidades::anyoMesDia(1));	
-
+  echo "---->".$fecha;
 
 
        
         $fronteras = ModeloFronteras::mdlMostrarFronteras("frontera",$item, $valor);
+
+        var_dump($fronteras);
         foreach ($fronteras as $value){
                $array = self::ctrConexionLecturasFronteraWS($fecha[0],$fecha[1],$fecha[2],$value["fronteraCliente"]);
                if(!empty($array)){
