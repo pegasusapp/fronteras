@@ -87,9 +87,14 @@ class ControladorUtilidades
 
 	 static public function anyoMesDia($dia):string{
 
-		$anyo = Date("Y");
-		$mes =  Date("n");
-		$dia =  Date("j")-$dia;
+
+		$fecha_actual = date("d-m-Y");
+		
+		$dateFix = explode("-",date("Y-n-j",strtotime($fecha_actual."- ".$dia." days"))); 
+
+		$anyo = $dateFix[0];
+		$mes =  $dateFix[1];
+		$dia =  $dateFix[2];
 
 		return $anyo."-".$mes."-".$dia;
 
