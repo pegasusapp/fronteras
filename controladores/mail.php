@@ -5,7 +5,12 @@ require 'PHPMailer-master/src/Exception.php';
 require 'PHPMailer-master/src/PHPMailer.php';
 require 'PHPMailer-master/src/SMTP.php';
 
-	// La cuenta está bloqueada.
+class Mail{
+
+
+    public function sendMail(){
+
+        	// La cuenta está bloqueada.
     $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
     try {
             $mail->isSMTP();                                      // Set mailer to use SMTP
@@ -28,3 +33,10 @@ require 'PHPMailer-master/src/SMTP.php';
         {
                 echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
         }
+    }
+
+}
+
+$mail = new Mail();
+$mail -> sendMail();
+
