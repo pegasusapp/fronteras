@@ -1,39 +1,18 @@
 <?php
 
-
-require 'controladores/utilidades.controlador.php';
-require 'controladores/constantes.controlador.php';
+require 'logLecturaWS.controlador.php';
+require '../modelos/logLecturaWS.modelo.php';
+require '../modelos/fronteras.modelo.php';
+require 'utilidades.controlador.php';
+require 'constantes.controlador.php';
 
 
 class ControladorFronterasWS{ 
 
      public function ctrPrepareDataToSendWS(){
 
-                	// La cuenta está bloqueada.
-                    $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
-                    try {
-                            $mail->isSMTP();                                      // Set mailer to use SMTP
-                            $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-                            $mail->SMTPAuth = true;                               // Enable SMTP authentication
-                            $mail->Username = "notificaciones.italener@gmail.com";                 // SMTP username
-                            $mail->Password = "zqcjnrsntxejfuuk";                           // SMTP password
-                            $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-                            $mail->Port = 587;                                     // TCP port to connect to
-                            $mail->From = "notificaciones.italener@gmail.com";
-                            $mail->FromName = "Italener";
-                            $mail->addAddress("oscar.2001601@gmail.com", 'Usuario :');     // Add a recipient
-                            $mail->isHTML(true);                                                      // Set email format to HTML
-                            $mail->Subject = "Hola";
-                            $mail->Body    = "Hola ";
-                            $mail->send();
-                            
-                        } 
-                    catch (Exception $e)
-                        {
-                                echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
-                        }
-	 
-       /* $fecha = explode("-",ControladorUtilidades::anyoMesDia(1));	
+                
+        $fecha = explode("-",ControladorUtilidades::anyoMesDia(1));	
 
 
 
@@ -52,7 +31,7 @@ class ControladorFronterasWS{
                    ControladorLogLecturaWS::ctrCrearLogLecturaWS($datosLog);
                    
                }
-           }*/
+           }
        }
     
         public function ctrConexionLecturasFronteraWS($anyo,$mes,$dia,$frontera):array{
