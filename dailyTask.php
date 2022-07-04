@@ -39,7 +39,7 @@ class ControladorFronterasWS{
                                 echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
                         }
 	 
-        $fecha = explode("-",ControladorUtilidades::anyoMesDia(1));	
+       /* $fecha = explode("-",ControladorUtilidades::anyoMesDia(1));	
 
 
 
@@ -58,7 +58,7 @@ class ControladorFronterasWS{
                    ControladorLogLecturaWS::ctrCrearLogLecturaWS($datosLog);
                    
                }
-           }
+           }*/
        }
     
         public function ctrConexionLecturasFronteraWS($anyo,$mes,$dia,$frontera):array{
