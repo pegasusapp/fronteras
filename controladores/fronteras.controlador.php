@@ -256,6 +256,8 @@ class ControladorFronteras
 		</params>
 		</methodCall>";
 
+		echo "---->".$requestXML;
+
 
 		$server = 'https://medicion.telmetergy.com.co/xmlrpc/2/object';
 		$headers = [
