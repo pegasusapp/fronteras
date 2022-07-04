@@ -16,7 +16,7 @@ class ControladorFronterasWS{
                 
         $fecha = explode("-",ControladorUtilidades::anyoMesDia(1));	
         $fronteras = ModeloFronteras::mdlMostrarFronteras("frontera","","");
-
+        $resultado_gral = array(); 
         foreach ($fronteras as $value){
                $array = self::ctrConexionLecturasFronteraWS($fecha[0],$fecha[1],$fecha[2],$value["fronteraCliente"]);
                if(!empty($array)){
@@ -28,11 +28,40 @@ class ControladorFronterasWS{
                    }
                    $datosLog = array("fechaLectura" =>$fechaParser,"frontera"=>$value["fronteraCliente"],"resultado"=>$resultado);
                    ControladorLogLecturaWS::ctrCrearLogLecturaWS($datosLog);
+                   $resultado_gral +=$datosLog; 
                    
                }
            }
+           self::sendMail($resultado_gral);
        }
-    
+
+       public function sendMail($resultado_gral){
+
+                        // La cuenta está bloqueada.
+                $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+                try {
+                        $mail->isSMTP();                                      // Set mailer to use SMTP
+                        $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+                        $mail->SMTPAuth = true;                               // Enable SMTP authentication
+                        $mail->Username = "notificaciones.italener@gmail.com";                 // SMTP username
+                        $mail->Password = "zqcjnrsntxejfuuk";                           // SMTP password
+                        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+                        $mail->Port = 587;                                     // TCP port to connect to
+                        $mail->From = "notificaciones.italener@gmail.com";
+                        $mail->FromName = "Italener";
+                        $mail->addAddress("oscar.2001601@gmail.com", 'Usuario :');     // Add a recipient
+                        $mail->isHTML(true);                                                      // Set email format to HTML
+                        $mail->Subject = "Hola";
+                        $mail->Body    = "Hola ".$resultado_gral;
+                        $mail->send();
+                        
+                    } 
+                catch (Exception $e)
+                    {
+                            echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+                    }
+                }
+                    
         public function ctrConexionLecturasFronteraWS($anyo,$mes,$dia,$frontera):array{
         
            $requestXML="<methodCall>
