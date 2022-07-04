@@ -271,12 +271,10 @@ class ControladorFronteras
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 		$data = curl_exec($ch);
 		$array =  json_decode(json_encode(simplexml_load_string($data)),true);
-		$total_uno = $array["params"]["param"]["value"]["struct"];
 		$arrayFinish = array();
-		if(sizeof($total_uno) === 1)
+		if(sizeof($array["params"]["param"]["value"]["struct"]) === 1)
 		{
 			$total = $array["params"]["param"]["value"]["struct"]["member"]["value"]["array"]["data"]["value"];
-			print_r($total);
 			$i=0;
 			$arrayFinish = array();
 			foreach($total as $valor)
@@ -334,12 +332,6 @@ class ControladorFronteras
 										"frontera_fronteraCliente"=>$frontera,
 										"tipoMedidor"=>"P",
 										"fechaCompleta"=>$anyo.'-'.$mes.'-'.$dia);
-
-										print("<pre>".print_r($datosMedidor,true)."</pre>");
-										print("<pre>".print_r($datosLecturasEnergiaActiva,true)."</pre>");
-										print("<pre>".print_r($datosLecturasEnergiaExportada,true)."</pre>");
-										print("<pre>".print_r($datosLecturasEnergiaReactiva,true)."</pre>");
-										print("<pre>".print_r($datosLecturasEnergiaCapacitiva,true)."</pre>");
 
 	return ModeloFronteras::mdlInsertLecturasFrontera($datosMedidor,$datosLecturasEnergiaActiva,$datosLecturasEnergiaExportada,$datosLecturasEnergiaReactiva,$datosLecturasEnergiaCapacitiva);
 
