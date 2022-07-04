@@ -256,9 +256,6 @@ class ControladorFronteras
 		</params>
 		</methodCall>";
 
-		echo "---->".$requestXML;
-
-
 		$server = 'https://medicion.telmetergy.com.co/xmlrpc/2/object';
 		$headers = [
 			"Content-type: text/xml",
@@ -273,9 +270,8 @@ class ControladorFronteras
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 		$data = curl_exec($ch);
 		$array =  json_decode(json_encode(simplexml_load_string($data)),true);
-		echo "-->".print_r($array);
 		$arrayFinish = array();
-		if(!empty($array))
+		if(!$data || strlen(trim($data)) == 0)
 		{
 			$total = $array["params"]["param"]["value"]["struct"]["member"]["value"]["array"]["data"]["value"];
 			print_r($total);
@@ -336,6 +332,12 @@ class ControladorFronteras
 										"frontera_fronteraCliente"=>$frontera,
 										"tipoMedidor"=>"P",
 										"fechaCompleta"=>$anyo.'-'.$mes.'-'.$dia);
+
+	var_dump($datosMedidor);
+	var_dump($datosLecturasEnergiaActiva);
+	var_dump($datosLecturasEnergiaExportada);
+	var_dump($datosLecturasEnergiaReactiva);
+	var_dump($datosLecturasEnergiaCapacitiva);									
 
 	return ModeloFronteras::mdlInsertLecturasFrontera($datosMedidor,$datosLecturasEnergiaActiva,$datosLecturasEnergiaExportada,$datosLecturasEnergiaReactiva,$datosLecturasEnergiaCapacitiva);
 
