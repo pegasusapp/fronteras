@@ -1,8 +1,6 @@
 <?php
 
 require 'controladores/logLecturaWS.controlador.php';
-require 'modelos/logLecturaWS.modelo.php';
-require 'modelos/fronteras.modelo.php';
 require 'controladores/utilidades.controlador.php';
 require 'controladores/constantes.controlador.php';
 use PHPMailer\PHPMailer\PHPMailer;
