@@ -1,13 +1,14 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 require "logLecturaWS.controlador.php";
 require dirname(__FILE__)."/../modelos/logLecturaWS.modelo.php";
 require dirname(__FILE__)."/../modelos/fronteras.modelo.php";
 require "utilidades.controlador.php";
 require "constantes.controlador.php";
-
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require 'PHPMailer-master/src/Exception.php';
+require 'PHPMailer-master/src/PHPMailer.php';
+require 'PHPMailer-master/src/SMTP.php';
 
 class ControladorFronterasWS{ 
 
