@@ -181,6 +181,7 @@ class ControladorFronteras
 					$resultado = "ERROR";
 				}
 				$datosLog = array("fechaLectura" =>$fechaParser,"frontera"=>$value["fronteraCliente"],"resultado"=>$resultado);
+				print_r($datosLog);
 				ControladorLogLecturaWS::ctrCrearLogLecturaWS($datosLog);
 				
 			}
