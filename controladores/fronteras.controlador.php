@@ -340,7 +340,7 @@ class ControladorFronteras
 
 		$datosBack +=["tipoEnergia"=>$siglaTenergy];
 
-		for($i = 1; $i < 24;$i++)
+		for($i = 1; $i <= 24;$i++)
 		 {
 			$datosBack += ["H".$i => $vector["hora".$i]];
 		 }
