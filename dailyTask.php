@@ -1,15 +1,15 @@
 <?php
 
-require 'logLecturaWS.controlador.php';
-require '../modelos/logLecturaWS.modelo.php';
-require '../modelos/fronteras.modelo.php';
-require 'utilidades.controlador.php';
-require 'constantes.controlador.php';
+require 'controladores/logLecturaWS.controlador.php';
+require 'modelos/logLecturaWS.modelo.php';
+require 'modelos/fronteras.modelo.php';
+require 'controladores/utilidades.controlador.php';
+require 'controladores/constantes.controlador.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-require 'PHPMailer-master/src/Exception.php';
-require 'PHPMailer-master/src/PHPMailer.php';
-require 'PHPMailer-master/src/SMTP.php';
+require 'controladores/PHPMailer-master/src/Exception.php';
+require 'controladores/PHPMailer-master/src/PHPMailer.php';
+require 'controladores/PHPMailer-master/src/SMTP.php';
 
 class ControladorFronterasWS{ 
 
