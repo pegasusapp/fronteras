@@ -195,7 +195,7 @@ class ControladorFronteras
 			</param>
 			<param>
 				<value>
-					<int>Constantes::USER_WS</int>
+					<int>".Constantes::USER_WS."</int>
 				</value>
 			</param>
 			<param>
