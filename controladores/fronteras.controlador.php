@@ -172,7 +172,6 @@ class ControladorFronteras
 	 $fecha = explode("-",ControladorUtilidades::anyoMesDia(1));	
 	 $fronteras = ModeloFronteras::mdlMostrarFronteras("frontera",$item, $valor);
 	 foreach ($fronteras as $value){
-		echo "-->".$fecha[0]."-".$fecha[1]."-".$fecha[2]."-".$value["fronteraCliente"];
 			$array = self::ctrConexionLecturasFronteraWS($fecha[0],$fecha[1],$fecha[2],$value["fronteraCliente"]);
 			if(!empty($array)){
 				if(!self::ctrSendToSaveDataFronteraWS($array,$fecha[0],$fecha[1],$fecha[2]))
@@ -291,9 +290,7 @@ class ControladorFronteras
 				$i++;
 			}
 		}
-		else{
-			echo "Frontera ".$frontera. " no trae datos";
-		}
+		
 		
 		return $arrayFinish;
 	}
@@ -333,11 +330,6 @@ class ControladorFronteras
 										"tipoMedidor"=>"P",
 										"fechaCompleta"=>$anyo.'-'.$mes.'-'.$dia);
 
-										print("<pre>".print_r($datosMedidor,true)."</pre>");
-										print("<pre>".print_r($datosLecturasEnergiaActiva,true)."</pre>");
-										print("<pre>".print_r($datosLecturasEnergiaExportada,true)."</pre>");
-										print("<pre>".print_r($datosLecturasEnergiaReactiva,true)."</pre>");
-										print("<pre>".print_r($datosLecturasEnergiaCapacitiva,true)."</pre>");
 
 	return ModeloFronteras::mdlInsertLecturasFrontera($datosMedidor,$datosLecturasEnergiaActiva,$datosLecturasEnergiaExportada,$datosLecturasEnergiaReactiva,$datosLecturasEnergiaCapacitiva);
 
