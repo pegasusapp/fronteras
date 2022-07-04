@@ -1,8 +1,6 @@
 <?php
 
-require 'controladores/logLecturaWS.controlador.php';
-require 'controladores/utilidades.controlador.php';
-require 'controladores/constantes.controlador.php';
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require 'controladores/PHPMailer-master/src/Exception.php';
