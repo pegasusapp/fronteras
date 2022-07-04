@@ -1,7 +1,4 @@
 <?php
-require "PHPMailer-master/src/Exception.php";
-require "PHPMailer-master/src/PHPMailer.php";
-require "PHPMailer-master/src/SMTP.php";
 
 require "logLecturaWS.controlador.php";
 require dirname(__FILE__)."/../modelos/logLecturaWS.modelo.php";
