@@ -1,10 +1,10 @@
 <?php
 
-require_once "logLecturaWS.controlador.php";
-require_once "../modelos/logLecturaWS.modelo.php";
-require_once "../modelos/fronteras.modelo.php";
-require_once "utilidades.controlador.php";
-require_once "constantes.controlador.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/controladores/logLecturaWS.controlador.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/modelos/logLecturaWS.modelo.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/modelos/fronteras.modelo.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/controladores/utilidades.controlador.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/controladores/constantes.controlador.php";
 
 class ControladorFronterasWS{
 
