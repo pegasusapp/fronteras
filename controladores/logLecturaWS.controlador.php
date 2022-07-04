@@ -3,7 +3,7 @@
 class ControladorLogLecturaWS
 {
 
-    private $tabla = "logLecturasWS";
+    private static $tabla = "logLecturasWS";
 
 	static public function ctrCrearLogLecturaWS($datosLogWS):bool{
 		
