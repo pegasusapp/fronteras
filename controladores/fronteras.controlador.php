@@ -172,7 +172,6 @@ class ControladorFronteras
 	 $fecha = explode("-",ControladorUtilidades::anyoMesDia(1));	
 	 $fronteras = ModeloFronteras::mdlMostrarFronteras("frontera",$item, $valor);
 	 foreach ($fronteras as $value){
-		echo "-->".$fecha[0]."-".$fecha[1]."-".$fecha[2]."-".$value["fronteraCliente"];
 			$array = self::ctrConexionLecturasFronteraWS($fecha[0],$fecha[1],$fecha[2],$value["fronteraCliente"]);
 			if(!empty($array)){
 				if(!self::ctrSendToSaveDataFronteraWS($array,$fecha[0],$fecha[1],$fecha[2]))
@@ -291,9 +290,7 @@ class ControladorFronteras
 				$i++;
 			}
 		}
-		else{
-			echo "Frontera ".$frontera. " no trae datos";
-		}
+		
 		
 		return $arrayFinish;
 	}
