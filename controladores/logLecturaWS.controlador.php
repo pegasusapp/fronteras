@@ -3,15 +3,12 @@
 class ControladorLogLecturaWS
 {
 
-    public $tabla = "logLecturasWS";
+    private $tabla = "logLecturasWS";
 
 	static public function ctrCrearLogLecturaWS($datosLogWS):bool{
 		
 			if(!empty($datosLogWS)){
-				echo "---->";
-				print_r($datosLogWS);
-				return ModeloLogLecturaWS::mdlIngresarLogLecturaWS($tabla,$datosLogWS);
-
+				return ModeloLogLecturaWS::mdlIngresarLogLecturaWS(self::$tabla,$datosLogWS);
 			}		
 			
 
@@ -27,7 +24,7 @@ class ControladorLogLecturaWS
 
 		$item = NULL;
 		$valor = NULL;
-		return ModeloLogLectura::mdlMostrarLogLecturas($tabla,$item,$valor);
+		return ModeloLogLectura::mdlMostrarLogLecturas(self::$tabla,$item,$valor);
     
 
 	}
