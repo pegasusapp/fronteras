@@ -271,6 +271,7 @@ class ControladorFronteras
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 		$data = curl_exec($ch);
 		$array =  json_decode(json_encode(simplexml_load_string($data)),true);
+		echo "-->".print_r($array);
 		$arrayFinish = array();
 		if(!empty($array))
 		{
