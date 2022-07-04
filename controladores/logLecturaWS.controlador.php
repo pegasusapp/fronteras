@@ -8,6 +8,7 @@ class ControladorLogLecturaWS
 	static public function ctrCrearLogLecturaWS($datosLogWS):bool{
 		
 			if(!empty($datosLogWS)){
+				echo "---->";
 				print_r($datosLog);
 				return ModeloLogLecturaWS::mdlIngresarLogLecturaWS($tabla,$datosLogWS);
 
