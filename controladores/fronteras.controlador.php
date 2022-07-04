@@ -333,6 +333,12 @@ class ControladorFronteras
 										"tipoMedidor"=>"P",
 										"fechaCompleta"=>$anyo.'-'.$mes.'-'.$dia);
 
+										print("<pre>".print_r($datosMedidor,true)."</pre>");
+										print("<pre>".print_r($datosLecturasEnergiaActiva,true)."</pre>");
+										print("<pre>".print_r($datosLecturasEnergiaExportada,true)."</pre>");
+										print("<pre>".print_r($datosLecturasEnergiaReactiva,true)."</pre>");
+										print("<pre>".print_r($datosLecturasEnergiaCapacitiva,true)."</pre>");
+
 	return ModeloFronteras::mdlInsertLecturasFrontera($datosMedidor,$datosLecturasEnergiaActiva,$datosLecturasEnergiaExportada,$datosLecturasEnergiaReactiva,$datosLecturasEnergiaCapacitiva);
 
 	}
