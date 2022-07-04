@@ -9,7 +9,7 @@ class ControladorLogLecturaWS
 		
 			if(!empty($datosLogWS)){
 				echo "---->";
-				print_r($datosLog);
+				print_r($datosLogWS);
 				return ModeloLogLecturaWS::mdlIngresarLogLecturaWS($tabla,$datosLogWS);
 
 			}		
