@@ -20,7 +20,7 @@ class ModeloLogLecturaWS{
 	}
 
 	static public function mdlIngresarLogLecturaWS($tabla,$datosLog): bool{
-
+		print_r($datosLog);
 		$stmt =  Conexion::conectar()->prepare("INSERT INTO $tabla(fechaLectura, frontera, resultado, fechaInsert) VALUES ( :fechaLectura, :frontera, :resultado, NOW())");
 		$stmt->bindParam(":fechaLectura", $datosLog["fechaLectura"], PDO::PARAM_STR);
 		$stmt->bindParam(":frontera", $datosLog["frontera"], PDO::PARAM_STR);
