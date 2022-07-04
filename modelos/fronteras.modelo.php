@@ -35,7 +35,7 @@ class ModeloFronteras{
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
 	}
-	
+
 	static public function mdlMostrarEnergiasFronteraDia($valor,$anyo_curso,$mes_curso,$dia_curso)
 	{
 		$pdo = Conexion::conectar();
@@ -453,7 +453,7 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 		}
 		catch (PDOException $ex) 
 			{
-					
+					echo "<-****->".$ex."<-****->";
 				    $pdo->rollBack();
 					return false;
 			}
