@@ -238,7 +238,7 @@ class ControladorFronteras
 									<member>
 										<name>dia</name>
 										<value>
-											<int>$dia</int>
+											<int>1</int>
 										</value>
 									</member>
 									<member>
