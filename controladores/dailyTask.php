@@ -2,10 +2,9 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-set_include_path($_SERVER['DOCUMENT_ROOT']);
 require 'logLecturaWS.controlador.php';
-require '/modelos/logLecturaWS.modelo.php';
-require '/modelos/fronteras.modelo.php';
+require $_SERVER['DOCUMENT_ROOT'].'/modelos/logLecturaWS.modelo.php';
+require $_SERVER['DOCUMENT_ROOT'].'/modelos/fronteras.modelo.php';
 require 'utilidades.controlador.php';
 require 'constantes.controlador.php';
 
