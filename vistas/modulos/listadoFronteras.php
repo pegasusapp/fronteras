@@ -15,18 +15,25 @@
  
 }
 
+/* Ensure that the demo table scrolls */
+th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        margin: 0 auto;
+    }
 
-
-table.dataTable td.details-control:before {
-   content: '\f152';
+ td.details-control {
+  content: '\f152';
    font-family: 'Font Awesome\ 5 Free';
    cursor: pointer;
+   font-size: 22px;
    color: #55a4be;
 }
-table.dataTable tr.shown td.details-control:before {
+tr.shown td.details-control {
   content: '\f150';
   color: black;
 }
+
+
 </style>
 <?php
  $item = NULL;
