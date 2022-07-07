@@ -62,7 +62,7 @@ tr.shown td.details-control {
             
             <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered table-striped dt-responsive" id="example_frontera" >
+                <table class="table table-bordered table-striped dt-responsive tablas" id="example_table" >
                     <caption>Listado de fronteras</caption>
                     <thead>
                      <tr>
@@ -122,3 +122,4 @@ tr.shown td.details-control {
 </div>
 
 <?php include 'editlistadoFronteras.php' ?>
+
