@@ -69,8 +69,6 @@ tr.shown td.details-control {
                       <th scope="col"></th>
                       <th scope="col">FRONTERA</th>
                       <th scope="col">DESCRIPCION FRONTERA</th>
-                      <th scope="col">NIU ITALENER</th>
-                      <th scope="col">NIU OPERADOR</th>
                       <th scope="col">SEGUIMIENTO</th>
                       <th scope="col">CANT. MIN KV</th>
                       <th scope="col">ACCIONES</th>
@@ -84,8 +82,6 @@ tr.shown td.details-control {
                                       <td class="details-control" id="td_<?= $value["fronteraCliente"] ?>" vlr="<?= $value["fronteraCliente"]?>"></td>
                                       <td><?= $value["fronteraCliente"] ?></td> 
                                       <td><?= $value["descripcionFrontera"] ?></td> 
-                                      <td><?= $value["niuEmpresa"] ?></td> 
-                                      <td><?= $value["niuOperador"] ?></td> 
                                       <td><?= $r = ("S" == $value["seguimiento"]) ? "SI" : "NO"; ?></td> 
                                       <td><?= $value["minimoKv"] ?></td> 
                                       <td>
@@ -106,8 +102,6 @@ tr.shown td.details-control {
                         <th scope="col"></th>
                         <th scope="col">FRONTERA</th>
                         <th scope="col">DESCRIPCION FRONTERA</th>
-                        <th scope="col">NIU ITALENER</th>
-                        <th scope="col">NIU OPERADOR</th>
                         <th scope="col">SEGUIMIENTO</th>
                         <th scope="col">CANT. MIN KV</th>
                         <th scope="col">ACCIONES</th>
