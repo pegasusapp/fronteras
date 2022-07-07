@@ -31,8 +31,6 @@ session_start();
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
-  <!-- local css -->
-  <link rel="stylesheet" href="plugins/css/local.css" rel="stylesheet">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- sweet alert -->
