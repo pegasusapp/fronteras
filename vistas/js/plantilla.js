@@ -46,7 +46,18 @@ $(".tablas").DataTable({
 		ordering: true,
 		info: true,
 		autoWidth: false,
-		responsive: true,
+		responsive: {
+			details: {
+				type: 'column',
+				target: 'tr'
+			}
+		},
+		columnDefs: [ {
+			className: 'control',
+			orderable: false,
+			targets:   0
+		} ],
+		order: [ 1, 'asc' ],
         fixedColumns:   {
             leftColumns: 2
             
@@ -63,7 +74,6 @@ $(".tablas").DataTable({
    
 
 });
-
 
 $('#tabla_total_ids').DataTable( {
 

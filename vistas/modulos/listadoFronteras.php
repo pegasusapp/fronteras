@@ -15,19 +15,6 @@
  
 }
 
-/* Ensure that the demo table scrolls */
-th, td { white-space: nowrap; }
-    div.dataTables_wrapper {
-        margin: 0 auto;
-    }
-
- td.details-control {
-    background: url('vistas/img/details_open.png') no-repeat center center;
-    cursor: pointer;
-}
-tr.shown td.details-control {
-    background: url('vistas/img/details_close.png') no-repeat center center;
-}
 </style>
 <?php
  $item = NULL;
