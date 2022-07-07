@@ -89,7 +89,7 @@ $(".tablas").DataTable({
    
 
 });
-
+/*
 $('#tabla_total_ids').DataTable( {
 
 	"language": {
@@ -194,5 +194,5 @@ $('#tabla_total_ids').DataTable( {
 	  );
 	},
 	destroy: true
-  } );
+  } );*/
 
