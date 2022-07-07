@@ -21,19 +21,19 @@ th, td { white-space: nowrap; }
         margin: 0 auto;
     }
 
- td.details-control {
-  content: '\f152';
+
+
+table.dataTable td.details-control:before {
+   content: '\f152';
    font-family: 'Font Awesome\ 5 Free';
    cursor: pointer;
    font-size: 22px;
    color: #55a4be;
 }
-tr.shown td.details-control {
+table.dataTable tr.shown td.details-control:before {
   content: '\f150';
   color: black;
 }
-
-
 </style>
 <?php
  $item = NULL;
