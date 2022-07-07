@@ -21,7 +21,6 @@ table.dataTable td.details-control:before {
    content: '\f152';
    font-family: 'Font Awesome\ 5 Free';
    cursor: pointer;
-   font-size: 22px;
    color: #55a4be;
 }
 table.dataTable tr.shown td.details-control:before {
