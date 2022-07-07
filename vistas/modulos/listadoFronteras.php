@@ -15,18 +15,18 @@
  
 }
 
-/* Ensure that the demo table scrolls */
-th, td { white-space: nowrap; }
-    div.dataTables_wrapper {
-        margin: 0 auto;
-    }
 
- td.details-control {
-    background: url('vistas/img/details_open.png') no-repeat center center;
-    cursor: pointer;
+
+table.dataTable td.details-control:before {
+   content: '\f152';
+   font-family: 'Font Awesome\ 5 Free';
+   cursor: pointer;
+   font-size: 22px;
+   color: #55a4be;
 }
-tr.shown td.details-control {
-    background: url('vistas/img/details_close.png') no-repeat center center;
+table.dataTable tr.shown td.details-control:before {
+  content: '\f150';
+  color: black;
 }
 </style>
 <?php
