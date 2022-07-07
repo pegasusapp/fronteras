@@ -30,10 +30,13 @@ tr.shown td.details-control {
 }
 </style>
 <?php
-	$anyo_curso = date("Y");
-  $mes_curso = date("n");
-  $dia_curso = date("d");
-
+ $item = NULL;
+ $valor = NULL;
+ if($_SESSION["perfilSesion"] <> 9)
+ {
+  $item = "clienteFrontera_nitCliente";
+  $valor = $_SESSION["identificador"];
+ }
 
 ?>
 <div class="content-wrapper">
@@ -61,22 +64,6 @@ tr.shown td.details-control {
               <div class="card-body">
                 <table class="table table-bordered table-striped dt-responsive tablas" id="example_table" >
                     <caption>Listado de fronteras</caption>
-                <?php
-                        if($_SESSION["perfilSesion"] == 9)
-                        {
-                          $item = NULL;
-                          $valor = NULL;
-                          $adicion = "<th>SEGUIMIENTO</th><th>CANT. MIN KV</th><th>ACCIONES</th>";
-
-                         
-                        }
-                        else
-                        {
-                          $item = "clienteFrontera_nitCliente";
-                          $valor = $_SESSION["identificador"];
-                          $adicion ="<th>ACCIONES</th>";
-                        }  
-                ?>
                     <thead>
                      <tr>
                       <th scope="col"></th>
@@ -84,67 +71,46 @@ tr.shown td.details-control {
                       <th scope="col">DESCRIPCION FRONTERA</th>
                       <th scope="col">NIU ITALENER</th>
                       <th scope="col">NIU OPERADOR</th>
-                      <?php echo $adicion; ?>
+                      <th scope="col">SEGUIMIENTO</th>
+                      <th scope="col">CANT. MIN KV</th>
+                      <th scope="col">ACCIONES</th>
                      </tr> 
                     </thead>
                     <tbody>
-                        <?php
+                    <?php
                       $items = ControladorFronteras::ctrMostrarFronteras($item, $valor);
-                      foreach ($items as $key => $value)
-                      {
-                      
-                       
-                            if($_SESSION["perfilSesion"] == 9)
-                            {
-                              $r = ("S" == $value["seguimiento"]) ? "SI" : "NO"; 
-                              echo "<tr> 		                  
-                                      <td class='details-control' id='td_".$value["fronteraCliente"]."' vlr='".$value["fronteraCliente"]."'></td>
-                                      <td>".$value["fronteraCliente"]."</td> 
-                                      <td>".$value["descripcionFrontera"]."</td> 
-                                      <td>".$value["niuEmpresa"]."</td> 
-                                      <td>".$value["niuOperador"]."</td> 
-                                      <td>".$r."</td> 
-                                      <td>".$value["minimoKv"]."</td> 
+                        foreach ($items as $key => $value): ?>
+                               <tr> 		                  
+                                      <td class="details-control" id="td_<?= $value["fronteraCliente"] ?>" vlr="<?= $value["fronteraCliente"]?>"></td>
+                                      <td><?= $value["fronteraCliente"] ?></td> 
+                                      <td><?= $value["descripcionFrontera"] ?></td> 
+                                      <td><?= $value["niuEmpresa"] ?></td> 
+                                      <td><?= $value["niuOperador"] ?></td> 
+                                      <td><?= $r = ("S" == $value["seguimiento"]) ? "SI" : "NO"; ?></td> 
+                                      <td><?= $value["minimoKv"] ?></td> 
                                       <td>
                                           <div class='btn-group'>
-                                            <button class='btn btn-primary px-2.5' onclick=editarFrontera('".$value["fronteraCliente"]."')  data-toggle='modal' data-target='#modalEditarFrontera'><i class='far fa-edit' aria-hidden='true'></i></button>
+                                            <button class='btn btn-primary px-2.5' onclick=editarFrontera('<?= $value["fronteraCliente"] ?>')  data-toggle='modal' data-target='#modalEditarFrontera'><em class='far fa-edit' aria-hidden='true'></em></button>
                                           </div>
                                           <div class='btn-group'>
-                                            <button class='btn btn-primary px-2.5' onclick=reporteFrontera('".$value["fronteraCliente"]."')  data-toggle='modal' data-target='#modalGeneraraReporte' title='Generar matriz datos'><i class='fas fa-database' aria-hidden='true'></i></button>
+                                            <button class='btn btn-primary px-2.5' onclick=reporteFrontera('<?= $value["fronteraCliente"] ?>')  data-toggle='modal' data-target='#modalGeneraraReporte' title='Generar matriz datos'><em class='fas fa-database' aria-hidden='true'></em></button>
                                           </div>
                                       </td>
-                                    </tr>";
-                            }
-                            else
-                            {
-                              echo " <tr> 		                  
-                                        <td class='details-control' id='td_".$value["fronteraCliente"]."' vlr='".$value["fronteraCliente"]."'></td>
-                                        <td>".$value["fronteraCliente"]."</td> 
-                                        <td>".$value["descripcionFrontera"]."</td> 
-                                        <td>".$value["niuEmpresa"]."</td> 
-                                        <td>".$value["niuOperador"]."</td> 
-                                        <td>
-                                          <div class='btn-group'>
-                                            <button class='btn btn-primary px-2.5' onclick=reporteFrontera('".$value["fronteraCliente"]."')  data-toggle='modal' data-target='#modalGeneraraReporte' title='Generar matriz datos'><i class='fas fa-database' aria-hidden='true'></i></button>
-                                          </div>
-                                        </td>
-                                    </tr>";
-                            }
+                               </tr>
                        
-                        }
-
-
-                   ?> 
+                  <?php endforeach; ?> 
 
                     </tbody>
                       <tfoot>
                         <tr>
-                        <th></th>
-                        <th>FRONTERA</th>
-                        <th>DESCRIPCION FRONTERA</th>
-                        <th>NIU ITALENER</th>
-                        <th>NIU OPERADOR</th>
-                        <?php echo $adicion; ?>
+                        <th scope="col"></th>
+                        <th scope="col">FRONTERA</th>
+                        <th scope="col">DESCRIPCION FRONTERA</th>
+                        <th scope="col">NIU ITALENER</th>
+                        <th scope="col">NIU OPERADOR</th>
+                        <th scope="col">SEGUIMIENTO</th>
+                        <th scope="col">CANT. MIN KV</th>
+                        <th scope="col">ACCIONES</th>
                         </tr> 
                       </tfoot>
                 </table>
@@ -163,7 +129,7 @@ MODAL EDITAR FRONTERA
 <div id="modalEditarFrontera" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form role="form" method="post">
+      <form role="form" method="post" aria-labelledby="mainnavheadingtwo">
           <input type="hidden"  name="editaridentificador" id="editaridentificador">
       <!--=====================================
         CABEZA DEL MODAL
@@ -171,7 +137,7 @@ MODAL EDITAR FRONTERA
        <div class="modal-header" style="background:#3c8dbc; color:white">
          
           <div class="col-4">
-              <h4 class="modal-title"><i class="far fa-edit"></i></h4>
+              <h4 class="modal-title"><em class="far fa-edit"></em></h4>
           </div>
           <div class="col-4">
               <label>Opciones de la frontera</label>
@@ -240,7 +206,7 @@ MODAL GENERAR MATRIZ DATOS
 <div id="modalGeneraraReporte" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form role="form" method="post" action="datosGenerados">
+      <form role="form" method="post" action="datosGenerados" aria-labelledby="mainnavheading">
           <input type="hidden"  name="fronteraReporte" id="fronteraReporte" value="" />
       <!--=====================================
         CABEZA DEL MODAL
