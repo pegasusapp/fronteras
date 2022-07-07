@@ -15,6 +15,7 @@
  
 }
 
+
 </style>
 <?php
  $item = NULL;
@@ -49,7 +50,7 @@
             
             <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered table-striped dt-responsive tablas" id="example_table" >
+                <table class="table table-bordered table-striped dt-responsive tablas" id="example_frontera" >
                     <caption>Listado de fronteras</caption>
                     <thead>
                      <tr>
