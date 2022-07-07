@@ -9,7 +9,7 @@ Data Table
 =============================================*/
 var table =
 
-$('#example').DataTable( {
+$('#example_frontera').DataTable( {
 	responsive: {
 		details: {
 			type: 'column',
