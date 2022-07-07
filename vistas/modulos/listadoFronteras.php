@@ -30,13 +30,14 @@ tr.shown td.details-control {
 }
 </style>
 <?php
-  $item = NULL;
-  $valor = NULL;
-   if($_SESSION["perfilSesion"] <> 9)
-   {
-     $item = "clienteFrontera_nitCliente";
-     $valor = $_SESSION["identificador"];
-   }                        
+ $item = NULL;
+ $valor = NULL;
+ if($_SESSION["perfilSesion"] <> 9)
+ {
+  $item = "clienteFrontera_nitCliente";
+  $valor = $_SESSION["identificador"];
+ }
+
 ?>
 <div class="content-wrapper">
     <section class="content-header">
@@ -63,7 +64,6 @@ tr.shown td.details-control {
               <div class="card-body">
                 <table class="table table-bordered table-striped dt-responsive tablas" id="example_table" >
                     <caption>Listado de fronteras</caption>
-              
                     <thead>
                      <tr>
                       <th scope="col"></th>
@@ -71,14 +71,14 @@ tr.shown td.details-control {
                       <th scope="col">DESCRIPCION FRONTERA</th>
                       <th scope="col">NIU ITALENER</th>
                       <th scope="col">NIU OPERADOR</th>
-                    <?php if($_SESSION["perfilSesion"] == 9): ?>
-                          <th scope="col">SEGUIMIENTO</th>
-                          <th scope="col">CANT. MIN KV</th>
-                          <th scope="col">ACCIONES</th>
+                      <?php if($_SESSION["perfilSesion"] == 9): ?>
+                      <th>SEGUIMIENTO</th>
+                      <th>CANT. MIN KV</th>
+                      <th>ACCIONES</th>
                     <?php else: ?>
-                          <th scope="col">ACCIONES</th>
+                      <th>ACCIONES</th>
                     <?php endif; ?>    
-                    </tr> 
+                     </tr> 
                     </thead>
                     <tbody>
                         <?php
