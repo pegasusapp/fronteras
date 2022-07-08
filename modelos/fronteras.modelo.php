@@ -349,8 +349,6 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 		$stmt -> bindParam(":frontera_fronteraCliente", $dataIn["frontera_fronteraCliente"], PDO::PARAM_STR);
 		$stmt -> bindParam(":tipoEnergia", $dataIn["tipoEnergia"], PDO::PARAM_STR);
 		$stmt -> execute();
-		$count = $stmt->fetchColumn();
-		echo "-->".$count."-".$dataIn["anyoLectura"]."-".$dataIn["mesLectura"]."-".$dataIn["diaLectura"]."-".$dataIn["frontera_fronteraCliente"]."-".$dataIn["tipoEnergia"];
 		return $count = $stmt->fetchColumn();
 	}
 
