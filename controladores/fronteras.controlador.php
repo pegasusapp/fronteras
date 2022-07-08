@@ -110,8 +110,8 @@ class ControladorFronteras
 					$myDateTime = DateTime::createFromFormat('m/d/Y', $data[3]);
 					$formattedweddingdate = $myDateTime->format('Y-m-d');
 
-					$datosMedidor = array("diaLectura"=>$fecha[1], 
-										"mesLectura"=>$fecha[0], 
+					$datosMedidor = array("diaLectura"=>$fecha[0], 
+										"mesLectura"=>$fecha[1], 
 										"anyoLectura"=>$fecha[2], 
 										"medidorFrontera"=>$data[2], 
 										"frontera_fronteraCliente"=>$data[0],
