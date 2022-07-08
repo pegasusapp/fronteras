@@ -125,7 +125,6 @@ class ControladorFronteras
 					}
 					$datosLecturasEnergiaActiva +=["tipoEnergia"=>"A"];
 
-					var_dump($datosLecturasEnergiaActiva);
 					
 					$horaEE = 1;
 					$datosLecturasEnergiaExportada = array();
