@@ -342,15 +342,16 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 
 	static public function mdlSearchData($dataIn):int{
 
-		$stmt = Conexion::conectar()->prepare("SELECT * FROM lecturaFrontera WHERE diaLectura = :diaLectura AND mesLectura = :mesLectura AND anyoLectura = :anyoLectura AND frontera_fronteraCliente = :frontera_fronteraCliente AND tipoEnergia = :tipoEnergia");
+		$stmt = Conexion::conectar()->prepare("SELECT count(*) FROM lecturaFrontera WHERE diaLectura = :diaLectura AND mesLectura = :mesLectura AND anyoLectura = :anyoLectura AND frontera_fronteraCliente = :frontera_fronteraCliente AND tipoEnergia = :tipoEnergia");
 		$stmt -> bindParam(":diaLectura", $dataIn["diaLectura"], PDO::PARAM_STR);
 		$stmt -> bindParam(":mesLectura", $dataIn["mesLectura"], PDO::PARAM_STR);
 		$stmt -> bindParam(":anyoLectura", $dataIn["anyoLectura"], PDO::PARAM_STR);
 		$stmt -> bindParam(":frontera_fronteraCliente", $dataIn["frontera_fronteraCliente"], PDO::PARAM_STR);
 		$stmt -> bindParam(":tipoEnergia", $dataIn["tipoEnergia"], PDO::PARAM_STR);
 		$stmt -> execute();
-		echo "-->".$stmt->rowCount()."-".$dataIn["anyoLectura"]."-".$dataIn["mesLectura"]."-".$dataIn["diaLectura"]."-".$dataIn["frontera_fronteraCliente"]."-".$dataIn["tipoEnergia"];
-		return $stmt->rowCount();
+		$count = $stmt->fetchColumn();
+		echo "-->".$count."-".$dataIn["anyoLectura"]."-".$dataIn["mesLectura"]."-".$dataIn["diaLectura"]."-".$dataIn["frontera_fronteraCliente"]."-".$dataIn["tipoEnergia"];
+		return $count = $stmt->fetchColumn();
 	}
 
 	static public function mdlInsertLecturasFrontera($datosMedidor,$datosLecturasEnergiaActiva,$datosLecturasEnergiaExportada,$datosLecturasEnergiaReactiva,$datosLecturasEnergiaCapacitiva):bool{
