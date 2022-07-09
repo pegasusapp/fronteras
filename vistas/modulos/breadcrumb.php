@@ -6,7 +6,7 @@ $tabla="subproceso";
    $nameModule = (empty($plantillasActivas["nombreSubproceso"])) ? "Inicio" : $plantillasActivas["nombreSubproceso"]; 
    $template = (empty($plantillasActivas["nombreSubproceso"])) ? "404.php" : $plantillasActivas["nombreSubproceso"]."php"; 
 ?>
-<div class="content-header">
+<div class="content-header"> 
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
