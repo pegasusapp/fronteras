@@ -2,51 +2,32 @@
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="inicio" class="brand-link">
-      <!-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">-->
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image" style="opacity: .8">
+        <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image" style="opacity: .8">
       <span class="brand-text font-weight-light"><?php echo Constantes::NOMBRE_EMPRESA; ?></span>
-    </a>
-
-    <!-- Sidebar -->
+   </a>
+  <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-        <?php
-
-        if($_SESSION['nuevaFoto'] == "" )
-           {
-            echo '<img src="vistas/img/usuarios/default/anonymous.png" class="img-circle elevation-2" alt="Imagen de perfil de '.$_SESSION["identificador"].'"/>';
-           }
-         else 
-           {
-            echo '<img src="'.$_SESSION['nuevaFoto'].'" class="img-circle elevation-2" alt="User Image"/>';
-           }
-                    
-
-         ?>
-         
+        <?php if(empty($_SESSION['nuevaFoto'])): ?>
+           <img src="vistas/img/usuarios/default/anonymous.png" class="img-circle elevation-2" alt="Imagen de perfil de <?= $_SESSION["identificador"] ?>"/>
+        <?php else:?> 
+            <img src="<?=$_SESSION['nuevaFoto'] ?>" class="img-circle elevation-2" alt="User Image"/>
+        <?php endif;?>    
         </div>
         <div class="info">
           <a href="#" class="d-block">
-			  <?php
-			  	echo $_SESSION["nombreCompleto"]
-					 ?>
-		</a>
+			        <?= $_SESSION["nombreCompleto"] ?>
+	      	</a>
         </div>
       </div>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-			   with font-awesome or any other icon font library -->
 		       <?php
-
-						
               $valor = $_SESSION["identificador"];
-              
-
               $items = ControladorMenu::ctrMostrarMenu($valor);
               $menudesplegado = array();
             foreach ($items as $key => $value)
@@ -100,15 +81,9 @@
                              echo '</ul>
                                   </li>
                                   ';
-              
-               
-              
-            
-              }
-              
+          
+            }
 			     ?> 	   
-
- 
       </nav>
       <!-- /.sidebar-menu -->
     </div>

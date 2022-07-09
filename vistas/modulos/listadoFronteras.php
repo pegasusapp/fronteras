@@ -1,27 +1,11 @@
 <style>
  td {font-size: 14px;}
- 
  th {font-size: 14px;}
-
-.icon-bar a {
-  float: left;
-  width: 20%;
-  text-align: center;
-  /*padding: 12px 0;*/
-  transition: all 0.3s ease;
-  color: #1187ff;
-  font-size: 35px;
-  background-color: #ffffff;
- 
-}
-
 /* Ensure that the demo table scrolls */
 th, td { white-space: nowrap; }
     div.dataTables_wrapper {
         margin: 0 auto;
     }
-
-
 
 table.dataTable td.details-control:before {
    content: '\f152';
