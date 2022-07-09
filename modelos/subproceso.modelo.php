@@ -5,9 +5,9 @@ require_once "conexion.php";
 Class ModeloSubproceso{
 
 
-     public static function mdlMostrarSubproceso(string $tabla, string $item, string $valor){
+     public static function mdlMostrarSubproceso(string $tabla, string $item, ?string $valor){
 
-        if($item != null){
+        if($valor != null){
 			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
 			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
 			$stmt -> execute();
