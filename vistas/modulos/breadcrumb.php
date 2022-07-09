@@ -5,7 +5,7 @@ $tabla="subproceso";
    $plantillasActivas = ModeloSubproceso::mdlMostrarSubproceso($tabla,$item,$valor);
    var_dump($plantillasActivas);
    $nameModule = (empty($plantillasActivas["plantillaSubproceso"])) ? "Inicio" : $plantillasActivas["nombreSubproceso"]; 
-   $template = (empty($plantillasActivas["plantillaSubproceso"])) ? "404.php" : $plantillasActivas["plantillaSubproceso"]."php"; 
+   $template = (empty($plantillasActivas["plantillaSubproceso"])) ? "404.php" : $plantillasActivas["plantillaSubproceso"].".php"; 
 ?>
 <div class="content-header"> 
       <div class="container-fluid">
