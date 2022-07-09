@@ -1,8 +1,6 @@
  <div class="content-wrapper"> 
-    <?= include_once 'breadcrumb.php' ?>
     <section class="content">
     <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
          <div class="row">
                     <?php
                     $valor = $_SESSION["identificador"];

@@ -1,13 +1,9 @@
- <!-- Main Sidebar Container -->
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
     <a href="inicio" class="brand-link">
         <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image" style="opacity: .8">
       <span class="brand-text font-weight-light"><?php echo Constantes::NOMBRE_EMPRESA; ?></span>
    </a>
-  <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
+   <div class="sidebar">
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
             <?php if(empty($_SESSION['nuevaFoto'])): ?>
@@ -22,8 +18,6 @@
 	      	</a>
         </div>
       </div>
-
-      <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 		       <?php
@@ -47,9 +41,7 @@
                           
                             for ($j=0;$j<count($operacionProcesoM); $j++)
                               {
-                              
                                 $operacionProcesoNeI = explode("*",$operacionProcesoM[$j]);
-                                
                                 echo '<li class="nav-item has-treeview" id="proceso_'.$operacionidProcesoM[$j].'">
                                        <a href="./index.html" class="nav-link">
                                          <i class="nav-icon fas '.$operacionProcesoNeI[1].'"></i>
@@ -75,12 +67,9 @@
                                                            </li>';
                                                   }
                                               }
-                                  echo'</ul>
-                                    </li>';
+                                echo'</ul></li>';
                               }
-                             echo '</ul>
-                                  </li>
-                                  ';
+                             echo '</ul></li>';
           
             }
 			     ?> 	   
