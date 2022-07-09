@@ -2,14 +2,11 @@
 $tabla="subproceso";
    $item="plantillaSubproceso";
    $valor=$_GET["ruta"];
-
    if($valor != "salir")
    {
     $plantillasActivas = ModeloSubproceso::mdlMostrarSubproceso($tabla,$item,$valor);
-var_dump($plantillasActivas);
-
     $nameModule = (empty($plantillasActivas["plantillaSubproceso"])) ? "Inicio" : $plantillasActivas["nombreSubproceso"]; 
-    $template = (empty($plantillasActivas["plantillaSubproceso"])) ? "404.php" : $plantillasActivas["plantillaSubproceso"].".php"; 
+    $template = (empty($plantillasActivas["plantillaSubproceso"])) ? "inicio.php" : $plantillasActivas["plantillaSubproceso"].".php"; 
     }
     else{
         $template="salir.php";
