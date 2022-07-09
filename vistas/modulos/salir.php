@@ -13,7 +13,7 @@ date_default_timezone_set('America/Bogota');
 							   
 	$datosAccesoUsuarioSalida = ControladorUsuarios::ctrSalidaUsuario($tablaSesion,$datosSalida);
 
-	echo "ojo a esto".$datosAccesoUsuarioSalida;
+	echo "ojo a esto".$datosAccesoUsuarioSalida."----";
 	// FIn actualizacion
 	if($datosAccesoUsuarioSalida=="ok") 
 	{
