@@ -229,9 +229,7 @@ class ModeloMenu{
 											$stmt_up_subprocesos->bindParam(":escritura", $valueOn , PDO::PARAM_INT);
 											$stmt_up_subprocesos->bindParam(":fechaActualizacion", $fechaActual, PDO::PARAM_STR);
 											$stmt_up_subprocesos->execute();
-											/*$arr = $stmt_up_subprocesos->errorInfo();
-											print_r($arr);
-											*/
+											
 
 							}	
 								
