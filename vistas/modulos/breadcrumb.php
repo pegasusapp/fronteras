@@ -3,6 +3,7 @@ $tabla="subproceso";
    $item="plantillaSubproceso";
    $valor=$_GET["ruta"];
    $plantillasActivas = ModeloSubproceso::mdlMostrarSubproceso($tabla,$item,$valor);
+   var_dump($plantillasActivas);
    $nameModule = (empty($plantillasActivas["nombreSubproceso"])) ? "Inicio" : $plantillasActivas["nombreSubproceso"]; 
    $template = (empty($plantillasActivas["nombreSubproceso"])) ? "404.php" : $plantillasActivas["nombreSubproceso"]."php"; 
 ?>
