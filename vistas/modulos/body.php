@@ -1,11 +1,11 @@
 <?php 
-
   if(isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok"):?>
     <body class="hold-transition sidebar-mini layout-fixed">
       <div class="wrapper">
          <?php 
           include "cabezote.php";
           include "menu.php"; 
+          include "breadcrum.php"; 
            if(isset($_GET["ruta"])){
                 include $template;
               }
