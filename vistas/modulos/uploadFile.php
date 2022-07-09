@@ -20,24 +20,7 @@
  
 }
 </style>
-<div class="content-wrapper">
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Usuarios</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="inicio">Home</a></li>
-              <li class="breadcrumb-item active">Administrar facturas</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-  <section class="content">
+<section class="content">
   <div class="row">
         <div class="col-12">
           <div class="card">
@@ -77,22 +60,23 @@
                 <?php
                 $item = null;
                 $valor = null;
-                
                 $items = ControladorFactura::ctrMostrarFactura($item, $valor); 
-                foreach ($items as $key => $value)
-                    {
-                        echo ' <tr>
-                                    <td>'.$value["anyo"].'</td>
-                                    <td>'.ControladorValidaciones::monthSelect($value["mes"]).'</td> 
-                                    <td><a href="/docs/facturas/'.$value["frontera_fronteraCliente"].'/'.$value["anyo"].$value["mes"].'/'.$value["nameFile"].'" target="_blank">'.$value["frontera_fronteraCliente"].'</a></td> 
+                foreach ($items as $key => $value):?>
+                                  <tr>
+                                    <td><?=$value["anyo"]?></td>
+                                    <td><?=ControladorValidaciones::monthSelect($value["mes"])?></td> 
+                                    <td>
+                                      <a href='/docs/facturas/<?=$value["frontera_fronteraCliente"]?>/<?=$value["anyo"].$value["mes"]?>/<?=$value["nameFile"]?>' target="_blank"><?=$value["frontera_fronteraCliente"]?></a>
+                                    </td> 
                                     <td>
                                         <div class="btn-group">
-                                          <button class="btn btn-primary px-2.5" onclick=borrarFactura("'.$value["anyo"].'","'.$value["mes"].'","'.$value["frontera_fronteraCliente"].'","'.$value["nameFile"].'")  data-toggle="modal"><em class="fas fa-trash-alt"></em></button>
+                                          <button class="btn btn-primary px-2.5" onclick=borrarFactura("<?=$value["anyo"]?>","<?=$value["mes"]?>","<?=$value["frontera_fronteraCliente"]?>","<?=$value["nameFile"]?>")  data-toggle="modal">
+                                            <em class="fas fa-trash-alt"></em>
+                                          </button>
                                         </div> 
                                      </td>
-                                </tr>';
-                    }
-                ?> 
+                                </tr>
+                <?php endforeach;?>                
                 </tbody>
                 <tfoot>
                 <tr>

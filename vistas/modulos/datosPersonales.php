@@ -9,12 +9,7 @@
       <div class="container-fluid">
         <div class="card card-default">
           <div class="card-header">
-            <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-              <em class="fas fa-minus"></em>
-            </button>
-            </div>
-          </div>
+           </div>
         <div class="card-body">
           <div class="row">
               <div class="col-md-4">
