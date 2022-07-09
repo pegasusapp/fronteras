@@ -1,28 +1,8 @@
-<!-- Content Wrapper. Contains page content -->
- <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
-    <!-- Main content -->
+ <div class="content-wrapper"> 
+    <?= include_once 'breadcrumb.php' ?>
     <section class="content">
     <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
-        <!--------------------------------------------------------marcadores iniciales----------------------------------------------------------------------->
          <div class="row">
                     <?php
                     $valor = $_SESSION["identificador"];
@@ -158,37 +138,15 @@
                       <!-- Sales Chart Canvas -->
                       <canvas id="salesChart_indice" height="360" style="height: 360px; display: block; width: 680px;" width="980" class="chartjs-render-monitor"></canvas>
                     </div>
-                    <!-- /.chart-responsive -->
                   </div>
-                  <!-- /.col 
-                
-                  /.col -->
                 </div>
-                <!-- /.row -->
               </div>
-              <!-- ./card-body -->
-     
-      
-              <!-- /.card-footer -->
             </div>
-            <!-- /.card -->
           </div>
-          <!-- /.col -->
         </div>
-      
-     <!-- ./col -->
-     </div>
-        <!-- /.row -->
-
-
-
-<!------------------------------------------------------------------------------------------------------------------------------->
-
-
-        <!-- /.row (main row) -->
+       </div>
       </div><!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
   </div>
   <form name="frm1"  id="frm1" method="POST" >
     <input type="hidden" name="val_planta" id="val_planta" value="" />
@@ -202,38 +160,6 @@
 
   </form>
   <script>
-/*
-function reloadGraph_uno(valor)
-{
-  var eleCheck = document.getElementsByName('tipo_energia'); 
-              
-              for(i = 0; i < eleCheck.length; i++) 
-              { 
-                  if(eleCheck[i].checked)
-                   {
-                    document.getElementById("val_tipo_energia").value = eleCheck[i].value;
-                   } 
-                   
-              } 
-  document.getElementById("val_planta").value = valor;
-  document.getElementById('frm1').submit();
-}
-
-function showGroup(valor)
-{
-  var eleCheck = document.getElementsByName('tipo_energia'); 
-              
-              for(i = 0; i < eleCheck.length; i++) 
-              { 
-                  if(eleCheck[i].checked)
-                   {
-                    document.getElementById("fuenteEnergia_idfuenteEnergia").value = eleCheck[i].value;
-                   } 
-                   
-              } 
-  document.getElementById("grupoProyecto_idgrupoProyecto").value = valor;
-  document.getElementById('frm2').submit();
-}*/
   $(function () {
     /* ChartJS
      * -------
