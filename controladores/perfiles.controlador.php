@@ -3,7 +3,7 @@
 class ControladorPerfiles{
 
 	/*=============================================
-	CREAR AREA -
+	CREAR AREA
 	=============================================*/ 
 
 	static public function ctrCrearPerfil(){
