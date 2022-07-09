@@ -16,21 +16,21 @@
     <body class="hold-transition sidebar-mini layout-fixed">
       <div class="wrapper">
          <?php 
-          include "modulos/cabezote.php";
-          include "modulos/menu.php"; 
+          include "cabezote.php";
+          include "menu.php"; 
            if(isset($_GET["ruta"])){
                if(isset($plantillasActivas[$_GET["ruta"]])){
-                      include "modulos/".$_GET["ruta"].".php";
+                      include $_GET["ruta"].".php";
                     }
                 else{
-                      include "modulos/404.php";
+                      include "404.php";
                     }
           }else{
-            include "modulos/inicio.php";
+            include "inicio.php";
           }
-         include "modulos/footer.php"; ?>
+         include "footer.php"; ?>
       </div>
   <?php else:?>
     <body class="login-page"> 
-  <?=include "modulos/login.php";?>
+  <?=include "login.php";?>
   <?php endif;?>
