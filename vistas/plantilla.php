@@ -49,7 +49,7 @@ session_start();
 <!--=====================================
 CUERPO DOCUMENTO
 ======================================-->
- <?php include 'body.php'; ?>
+ <?php include 'modulos/body.php'; ?>
 
 <script src="vistas/js/usuarios.js"></script>
 <script src="vistas/js/fronteras.js"></script>
