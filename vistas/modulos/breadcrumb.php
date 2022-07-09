@@ -18,7 +18,7 @@ $tabla="subproceso";
               <li class="breadcrumb-item"><a href="inicio">Home</a></li>
               <li class="breadcrumb-item active"><?=$nameModule?></li>
             </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
+          </div>
+        </div>
+      </div>
     </div>
