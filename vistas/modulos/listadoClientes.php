@@ -164,17 +164,7 @@ MODAL EDITAR CLIENTE
                     <input type="text" name="editaremailCliente" id="editaremailCliente" class="form-control" placeholder="email cliente" value="" />
                   </div>
                 </div>
-                 <!-- ENTRADA PARA EL ACTIVO 
-              <div class="form-group">
-                <div class="input-group">
-                    <select class="form-control select2" name="editaractivo" id="editaractivo"   required>
-                      <option value="" >Activo...</option>
-                      <option value="1">SI</option>
-                      <option value="0">NO</option>
-                    </select>  
-                </div>
-              </div>-->
-              <!------------------------------------------>
+                 <!------------------------------------------>
             </div>
         </div>
         <!--=====================================

@@ -32,7 +32,6 @@
                     $name_plant="";
                     foreach ($items as $key => $value)
                       {
-                        //$varColor ="bg-success";
                         $sourceEnergy = $value["tipoEnergia"];
                         if($sourceEnergy == "A")
                           {
@@ -79,7 +78,6 @@
                                             
                       
                      }
-                    // print_r($datosEstadisticos);
                      $result = array();
                       foreach ($datosEstadisticos as $element) {
                           $result[$element['anyo']][] = $element;
@@ -97,28 +95,22 @@
                      
                       $A = 1;
 					  
-					 // print_r($result);
- 
-                    
+             
                       for($i = 0; $i < count($result); $i++)
                        {
                        
                                $data = "";  
                                $anyos_comparativos.=  $keys[$i]." vs ";
-							   $arrayMeses = array('','','','','','','','','','','','');
+							                 $arrayMeses = array('','','','','','','','','','','','');
                               foreach($result[$keys[$i]] as $key => $value) 
                                 {
-								  $arrayMeses[$value["mes"]-1] = round($value["valor"],3);	
-									 
-								   $data.= "'".round($value["valor"],3)."',"; 
-                                }
-								  $valor_mes_por_comas = implode(",", $arrayMeses);
-								  
-                                
-                               $data =  substr( $data , 0 , -1);
-                            
-                                $datasets.= "{";
-                                $datasets.= "label               : 'Año ". $keys[$i] ." ".$sigla."',
+								                   $arrayMeses[$value["mes"]-1] = round($value["valor"],3);	
+							    							   $data.= "'".round($value["valor"],3)."',"; 
+                                 }
+								               $valor_mes_por_comas = implode(",", $arrayMeses);
+								               $data =  substr( $data , 0 , -1);
+                               $datasets.= "{";
+                               $datasets.= "label               : 'Año ". $keys[$i] ." ".$sigla."',
                                               backgroundColor     : 'rgba($R[$i],$G[$i],$B[$i],$A)',
                                               borderColor         : 'rgba($R[$i],$G[$i],$B[$i],".floatval($A-0.4).")',
                                               pointRadius          : true,
@@ -142,23 +134,6 @@
                 <h5 class="card-title">Indicador - <?php  echo "  "; echo $name_plant; ?> </h5>
 
                 <div class="card-tools">
-                
-                    <!--<div class="btn-group">
-                        <button type="button" class="btn btn-tool" data-toggle="dropdown">
-                          <i class="fas fa-lightbulb"></i>
-                        </button>
-                        <input type="radio" id="tipoE" name="tipo_energia" value="1"  />
-                      </div>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-tool" data-toggle="dropdown">
-                          <i class="fas fa-fire-alt"></i>
-                        </button>
-                        <input type="radio" id="tipoC" name="tipo_energia" value="2"   / >
-                      </div>-->
-              
-                  <!-- <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button> -->
                 </div>
               </div>
               <!-- /.card-header -->
@@ -186,12 +161,7 @@
                     <!-- /.chart-responsive -->
                   </div>
                   <!-- /.col 
-                  <div class="col-md-5">
-                    <p class="text-center">
-                      <strong>Datos estadisticos</strong>
-                    </p>
-                     
-                  </div>
+                
                   /.col -->
                 </div>
                 <!-- /.row -->
