@@ -31,8 +31,7 @@ session_start();
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
- 
-  <!-- Google Font: Source Sans Pro -->
+   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- sweet alert -->
   <link rel="stylesheet" href="plugins/sweetalert2/sweetalert2.min.css">
@@ -50,45 +49,7 @@ session_start();
 <!--=====================================
 CUERPO DOCUMENTO
 ======================================-->
-  <?php 
-   $plantillasActivas = array("inicio" =>"inicio.php",
-                              "crearUsuario" => "crearUsuario.php",
-                              "editMenu" => "editMenu.php",
-                              "listadoFronteras" => "listadoFronteras.php",
-                              "datosPersonales" => "datosPersonales.php",
-                              "datosGenerados" => "datosGenerados.php",
-                              "listadoClientes" => "listadoClientes",
-                              "uploadFile" => "uploadFile.php",
-                              "uploadConsumo" => "uploadConsumo.php",
-                              "descargaFactura" => "descargaFactura.php",
-                              "salir" => "salir.php"
-                                );
-  if(isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok"):?>
-    <body class="hold-transition sidebar-mini layout-fixed">
-      <div class="wrapper">
-
-         <?php 
-          include "modulos/cabezote.php";
-          include "modulos/menu.php"; 
-           if(isset($_GET["ruta"])){
-            
-               if(isset($plantillasActivas[$_GET["ruta"]])){
-                      include "modulos/".$_GET["ruta"].".php";
-                    }
-                else{
-                      include "modulos/404.php";
-                    }
-
-          }else{
-            include "modulos/inicio.php";
-          }
-         include "modulos/footer.php"; ?>
-      </div>
-  <?php else:?>
-    <body class="login-page"> 
-  <?=include "modulos/login.php";?>
-  <?php endif;?>
-   
+ <?php include 'body.php'; ?>
 
 <script src="vistas/js/usuarios.js"></script>
 <script src="vistas/js/fronteras.js"></script>
@@ -100,9 +61,7 @@ CUERPO DOCUMENTO
 <script src="vistas/js/logLectura.js"></script>
 <script src="vistas/js/desviacion.js"></script>  
 <script src="vistas/js/editDataAjax.js"></script>  
-
 <script>
-
 $("#treeview").hummingbird();
 // Collapsed Symbol
 $.fn.hummingbird.defaults.collapsedSymbol= "fa-plus";
@@ -121,7 +80,6 @@ $.fn.hummingbird.defaults.collapseAll= true;
 
 // Enable checkboxes
 $.fn.hummingbird.defaults.checkboxes= "enabled"; 
-
 
 // check all nodes
 $("#treeview").hummingbird("checkAll");
@@ -147,10 +105,7 @@ $("#treeview").on("CheckUncheckDone", function(){
   // when checked or unchecked
 });
 
-</script>
-
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
+// Resolve conflict in jQuery UI tooltip with Bootstrap tooltip
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->

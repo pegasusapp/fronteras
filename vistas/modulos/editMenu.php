@@ -58,8 +58,6 @@
                        <label>  Volver a usuarios</label> 
                          <a  id="iconAddUser"   title="Crear usuario" href="crearUsuario"><i class="fas fa-arrow-circle-left"></i></a>&nbsp; 
                          <a  id="iconSavePerfil" title="Guardar permisos"  href="#" onClick="saveMenu()" ><i class="fas fa-save"></i></a>&nbsp; 
-                          <!--<a href="#"><i class="fas fa-lock"></i></a> &nbsp;
-                        <a href="#"><i class="fa fa-globe"></i></a> -->
                       </div>
                  </div> 
                  <div class="col-4">
@@ -84,13 +82,11 @@
                       foreach ($items_in as $key => $value)
                       {
                         
-                                      //$operacionProcesoM=explode(",", $value["proceso_nombre"]);
                                       $operacionidProcesoM=explode(",", $value["procesos_id"]);
                                     
                                       for ($j=0;$j<count($operacionidProcesoM); $j++)
                                         {
                                          
-                                                      //$operacionSubproceso=explode(",", $value["nombreSubproceso"]);
                                                       $operacionIdSubproceso=explode(",", $value["subprocesos_id"]);
           
                                                     for ($i=0; $i<count($operacionIdSubproceso); $i++)
@@ -205,7 +201,7 @@ MODAL AGREGAR PERMISOS
         <div class="modal-header" style="background:#3c8dbc; color:white">
 
                   <div class="col-4">
-                      <i class="far fa-id-card" ></i>
+                      <em class="far fa-id-card" ></em>
                   </div>
                   <div class="col-4">
                      <label>Agregar perfil</label>
@@ -380,7 +376,7 @@ MODAL AGREGAR USUARIO
         <div class="modal-header" style="background:#3c8dbc; color:white">
          
                   <div class="col-4">
-                      <h4 class="modal-title"><i class="fas fa-user-plus" ></i></h4>
+                      <h4 class="modal-title"><em class="fas fa-user-plus" ></em></h4>
                   </div>
                   <div class="col-4">
                      <label>Agregar usuario</label>
