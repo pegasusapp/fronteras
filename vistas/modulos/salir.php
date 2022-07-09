@@ -12,6 +12,8 @@ date_default_timezone_set('America/Bogota');
 							   "Usuario_identificador" => $_SESSION['identificador']);
 							   
 	$datosAccesoUsuarioSalida = ControladorUsuarios::ctrSalidaUsuario($tablaSesion,$datosSalida);
+
+	echo "ojo a esto".$datosAccesoUsuarioSalida;
 	// FIn actualizacion
 	if($datosAccesoUsuarioSalida=="ok") 
 	{
