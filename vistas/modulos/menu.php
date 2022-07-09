@@ -10,11 +10,11 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-        <?php if(empty($_SESSION['nuevaFoto'])): ?>
-           <img src="vistas/img/usuarios/default/anonymous.png" class="img-circle elevation-2" alt="Imagen de perfil de <?= $_SESSION["identificador"] ?>"/>
-        <?php else:?> 
-            <img src="<?=$_SESSION['nuevaFoto'] ?>" class="img-circle elevation-2" alt="User Image"/>
-        <?php endif;?>    
+            <?php if(empty($_SESSION['nuevaFoto'])): ?>
+              <img src="vistas/img/usuarios/default/anonymous.png" class="img-circle elevation-2" alt="Imagen de perfil de <?= $_SESSION["identificador"] ?>"/>
+            <?php else:?> 
+             <img src="<?=$_SESSION['nuevaFoto'] ?>" class="img-circle elevation-2" alt="User Image"/>
+             <?php endif;?>    
         </div>
         <div class="info">
           <a href="#" class="d-block">
@@ -27,6 +27,7 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 		       <?php
+           echo "------------>".$valor;
               $valor = $_SESSION["identificador"];
               $items = ControladorMenu::ctrMostrarMenu($valor);
               $menudesplegado = array();
