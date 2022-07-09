@@ -7,14 +7,10 @@
           include "menu.php"; 
           include "breadcrum.php"; 
            if(isset($_GET["ruta"])){
-               if(isset($plantillasActivas[$_GET["ruta"]])){
-                      include $_GET["ruta"].".php";
-                    }
-                else{
-                      include "404.php";
-                    }
-          }else{
-            include "inicio.php";
+                include $template;
+              }
+            else{
+                include "inicio.php";
           }
          include "footer.php"; ?>
       </div>
