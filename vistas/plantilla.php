@@ -137,7 +137,7 @@ $("#treeview").on("CheckUncheckDone", function(){
 <?php
  $paginaNiveles =  $_SERVER["REQUEST_URI"];
  $paginaSesion = explode("/", $paginaNiveles);
- $items = ControladorMenu::ctrMostrarMenuExpandido($valor);
+ $items = ControladorMenu::ctrMostrarMenuExpandido($_GET["ruta"]);
  foreach ($items as $key => $value)
  {
    echo "<script>
