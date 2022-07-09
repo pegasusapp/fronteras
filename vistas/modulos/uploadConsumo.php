@@ -20,24 +20,7 @@
  
 }
 </style>
-<div class="content-wrapper">
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Lecturas</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="inicio">Home</a></li>
-              <li class="breadcrumb-item active">Administrar lecturas</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-  <section class="content">
+<section class="content">
   <div class="row">
         <div class="col-12">
           <div class="card">
@@ -80,26 +63,23 @@
                 $valor = null;
                 
                 $items = ControladorLogLectura::ctrMostrarLogLectura($item, $valor); 
-                foreach ($items as $key => $value)
-                    {
-                        $textUpload = ($value["upload"] == 0) ? "NO" : "SI";
-                         echo ' <tr>
-                                    <td>'.$value["idlogLecturas"].'</td>
-                                    <td>'.$value["fechaInsert"].'</td>
-                                    <td>'.$value["nameFile"].'</td>
-                                    <td>'.$textUpload.'</td>
+                foreach ($items as $key => $value):?>
+                                  <tr>
+                                    <td><?=$value["idlogLecturas"]?></td>
+                                    <td><?=$value["fechaInsert"]?></td>
+                                    <td><?=$value["nameFile"]?></td>
+                                    <td><?=$textUpload = ($value["upload"] == 0) ? "NO" : "SI";?></td>
                                     <td>
-                                        <div class="btn-group">';
+                                        <div class="btn-group">
+                                         <?php
                                          if($textUpload==="NO"){
                                             echo '<button class="btn btn-primary px-2.5" onclick=insertData("'.$value["idlogLecturas"].'","'.$value["nameFile"].'")  data-toggle="modal"><em class="fas fa-upload"></em></button>';
                                             echo '<button class="btn btn-primary px-2.5" onclick=deleteFile("'.$value["idlogLecturas"].'","'.$value["nameFile"].'")  data-toggle="modal"><em class="fas fa-trash-alt"></em></button>';
-                                         } 
-                                          
-                                    echo    '</div> 
-                                     </td>
-                                </tr>';
-                    }
-                ?> 
+                                         } ?> 
+                                       </div> 
+                                    </td>
+                                 </tr>
+                   <?php endforeach;?> 
                 </tbody>
                 <tfoot>
                 <tr>
