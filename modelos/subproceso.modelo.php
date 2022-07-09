@@ -7,7 +7,7 @@ Class ModeloSubproceso{
 
      public static function mdlMostrarSubproceso(string $tabla, string $item,$valor){
 
-        if(is_null($valor)){
+        if($valor != null){
 			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
 			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
 			$stmt -> execute();
