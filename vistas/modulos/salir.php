@@ -13,7 +13,7 @@ date_default_timezone_set('America/Bogota');
 							   
 	$datosAccesoUsuarioSalida = ControladorUsuarios::ctrSalidaUsuario($tablaSesion,$datosSalida);
 	// FIn actualizacion
-	if($datosAccesoUsuarioSalida=="ok")
+	if($datosAccesoUsuarioSalida=="ok") 
 	{
 		$_SESSION = array();
         // remove all session variables
