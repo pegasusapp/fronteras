@@ -51,9 +51,6 @@
                   </div>
                </div>
                <div class="row">   
-                  <!--<div class="col-5">
-                  <button type="button" class="btn btn-rounded btn-primary"  data-toggle="modal" data-target="#modalAgregarUsuario"><i class="fas fa-user-plus" ></i> Añadir usuarios</button>
-                </div> -->
                 <div class="col-4">
                  </div>
                  <div class="col-4" >

@@ -50,89 +50,45 @@ session_start();
 <!--=====================================
 CUERPO DOCUMENTO
 ======================================-->
-  <?php
+  <?php 
+   $plantillasActivas = array("inicio" =>"inicio.php",
+                              "crearUsuario" => "crearUsuario.php",
+                              "editMenu" => "editMenu.php",
+                              "listadoFronteras" => "listadoFronteras.php",
+                              "datosPersonales" => "datosPersonales.php",
+                              "datosGenerados" => "datosGenerados.php",
+                              "listadoClientes" => "listadoClientes",
+                              "uploadFile" => "uploadFile.php",
+                              "uploadConsumo" => "uploadConsumo.php",
+                              "descargaFactura" => "descargaFactura.php",
+                              "salir" => "salir.php"
+                                );
+  if(isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok"):?>
+    <body class="hold-transition sidebar-mini layout-fixed">
+      <div class="wrapper">
 
+         <?php 
+          include "modulos/cabezote.php";
+          include "modulos/menu.php"; 
+           if(isset($_GET["ruta"])){
+            
+               if(isset($plantillasActivas[$_GET["ruta"]])){
+                      include "modulos/".$_GET["ruta"].".php";
+                    }
+                else{
+                      include "modulos/404.php";
+                    }
 
-  if(isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok"){
-    echo '<body class="hold-transition sidebar-mini layout-fixed"><div class="wrapper">';
-    /*=============================================
-    CABEZOTE
-    =============================================*/
-
-    include "modulos/cabezote.php";
-
-    /*=============================================
-    MENU
-    =============================================*/
-
-    include "modulos/menu.php";
-
-    /*=============================================
-    CONTENIDO
-    =============================================*/
-
-    if(isset($_GET["ruta"])){
-      if($_GET["ruta"] == "inicio" ||
-         $_GET["ruta"] == "categorias" ||
-         $_GET["ruta"] == "productos" ||
-         $_GET["ruta"] == "clientes" ||
-         $_GET["ruta"] == "crear-categoria" ||
-         $_GET["ruta"] == "crear-categoriaItem" ||
-         $_GET["ruta"] == "crear-perfil" ||
-         $_GET["ruta"] == "crearUsuario" ||
-         $_GET["ruta"] == "editMenu" ||
-         $_GET["ruta"] == "crear-opciones" ||
-         $_GET["ruta"] == "crear-documento" ||
-         $_GET["ruta"] == "gestion-empresa" ||
-         $_GET["ruta"] == "mostrar-item" || 
-         $_GET["ruta"] == "mostrar-item-documento" ||
-         $_GET["ruta"] == "graficas" ||
-         $_GET["ruta"] == "solicitudes" ||
-         $_GET["ruta"] == "alterno" ||
-         $_GET["ruta"] == "listadoFronteras" ||
-         $_GET["ruta"] == "info" ||
-         $_GET["ruta"] == "info2" ||
-         $_GET["ruta"] == "info3" ||
-         $_GET["ruta"] == "datosPersonales" ||
-         $_GET["ruta"] == "datosGenerados" ||
-         $_GET["ruta"] == "listadoClientes" ||
-         $_GET["ruta"] == "uploadFile" ||
-         $_GET["ruta"] == "uploadConsumo" ||
-         $_GET["ruta"] == "descargaFactura" ||
-         $_GET["ruta"] == "dfiles" ||
-         $_GET["ruta"] == "desviacion" ||
-         $_GET["ruta"] == "salir"){
-
-        include "modulos/".$_GET["ruta"].".php";
-
-      }else{
-
-        include "modulos/404.php";
-
-      }
-
-    }else{
-
-      include "modulos/inicio.php";
-
-    }
-
-    /*=============================================
-    FOOTER
-    =============================================*/
-
-    include "modulos/footer.php";
-
-    echo '</div>';
-
-  }else{
-    echo '<body class="login-page">'; 
-    include "modulos/login.php";
-
-  }
-
-  ?>
- 
+          }else{
+            include "modulos/inicio.php";
+          }
+         include "modulos/footer.php"; ?>
+      </div>
+  <?php else:?>
+    <body class="login-page"> 
+  <?=include "modulos/login.php";?>
+  <?php endif;?>
+   
 
 <script src="vistas/js/usuarios.js"></script>
 <script src="vistas/js/fronteras.js"></script>
