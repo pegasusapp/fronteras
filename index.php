@@ -29,6 +29,7 @@ require_once "modelos/factura.modelo.php";
 require_once "modelos/logLectura.modelo.php";
 require_once "modelos/desviacion.modelo.php";
 require_once "modelos/logLecturaWS.modelo.php";
+require_once "modelos/subproceso.modelo.php";
 
 $plantilla = new ControladorPlantilla();
 $plantilla -> ctrPlantilla();
