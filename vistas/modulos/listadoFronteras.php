@@ -29,7 +29,9 @@ table.dataTable tr.shown td.details-control:before {
  }
 
 ?>
-  <section class="content">
+
+    
+    <section class="content">
       <div class="row">
         <div class="col-12">
           <div class="card">
@@ -87,7 +89,7 @@ table.dataTable tr.shown td.details-control:before {
       </div>
     </div>
   </section>
-
+</div>
 
 <?php include 'editlistadoFronteras.php' ?>
 

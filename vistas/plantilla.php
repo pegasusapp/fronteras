@@ -55,7 +55,6 @@ CUERPO DOCUMENTO
 <script src="vistas/js/fronteras.js"></script>
 <script src="vistas/js/clientes.js"></script>
 <script src="vistas/js/totales.js"></script> 
-<script src="vistas/js/perfiles.js"></script>
 <script src="vistas/js/permisos.js"></script> 
 <script src="vistas/js/factura.js"></script> 
 <script src="vistas/js/logLectura.js"></script>
