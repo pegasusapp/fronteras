@@ -5,7 +5,7 @@ require_once "conexion.php";
 Class ModeloSubproceso{
 
 
-     public static function mdlMostrarSubproceso(string $tabla, string $item, ?Type $valor){
+     public static function mdlMostrarSubproceso(string $tabla, string $item,$valor){
 
         if(is_null($valor)){
 			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
