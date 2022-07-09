@@ -5,7 +5,7 @@
          <?php 
           include "cabezote.php";
           include "menu.php"; 
-          include "breadcrum.php"; 
+          include "breadcrumb.php"; 
            if(isset($_GET["ruta"])){
                 include $template;
               }
