@@ -206,7 +206,7 @@
   }
  
   var lineChartOptions = jQuery.extend(true, {}, salesChartOptions)
-    var lineChartData = jQuery.extend(true, {}, salesChartData)
+  var lineChartData = jQuery.extend(true, {}, salesChartData)
    <?php 
          echo $datafills_php;
      ?>
