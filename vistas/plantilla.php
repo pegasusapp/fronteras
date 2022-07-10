@@ -40,6 +40,7 @@ session_start();
 <script src="plugins/tree/js/hummingbird-treeview.js"></script> 
 <!-- sweet alert -->
 <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- tree -->
