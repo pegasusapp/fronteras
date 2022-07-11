@@ -352,7 +352,7 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 		return $count = $stmt->fetchColumn();
 	}
 
-	static public function mdlInsertLecturasFrontera($datosMedidor,$datosLecturasEnergiaActiva,$datosLecturasEnergiaExportada,$datosLecturasEnergiaReactiva,$datosLecturasEnergiaCapacitiva):bool{
+	static public function mdlInsertLecturasFrontera($datosMedidor,$datosLecturasEnergiaActiva,$datosLecturasEnergiaExportada,$datosLecturasEnergiaReactiva,$datosLecturasEnergiaCapacitiva,$datosLecturasEnergiaPenalizada):bool{
 		   
 		$pdo = Conexion::conectar();
 		$pdo ->beginTransaction();
@@ -367,7 +367,8 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 			  	$resultado_gral +=[2=>$result_reactiva];
 			  $result_capacitiva = array_merge($datosMedidor,$datosLecturasEnergiaCapacitiva);
 				$resultado_gral +=[3=>$result_capacitiva];
-
+			  $result_penalizada = array_merge($datosMedidor,$datosLecturasEnergiaPenalizada);
+				$resultado_gral +=[4=>$result_penalizada];
 			for($i = 0; $i < count($resultado_gral); $i++)
 			{
 				            if(self::mdlSearchData($resultado_gral[$i]) == 0)
