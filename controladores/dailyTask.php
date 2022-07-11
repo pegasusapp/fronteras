@@ -176,7 +176,6 @@ class ControladorFronterasWS{
              //check if exist energy penalty
              $datosLecturasEnergiaPenalizada = self::ctrChargePenaltyEnergy($datosLecturasEnergiaActiva,$datosLecturasEnergiaReactiva);
     
-             var_dump($datosLecturasEnergiaPenalizada);
              $datosMedidor = array("diaLectura"=>$dia, 
                                                 "mesLectura"=>$mes, 
                                                 "anyoLectura"=>$anyo, 

@@ -43,9 +43,9 @@ class ModeloFronteras{
 		try 
 		{
 			
-			$stmt = $pdo->prepare("Select  anyoLectura, mesLectura , diaLectura, tipoEnergia ,concat(H1,',',H2,',',H3,',',H4,',',H5,',',H6,',',H7,',',H8,',',H9,',',H10,',',H11,',',H12,',',H13,',',H14,',',H15,',',H16,',',H17,',',H18,',',H19,',',H20,',',H21,',',H22,',',H23,',',H24) as datos,sum(H1+H2+H3+H4+H5+H6+H7+H8+H9+H10+H11+H12+H13+H14+H15+H16+H17+H18+H19+H20+H21+H22+H23+H24) as total_dia 
-									from lecturaFrontera 
-									Where frontera_fronteraCliente = :frontera_fronteraCliente and anyoLectura = :anyoLectura and mesLectura = :mesLectura and diaLectura = :diaLectura and tipoMedidor='P'
+			$stmt = $pdo->prepare("SELECT  anyoLectura, mesLectura , diaLectura, tipoEnergia ,concat(H1,',',H2,',',H3,',',H4,',',H5,',',H6,',',H7,',',H8,',',H9,',',H10,',',H11,',',H12,',',H13,',',H14,',',H15,',',H16,',',H17,',',H18,',',H19,',',H20,',',H21,',',H22,',',H23,',',H24) as datos,sum(H1+H2+H3+H4+H5+H6+H7+H8+H9+H10+H11+H12+H13+H14+H15+H16+H17+H18+H19+H20+H21+H22+H23+H24) as total_dia 
+									FROM lecturaFrontera 
+									WHERE frontera_fronteraCliente = :frontera_fronteraCliente and anyoLectura = :anyoLectura and mesLectura = :mesLectura and diaLectura = :diaLectura and tipoMedidor='P'
 									GROUP BY anyoLectura, mesLectura, diaLectura,tipoEnergia, datos");
 			$stmt ->bindParam(":frontera_fronteraCliente", $valor, PDO::PARAM_STR);
 			$stmt ->bindParam(":anyoLectura", $anyo_curso, PDO::PARAM_INT);
