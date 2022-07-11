@@ -221,9 +221,12 @@ class ControladorFronterasWS{
         $datosArrayPenalizadaBack +=["tipoEnergia"=>"P"];
         $i = 1;
             foreach ($arrayActiva as $key => $valueActiva){
-                $vlrTx = self::ctrCalculePenalty($valueActiva,$arrayReactiva[$key]);
-                $datosArrayPenalizadaBack += ["H".$i => $vlrTx];
-                $i++;
+                 if($key<>"tipoEnergia"){
+                    $vlrTx = self::ctrCalculePenalty($valueActiva,$arrayReactiva[$key]);
+                    $datosArrayPenalizadaBack += ["H".$i => $vlrTx];
+                    $i++;
+                 }
+               
             }
         return $datosArrayPenalizadaBack;
        }
