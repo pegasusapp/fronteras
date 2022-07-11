@@ -152,6 +152,7 @@ class ControladorFronterasWS{
            $datosLecturasEnergiaExportada = array();
            $datosLecturasEnergiaCapacitiva = array();
            $datosLecturasEnergiaReactiva = array();
+           $datosLecturasEnergiaPenalizada = array();
     
            foreach($datos as $value){
     
@@ -172,17 +173,19 @@ class ControladorFronterasWS{
                    }
     
              }
+             //check if exist energy penalty
+             $datosLecturasEnergiaPenalizada = self::ctrChargePenaltyEnergy($datosLecturasEnergiaActiva,$datosLecturasEnergiaReactiva);
     
-           $datosMedidor = array("diaLectura"=>$dia, 
-                                           "mesLectura"=>$mes, 
-                                           "anyoLectura"=>$anyo, 
-                                           "medidorFrontera"=>$medidor, 
-                                           "frontera_fronteraCliente"=>$frontera,
-                                           "tipoMedidor"=>"P",
-                                           "fechaCompleta"=>$anyo.'-'.$mes.'-'.$dia);
+             $datosMedidor = array("diaLectura"=>$dia, 
+                                                "mesLectura"=>$mes, 
+                                                "anyoLectura"=>$anyo, 
+                                                "medidorFrontera"=>$medidor, 
+                                                "frontera_fronteraCliente"=>$frontera,
+                                                "tipoMedidor"=>"P",
+                                                "fechaCompleta"=>$anyo.'-'.$mes.'-'.$dia);
     
     
-       return ModeloFronteras::mdlInsertLecturasFrontera($datosMedidor,$datosLecturasEnergiaActiva,$datosLecturasEnergiaExportada,$datosLecturasEnergiaReactiva,$datosLecturasEnergiaCapacitiva);
+       return ModeloFronteras::mdlInsertLecturasFrontera($datosMedidor,$datosLecturasEnergiaActiva,$datosLecturasEnergiaExportada,$datosLecturasEnergiaReactiva,$datosLecturasEnergiaCapacitiva,$datosLecturasEnergiaPenalizada);
     
        }
     
@@ -197,6 +200,31 @@ class ControladorFronterasWS{
                $j++;
             }
           return $datosBack;
+       }
+
+       public function ctrCalculePenalty($vlrActive,$vlrReactive):int{
+     
+        $operacion_a = $vlrActive*0.5;
+        $vlrHoraPenalizada =0;
+        if($vlrReactive > $operacion_a)
+        {
+            $vlrHoraPenalizada = $vlrReactive - $operacion_a;
+        }
+
+        return $vlrHoraPenalizada;
+
+       }
+
+       public function ctrChargePenaltyEnergy($arrayActiva,$arrayReactiva):array{
+        $datosArrayPenalizadaBack = array();
+        $datosArrayPenalizadaBack +=["tipoEnergia"=>"P"];
+        $i = 1;
+            foreach ($arrayActiva as $key => $valueActiva){
+                $vlrTx = ctrCalculePenalty($valueActiva,$arrayReactiva[$key]);
+                $datosArrayPenalizadaBack += ["H".$i => $vlrTx];
+                $i++;
+            }
+        return $datosArrayPenalizadaBack;
        }
 
 
