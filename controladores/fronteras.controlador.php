@@ -149,6 +149,10 @@ class ControladorFronteras
 						$horaEC++;
 					}
 					$datosLecturasEnergiaCapacitiva +=["tipoEnergia"=>"C"];
+
+					$datosLecturasEnergiaPenalizada = array();
+					$datosLecturasEnergiaPenalizada = self::ctrChargePenaltyEnergy($datosLecturasEnergiaActiva,$datosLecturasEnergiaReactiva);
+
 					
 					if(ModeloFronteras::mdlInsertLecturasFrontera($datosMedidor,$datosLecturasEnergiaActiva,$datosLecturasEnergiaExportada,$datosLecturasEnergiaReactiva,$datosLecturasEnergiaCapacitiva))
 					{
@@ -167,6 +171,34 @@ class ControladorFronteras
 				
 		 
 	}
+
+	   public function ctrCalculePenalty($vlrActive,$vlrReactive):int{
+     
+        $operacion_a = $vlrActive*0.5;
+        $vlrHoraPenalizada =0;
+        if($vlrReactive > $operacion_a)
+        {
+            $vlrHoraPenalizada = $vlrReactive - $operacion_a;
+        }
+
+        return $vlrHoraPenalizada;
+
+       }
+
+       public function ctrChargePenaltyEnergy($arrayActiva,$arrayReactiva):array{
+        $datosArrayPenalizadaBack = array();
+        $datosArrayPenalizadaBack +=["tipoEnergia"=>"P"];
+        $i = 1;
+            foreach ($arrayActiva as $key => $valueActiva){
+                 if($key<>"tipoEnergia"){
+                    $vlrTx = self::ctrCalculePenalty($valueActiva,$arrayReactiva[$key]);
+                    $datosArrayPenalizadaBack += ["H".$i => $vlrTx];
+                    $i++;
+                 }
+               
+            }
+        return $datosArrayPenalizadaBack;
+       }
 
 	
 
