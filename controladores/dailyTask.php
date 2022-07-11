@@ -220,7 +220,7 @@ class ControladorFronterasWS{
         $datosArrayPenalizadaBack +=["tipoEnergia"=>"P"];
         $i = 1;
             foreach ($arrayActiva as $key => $valueActiva){
-                $vlrTx = ctrCalculePenalty($valueActiva,$arrayReactiva[$key]);
+                $vlrTx = self::ctrCalculePenalty($valueActiva,$arrayReactiva[$key]);
                 $datosArrayPenalizadaBack += ["H".$i => $vlrTx];
                 $i++;
             }
