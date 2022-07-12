@@ -9,10 +9,10 @@ require "constantes.controlador.php";
 
 class ControladorFronterasWS{ 
 
-     public function ctrPrepareDataToSendWS(){
+     public function ctrPrepareDataToSendWS($dias){
 
                 
-        $fecha = explode("-",ControladorUtilidades::anyoMesDia(1));	
+        $fecha = explode("-",ControladorUtilidades::anyoMesDia($dias));	
         $fronteras = ModeloFronteras::mdlMostrarFronteras("frontera","","");
         $resultado_gral = array(); 
         foreach ($fronteras as $value){
@@ -233,7 +233,8 @@ class ControladorFronterasWS{
 
 
 }
+$dias = $_GET["days"];
 $task = new ControladorFronterasWS();
-$task -> ctrPrepareDataToSendWS();
+$task -> ctrPrepareDataToSendWS($dias);
 
 ?>
