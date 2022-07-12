@@ -34,22 +34,7 @@
                                 }
                         
                 ?> 
-<div class="content-wrapper">
-  <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Listado de consumos</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="inicio">Home</a></li>
-              <li class="breadcrumb-item active">Listado de consumos</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-  </section>
+
   <section class="content">
     <div class="row">
           <div class="col-12">
@@ -114,6 +99,7 @@
                     $item3 = "tipoEnergia";
                     $valor3 =  $_POST["tipoEnergia"];
                     $items = ControladorFronteras::crtMostrarMatrizEnergiaDatos($item, $valor,$item2,$valor2,$valor21,$item3,$valor3);
+                    var_dump($items);
                     foreach ($items as $key => $value)
                     {
                       ?>
@@ -159,21 +145,3 @@
     </div>
   </section>
 </div>
-<?php
-
-         
-
-          $paginaNiveles =  $_SERVER["REQUEST_URI"];
-          $paginaSesion = explode("/", $paginaNiveles);
-          $valor = $paginaSesion[2];
-          $items = ControladorMenu::ctrMostrarMenuExpandido($valor);
-          foreach ($items as $key => $value)
-          {
-            echo "<script>
-            document.getElementById('servicio_".$value["idServicio"]."').className = 'nav-item has-treeview menu-close menu-open';
-            document.getElementById('proceso_".$value["idProceso"]."').className = 'nav-item has-treeview menu-close menu-open';
-            document.getElementById('subproceso_".$value["idSubproceso"]."').className ='far fa-circle nav-icon text-danger';
-                  </script>";
-          }
-
-        ?> 
