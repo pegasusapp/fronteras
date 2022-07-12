@@ -312,7 +312,6 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 	static public function mdlMostrarMatrizEnergiaDatos($tabla,$item, $valor,$valor2,$valor21,$item3,$valor3)
 	{
 		
-		echo "->".$tabla."->".$item."->".$valor."->".$valor2."->".$valor21."->".$item3."->".$valor3;
 		$pdo = Conexion::conectar();
 		$pdo ->beginTransaction();
 		try 
