@@ -5,10 +5,22 @@
    $template="salir.php";
    if($valor != "salir")
    {
-    $plantillasActivas = ModeloSubproceso::mdlMostrarSubproceso($tabla,$item,$valor);
-    $nameModule = (empty($plantillasActivas["plantillaSubproceso"])) ? "Inicio" : $plantillasActivas["nombreSubproceso"]; 
-    $template = (empty($plantillasActivas["plantillaSubproceso"])) ? "inicio.php" : $plantillasActivas["plantillaSubproceso"].".php"; 
+    if($valor =="editMenu")
+    {
+      $nameModule = "Permisos de usuario";
+      $template = "editMenu.php";
     }
+    elseif($valor =="datosGenerados"){
+      $nameModule = "Datos generados";
+      $template = "datosGenerados.php";
+    }
+    else{
+      $plantillasActivas = ModeloSubproceso::mdlMostrarSubproceso($tabla,$item,$valor);
+      $nameModule = (empty($plantillasActivas["plantillaSubproceso"])) ? "Inicio" : $plantillasActivas["nombreSubproceso"]; 
+      $template = (empty($plantillasActivas["plantillaSubproceso"])) ? "inicio.php" : $plantillasActivas["plantillaSubproceso"].".php"; 
+    
+    }
+  }
     
 
   ?>
