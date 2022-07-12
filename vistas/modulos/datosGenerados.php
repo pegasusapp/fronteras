@@ -98,7 +98,6 @@
                     $item3 = "tipoEnergia";
                     $valor3 =  $_POST["tipoEnergia"];
                     $items = ControladorFronteras::crtMostrarMatrizEnergiaDatos($item, $valor,$valor2,$valor21,$item3,$valor3);
-                    var_dump($items);
                     foreach ($items as $key => $value)
                     {
                       ?>
