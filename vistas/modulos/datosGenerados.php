@@ -93,13 +93,11 @@
                     $arrayCadenaFecha = explode("-", $cadenaFecha);
                     $item = "frontera_fronteraCliente";
                     $valor = $_POST["fronteraReporte"];
-                    $item2 = "fechaCompleta";
                     $valor2 = $arrayCadenaFecha[0];
                     $valor21 = $arrayCadenaFecha[1];
                     $item3 = "tipoEnergia";
                     $valor3 =  $_POST["tipoEnergia"];
-                    echo "------>".$item.$valor.$item2.$valor2.$valor21.$item3.$valor3;
-                    $items = ControladorFronteras::crtMostrarMatrizEnergiaDatos($item, $valor,$item2,$valor2,$valor21,$item3,$valor3);
+                    $items = ControladorFronteras::crtMostrarMatrizEnergiaDatos($item, $valor,$valor2,$valor21,$item3,$valor3);
                     var_dump($items);
                     foreach ($items as $key => $value)
                     {
