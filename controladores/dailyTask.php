@@ -233,8 +233,11 @@ class ControladorFronterasWS{
 
 
 }
-$dias = $_GET["days"];
-$task = new ControladorFronterasWS();
-$task -> ctrPrepareDataToSendWS($dias);
+if (isset($_GET["days"])) {
+    $dias = $_GET["days"];
+    $task = new ControladorFronterasWS();
+    $task -> ctrPrepareDataToSendWS($dias);
+    
+}
 
 ?>
