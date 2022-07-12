@@ -43,13 +43,14 @@ class ControladorFronteras
 	static public function crtMostrarTotalConsumoFronterasAnyoMesEnergia($valor)
 	{
 		return ModeloFronteras::mdlMostrarTotalConsumoFronterasAnyoMesEnergia($valor);
-	}
+	} 
 
 	static public function crtMostrarMatrizEnergiaDatos($item, $valor,$item2,$valor2,$valor21,$item3,$valor3)
 	{	
 		$tabla = "lecturaFrontera";
 		$valor2 = date("Y-m-d",strtotime($valor2));	
 		$valor21 = date("Y-m-d",strtotime($valor21));	
+		echo "-->".$valor2."---".$valor21;
 		return ModeloFronteras::mdlMostrarMatrizEnergiaDatos($tabla,$item, $valor,$item2,$valor2,$valor21,$item3,$valor3);
 	
 	}
