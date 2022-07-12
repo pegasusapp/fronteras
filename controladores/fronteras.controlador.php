@@ -51,7 +51,7 @@ class ControladorFronteras
 		$valor2 = date("Y-m-d",strtotime($valor2));	
 		$valor21 = date("Y-m-d",strtotime($valor21));	
 		echo "-->".$valor2."---".$valor21;
-		return ModeloFronteras::mdlMostrarMatrizEnergiaDatos($tabla,$item, $valor,$item2,$valor2,$valor21,$item3,$valor3);
+		return ModeloFronteras::mdlMostrarMatrizEnergiaDatos($tabla,$item, $valor,$valor2,$valor21,$item3,$valor3);
 	
 	}
 
