@@ -311,6 +311,8 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 
 	static public function mdlMostrarMatrizEnergiaDatos($tabla,$item, $valor,$valor2,$valor21,$item3,$valor3)
 	{
+		
+		echo "->".$tabla."->".$item."->".$valor."->".$valor2."->".$valor21."->".$item3."->".$valor3;
 		$pdo = Conexion::conectar();
 		$pdo ->beginTransaction();
 		try 
@@ -319,9 +321,7 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 			$stmt = $pdo->prepare("SELECT  anyoLectura, mesLectura , diaLectura, frontera_fronteraCliente,H1,H2,H3,H4,H5,H6,H7,H8,H9,H10,H11,H12,H13,H14,H15,H16,H17,H18,H19,H20,H21,H22,H23,H24
 								   FROM $tabla 
 								   WHERE $item = :$item AND $item3 = :$item3  AND tipoMedidor='P'
-									AND  fechaCompleta BETWEEN date_format('$valor2', '%Y-%m-%d') and date_format('$valor21','%Y-%m-%d')");
-
-									
+								   AND  fechaCompleta BETWEEN date_format('$valor2', '%Y-%m-%d') and date_format('$valor21','%Y-%m-%d')");
 			$stmt ->bindParam(":frontera_fronteraCliente", $valor, PDO::PARAM_STR);
 			$stmt ->bindParam(":tipoEnergia", $valor3, PDO::PARAM_STR);
 			$stmt ->execute();
