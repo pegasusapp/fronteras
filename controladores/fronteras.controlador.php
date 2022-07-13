@@ -129,7 +129,7 @@ class ControladorFronteras
 					$datosLecturasEnergiaCapacitiva = self::ctrChargeEnergyArray(77,100,"C",$data);
 
 					$datosLecturasEnergiaPenalizada = array();
-					$datosLecturasEnergiaPenalizada = self::ctrChargePenaltyEnergy($datosLecturasEnergiaActiva,$datosLecturasEnergiaReactiva,$data[0]);
+					$datosLecturasEnergiaPenalizada = self::ctrChargePenaltyEnergy($datosLecturasEnergiaActiva,$datosLecturasEnergiaReactiva,$data[0],$formattedweddingdate);
 
 					
 					if(ModeloFronteras::mdlInsertLecturasFrontera($datosMedidor,$datosLecturasEnergiaActiva,$datosLecturasEnergiaExportada,$datosLecturasEnergiaReactiva,$datosLecturasEnergiaCapacitiva,$datosLecturasEnergiaPenalizada))
@@ -155,7 +155,9 @@ class ControladorFronteras
 		$hora = 1;	
 		$arrayBack = array();
 		$arrayFactorM = array();
-		$counter = 0;	
+		$counter = 0;
+		$myDateTime = DateTime::createFromFormat('m/d/Y', $vector[3]);
+		$fechaConvertida = $myDateTime->format('Y-m-d');	
 		$arrayBack +=["tipoEnergia"=>$typeEnergy];	
 			for($i=$inicial;$i<=$final;$i++){
 				$arrayBack += ["H".$hora => $vector[$i]];
@@ -168,7 +170,8 @@ class ControladorFronteras
 			if($counter > 0 && $typeEnergy === "C"){
 				$arrayFactorM = array("tipoEnergia" => "C",
 				"cantidad" => $counter,
-				"frontera_fronteraCliente" => $vector[0]);
+				"frontera_fronteraCliente" => $vector[0],
+			    "fecha" =>$fechaConvertida);
 				ControladorFactorM::ctrCrearFactorM($arrayFactorM);
 
 			}
@@ -193,7 +196,7 @@ class ControladorFronteras
 
        }
 
-       public function ctrChargePenaltyEnergy($arrayActiva,$arrayReactiva,$frontera):array{
+       public function ctrChargePenaltyEnergy($arrayActiva,$arrayReactiva,$frontera,$fecha):array{
         $datosArrayPenalizadaBack = array();
         $datosArrayPenalizadaBack +=["tipoEnergia"=>"P"];
 		$arrayFactorM = array();
@@ -214,7 +217,8 @@ class ControladorFronteras
 			if($counter > 0){
 				$arrayFactorM = array("tipoEnergia" => "P",
 				"cantidad" => $counter,
-				"frontera_fronteraCliente" =>$frontera);
+				"frontera_fronteraCliente" =>$frontera,
+			    "fecha" => $fecha);
 				ControladorFactorM::ctrCrearFactorM($arrayFactorM);
 
 			}

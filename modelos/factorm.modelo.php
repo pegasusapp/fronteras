@@ -20,7 +20,8 @@ class ModeloFactorM{
 	}
 
 	static public function mdlIngresarFactorM($tabla,$datosLog): bool{
-		$stmt =  Conexion::conectar()->prepare("INSERT INTO $tabla(fecha, tipoEnergia, cantidad, frontera_fronteraCliente) VALUES ( NOW(), :tipoEnergia, :cantidad, :frontera_fronteraCliente)");
+		$stmt =  Conexion::conectar()->prepare("INSERT INTO $tabla(fecha, tipoEnergia, cantidad, frontera_fronteraCliente) VALUES ( :fecha, :tipoEnergia, :cantidad, :frontera_fronteraCliente)");
+		$stmt->bindParam(":fecha", $datosLog["fecha"], PDO::PARAM_STR);
 		$stmt->bindParam(":tipoEnergia", $datosLog["tipoEnergia"], PDO::PARAM_STR);
 		$stmt->bindParam(":cantidad", $datosLog["cantidad"], PDO::PARAM_INT);
 		$stmt->bindParam(":frontera_fronteraCliente", $datosLog["frontera_fronteraCliente"], PDO::PARAM_STR);
