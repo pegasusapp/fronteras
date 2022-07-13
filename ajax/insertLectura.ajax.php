@@ -2,6 +2,8 @@
 
 require_once "../controladores/fronteras.controlador.php";
 require_once "../modelos/fronteras.modelo.php";
+require_once "../controladores/factorm.controlador.php";
+require_once "../modelos/factorm.modelo.php";
 
 class AjaxInsertLectura{
 
