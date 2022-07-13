@@ -3,8 +3,10 @@
 require "logLecturaWS.controlador.php";
 require dirname(__FILE__)."/../modelos/logLecturaWS.modelo.php";
 require dirname(__FILE__)."/../modelos/fronteras.modelo.php";
+require dirname(__FILE__)."/../modelos/factorm.modelo.php";
 require "utilidades.controlador.php";
 require "constantes.controlador.php";
+require "factorm.controlador.php";
 
 
 class ControladorFronterasWS{ 
@@ -163,21 +165,21 @@ class ControladorFronterasWS{
                    $frontera =  $value["codigosic"];
     
                    if($value["canal"] === Constantes::SIGLA_ACTIVA){
-                       $datosLecturasEnergiaActiva =  self::ctrChargeArrayEnergyType($value,"A");
+                       $datosLecturasEnergiaActiva =  self::ctrChargeArrayEnergyType($value,"A",$anyo,$mes,$dia,$frontera);
                       }
                    elseif($value["canal"] === Constantes::SIGLA_REACTIVA){
-                       $datosLecturasEnergiaReactiva = self::ctrChargeArrayEnergyType($value,"R");
+                       $datosLecturasEnergiaReactiva = self::ctrChargeArrayEnergyType($value,"R",$anyo,$mes,$dia,$frontera);
                    }
                    elseif($value["canal"] === Constantes::SIGLA_CAPACITIVA){
-                       $datosLecturasEnergiaCapacitiva = self::ctrChargeArrayEnergyType($value,"C");
+                       $datosLecturasEnergiaCapacitiva = self::ctrChargeArrayEnergyType($value,"C",$anyo,$mes,$dia,$frontera);
                    }
                    elseif($value["canal"] === Constantes::SIGLA_EXPORTADA){
-                       $datosLecturasEnergiaExportada = self::ctrChargeArrayEnergyType($value,"E");
+                       $datosLecturasEnergiaExportada = self::ctrChargeArrayEnergyType($value,"E",$anyo,$mes,$dia,$frontera);
                    }
     
              }
              //check if exist energy penalty
-             $datosLecturasEnergiaPenalizada = self::ctrChargePenaltyEnergy($datosLecturasEnergiaActiva,$datosLecturasEnergiaReactiva);
+             $datosLecturasEnergiaPenalizada = self::ctrChargePenaltyEnergy($datosLecturasEnergiaActiva,$datosLecturasEnergiaReactiva,$anyo,$mes,$dia,$frontera);
     
              $datosMedidor = array("diaLectura"=>$dia, 
                                                 "mesLectura"=>$mes, 
@@ -192,16 +194,29 @@ class ControladorFronterasWS{
     
        }
     
-        public function ctrChargeArrayEnergyType($vector,$siglaTenergy):array{
+        public function ctrChargeArrayEnergyType($vector,$siglaTenergy,$anyo,$mes,$dia,$frontera):array{
            $datosBack = array();
-    
+           $arrayFactorM = array();
+           $counter = 0;
            $datosBack +=["tipoEnergia"=>$siglaTenergy];
            $j=0; 
            for($i = 1; $i <= 24;$i++)
             {
                $datosBack += ["H".$i => $vector["hora".$j]];
+               if($siglaTenergy === "C" && $vector["hora".$j] > 0)
+				{
+					$counter += $vector["hora".$j];
+				}
                $j++;
             }
+            if($counter > 0 && $siglaTenergy === "C"){
+				$arrayFactorM = array("tipoEnergia" => "C",
+				"cantidad" => $counter,
+				"frontera_fronteraCliente" => $frontera,
+			    "fecha" =>$anyo.'-'.$mes.'-'.$dia);
+				ControladorFactorM::ctrCrearFactorM($arrayFactorM);
+
+			}
           return $datosBack;
        }
 
@@ -218,16 +233,30 @@ class ControladorFronterasWS{
 
        }
 
-       public function ctrChargePenaltyEnergy($arrayActiva,$arrayReactiva):array{
+       public function ctrChargePenaltyEnergy($arrayActiva,$arrayReactiva,$anyo,$mes,$dia,$frontera):array{
         $datosArrayPenalizadaBack = array();
         $datosArrayPenalizadaBack +=["tipoEnergia"=>"P"];
+        $arrayFactorM = array();
+		$counter = 0;
         $i = 1;
             foreach ($arrayActiva as $key => $valueActiva){
                  if($key<>"tipoEnergia"){
                     $vlrTx = self::ctrCalculePenalty($valueActiva,$arrayReactiva[$key]);
                     $datosArrayPenalizadaBack += ["H".$i => $vlrTx];
+                    if($vlrTx > 0)
+						{
+							$counter += $vlrTx;
+						}
                     $i++;
                  }
+                 if($counter > 0){
+                    $arrayFactorM = array("tipoEnergia" => "P",
+                    "cantidad" => $counter,
+                    "frontera_fronteraCliente" =>$frontera,
+                    "fecha" => $anyo.'-'.$mes.'-'.$dia);
+                    ControladorFactorM::ctrCrearFactorM($arrayFactorM);
+    
+                }
                
             }
         return $datosArrayPenalizadaBack;
