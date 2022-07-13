@@ -111,47 +111,25 @@ class ControladorFronteras
 					$formattedweddingdate = $myDateTime->format('Y-m-d');
 
 					$datosMedidor = array("diaLectura"=>$fecha[1], 
-										"mesLectura"=>$fecha[0], 
-										"anyoLectura"=>$fecha[2], 
-										"medidorFrontera"=>$data[2], 
-										"frontera_fronteraCliente"=>$data[0],
-										"tipoMedidor"=>"P",
-										"fechaCompleta"=>$formattedweddingdate);	
-					$horaEA = 1;		
-					$datosLecturasEnergiaActiva = array();
-					for($i=5;$i<=28;$i++){
-						$datosLecturasEnergiaActiva += ["H".$horaEA => $data[$i]];
-						$horaEA++;
-					}
-					$datosLecturasEnergiaActiva +=["tipoEnergia"=>"A"];
-
+										  "mesLectura"=>$fecha[0], 
+										  "anyoLectura"=>$fecha[2], 
+										  "medidorFrontera"=>$data[2], 
+										  "frontera_fronteraCliente"=>$data[0],
+										  "tipoMedidor"=>"P",
+										  "fechaCompleta"=>$formattedweddingdate);	
 					
-					$horaEE = 1;
+					$datosLecturasEnergiaActiva = array();
 					$datosLecturasEnergiaExportada = array();
-					for($i=29;$i<=52;$i++){
-						$datosLecturasEnergiaExportada += ["H".$horaEE => $data[$i]];
-						$horaEE++;
-					}
-					$datosLecturasEnergiaExportada +=["tipoEnergia"=>"E"];
-
-					$horaER = 1;
 					$datosLecturasEnergiaReactiva = array();
-					for($i=53;$i<=76;$i++){
-						$datosLecturasEnergiaReactiva += ["H".$horaER => $data[$i]];
-						$horaER++;
-					}
-					$datosLecturasEnergiaReactiva +=["tipoEnergia"=>"R"];
-
-					$horaEC = 1;
 					$datosLecturasEnergiaCapacitiva = array();
-					for($i=77;$i<=100;$i++){
-						$datosLecturasEnergiaCapacitiva += ["H".$horaEC => $data[$i]];
-						$horaEC++;
-					}
-					$datosLecturasEnergiaCapacitiva +=["tipoEnergia"=>"C"];
+
+					$datosLecturasEnergiaActiva = self::ctrChargeEnergyArray(5,28,Constantes::SIGLA_ACTIVA,$data);
+					$datosLecturasEnergiaExportada = self::ctrChargeEnergyArray(29,52,Constantes::SIGLA_EXPORTADA,$data);
+					$datosLecturasEnergiaReactiva = self::ctrChargeEnergyArray(53,76,Constantes::SIGLA_REACTIVA,$data);
+					$datosLecturasEnergiaCapacitiva = self::ctrChargeEnergyArray(77,100,Constantes::SIGLA_CAPACITIVA,$data);
 
 					$datosLecturasEnergiaPenalizada = array();
-					$datosLecturasEnergiaPenalizada = self::ctrChargePenaltyEnergy($datosLecturasEnergiaActiva,$datosLecturasEnergiaReactiva);
+					$datosLecturasEnergiaPenalizada = self::ctrChargePenaltyEnergy($datosLecturasEnergiaActiva,$datosLecturasEnergiaReactiva,$data[0]);
 
 					
 					if(ModeloFronteras::mdlInsertLecturasFrontera($datosMedidor,$datosLecturasEnergiaActiva,$datosLecturasEnergiaExportada,$datosLecturasEnergiaReactiva,$datosLecturasEnergiaCapacitiva,$datosLecturasEnergiaPenalizada))
@@ -172,6 +150,36 @@ class ControladorFronteras
 		 
 	}
 
+	   public function ctrChargeEnergyArray($inicial,$final,$typeEnergy,$vector):array{
+			
+		$hora = 1;	
+		$arrayBack = array();
+		$arrayFactorM = array();
+		$counter = 0;	
+		$arrayBack +=["tipoEnergia"=>$typeEnergy];	
+			for($i=$inicial;$i<=$final;$i++){
+				$arrayBack += ["H".$hora => $vector[$i]];
+				if($typeEnergy === "C" && $vector[$i] > 0)
+				{
+					$counter += $vector[$i];
+				}
+				$hora++;
+			} 
+			if($counter > 0 && $typeEnergy === "C"){
+				$arrayFactorM = array("tipoEnergia" => "C",
+				"cantidad" => $counter,
+				"frontera_fronteraCliente" => $vector[0]);
+				ControladorFactorM::ctrCrearFactorM($arrayFactorM);
+
+			}
+		
+
+
+			 
+			return $arrayBack;
+			
+	   }
+
 	   public function ctrCalculePenalty($vlrActive,$vlrReactive):int{
      
         $operacion_a = $vlrActive*0.5;
@@ -185,18 +193,31 @@ class ControladorFronteras
 
        }
 
-       public function ctrChargePenaltyEnergy($arrayActiva,$arrayReactiva):array{
+       public function ctrChargePenaltyEnergy($arrayActiva,$arrayReactiva,$frontera):array{
         $datosArrayPenalizadaBack = array();
         $datosArrayPenalizadaBack +=["tipoEnergia"=>"P"];
+		$arrayFactorM = array();
+		$counter = 0;	
         $i = 1;
             foreach ($arrayActiva as $key => $valueActiva){
                  if($key<>"tipoEnergia"){
                     $vlrTx = self::ctrCalculePenalty($valueActiva,$arrayReactiva[$key]);
                     $datosArrayPenalizadaBack += ["H".$i => $vlrTx];
+					if($vlrTx > 0)
+						{
+							$counter += $vlrTx;
+						}
                     $i++;
                  }
                
             }
+			if($counter > 0){
+				$arrayFactorM = array("tipoEnergia" => "P",
+				"cantidad" => $counter,
+				"frontera_fronteraCliente" =>$frontera);
+				ControladorFactorM::ctrCrearFactorM($arrayFactorM);
+
+			}
         return $datosArrayPenalizadaBack;
        }
 

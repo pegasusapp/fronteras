@@ -1,0 +1,33 @@
+<?php
+
+class ControladorFactorM
+{
+
+    private static $tabla = "factorm";
+
+	static public function ctrCrearFactorM($datosLog):bool{
+		
+			if(!empty($datosLog)){
+				return ModeloFactorM::mdlIngresarFactorM(self::$tabla,$datosLog);
+			}		
+			
+
+				
+		
+	}
+	/*=============================================
+	MOSTRAR Logs
+	=============================================*/
+
+	static public function ctrMostrarFactorM():array
+	{
+
+		$item = NULL;
+		$valor = NULL;
+		return ModeloFactorM::mdlMostrarFactorM(self::$tabla,$item,$valor);
+    
+
+	}
+
+}
+
