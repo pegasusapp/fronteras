@@ -123,10 +123,10 @@ class ControladorFronteras
 					$datosLecturasEnergiaReactiva = array();
 					$datosLecturasEnergiaCapacitiva = array();
 
-					$datosLecturasEnergiaActiva = self::ctrChargeEnergyArray(5,28,Constantes::SIGLA_ACTIVA,$data);
-					$datosLecturasEnergiaExportada = self::ctrChargeEnergyArray(29,52,Constantes::SIGLA_EXPORTADA,$data);
-					$datosLecturasEnergiaReactiva = self::ctrChargeEnergyArray(53,76,Constantes::SIGLA_REACTIVA,$data);
-					$datosLecturasEnergiaCapacitiva = self::ctrChargeEnergyArray(77,100,Constantes::SIGLA_CAPACITIVA,$data);
+					$datosLecturasEnergiaActiva = self::ctrChargeEnergyArray(5,28,"A",$data);
+					$datosLecturasEnergiaExportada = self::ctrChargeEnergyArray(29,52,"E",$data);
+					$datosLecturasEnergiaReactiva = self::ctrChargeEnergyArray(53,76,"R",$data);
+					$datosLecturasEnergiaCapacitiva = self::ctrChargeEnergyArray(77,100,"C",$data);
 
 					$datosLecturasEnergiaPenalizada = array();
 					$datosLecturasEnergiaPenalizada = self::ctrChargePenaltyEnergy($datosLecturasEnergiaActiva,$datosLecturasEnergiaReactiva,$data[0]);
