@@ -45,7 +45,7 @@ class ModeloFactorM{
 		}	
 	     	$stmt->bindParam(":fecha", $datosLog["fecha"], PDO::PARAM_STR);
 			$stmt->bindParam(":tipoEnergia", $datosLog["tipoEnergia"], PDO::PARAM_STR);
-			$stmt->bindParam(":cantidad", $datosLog["cantidad"], PDO::PARAM_INT);
+			$stmt->bindParam(":cantidad", $datosLog["cantidad"], PDO::PARAM_STR);
 			$stmt->bindParam(":frontera_fronteraCliente", $datosLog["frontera_fronteraCliente"], PDO::PARAM_STR);
 			return $stmt->execute();		  
 		
