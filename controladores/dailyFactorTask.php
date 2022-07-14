@@ -29,8 +29,9 @@ class ControladorReporteFactorM{
         $arrayResultado +=["frontera"=>$array["frontera"]];
         for($i=1;$i<=$month;$i++){
 
-            echo "-->mes".$array['mes'];
-            echo "-->anño".$array['anyo'];
+            echo "-->mes".$array['mes']."<br>";
+            echo "-->año".$array['anyo']."<br>";
+            echo "-->frontera".$array['frontera']."<br>";
 
                     if((array_key_exists('mes',$array) && $array['mes'] == $i) && (array_key_exists('anyo',$array) && $array['anyo'] == $year))
                     {
