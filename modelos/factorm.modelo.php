@@ -29,7 +29,7 @@ class ModeloFactorM{
 				$stmt -> bindParam(":tipoEnergia", $tipoEnergia, PDO::PARAM_STR);
 				$stmt -> bindParam(":frontera_fronteraCliente", $frontera, PDO::PARAM_STR);
 				$stmt -> execute();
-		return  $stmt -> fetchAll();
+		return  $stmt -> fetchAll(PDO::FETCH_ASSOC);
 	}
 
 
