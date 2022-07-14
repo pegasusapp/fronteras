@@ -23,6 +23,7 @@ class ControladorReporteFactorM{
         }
 
     public function ctrAsignamentFactorM($array,$year,$month,$frontera):array{
+        var_dump($array);
         $arrayInsertctrFactorM = array(); 
         $arrayResultado = array();
         $factor = 0;
