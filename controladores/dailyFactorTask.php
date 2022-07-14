@@ -29,7 +29,7 @@ class ControladorReporteFactorM{
         $arrayInsertctrFactorM = array(); 
         $arrayResultado = array();
         $factor = 0;
-        $arrayResultado +=["frontera"=>$array["frontera_fronteraCliente"]];
+        $arrayResultado +=["frontera"=>$array["frontera"]];
         for($i=1;$i<=$month;$i++){
 
                     if((array_key_exists('mes',$array) && $array['mes'] == $i) && (array_key_exists('anyo',$array) && $array['anyo'] == $year))
@@ -44,10 +44,10 @@ class ControladorReporteFactorM{
                     $arrayInsertctrFactorM = array("anyo" =>$year, 
 						 "mes"=>$month,
 						 "factor"=>$i,
-						 "total"=>$array["total"],
-						 "frontera_fronteraCliente"=>$array["frontera_fronteraCliente"]); 
+						 "total"=>$array["cantidad"],
+						 "frontera_fronteraCliente"=>$array["frontera"]); 
 
-                   $arrayResultado  += ["frontera"=> ControladorCtrFactorM::ctrCrearctrFactorM($arrayInsertctrFactorM)];
+                   $arrayResultado  += ["resultado"=> ControladorCtrFactorM::ctrCrearctrFactorM($arrayInsertctrFactorM)];
                    
                 }   
                 
