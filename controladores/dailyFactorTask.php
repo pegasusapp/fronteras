@@ -31,16 +31,18 @@ class ControladorReporteFactorM{
         $arrayResultado +=["frontera"=>$array["frontera"]];
         var_dump($array);
         echo "-------------"."<br>";
+        $j=0;
         for($i=1;$i<=$month;$i++){
 
-            echo "-->mes".$array['mes']."<br>";
-            echo "-->año".$array['anyo']."<br>";
-            echo "-->frontera".$array['frontera']."<br>";
+            echo "-->mes".$array[$j]['mes']."<br>";
+            echo "-->año".$array[$j]['anyo']."<br>";
+            echo "-->frontera".$array[$j]['frontera']."<br>";
 
-                    if((array_key_exists('mes',$array) && $array['mes'] == $i) && (array_key_exists('anyo',$array) && $array['anyo'] == $year))
+                    if((array_key_exists('mes',$array) && $array[$j]['mes'] == $i) && (array_key_exists('anyo',$array) && $array[$j]['anyo'] == $year))
                     {
                          $factor++; 
-                         echo "existe";  
+                         echo "existe";
+                         $j++;  
                     }
                     else{
                         $factor =1;
