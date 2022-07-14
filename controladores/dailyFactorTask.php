@@ -14,6 +14,8 @@ class ControladorReporteFactorM{
     public function ctrCalculateFactorM($dias){
         $fecha = explode("-",ControladorUtilidades::anyoMesDia($dias));	
         $fronteras = ModeloFronteras::mdlMostrarFronteras("frontera","","");
+        var_dump($fronteras);
+        echo "---------------------------"; 
         foreach ($fronteras as $value){
                $array = ControladorFactorM::ctrReportDailyFactorM(Constantes::SIGLA_SING_CAPACITIVA,$value["fronteraCliente"],10);
                var_dump($array);
