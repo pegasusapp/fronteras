@@ -40,7 +40,7 @@ class ControladorReporteFactorM{
                         $j++; 
                     }
                     else{
-                        $factor =1;
+                        $factor =0;
                         $total = 0;
                         echo "no existe";
                     }
