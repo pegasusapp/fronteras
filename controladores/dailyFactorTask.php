@@ -27,6 +27,8 @@ class ControladorReporteFactorM{
         $arrayResultado = array();
         $factor = 0;
         $arrayResultado +=["frontera"=>$array["frontera"]];
+        var_dum($array);
+        echo "-------------"."<br>";
         for($i=1;$i<=$month;$i++){
 
             echo "-->mes".$array['mes']."<br>";
