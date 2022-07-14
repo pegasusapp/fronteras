@@ -13,7 +13,7 @@ class ControladorReporteFactorM{
         $fecha = explode("-",ControladorUtilidades::anyoMesDia($dias));	
         $fronteras = ModeloFronteras::mdlMostrarFronteras("frontera","","");
         foreach ($fronteras as $value){
-               $array = ControladorFactorM::ctrReportDailyFactorM(Constantes::SIGLA_SING_CAPACITIVA,$value["fronteraCliente"]);
+               $array = ControladorFactorM::ctrReportDailyFactorM(Constantes::SIGLA_SING_CAPACITIVA,$value["fronteraCliente"],10);
                if(!empty($array)){
                    echo self::ctrAsignamentFactorM($array,$fecha[0],$fecha[1]);
                             }
