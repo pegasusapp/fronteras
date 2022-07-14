@@ -38,7 +38,7 @@ class ControladorReporteFactorM{
             echo "-->año".$array[$j]['anyo']."<br>";
             echo "-->frontera".$array[$j]['frontera']."<br>";
 
-                    if((array_key_exists('mes',$array) && $array[$j]['mes'] == $i) && (array_key_exists('anyo',$array) && $array[$j]['anyo'] == $year))
+                    if(($array[$j]['mes'] == $i) && ($array[$j]['anyo'] == $year))
                     {
                          $factor++; 
                          echo "existe";
@@ -53,8 +53,8 @@ class ControladorReporteFactorM{
                     $arrayInsertctrFactorM = array("anyo" =>$year, 
 						 "mes"=>$i,
 						 "factor"=>$factor,
-						 "total"=>$array["cantidad"],
-						 "frontera_fronteraCliente"=>$array["frontera"]); 
+						 "total"=>$array[$j]["cantidad"],
+						 "frontera_fronteraCliente"=>$array[$j]["frontera"]); 
 
                    $arrayResultado  += ["resultado"=> ControladorCtrFactorM::ctrCrearctrFactorM($arrayInsertctrFactorM)];
                    
