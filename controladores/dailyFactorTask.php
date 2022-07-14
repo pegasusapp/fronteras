@@ -4,9 +4,11 @@ require "logLecturaWS.controlador.php";
 require dirname(__FILE__)."/../modelos/logLecturaWS.modelo.php";
 require dirname(__FILE__)."/../modelos/fronteras.modelo.php";
 require dirname(__FILE__)."/../modelos/factorm.modelo.php";
+require dirname(__FILE__)."/../modelos/ctrfactorm.modelo.php";
 require "utilidades.controlador.php";
 require "constantes.controlador.php";
 require "factorm.controlador.php";
+require "ctrfactorm.controlador.php";
 class ControladorReporteFactorM{
 
     public function ctrCalculateFactorM($dias){
