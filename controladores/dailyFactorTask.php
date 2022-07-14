@@ -45,8 +45,8 @@ class ControladorReporteFactorM{
                        
 
                     $arrayInsertctrFactorM = array("anyo" =>$year, 
-						 "mes"=>$month,
-						 "factor"=>$i,
+						 "mes"=>$i,
+						 "factor"=>$factor,
 						 "total"=>$array["cantidad"],
 						 "frontera_fronteraCliente"=>$array["frontera"]); 
 
