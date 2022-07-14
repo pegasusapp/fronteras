@@ -16,6 +16,7 @@ class ControladorReporteFactorM{
         $fronteras = ModeloFronteras::mdlMostrarFronteras("frontera","","");
         foreach ($fronteras as $value){
                $array = ControladorFactorM::ctrReportDailyFactorM(Constantes::SIGLA_SING_CAPACITIVA,$value["fronteraCliente"],10);
+               var_dump($array);
                if(!empty($array)){
                    echo self::ctrAsignamentFactorM($array,$fecha[0],$fecha[1]);
                             }
