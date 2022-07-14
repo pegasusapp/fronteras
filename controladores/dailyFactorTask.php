@@ -48,8 +48,7 @@ class ControladorReporteFactorM{
 						 "factor"=>$factor,
 						 "total"=>$total,
 						 "frontera_fronteraCliente"=>$frontera); 
-
-                         var_dump($arrayInsertctrFactorM);
+                         print("<pre>".print_r($arrayInsertctrFactorM,true)."</pre>");
 
                    $arrayResultado  += ["resultado"=> ControladorCtrFactorM::ctrCrearctrFactorM($arrayInsertctrFactorM)];
                    
