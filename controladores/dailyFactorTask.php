@@ -30,7 +30,8 @@ class ControladorReporteFactorM{
         $j=0;
         $total=0;
         for($i=1;$i<=$month;$i++){
-
+            echo "-->i".$i;
+            echo "--->j".$j;
                     if(($array[$j]['mes'] == $i) && ($array[$j]['anyo'] == $year))
                     {
                         $factor++;
