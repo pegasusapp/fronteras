@@ -37,6 +37,7 @@ class ControladorReporteFactorM{
                     {
                         $factor++;
                         $total = $array[$j]["cantidad"];
+                        $j++; 
                     }
                     else{
                         $factor =1;
@@ -44,7 +45,7 @@ class ControladorReporteFactorM{
                         echo "no existe";
                     }
                        
-                    $j++;  
+                    
                     $arrayInsertctrFactorM = array("anyo" =>$year, 
 						 "mes"=>$i,
 						 "factor"=>$factor,
