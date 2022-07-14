@@ -17,18 +17,17 @@ class ControladorReporteFactorM{
         foreach ($fronteras as $value){
                $array = ControladorFactorM::ctrReportDailyFactorM(Constantes::SIGLA_SING_CAPACITIVA,$value["fronteraCliente"],10);
                if(!empty($array)){
-                   var_dump($array);
                    echo "<br>"; 
-                   var_dump(self::ctrAsignamentFactorM($array,$fecha[0],$fecha[1]));
+                   var_dump(self::ctrAsignamentFactorM($array,$fecha[0],$fecha[1],$value["fronteraCliente"]));
                             }
             }
         }
 
-    public function ctrAsignamentFactorM($array,$year,$month):array{
+    public function ctrAsignamentFactorM($array,$year,$month,$frontera):array{
         $arrayInsertctrFactorM = array(); 
         $arrayResultado = array();
         $factor = 0;
-        $arrayResultado +=["frontera"=>$array["frontera"]];
+        $arrayResultado +=["frontera"=>$frontera];
         $j=0;
         $total=0;
         for($i=1;$i<=$month;$i++){
@@ -37,7 +36,6 @@ class ControladorReporteFactorM{
                     {
                         $factor++;
                         $total = $array[$j]["cantidad"];
-                        $frontera =  $array[$j]["frontera"];
                     }
                     else{
                         $factor =1;
@@ -50,6 +48,8 @@ class ControladorReporteFactorM{
 						 "factor"=>$factor,
 						 "total"=>$total,
 						 "frontera_fronteraCliente"=>$frontera); 
+
+                         $var_dump($arrayInsertctrFactorM);
 
                    $arrayResultado  += ["resultado"=> ControladorCtrFactorM::ctrCrearctrFactorM($arrayInsertctrFactorM)];
                    
