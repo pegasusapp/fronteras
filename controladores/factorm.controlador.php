@@ -14,9 +14,14 @@ class ControladorFactorM
 
 				
 		
-	}
+	} 
+     static public function ctrReportDailyFactorM($tipoEnergia,$frontera):array{
+
+        return ModeloFactorM::mdlReportDailyFactorM(self::$tabla,$tipoEnergia,$frontera);
+	 }
+
 	/*=============================================
-	MOSTRAR Logs
+	MOSTRAR FactorM
 	=============================================*/
 
 	static public function ctrMostrarFactorM():array
