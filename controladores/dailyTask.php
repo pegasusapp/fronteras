@@ -11,9 +11,7 @@ require "factorm.controlador.php";
 
 class ControladorFronterasWS{ 
 
-     public function ctrPrepareDataToSendWS($dias){
-
-                
+       public function ctrPrepareDataToSendWS($dias){
         $fecha = explode("-",ControladorUtilidades::anyoMesDia($dias));	
         $fronteras = ModeloFronteras::mdlMostrarFronteras("frontera","","");
         $resultado_gral = array(); 
@@ -190,7 +188,7 @@ class ControladorFronterasWS{
                                                 "fechaCompleta"=>$anyo.'-'.$mes.'-'.$dia);
     
     
-       return ModeloFronteras::mdlInsertLecturasFrontera($datosMedidor,$datosLecturasEnergiaActiva,$datosLecturasEnergiaExportada,$datosLecturasEnergiaReactiva,$datosLecturasEnergiaCapacitiva,$datosLecturasEnergiaPenalizada);
+            return ModeloFronteras::mdlInsertLecturasFrontera($datosMedidor,$datosLecturasEnergiaActiva,$datosLecturasEnergiaExportada,$datosLecturasEnergiaReactiva,$datosLecturasEnergiaCapacitiva,$datosLecturasEnergiaPenalizada);
     
        }
     
@@ -209,7 +207,7 @@ class ControladorFronterasWS{
 				}
                $j++;
             }
-            if($counter > 0 && $siglaTenergy === "C"){
+            if($counter > 1 && $siglaTenergy === "C"){
 				$arrayFactorM = array("tipoEnergia" => "C",
 				"cantidad" => $counter,
 				"frontera_fronteraCliente" => $frontera,
@@ -249,7 +247,7 @@ class ControladorFronterasWS{
 						}
                     $i++;
                  }
-                 if($counter > 0){
+                 if($counter > 1){
                     $arrayFactorM = array("tipoEnergia" => "P",
                     "cantidad" => $counter,
                     "frontera_fronteraCliente" =>$frontera,
