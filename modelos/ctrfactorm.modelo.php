@@ -39,6 +39,8 @@ class ModeloCtrFactorM{
 						 "factor"=>$datosLog["factor"],
 						 "total"=>$datosLog["total"],
 						 "frontera_fronteraCliente"=>$datosLog["frontera_fronteraCliente"]);
+						 echo "-->oojo";
+						 var_dump($datosLog);
 		if(self::mdlSearchData($valores,$tabla) == 0)
 		{
 			$stmt =  Conexion::conectar()->prepare("INSERT INTO $tabla(anyo, mes, factor, total, frontera_fronteraCliente) VALUES ( :anyo, :mes, :factor, :total, :frontera_fronteraCliente)");
