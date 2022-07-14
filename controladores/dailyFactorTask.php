@@ -14,11 +14,8 @@ class ControladorReporteFactorM{
     public function ctrCalculateFactorM($dias){
         $fecha = explode("-",ControladorUtilidades::anyoMesDia($dias));	
         $fronteras = ModeloFronteras::mdlMostrarFronteras("frontera","","");
-        var_dump($fronteras);
-        echo "---------------------------"; 
         foreach ($fronteras as $value){
                $array = ControladorFactorM::ctrReportDailyFactorM(Constantes::SIGLA_SING_CAPACITIVA,$value["fronteraCliente"],10);
-               var_dump($array);
                if(!empty($array)){
                    echo self::ctrAsignamentFactorM($array,$fecha[0],$fecha[1]);
                             }
@@ -32,12 +29,17 @@ class ControladorReporteFactorM{
         $arrayResultado +=["frontera"=>$array["frontera"]];
         for($i=1;$i<=$month;$i++){
 
+            echo "-->mes".$array['mes'];
+            echo "-->anño".$array['anyo'];
+
                     if((array_key_exists('mes',$array) && $array['mes'] == $i) && (array_key_exists('anyo',$array) && $array['anyo'] == $year))
                     {
-                         $factor++;   
+                         $factor++; 
+                         echo "existe";  
                     }
                     else{
                         $factor =1;
+                        echo "no existe";
                     }
                        
 
