@@ -43,7 +43,7 @@ class ControladorReporteFactorM{
                         echo "-->frontera".$array[$j]['frontera']."<br>"; 
                         $factor++; 
                          echo "existe";
-                         $j++;  
+                        
                          
                     }
                     else{
@@ -51,7 +51,7 @@ class ControladorReporteFactorM{
                         echo "no existe";
                     }
                        
-
+                    $j++;  
                     $arrayInsertctrFactorM = array("anyo" =>$year, 
 						 "mes"=>$i,
 						 "factor"=>$factor,
