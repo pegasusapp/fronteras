@@ -3,7 +3,7 @@
 class ControladorCtrFactorM
 {
 
-    private static $tabla = "ctrfactorm";
+    private static $tabla = "ctrFactorm";
 
 	static public function ctrCrearctrFactorM($datosLog):bool{
 		

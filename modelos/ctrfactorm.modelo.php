@@ -22,9 +22,9 @@ class ModeloCtrFactorM{
 
 
 
-	static public function mdlSearchData($dataIn):int{
+	static public function mdlSearchData($dataIn,$tabla):int{
         
-		$stmt = Conexion::conectar()->prepare("SELECT count(*) FROM ctrfactorm WHERE anyo = :anyo AND mes = :mes  AND frontera_fronteraCliente = :frontera_fronteraCliente");
+		$stmt = Conexion::conectar()->prepare("SELECT count(*) FROM $tabla WHERE anyo = :anyo AND mes = :mes  AND frontera_fronteraCliente = :frontera_fronteraCliente");
 		$stmt->bindParam(":anyo", $dataIn["anyo"], PDO::PARAM_INT);
 		$stmt->bindParam(":mes", $dataIn["mes"], PDO::PARAM_INT);
 		$stmt->bindParam(":frontera_fronteraCliente", $dataIn["frontera_fronteraCliente"], PDO::PARAM_STR);
@@ -39,7 +39,7 @@ class ModeloCtrFactorM{
 						 "factor"=>$datosLog["factor"],
 						 "total"=>$datosLog["total"],
 						 "frontera_fronteraCliente"=>$datosLog["frontera_fronteraCliente"]);
-		if(self::mdlSearchData($valores) == 0)
+		if(self::mdlSearchData($valores,$tabla) == 0)
 		{
 			$stmt =  Conexion::conectar()->prepare("INSERT INTO $tabla(anyo, mes, factor, total, frontera_fronteraCliente) VALUES ( :anyo, :mes, :factor, :total, :frontera_fronteraCliente)");
 			
