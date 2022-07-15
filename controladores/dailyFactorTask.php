@@ -15,7 +15,7 @@ class ControladorReporteFactorM{
         $fecha = explode("-",ControladorUtilidades::anyoMesDia($dias));	
         $fronteras = ModeloFronteras::mdlMostrarFronteras("frontera","","");
         foreach ($fronteras as $value){
-               $array = ControladorFactorM::ctrReportDailyFactorM($value["fronteraCliente"],10);
+               $array = ControladorFactorM::ctrReportDailyFactorM(Constantes::SIGLA_SING_CAPACITIVA,$value["fronteraCliente"],10);
                if(!empty($array)){
                    var_dump(self::ctrAsignamentFactorM($array,$fecha[0],$fecha[1],$value["fronteraCliente"]));
                             }
@@ -23,41 +23,42 @@ class ControladorReporteFactorM{
         }
 
     public function ctrAsignamentFactorM($array,$year,$month,$frontera):array{
-        
+        $arrayInsertctrFactorM = array(); 
         $arrayResultado = array();
         $factor = 0;
         $arrayResultado +=["frontera"=>$frontera];
+        $j=0;
         $total=0;
         for($i=1;$i<=$month;$i++){
-
-              foreach($array as $value){
-                $arrayInsertctrFactorM = array(); 
-                 echo "-->".$frontera."-".$value["mes"]."--".$i."&&".$value["anyo"]."-".$year."-".$value["cantidad"]."-".$value["tipoEnergia"]."<br>";
-                    if(($value["mes"] == $i) && ($value["anyo"] == $year))
+            echo "-->i".$i;
+            echo "--->j".$j;
+                    if(($array[$j]['mes'] == $i) && ($array[$j]['anyo'] == $year))
                     {
                         $factor++;
-                        $total = $value["cantidad"];
+                        $total = $array[$j]["cantidad"];
                     }
                     else{
-                        $factor =0;
+                        $factor =1;
                         $total = 0;
+                        echo "no existe";
                     }
+                       
+                    $j++;  
                     $arrayInsertctrFactorM = array("anyo" =>$year, 
 						 "mes"=>$i,
 						 "factor"=>$factor,
 						 "total"=>$total,
-                         "tipoEnergia"=>$value["tipoEnergia"],
+                         "tipoEnergia"=>Constantes::SIGLA_SING_CAPACITIVA,
 						 "frontera_fronteraCliente"=>$frontera); 
-
                          print("<pre>".print_r($arrayInsertctrFactorM,true)."</pre>");
-                   $arrayResultado +=["tipoEnergia"=>$value["tipoEnergia"]];
+
                    $arrayResultado  += ["resultado"=> ControladorCtrFactorM::ctrCrearctrFactorM($arrayInsertctrFactorM)];
-                }
-        }   
+                   
+                }   
                 
                 return $arrayResultado;
 
-    }
+            }
 
         
 
