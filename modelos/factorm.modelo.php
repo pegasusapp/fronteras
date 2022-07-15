@@ -21,10 +21,11 @@ class ModeloFactorM{
 
 	static public function mdlReportDailyFactorM($tabla,$dias,$frontera){
 		$stmt = Conexion::conectar()->prepare("SELECT YEAR(fecha) as anyo,MONTH(fecha) as mes,frontera_fronteraCliente as frontera,tipoEnergia,count(*) as dias, sum(cantidad) as cantidad FROM $tabla
-												WHERE frontera_fronteraCliente = $frontera
+												WHERE frontera_fronteraCliente = :frontera_fronteraCliente
 												GROUP BY frontera_fronteraCliente,tipoEnergia,YEAR(fecha),MONTH(fecha)
 												HAVING count(*) >= $dias
 												ORDER BY frontera_fronteraCliente");
+				$stmt -> bindParam(":frontera_fronteraCliente", $frontera, PDO::PARAM_STR);
 				$stmt -> execute();
 		return  $stmt -> fetchAll(PDO::FETCH_ASSOC);
 	}
