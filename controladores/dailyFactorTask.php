@@ -15,7 +15,7 @@ class ControladorReporteFactorM{
         $fecha = explode("-",ControladorUtilidades::anyoMesDia($dias));	
         $fronteras = ModeloFronteras::mdlMostrarFronteras("frontera","","");
         foreach ($fronteras as $value){
-               $array = ControladorFactorM::ctrReportDailyFactorM(Constantes::SIGLA_SING_CAPACITIVA,$value["fronteraCliente"],10);
+               $array = ControladorFactorM::ctrReportDailyFactorM(Constantes::SIGLA_SING_PENALIZADA,$value["fronteraCliente"],10);
                if(!empty($array)){
                    var_dump(self::ctrAsignamentFactorM($array,$fecha[0],$fecha[1],$value["fronteraCliente"]));
                             }
@@ -48,7 +48,7 @@ class ControladorReporteFactorM{
 						 "mes"=>$i,
 						 "factor"=>$factor,
 						 "total"=>$total,
-                         "tipoEnergia"=>Constantes::SIGLA_SING_CAPACITIVA,
+                         "tipoEnergia"=>Constantes::SIGLA_SING_PENALIZADA,
 						 "frontera_fronteraCliente"=>$frontera); 
                          print("<pre>".print_r($arrayInsertctrFactorM,true)."</pre>");
 
