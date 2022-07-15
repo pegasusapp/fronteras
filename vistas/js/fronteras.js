@@ -50,12 +50,17 @@ $(document).ready(function() {
   Chart.defaults.global.defaultFontColor = 'grey';
   Chart.defaults.global.defaultFontSize = 10;
   $('#example_table tbody').on('click', 'td.details-control', function () {
-    var tr = $(this).closest('tr');
+    let tr = $(this).closest('tr');
      ids = $(this).attr('vlr');
-    var datosIn = new FormData();
+    let datosIn = new FormData();
     datosIn.append("frontera", ids);
     datosIn.append("dia", "hoy");
-    var row = table.row( tr );
+    let row = table.row( tr );
+    tipoEnergiaA = ""
+    tipoEnergiaR = ""
+    tipoEnergiaE = ""
+    tipoEnergiaP = ""
+    tipoEnergiaC = ""
    if ( row.child.isShown() ) 
     {
         row.child.hide();
