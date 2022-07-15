@@ -31,6 +31,7 @@ class ControladorReporteFactorM{
         for($i=1;$i<=$month;$i++){
 
               foreach($array as $value){
+                 echo "-->".$value["mes"]."--".$i."&&".$value["anyo"]."-".$year."-".$value["cantidad"]."-".$value["cantidad"]."<br>";
                     if(($value["mes"] == $i) && ($value["anyo"] == $year))
                     {
                         $factor++;
