@@ -106,28 +106,28 @@ function reporteFrontera(valorFrontera)
 
 }
 
-function tablaInterna(ids)
+function tablaInterna(tiempo)
 {
   tabla+="<tr>";
-  tabla+='<td><div class="btn-group"><a class="btn btn-app" onClick=verHistoricos("'+ids+'","hoy")  ><i class="fas fa-play"></i>Hoy</a></div>&nbsp;<div class="btn-group"><a class="btn btn-app" onClick=verHistoricos("'+ids+'","ayer")><i class="fas fa-play"></i>Ayer</a></div></td>';
+  tabla+='<td><div class="btn-group"><a class="btn btn-app" onClick=verHistoricos("'+tiempo+'","hoy")  ><i class="fas fa-play"></i>Hoy</a></div>&nbsp;<div class="btn-group"><a class="btn btn-app" onClick=verHistoricos("'+tiempo+'","ayer")><i class="fas fa-play"></i>Ayer</a></div></td>';
   tabla+="</tr>";
   tabla+="<tr>";
-  tabla+='<td><div class="btn-group"><a class="btn btn-app" onClick=verHistoricosMes("'+ids+'","actual","A") ><i class="fas fa-play"></i>Este mes</a></div>&nbsp;<div class="btn-group"><a class="btn btn-app" onClick=verHistoricosMes("'+ids+'","atras","A")><i class="fas fa-play"></i>Mes anterior</a></div></td>';
+  tabla+='<td><div class="btn-group"><a class="btn btn-app" onClick=verHistoricosMes("'+tiempo+'","actual","A") ><i class="fas fa-play"></i>Este mes</a></div>&nbsp;<div class="btn-group"><a class="btn btn-app" onClick=verHistoricosMes("'+tiempo+'","atras","A")><i class="fas fa-play"></i>Mes anterior</a></div></td>';
   tabla+="</tr>";
   tabla+="<tr>";
-  tabla+='<td><div class="btn-group"><a class="btn btn-app" onClick=verHistoricosProm("'+ids+'","promedio","A") ><i class="fas fa-play"></i>Promedio A(6)</a></div>&nbsp;<div class="btn-group"><a class="btn btn-app" onClick=verHistoricosProm("'+ids+'","promedio","R")><i class="fas fa-play"></i>Promedio R(6)</a></div></td>';
+  tabla+='<td><div class="btn-group"><a class="btn btn-app" onClick=verHistoricosProm("'+tiempo+'","promedio","A") ><i class="fas fa-play"></i>Promedio A(6)</a></div>&nbsp;<div class="btn-group"><a class="btn btn-app" onClick=verHistoricosProm("'+tiempo+'","promedio","R")><i class="fas fa-play"></i>Promedio R(6)</a></div></td>';
   tabla+="</tr>";
   tabla+="<tr>";
-  tabla+='<td><div class="btn-group"><a class="btn btn-app" onClick=verHistoricosProm("'+ids+'","promedio","E") ><i class="fas fa-play"></i>Promedio E(6)</a></div>&nbsp;<div class="btn-group"><a class="btn btn-app" onClick=verHistoricosProm("'+ids+'","promedio","P")><i class="fas fa-play"></i>Promedio P(6)</a></div></td>';
+  tabla+='<td><div class="btn-group"><a class="btn btn-app" onClick=verHistoricosProm("'+tiempo+'","promedio","E") ><i class="fas fa-play"></i>Promedio E(6)</a></div>&nbsp;<div class="btn-group"><a class="btn btn-app" onClick=verHistoricosProm("'+tiempo+'","promedio","P")><i class="fas fa-play"></i>Promedio P(6)</a></div></td>';
   tabla+="</tr>";
   tabla+="<tr>";
-  tabla+='<td><div class="btn-group"><a class="btn btn-app" onClick=verHistoricosProm("'+ids+'","promedio","C") ><i class="fas fa-play"></i>Promedio C(6)</a></div>&nbsp;</div></td>';
+  tabla+='<td><div class="btn-group"><a class="btn btn-app" onClick=verHistoricosProm("'+tiempo+'","promedio","C") ><i class="fas fa-play"></i>Promedio C(6)</a></div>&nbsp;</div></td>';
   tabla+="</tr>";
   tabla+="</table></div>";
   tabla+="<div class='col-md-10'>";
   tabla+="<div class='card'>";
   tabla+="<div class='card-body'>";
-  tabla+="<div class='chart' id='canvasMadre_"+ids+"'>";
+  tabla+="<div class='chart' id='canvasMadre_"+tiempo+"'>";
   tabla+="</div>";
   tabla+="</div>";
   tabla+="</div>";
@@ -135,13 +135,13 @@ function tablaInterna(ids)
 
 }
 
- function procesoData(respuesta,ids)
+ function procesoData(respuesta,tiempo)
  {
-  var len = respuesta.length;
+      let len = respuesta.length;
       tabla=' <div class="row"> <div class="col-md-2"><table cellpadding="5" cellspacing="0" border="0" >';
       if(len > 0)
       {
-        for( var i = 0; i<len; i++)
+        for( let i = 0; i<len; i++)
         {
             var mesActualj = parseInt(respuesta[i]['mesLectura']);
             var EnergiaLabel = "";
@@ -194,20 +194,20 @@ function tablaInterna(ids)
         tabla+="</tr>";
       }
 
-     tablaInterna(ids)
+     tablaInterna(tiempo)
  } 
 var consumoSeisMeses = "";
  function procesoDataProm(respuesta,ids)
  {
-      var len = respuesta.length;
+      let len = respuesta.length;
       tabla=' <div class="row"> <div class="col-md-2"><table cellpadding="5" cellspacing="0" border="0" >';
       if(len > 0)
       {
-        var totalPromedioA = 0;
-        var totalPromedioR = 0;
-        var totalPromedioP = 0;
-        var totalPromedioE = 0;
-        var totalPromedioC = 0;
+        let totalPromedioA = 0;
+        let totalPromedioR = 0;
+        let totalPromedioP = 0;
+        let totalPromedioE = 0;
+        let totalPromedioC = 0;
       
         var sumA = 0;
         var sumR = 0;
@@ -316,7 +316,7 @@ var consumoSeisMeses = "";
         tabla+="</tr>";
       }
 
-tablaInterna(ids)
+tablaInterna(tiempo)
 
  } 
  function groupBy(objectArray, property) {
@@ -501,9 +501,12 @@ function verHistoricos(idsHs,day)
         success: function(respuestaHs)
         { 
 
-          alert()
-           
           tabla = "";
+          tipoEnergiaA=0;
+          tipoEnergiaR=0;
+          tipoEnergiaE=0;
+          tipoEnergiaP=0;
+          tipoEnergiaC=0;
           procesoData(respuestaHs,idsHs)
           row.child( tabla ).show();
           addData(tipoEnergiaA,tipoEnergiaR,tipoEnergiaE,tipoEnergiaP,tipoEnergiaC,idsHs,cadenaFecha);
