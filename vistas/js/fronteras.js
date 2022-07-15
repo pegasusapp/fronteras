@@ -331,14 +331,14 @@ tablaInterna(ids)
   }, {});
 }
 
- function verHistoricosProm(ids,word,energia)
+ function verHistoricosProm(idsIn,word,energia)
 {
-      var element = document.getElementById("td_"+ids);
-      var tr = element.closest('tr');
-      var datosIn = new FormData();
-      datosIn.append("frontera_prom", ids);
+      let element = document.getElementById("td_"+idsIn);
+      let tr = element.closest('tr');
+      let datosIn = new FormData();
+      datosIn.append("frontera_prom", idsIn);
       datosIn.append("energia", energia);
-      var row = table.row( tr );
+      let row = table.row( tr );
       tipoEnergia = "";
       $.ajax({ 
         url: "ajax/fronteras.ajax.php",
@@ -348,11 +348,11 @@ tablaInterna(ids)
         contentType: false,
         processData: false,
         dataType:"json", 
-        success: function(respuesta)
+        success: function(respuestaHistorica)
         { 
            
           tabla = "";
-          procesoDataProm(respuesta,ids)
+          procesoDataProm(respuestaHistorica,ids)
           row.child( tabla ).show();
           addDataProm(tipoEnergia,energia,ids,cadenaFecha);
 
@@ -500,6 +500,8 @@ function verHistoricos(ids,day)
         dataType:"json", 
         success: function(respuesta)
         { 
+
+          alert()
            
           tabla = "";
           procesoData(respuesta,ids)
