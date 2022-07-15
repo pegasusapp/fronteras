@@ -15,7 +15,7 @@ class ControladorReporteFactorM{
         $fecha = explode("-",ControladorUtilidades::anyoMesDia($dias));	
         $fronteras = ModeloFronteras::mdlMostrarFronteras("frontera","","");
         foreach ($fronteras as $value){
-               $array = ControladorFactorM::ctrReportDailyFactorM(Constantes::SIGLA_SING_CAPACITIVA,$value["fronteraCliente"],10);
+               $array = ControladorFactorM::ctrReportDailyFactorM($value["fronteraCliente"],10);
                if(!empty($array)){
                    var_dump(self::ctrAsignamentFactorM($array,$fecha[0],$fecha[1],$value["fronteraCliente"]));
                             }
@@ -31,9 +31,9 @@ class ControladorReporteFactorM{
         $j=0;
         $total=0;
         for($i=1;$i<=$month;$i++){
-            echo "-->i".$i;
-            echo "--->j".$j;
-                    if(($array[$j]['mes'] == $i) && ($array[$j]['anyo'] == $year))
+
+              foreach($array as $value){
+                    if(($value["mes"] == $i) && ($value["anyo"] == $year))
                     {
                         $factor++;
                         $total = $array[$j]["cantidad"];
@@ -42,24 +42,21 @@ class ControladorReporteFactorM{
                     else{
                         $factor =0;
                         $total = 0;
-                        echo "no existe";
                     }
-                       
-                    
                     $arrayInsertctrFactorM = array("anyo" =>$year, 
 						 "mes"=>$i,
 						 "factor"=>$factor,
 						 "total"=>$total,
+                         "tipoEnergia"=>$value["tipoEnergia"],
 						 "frontera_fronteraCliente"=>$frontera); 
-                         print("<pre>".print_r($arrayInsertctrFactorM,true)."</pre>");
 
                    $arrayResultado  += ["resultado"=> ControladorCtrFactorM::ctrCrearctrFactorM($arrayInsertctrFactorM)];
-                   
-                }   
+                }
+        }   
                 
                 return $arrayResultado;
 
-            }
+    }
 
         
 
