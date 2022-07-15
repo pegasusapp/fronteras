@@ -23,7 +23,7 @@ class ControladorReporteFactorM{
         }
 
     public function ctrAsignamentFactorM($array,$year,$month,$frontera):array{
-        $arrayInsertctrFactorM = array(); 
+        
         $arrayResultado = array();
         $factor = 0;
         $arrayResultado +=["frontera"=>$frontera];
@@ -31,7 +31,8 @@ class ControladorReporteFactorM{
         for($i=1;$i<=$month;$i++){
 
               foreach($array as $value){
-                 echo "-->".$value["mes"]."--".$i."&&".$value["anyo"]."-".$year."-".$value["cantidad"]."-".$value["cantidad"]."<br>";
+                $arrayInsertctrFactorM = array(); 
+                 echo "-->".$frontera."-".$value["mes"]."--".$i."&&".$value["anyo"]."-".$year."-".$value["cantidad"]."-".$value["tipoEnergia"]."<br>";
                     if(($value["mes"] == $i) && ($value["anyo"] == $year))
                     {
                         $factor++;
@@ -47,6 +48,8 @@ class ControladorReporteFactorM{
 						 "total"=>$total,
                          "tipoEnergia"=>$value["tipoEnergia"],
 						 "frontera_fronteraCliente"=>$frontera); 
+
+                         print("<pre>".print_r($arrayInsertctrFactorM,true)."</pre>");
                    $arrayResultado +=["tipoEnergia"=>$value["tipoEnergia"]];
                    $arrayResultado  += ["resultado"=> ControladorCtrFactorM::ctrCrearctrFactorM($arrayInsertctrFactorM)];
                 }
