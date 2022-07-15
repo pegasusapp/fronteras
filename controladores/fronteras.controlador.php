@@ -167,7 +167,7 @@ class ControladorFronteras
 				}
 				$hora++;
 			} 
-			if($counter > 1 && $typeEnergy === "C"){
+			if($counter >= 1 && $typeEnergy === "C"){
 				$arrayFactorM = array("tipoEnergia" => "C",
 				"cantidad" => $counter,
 				"frontera_fronteraCliente" => $vector[0],
@@ -214,7 +214,7 @@ class ControladorFronteras
                  }
                
             }
-			if($counter > 1){
+			if($counter >= 1){
 				$arrayFactorM = array("tipoEnergia" => "P",
 				"cantidad" => $counter,
 				"frontera_fronteraCliente" =>$frontera,
