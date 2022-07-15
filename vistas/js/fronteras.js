@@ -352,9 +352,9 @@ tablaInterna(ids)
         { 
            
           tabla = "";
-          procesoDataProm(respuestaHistorica,ids)
+          procesoDataProm(respuestaHistorica,idsIn)
           row.child( tabla ).show();
-          addDataProm(tipoEnergia,energia,ids,cadenaFecha);
+          addDataProm(tipoEnergia,energia,idsIn,cadenaFecha);
 
            
         }
@@ -481,14 +481,14 @@ options = {
 }
 
 
-function verHistoricos(ids,day)
+function verHistoricos(idsHs,day)
 {
-      var element = document.getElementById("td_"+ids);
-      var tr = element.closest('tr');
-      var datosIn = new FormData();
-      datosIn.append("frontera_dia", ids);
+      let element = document.getElementById("td_"+idsHs);
+      let tr = element.closest('tr');
+      let datosIn = new FormData();
+      datosIn.append("frontera_dia", idsHs);
       datosIn.append("dia", day);
-      var row = table.row( tr );
+      let row = table.row( tr );
     
       $.ajax({ 
         url: "ajax/fronteras.ajax.php",
@@ -498,15 +498,15 @@ function verHistoricos(ids,day)
         contentType: false,
         processData: false,
         dataType:"json", 
-        success: function(respuesta)
+        success: function(respuestaHs)
         { 
 
           alert()
            
           tabla = "";
-          procesoData(respuesta,ids)
+          procesoData(respuestaHs,idsHs)
           row.child( tabla ).show();
-          addData(tipoEnergiaA,tipoEnergiaR,tipoEnergiaE,tipoEnergiaP,tipoEnergiaC,ids,cadenaFecha);
+          addData(tipoEnergiaA,tipoEnergiaR,tipoEnergiaE,tipoEnergiaP,tipoEnergiaC,idsHs,cadenaFecha);
 
            
         }
