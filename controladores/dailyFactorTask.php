@@ -23,21 +23,19 @@ class ControladorReporteFactorM{
         }
 
     public function ctrAsignamentFactorM($array,$year,$month,$frontera):array{
-        var_dump($array);
         $arrayInsertctrFactorM = array(); 
         $arrayResultado = array();
         $factor = 0;
         $arrayResultado +=["frontera"=>$frontera];
-        $j=0;
         $total=0;
         for($i=1;$i<=$month;$i++){
 
               foreach($array as $value){
+                echo "--".$value["mes"]."--".$value["tipoEnergia"]."--".$value["anyo"]."--".$value["cantidad"];
                     if(($value["mes"] == $i) && ($value["anyo"] == $year))
                     {
                         $factor++;
-                        $total = $array[$j]["cantidad"];
-                        $j++; 
+                        $total = $value["cantidad"];
                     }
                     else{
                         $factor =0;
@@ -49,7 +47,7 @@ class ControladorReporteFactorM{
 						 "total"=>$total,
                          "tipoEnergia"=>$value["tipoEnergia"],
 						 "frontera_fronteraCliente"=>$frontera); 
-
+                   $arrayResultado +=["tipoEnergia"=>$value["tipoEnergia"]];
                    $arrayResultado  += ["resultado"=> ControladorCtrFactorM::ctrCrearctrFactorM($arrayInsertctrFactorM)];
                 }
         }   
