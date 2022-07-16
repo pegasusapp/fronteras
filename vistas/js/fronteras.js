@@ -2,40 +2,40 @@
 FRONTERAS
 =============================================*/
 
-var canvas; 
-var ctx; 
-var chartType; 
-var myBarChart;
-var ids;
-var data;
-var options;
-var tipoEnergiaA="";
-var tipoEnergiaR="";
-var tipoEnergiaE="";
-var tipoEnergiaP = "";
-var tipoEnergiaC = "";
-var tipoEnergia ="";
-var cadenaFecha = "";
-var EnergiaLabelA = "";
-var EnergiaLabelR = "";
-var EnergiaLabelP = "";
-var EnergiaLabelE = "";
-var EnergiaLabelC = "";
-var tabla ="";
-var Domingo ="";
-var Lunes = "";
-var Martes = "";
-var Miercoles = "";
-var Jueves = "";
-var Viernes = "";
-var Sabado = "";
-var colorActiva = "75, 192, 192";
-var colorReactiva = "0, 143, 57";
-var colorExportada = "255, 173, 20";
-var colorPenalizada = "255, 0, 00";
-var colorCapacitiva = "128, 255, 51";
-var mesv = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-var semana = {
+let canvas; 
+let ctx; 
+let chartType; 
+let myBarChart;
+let ids;
+let data;
+let options;
+let tipoEnergiaA="";
+let tipoEnergiaR="";
+let tipoEnergiaE="";
+let tipoEnergiaP = "";
+let tipoEnergiaC = "";
+let tipoEnergia ="";
+let cadenaFecha = "";
+let EnergiaLabelA = "";
+let EnergiaLabelR = "";
+let EnergiaLabelP = "";
+let EnergiaLabelE = "";
+let EnergiaLabelC = "";
+let tabla ="";
+let Domingo ="";
+let Lunes = "";
+let Martes = "";
+let Miercoles = "";
+let Jueves = "";
+let Viernes = "";
+let Sabado = "";
+const colorActiva = "75, 192, 192";
+const colorReactiva = "0, 143, 57";
+const colorExportada = "255, 173, 20";
+const colorPenalizada = "255, 0, 00";
+const colorCapacitiva = "128, 255, 51";
+const mesv = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+const semana = {
   1: 'Dom',
   2: 'Lun',
   3: 'Mar',
@@ -47,148 +47,121 @@ var semana = {
 
 
 $(document).ready(function() {
+
   Chart.defaults.global.defaultFontColor = 'grey';
   Chart.defaults.global.defaultFontSize = 10;
-  $('#example_table tbody').on('click', 'td.details-control', function () {
-    let tr = $(this).closest('tr');
-     ids = $(this).attr('vlr');
-    let datosIn = new FormData();
-    datosIn.append("frontera", ids);
-    datosIn.append("dia", "hoy");
-    let row = table.row( tr );
-    tipoEnergiaA = ""
-    tipoEnergiaR = ""
-    tipoEnergiaE = ""
-    tipoEnergiaP = ""
-    tipoEnergiaC = ""
-   if ( row.child.isShown() ) 
+ 
+} );
+
+function operationDayIn(word)
+{
+  let number = 0
+  if(word == "ayer")
+     number = 1
+  return number 
+}
+function startToBuildGraphic(frt,wordInit){
+
+  let element = document.getElementById("td_"+frt);
+  let tr = element.closest('tr');
+  let datosIn = new FormData();
+  datosIn.append("frontera", frt);
+  datosIn.append("dia", wordInit);
+  let row = table.row( tr );
+  tipoEnergiaA = ""
+  tipoEnergiaR = ""
+  tipoEnergiaE = ""
+  tipoEnergiaP = ""
+  tipoEnergiaC = ""
+  const d = new Date();
+  let daysOperation = operationDayIn(wordInit)
+  cadenaFecha = addDays(d, daysOperation);
+  if ( row.child.isShown() ) 
     {
         row.child.hide();
         tr.removeClass('shown');
     }
-    else 
-    {
-        $.ajax({ 
-          url: "ajax/fronteras.ajax.php",
-          method: "POST",
-          data: datosIn,
-          cache: false,
-          contentType: false,
-          processData: false,
-          dataType:"json", 
-          success: function(respuesta)
-          { 
-            tabla = "";
-            procesoData(respuesta,ids)
-            row.child( tabla ).show();
-            tr.addClass('shown');
-            addData(tipoEnergiaA,tipoEnergiaR,tipoEnergiaE,tipoEnergiaP,tipoEnergiaC,ids,cadenaFecha);
-          }
-      
-      })
-   
-    }
-
-  } 
-  );
-
-
-} );
-
-function reporteFrontera(valorFrontera)
-{
+  else 
+  {
+      $.ajax({ 
+        url: "ajax/fronteras.ajax.php",
+        method: "POST",
+        data: datosIn,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType:"json", 
+        success: function(respuesta)
+        { 
+          tabla = "";
+          fillArrayData(respuesta,frt)
+          row.child( tabla ).show();
+          tr.addClass('shown');
+          addData(tipoEnergiaA,tipoEnergiaR,tipoEnergiaE,tipoEnergiaP,tipoEnergiaC,frt,cadenaFecha);
+        }
+    
+    })
  
-  document.getElementById("fronteraReporte").value=""; 
+  }
+
+}
+
+function addDays(fecha, dias){
   
-  $('input[name="daterange"]').daterangepicker({
-      opens: 'left'
-    }, function(start, end, label) {
-      console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-    });
-
-    document.getElementById("fronteraReporte").value=valorFrontera;
-
-
+  fecha.setDate(fecha.getDate() + dias);
+   
+   let month = fecha.getMonth()-1;
+   let year = fecha.getFullYear();
+   let day = fecha.getDay();
+   
+  return year+"-"+month+"-"+day;
 }
 
-function tablaInterna(tiempo)
-{
-  tabla+="<tr>";
-  tabla+='<td><div class="btn-group"><a class="btn btn-app" onClick=verHistoricos("'+tiempo+'","hoy")  ><i class="fas fa-play"></i>Hoy</a></div>&nbsp;<div class="btn-group"><a class="btn btn-app" onClick=verHistoricos("'+tiempo+'","ayer")><i class="fas fa-play"></i>Ayer</a></div></td>';
-  tabla+="</tr>";
-  tabla+="<tr>";
-  tabla+='<td><div class="btn-group"><a class="btn btn-app" onClick=verHistoricosMes("'+tiempo+'","actual","A") ><i class="fas fa-play"></i>Este mes</a></div>&nbsp;<div class="btn-group"><a class="btn btn-app" onClick=verHistoricosMes("'+tiempo+'","atras","A")><i class="fas fa-play"></i>Mes anterior</a></div></td>';
-  tabla+="</tr>";
-  tabla+="<tr>";
-  tabla+='<td><div class="btn-group"><a class="btn btn-app" onClick=verHistoricosProm("'+tiempo+'","promedio","A") ><i class="fas fa-play"></i>Promedio A(6)</a></div>&nbsp;<div class="btn-group"><a class="btn btn-app" onClick=verHistoricosProm("'+tiempo+'","promedio","R")><i class="fas fa-play"></i>Promedio R(6)</a></div></td>';
-  tabla+="</tr>";
-  tabla+="<tr>";
-  tabla+='<td><div class="btn-group"><a class="btn btn-app" onClick=verHistoricosProm("'+tiempo+'","promedio","E") ><i class="fas fa-play"></i>Promedio E(6)</a></div>&nbsp;<div class="btn-group"><a class="btn btn-app" onClick=verHistoricosProm("'+tiempo+'","promedio","P")><i class="fas fa-play"></i>Promedio P(6)</a></div></td>';
-  tabla+="</tr>";
-  tabla+="<tr>";
-  tabla+='<td><div class="btn-group"><a class="btn btn-app" onClick=verHistoricosProm("'+tiempo+'","promedio","C") ><i class="fas fa-play"></i>Promedio C(6)</a></div>&nbsp;</div></td>';
-  tabla+="</tr>";
-  tabla+="</table></div>";
-  tabla+="<div class='col-md-10'>";
-  tabla+="<div class='card'>";
-  tabla+="<div class='card-body'>";
-  tabla+="<div class='chart' id='canvasMadre_"+tiempo+"'>";
-  tabla+="</div>";
-  tabla+="</div>";
-  tabla+="</div>";
-  tabla+="</div>";
 
-}
 
- function procesoData(respuesta,tiempo)
+function fillArrayData(respuesta,frt)
  {
-      let len = respuesta.length;
+    
       tabla=' <div class="row"> <div class="col-md-2"><table cellpadding="5" cellspacing="0" border="0" >';
-      if(len > 0)
+      if(respuesta.length > 0)
       {
-        for( let i = 0; i<len; i++)
+        for(const element of respuesta)
         {
-            var mesActualj = parseInt(respuesta[i]['mesLectura']);
-            var EnergiaLabel = "";
-            if(i==0)
-            {
-              mesActualj = mesActualj - 1;
-              cadenaFecha =  respuesta[i]['anyoLectura']+"-"+mesv[mesActualj]+"-"+respuesta[i]['diaLectura']; 
-            }
+            let EnergiaLabel = "";
+            
             tabla+="<tr>";
-            if(respuesta[i]['tipoEnergia']=="A")
+            if(element['tipoEnergia']=="A")
             {
-              tipoEnergiaA = respuesta[i]['datos'];
+              tipoEnergiaA = element['datos'];
               EnergiaLabel ="Activa";
             }
-            else if(respuesta[i]['tipoEnergia']=="R")
+            else if(element['tipoEnergia']=="R")
             {
-              tipoEnergiaR = respuesta[i]['datos'];
+              tipoEnergiaR = element['datos'];
               EnergiaLabel ="Reactiva";
             }
-            else if(respuesta[i]['tipoEnergia']=="E")
+            else if(element['tipoEnergia']=="E")
             {
-              tipoEnergiaE = respuesta[i]['datos'];
+              tipoEnergiaE = element['datos'];
               EnergiaLabel ="Exportada";
             }
-            else if(respuesta[i]['tipoEnergia']=="P")
+            else if(element['tipoEnergia']=="P")
             {
-              tipoEnergiaP = respuesta[i]['datos'];
+              tipoEnergiaP = element['datos'];
               EnergiaLabel ="Penalizada";
             }
-            else if(respuesta[i]['tipoEnergia']=="C")
+            else if(element['tipoEnergia']=="C")
             {
-                tipoEnergiaC = respuesta[i]['datos'];
-                EnergiaLabel ="Capacitiva";
+              tipoEnergiaC = element['datos'];
+              EnergiaLabel ="Capacitiva";
             }
-            tabla+="<td>Ene. "+EnergiaLabel+": "+parseFloat(respuesta[i]['total_dia']).toFixed(4)+" kW h</td>";
+            tabla+="<td>"+EnergiaLabel+": "+parseFloat(element['total_dia']).toFixed(2)+" kW h</td>";
             tabla+="</tr>";
-        }
-
-        
+        }  
       }
       else
       {
+        
         tabla+="<tr>";
         tabla+="<td>Tipo Energía:</td>";
         tabla+="<td>No hay datos reportados</td>";
@@ -199,9 +172,204 @@ function tablaInterna(tiempo)
         tabla+="</tr>";
       }
 
-     tablaInterna(tiempo)
- } 
-var consumoSeisMeses = "";
+     tablaInterna(frt)
+}    
+
+ 
+
+ function tablaInterna(frt)
+  {
+    tabla+="<tr>";
+    tabla+='<td><div class="btn-group"><a class="btn btn-app" onClick=startToBuildGraphic("'+frt+'","hoy")  ><i class="fas fa-play"></i>Hoy</a></div>&nbsp;<div class="btn-group"><a class="btn btn-app" onClick=startToBuildGraphic("'+frt+'","ayer")><i class="fas fa-play"></i>Ayer</a></div></td>';
+    tabla+="</tr>";
+    tabla+="<tr>";
+    tabla+='<td><div class="btn-group"><a class="btn btn-app" onClick=verHistoricosMes("'+frt+'","actual","A") ><i class="fas fa-play"></i>Este mes</a></div>&nbsp;<div class="btn-group"><a class="btn btn-app" onClick=verHistoricosMes("'+frt+'","atras","A")><i class="fas fa-play"></i>Mes anterior</a></div></td>';
+    tabla+="</tr>";
+    tabla+="<tr>";
+    tabla+='<td><div class="btn-group"><a class="btn btn-app" onClick=verHistoricosProm("'+frt+'","promedio","A") ><i class="fas fa-play"></i>Promedio A(6)</a></div>&nbsp;<div class="btn-group"><a class="btn btn-app" onClick=verHistoricosProm("'+frt+'","promedio","R")><i class="fas fa-play"></i>Promedio R(6)</a></div></td>';
+    tabla+="</tr>";
+    tabla+="<tr>";
+    tabla+='<td><div class="btn-group"><a class="btn btn-app" onClick=verHistoricosProm("'+frt+'","promedio","E") ><i class="fas fa-play"></i>Promedio E(6)</a></div>&nbsp;<div class="btn-group"><a class="btn btn-app" onClick=verHistoricosProm("'+frt+'","promedio","P")><i class="fas fa-play"></i>Promedio P(6)</a></div></td>';
+    tabla+="</tr>";
+    tabla+="<tr>";
+    tabla+='<td><div class="btn-group"><a class="btn btn-app" onClick=verHistoricosProm("'+frt+'","promedio","C") ><i class="fas fa-play"></i>Promedio C(6)</a></div>&nbsp;</div></td>';
+    tabla+="</tr>";
+    tabla+="</table></div>";
+    tabla+="<div class='col-md-10'>";
+    tabla+="<div class='card'>";
+    tabla+="<div class='card-body'>";
+    tabla+="<div class='chart' id='canvasMadre_"+frt+"'>";
+    tabla+="</div>";
+    tabla+="</div>";
+    tabla+="</div>";
+    tabla+="</div>";
+
+  }
+
+function addData(valores,valores_re,valores_ex,valores_pe,valores_c,fronteraDraw,cadenaFechaDraw)
+{
+
+canvas = document.createElement('canvas');
+canvas.id = 'areaChart_'+fronteraDraw;
+let fechaImagen = cadenaFechaDraw.split("-");
+document.body.appendChild(canvas); // adds the canvas to the body element
+document.getElementById('canvasMadre_'+fronteraDraw).appendChild(canvas);
+
+
+  data = {
+         labels: ["01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24"],
+         datasets: [
+           
+          {
+
+                  label:"Energia activa",
+                  fill:false,
+                  borderColor:"rgb("+colorActiva+")",
+                  borderWidth:1,
+                  fill: false,
+                  lineTension: 0.1,
+                  borderCapStyle: 'square',
+                  pointBorderColor: "white",
+                  pointBackgroundColor: "rgb(75, 192, 192)",
+                  pointBorderWidth: 0.5,
+                  pointHoverRadius: 4,
+                  pointHoverBackgroundColor: "yellow",
+                  pointHoverBorderColor: "green",
+                  pointHoverBorderWidth: 2,
+                  pointRadius: 2,
+                  pointHitRadius: 5,
+                  data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                  spanGaps: true,
+         },
+         {
+                  label:"Energia reactiva",
+                  fill:false,
+                  borderColor:"rgb("+colorReactiva+")",
+                  borderWidth:1,
+                  fill: false,
+                  lineTension: 0.1,
+                  borderCapStyle: 'square',
+                  pointBorderColor: "white",
+                  pointBackgroundColor: "rgb(0, 143, 57)",
+                  pointBorderWidth: 0.5,
+                  pointHoverRadius: 4,
+                  pointHoverBackgroundColor: "yellow",
+                  pointHoverBorderColor: "green",
+                  pointHoverBorderWidth: 2,
+                  pointRadius: 2,
+                  pointHitRadius: 5,
+                  data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                  spanGaps: true,
+         },
+         {
+                  label:"Energia exportada",
+                  fill:false,
+                  borderColor:"rgb("+colorExportada+")",
+                  borderWidth:1,
+                  fill: false,
+                  lineTension: 0.1,
+                  borderCapStyle: 'square',
+                  pointBorderColor: "white",
+                  pointBackgroundColor: "rgb(255, 173, 20)",
+                  pointBorderWidth: 0.5,
+                  pointHoverRadius: 4,
+                  pointHoverBackgroundColor: "yellow",
+                  pointHoverBorderColor: "green",
+                  pointHoverBorderWidth: 2,
+                  pointRadius: 2,
+                  pointHitRadius: 5,
+                  data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                  spanGaps: true,
+         },
+         {
+                  label:"Energia penalizada",
+                  fill:false,
+                  borderColor:"rgb("+colorPenalizada+")",
+                  borderWidth:1,
+                  fill: false,
+                  lineTension: 0.1,
+                  borderCapStyle: 'square',
+                  pointBorderColor: "white",
+                  pointBackgroundColor: "rgb(255, 0, 00)",
+                  pointBorderWidth: 0.5,
+                  pointHoverRadius: 4,
+                  pointHoverBackgroundColor: "yellow",
+                  pointHoverBorderColor: "green",
+                  pointHoverBorderWidth: 2,
+                  pointRadius: 2,
+                  pointHitRadius: 5,
+                  data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                  spanGaps: true,
+         },
+         {
+                 label:"Energia capacitiva",
+                 fill:false,
+                 borderColor:"rgb("+colorCapacitiva+")",
+                 borderWidth:1,
+                 fill: false,
+                 lineTension: 0.1,
+                 borderCapStyle: 'square',
+                 pointBorderColor: "white",
+                 pointBackgroundColor: "rgb(128 255 51)",
+                 pointBorderWidth: 0.5,
+                 pointHoverRadius: 4,
+                 pointHoverBackgroundColor: "yellow",
+                 pointHoverBorderColor: "green",
+                 pointHoverBorderWidth: 2,
+                 pointRadius: 2,
+                 pointHitRadius: 5,
+                 data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                 spanGaps: true,
+          }
+        
+        
+        ]
+};
+
+          options = {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          },
+          title: {
+            fontSize: 10,
+            display: true,
+            text: 'Registro del día '+fechaImagen[2]+'  del mes ' +fechaImagen[1]+' del año '+fechaImagen[0],
+            position: 'bottom'
+          }
+          };
+  canvas = document.getElementById("areaChart_"+fronteraDraw);
+  ctx = canvas.getContext('2d');
+  chartType = 'line';
+  myBarChart = new Chart(ctx, {
+    type: chartType,
+    data: data,
+    options: options
+  });
+  let res = valores.split(","); 
+  let res_re = valores_re.split(","); 
+  let res_ex = valores_ex.split(","); 
+  let res_pe = valores_pe.split(",");
+  let res_ca = valores_c.split(",");
+  let j=0;
+    for(let i=0;i<24;i++)
+    {
+      myBarChart.data.datasets[j].data[i] = res[i];
+      myBarChart.data.datasets[j+1].data[i] = res_re[i];
+      myBarChart.data.datasets[j+2].data[i] = res_ex[i];
+      myBarChart.data.datasets[j+3].data[i] = res_pe[i];
+      myBarChart.data.datasets[j+4].data[i] = res_ca[i];
+
+    }
+ 
+  myBarChart.update();
+}
+
+
+let consumoSeisMeses = "";
  function procesoDataProm(respuesta,ids)
  {
       let len = respuesta.length;
@@ -522,170 +690,7 @@ function verHistoricos(idsHs,day)
     })
 }
 
-  function addData(valores,valores_re,valores_ex,valores_pe,valores_c,ids,cadenaFecha)
-  {
 
-  canvas = document.createElement('canvas');
-  canvas.id = 'areaChart_'+ids;
-  var fechaImagen = cadenaFecha.split("-");
-  document.body.appendChild(canvas); // adds the canvas to the body element
-  document.getElementById('canvasMadre_'+ids).appendChild(canvas);
-
-
-    data = {
-           labels: ["01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24"],
-           datasets: [
-             
-            {
-
-                    label:"Energia activa",
-                    fill:false,
-                    borderColor:"rgb("+colorActiva+")",
-                    borderWidth:1,
-                    fill: false,
-                    lineTension: 0.1,
-                    borderCapStyle: 'square',
-                    pointBorderColor: "white",
-                    pointBackgroundColor: "rgb(75, 192, 192)",
-                    pointBorderWidth: 0.5,
-                    pointHoverRadius: 4,
-                    pointHoverBackgroundColor: "yellow",
-                    pointHoverBorderColor: "green",
-                    pointHoverBorderWidth: 2,
-                    pointRadius: 2,
-                    pointHitRadius: 5,
-                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                    spanGaps: true,
-           },
-           {
-            label:"Energia reactiva",
-            fill:false,
-            borderColor:"rgb("+colorReactiva+")",
-            borderWidth:1,
-            fill: false,
-            lineTension: 0.1,
-            borderCapStyle: 'square',
-            pointBorderColor: "white",
-            pointBackgroundColor: "rgb(0, 143, 57)",
-            pointBorderWidth: 0.5,
-            pointHoverRadius: 4,
-            pointHoverBackgroundColor: "yellow",
-            pointHoverBorderColor: "green",
-            pointHoverBorderWidth: 2,
-            pointRadius: 2,
-            pointHitRadius: 5,
-            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            spanGaps: true,
-           },
-           {
-            label:"Energia exportada",
-            fill:false,
-            borderColor:"rgb("+colorExportada+")",
-            borderWidth:1,
-            fill: false,
-            lineTension: 0.1,
-            borderCapStyle: 'square',
-            pointBorderColor: "white",
-            pointBackgroundColor: "rgb(255, 173, 20)",
-            pointBorderWidth: 0.5,
-            pointHoverRadius: 4,
-            pointHoverBackgroundColor: "yellow",
-            pointHoverBorderColor: "green",
-            pointHoverBorderWidth: 2,
-            pointRadius: 2,
-            pointHitRadius: 5,
-            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            spanGaps: true,
-           },
-           {
-            label:"Energia penalizada",
-            fill:false,
-            borderColor:"rgb("+colorPenalizada+")",
-            borderWidth:1,
-            fill: false,
-            lineTension: 0.1,
-            borderCapStyle: 'square',
-            pointBorderColor: "white",
-            pointBackgroundColor: "rgb(255, 0, 00)",
-            pointBorderWidth: 0.5,
-            pointHoverRadius: 4,
-            pointHoverBackgroundColor: "yellow",
-            pointHoverBorderColor: "green",
-            pointHoverBorderWidth: 2,
-            pointRadius: 2,
-            pointHitRadius: 5,
-            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            spanGaps: true,
-           },
-               {
-                   label:"Energia capacitiva",
-                   fill:false,
-                   borderColor:"rgb("+colorCapacitiva+")",
-                   borderWidth:1,
-                   fill: false,
-                   lineTension: 0.1,
-                   borderCapStyle: 'square',
-                   pointBorderColor: "white",
-                   pointBackgroundColor: "rgb(128 255 51)",
-                   pointBorderWidth: 0.5,
-                   pointHoverRadius: 4,
-                   pointHoverBackgroundColor: "yellow",
-                   pointHoverBorderColor: "green",
-                   pointHoverBorderWidth: 2,
-                   pointRadius: 2,
-                   pointHitRadius: 5,
-                   data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                   spanGaps: true,
-               }
-          
-          
-          ]
-};
-
-            options = {
-            scales: {
-              yAxes: [{
-                ticks: {
-                  beginAtZero: true
-                }
-              }]
-            },
-            title: {
-              fontSize: 10,
-              display: true,
-              text: 'Registro del día '+fechaImagen[2]+'  del mes ' +fechaImagen[1]+' del año '+fechaImagen[0],
-              position: 'bottom'
-            }
-            };
-    //myBarChart.destroy();
-    canvas = document.getElementById("areaChart_"+ids);
-    ctx = canvas.getContext('2d');
-    chartType = 'line';
-    myBarChart = new Chart(ctx, {
-      type: chartType,
-      data: data,
-      options: options
-    });
-    var res = valores.split(","); 
-    var res_re = valores_re.split(","); 
-    var res_ex = valores_ex.split(","); 
-    var res_pe = valores_pe.split(",");
-    var res_ca = valores_c.split(",");
-      //myBarChart.reset();
-    j=0;
-      for(i=0;i<24;i++)
-      {
-        myBarChart.data.datasets[j].data[i] = res[i];
-        myBarChart.data.datasets[j+1].data[i] = res_re[i];
-        myBarChart.data.datasets[j+2].data[i] = res_ex[i];
-        myBarChart.data.datasets[j+3].data[i] = res_pe[i];
-        myBarChart.data.datasets[j+4].data[i] = res_ca[i];
-
-      }
-    
-
-    myBarChart.update();
-  }
 
 
   function verHistoricosMes(ids,mes,energia)
