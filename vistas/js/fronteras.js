@@ -50,6 +50,20 @@ $(document).ready(function() {
 
   Chart.defaults.global.defaultFontColor = 'grey';
   Chart.defaults.global.defaultFontSize = 10;
+  $('#example_table tbody').on('click', 'td.details-control', function () {
+    let tr = $(this).closest('tr');
+    let row = table.row( tr );
+
+    if ( row.child.isShown() ) 
+      {
+          row.child.hide();
+          tr.removeClass('shown');
+      }
+      else{
+        row.child( tabla ).show();
+            tr.addClass('shown');
+      }
+  });
  
 } );
 
