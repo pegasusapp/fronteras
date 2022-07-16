@@ -74,7 +74,7 @@ function startToBuildGraphic(frt,wordInit){
   tipoEnergiaC = ""
   const d = new Date();
   let daysOperation = operationDayIn(wordInit)
-  cadenaFecha = addDays(d, daysOperation);
+  cadenaFecha = addDays(d, daysOperation,"day");
 
       $.ajax({ 
         url: "ajax/fronteras.ajax.php",
@@ -97,9 +97,15 @@ function startToBuildGraphic(frt,wordInit){
 
 
 }
-function addDays(fecha, dias){
+function addDays(fecha, dias,temp){
   
-  fecha.setDate(fecha.getDate() + dias);
+  if(temp == "day"){
+    fecha.setDate(fecha.getDate() + dias);
+  }
+  else if(temp=="month"){
+    fecha.setDate(fecha.getMonth() + dias);
+  }
+ 
    
    let month = fecha.getMonth();
    let year = fecha.getFullYear();
@@ -714,7 +720,7 @@ function verHistoricos(idsHs,day)
     datosIn.append("energia", energia);
     const d = new Date();
     let daysOperation = operationDayIn(wordInit)
-    cadenaFecha = addDays(d, daysOperation);
+    cadenaFecha = addDays(d, daysOperation,"month");
     let row = table.row( tr );
    
          $.ajax({ 
@@ -981,7 +987,7 @@ function verHistoricos(idsHs,day)
             title: {
               fontSize: 10,
               display: true,
-              text: 'Registro  energia ' + energia + ' mes de '+fechaImagen[1]+ ' de '+fechaImagen[0],
+              text: 'Registro  energia ' + energia + ' mes de '+mesv[fechaImagen[1]]+ ' de '+fechaImagen[0],
               position: 'bottom'
             }
             };
