@@ -69,7 +69,7 @@ class ControladorReporteFactorM{
 parse_str($argv[1], $params);
 
 if (isset($params['days'])) {
-    $dias = $params['days'];
+    $dias = $_GET["days"];
     $task = new ControladorReporteFactorM();
     $task -> ctrCalculateFactorM($dias);
     

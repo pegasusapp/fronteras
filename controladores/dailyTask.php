@@ -264,13 +264,13 @@ class ControladorFronterasWS{
 
 }
 
-parse_str($argv[1], $params);
+//parse_str($argv[1], $params);
 
-if (isset($params['days'])) {
-    $dias = $params["days"];
+//if (isset($params['days'])) {
+    $dias = $_GET["days"];
     $task = new ControladorFronterasWS();
     $task -> ctrPrepareDataToSendWS($dias);
     
-}
+//}
 
 ?>
