@@ -348,6 +348,10 @@ document.getElementById('canvasMadre_'+fronteraDraw).appendChild(canvas);
   let res_pe = valores_pe.split(",");
   let res_ca = valores_c.split(",");
   let j=0;
+  if(res.length === 0){
+    console.log("entro");
+    myBarChart.data.datasets[0].data="";
+  }
     for(let i=0;i<24;i++)
     {
       myBarChart.data.datasets[j].data[i] = res[i];
@@ -360,7 +364,7 @@ document.getElementById('canvasMadre_'+fronteraDraw).appendChild(canvas);
     Chart.plugins.register({
       afterDraw: function (chart) {
         console.log(chart.data.datasets.length);
-          if (chart.data.datasets.length === 0) {
+          if (chart.data.datasets[0].data.length === 0) {
               // No data is present
                ctx = chart.chart.ctx;
               let width = chart.chart.width;
