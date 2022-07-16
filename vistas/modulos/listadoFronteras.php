@@ -53,7 +53,7 @@ table.dataTable tr.shown td.details-control:before {
                       $items = ControladorFronteras::ctrMostrarFronteras($item, $valor);
                         foreach ($items as $key => $value): ?>
                                <tr> 		                  
-                                      <td class="details-control" id="td_<?= $value["fronteraCliente"] ?>" onclick=startToBuildGraphic('<?= $value["fronteraCliente"] ?>','hoy') vlr="<?= $value["fronteraCliente"]?>"></td>
+                                      <td class="details-control" id="td_<?= $value["fronteraCliente"] ?>"  vlr="<?= $value["fronteraCliente"]?>"></td>
                                       <td><?= $value["fronteraCliente"] ?></td> 
                                       <td><?= $value["descripcionFrontera"] ?></td> 
                                       <td>
