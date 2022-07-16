@@ -380,7 +380,7 @@ document.getElementById('canvasMadre_'+fronteraDraw).appendChild(canvas);
 
 
 let consumoSeisMeses = "";
- function procesoDataProm(respuesta,ids)
+ function procesoDataProm(respuesta,idsFrt)
  {
       let len = respuesta.length;
       tabla=' <div class="row"> <div class="col-md-2"><table cellpadding="5" cellspacing="0" border="0" >';
@@ -499,7 +499,7 @@ let consumoSeisMeses = "";
         tabla+="</tr>";
       }
 
-tablaInterna(tiempo)
+tablaInterna(idsFrt)
 
  } 
  function groupBy(objectArray, property) {
