@@ -103,9 +103,9 @@ function addDays(fecha, dias){
   
   fecha.setDate(fecha.getDate() + dias);
    
-   let month = fecha.getMonth()-1;
+   let month = fecha.getMonth();
    let year = fecha.getFullYear();
-   let day = fecha.getDay();
+   let day = fecha.getDate();
    console.log(year+"-"+month+"-"+day);
   return year+"-"+month+"-"+day;
 }
@@ -330,7 +330,7 @@ document.getElementById('canvasMadre_'+fronteraDraw).appendChild(canvas);
           title: {
             fontSize: 10,
             display: true,
-            text: 'Registro del día '+fechaImagen[2]+'  del mes ' +fechaImagen[1]+' del año '+fechaImagen[0],
+            text: 'Registro del día '+fechaImagen[2]+'  del mes ' +mesv[fechaImagen[1]]+' del año '+fechaImagen[0],
             position: 'bottom'
           }
           };
