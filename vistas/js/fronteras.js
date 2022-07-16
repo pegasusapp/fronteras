@@ -359,6 +359,7 @@ document.getElementById('canvasMadre_'+fronteraDraw).appendChild(canvas);
     }
     Chart.plugins.register({
       afterDraw: function (chart) {
+        console.log(chart.data.datasets.length);
           if (chart.data.datasets.length === 0) {
               // No data is present
                ctx = chart.chart.ctx;
