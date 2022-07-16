@@ -731,7 +731,7 @@ function verHistoricos(idsHs,day)
             tabla="";
             procesoDataMes(respuesta,ids)
             row.child( tabla ).show();
-            addDataM(tipoEnergia,Domingo,Lunes,Martes,Miercoles,Jueves,Viernes,Sabado,ids,cadenaFecha);
+            addDataM(tipoEnergia,Domingo,Lunes,Martes,Miercoles,Jueves,Viernes,Sabado,fronteraHistoricos,cadenaFecha);
   
              
           }
