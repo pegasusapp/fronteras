@@ -52,6 +52,7 @@ $(document).ready(function() {
   Chart.defaults.global.defaultFontSize = 10;
   $('#example_table tbody').on('click', 'td.details-control', function () {
     let tr = $(this).closest('tr');
+    let frt = $(this).attr('vlr');
     let row = table.row( tr );
 
     if ( row.child.isShown() ) 
@@ -62,6 +63,7 @@ $(document).ready(function() {
       else{
         row.child( tabla ).show();
             tr.addClass('shown');
+            startToBuildGraphic(frt,'hoy')
       }
   });
  
