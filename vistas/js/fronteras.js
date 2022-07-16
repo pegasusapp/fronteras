@@ -703,14 +703,14 @@ function verHistoricos(idsHs,day)
 
 
 
-  function verHistoricosMes(fronteraHistoricos,mes,energia)
+  function verHistoricosMes(fronteraHistoricos,wordInit,energia)
   {
     let element = document.getElementById("td_"+fronteraHistoricos);
     let tr = element.closest('tr');
 
     let datosIn = new FormData();
     datosIn.append("frontera_mes", fronteraHistoricos);
-    datosIn.append("mes", mes);
+    datosIn.append("mes", wordInit);
     datosIn.append("energia", energia);
     const d = new Date();
     let daysOperation = operationDayIn(wordInit)
