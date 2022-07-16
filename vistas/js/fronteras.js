@@ -176,11 +176,7 @@ function fillArrayData(respuesta,frt)
         tabla+="<tr>";
         tabla+="<td>No hay datos reportados</td>";
         tabla+="</tr>";
-        tabla+="<tr>";
-        tabla+="<td>Última lectura datos:</td>";
-        tabla+="<td>No hay datos reportados</td>";
-        tabla+="</tr>";
-      }
+           }
 
      tablaInterna(frt)
 }    
@@ -391,7 +387,7 @@ document.getElementById('canvasMadre_'+fronteraDraw).appendChild(canvas);
               ctx.textAlign = 'center';
               ctx.textBaseline = 'middle';
               ctx.font = "20px 'Helvetica'";
-              ctx.fillText('Aún no hay lecturas para el díade hoy', width / 2, height / 2);
+              ctx.fillText('Aún no hay lecturas para el día de hoy', width / 2, height / 2);
               ctx.restore();
           }
       }
