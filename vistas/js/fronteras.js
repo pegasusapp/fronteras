@@ -335,7 +335,7 @@ document.getElementById('canvasMadre_'+fronteraDraw).appendChild(canvas);
           }
           };
   canvas = document.getElementById("areaChart_"+fronteraDraw);
-  ctx = canvas.getContext('2d');
+   ctx = canvas.getContext('2d');
   chartType = 'line';
   myBarChart = new Chart(ctx, {
     type: chartType,
@@ -357,6 +357,24 @@ document.getElementById('canvasMadre_'+fronteraDraw).appendChild(canvas);
       myBarChart.data.datasets[j+4].data[i] = res_ca[i];
 
     }
+    Chart.plugins.register({
+      afterDraw: function (chart) {
+          if (chart.data.datasets.length === 0) {
+              // No data is present
+               ctx = chart.chart.ctx;
+              let width = chart.chart.width;
+              let height = chart.chart.height
+              chart.clear();
+
+              ctx.save();
+              ctx.textAlign = 'center';
+              ctx.textBaseline = 'middle';
+              ctx.font = "20px 'Helvetica'";
+              ctx.fillText('No data to display', width / 2, height / 2);
+              ctx.restore();
+          }
+      }
+  });
  
   myBarChart.update();
 }
