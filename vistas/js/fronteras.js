@@ -90,7 +90,7 @@ function startToBuildGraphic(frt,wordInit){
           tabla = "";
           fillArrayData(respuesta,frt)
           row.child( tabla ).show();
-          tr.addClass('shown');
+         // tr.addClass('shown');
           addData(tipoEnergiaA,tipoEnergiaR,tipoEnergiaE,tipoEnergiaP,tipoEnergiaC,frt,cadenaFecha);
         }
     
