@@ -76,13 +76,7 @@ function startToBuildGraphic(frt,wordInit){
   const d = new Date();
   let daysOperation = operationDayIn(wordInit)
   cadenaFecha = addDays(d, daysOperation);
-  if ( row.child.isShown() ) 
-    {
-        row.child.hide();
-        tr.removeClass('shown');
-    }
-  else 
-  {
+
       $.ajax({ 
         url: "ajax/fronteras.ajax.php",
         method: "POST",
@@ -102,7 +96,7 @@ function startToBuildGraphic(frt,wordInit){
     
     })
  
-  }
+
 
 }
 
