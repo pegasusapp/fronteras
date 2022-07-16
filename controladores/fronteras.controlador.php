@@ -107,7 +107,7 @@ class ControladorFronteras
 			if($row > 3){
 	
 					$fecha = explode("/",$data[3]);
-					$myDateTime = DateTime::createFromFormat('m/d/Y', $data[3]);
+					$myDateTime = DateTime::createFromFormat('d/m/Y', $data[3]);
 					$formattedweddingdate = $myDateTime->format('Y-m-d');
 
 					$datosMedidor = array("diaLectura"=>$fecha[1], 
@@ -156,7 +156,7 @@ class ControladorFronteras
 		$arrayBack = array();
 		$arrayFactorM = array();
 		$counter = 0;
-		$myDateTime = DateTime::createFromFormat('m/d/Y', $vector[3]);
+		$myDateTime = DateTime::createFromFormat('d/m/Y', $vector[3]);
 		$fechaConvertida = $myDateTime->format('Y-m-d');	
 		$arrayBack +=["tipoEnergia"=>$typeEnergy];	
 			for($i=$inicial;$i<=$final;$i++){

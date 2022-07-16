@@ -53,8 +53,7 @@ $(document).ready(function() {
  
 } );
 
-function operationDayIn(word)
-{
+function operationDayIn(word){
   let number = 0
   if(word == "ayer")
      number = -1
@@ -98,7 +97,6 @@ function startToBuildGraphic(frt,wordInit){
 
 
 }
-
 function addDays(fecha, dias){
   
   fecha.setDate(fecha.getDate() + dias);
@@ -109,9 +107,6 @@ function addDays(fecha, dias){
    console.log(year+"-"+month+"-"+day);
   return year+"-"+month+"-"+day;
 }
-
-
-
 function fillArrayData(respuesta,frt)
  {
     
@@ -167,10 +162,7 @@ function fillArrayData(respuesta,frt)
 
      tablaInterna(frt)
 }    
-
- 
-
- function tablaInterna(frt)
+function tablaInterna(frt)
   {
     tabla+="<tr>";
     tabla+='<td><div class="btn-group"><a class="btn btn-app" onClick=startToBuildGraphic("'+frt+'","hoy")  ><i class="fas fa-play"></i>Hoy</a></div>&nbsp;<div class="btn-group"><a class="btn btn-app" onClick=startToBuildGraphic("'+frt+'","ayer")><i class="fas fa-play"></i>Ayer</a></div></td>';
@@ -197,8 +189,7 @@ function fillArrayData(respuesta,frt)
     tabla+="</div>";
     tabla+="</div>";
 
-  }
-
+}
 function addData(valores,valores_re,valores_ex,valores_pe,valores_c,fronteraDraw,cadenaFechaDraw)
 {
 
@@ -353,6 +344,7 @@ document.getElementById('canvasMadre_'+fronteraDraw).appendChild(canvas);
     console.log("entro");
     myBarChart.data.datasets[0].data="";
   }
+  else{
     for(let i=0;i<24;i++)
     {
       myBarChart.data.datasets[j].data[i] = res[i];
@@ -362,6 +354,8 @@ document.getElementById('canvasMadre_'+fronteraDraw).appendChild(canvas);
       myBarChart.data.datasets[j+4].data[i] = res_ca[i];
 
     }
+  }
+
     Chart.plugins.register({
       afterDraw: function (chart) {
         console.log(chart.data.datasets.length);
@@ -371,12 +365,11 @@ document.getElementById('canvasMadre_'+fronteraDraw).appendChild(canvas);
               let width = chart.chart.width;
               let height = chart.chart.height
               chart.clear();
-
               ctx.save();
               ctx.textAlign = 'center';
               ctx.textBaseline = 'middle';
               ctx.font = "20px 'Helvetica'";
-              ctx.fillText('No data to display', width / 2, height / 2);
+              ctx.fillText('Aún no hay lecturas para este día', width / 2, height / 2);
               ctx.restore();
           }
       }
@@ -710,16 +703,19 @@ function verHistoricos(idsHs,day)
 
 
 
-  function verHistoricosMes(ids,mes,energia)
+  function verHistoricosMes(fronteraHistoricos,mes,energia)
   {
-    var element = document.getElementById("td_"+ids);
-    var tr = element.closest('tr');
+    let element = document.getElementById("td_"+fronteraHistoricos);
+    let tr = element.closest('tr');
 
-    var datosIn = new FormData();
-    datosIn.append("frontera_mes", ids);
+    let datosIn = new FormData();
+    datosIn.append("frontera_mes", fronteraHistoricos);
     datosIn.append("mes", mes);
     datosIn.append("energia", energia);
-    var row = table.row( tr );
+    const d = new Date();
+    let daysOperation = operationDayIn(wordInit)
+    cadenaFecha = addDays(d, daysOperation);
+    let row = table.row( tr );
    
          $.ajax({ 
           url: "ajax/fronteras.ajax.php",
@@ -744,10 +740,8 @@ function verHistoricos(idsHs,day)
   
   }
 
-  function procesoDataMes(respuesta,ids)
+  function procesoDataMes(respuesta,frto)
   {
-    var len = respuesta.length;
-    cadenaFecha = "";
     tabla=' <div class="row"> <div class="col-md-2"><table cellpadding="5" cellspacing="0" border="0" >';
     Lunes  = "";
     Martes = "";
@@ -757,49 +751,45 @@ function verHistoricos(idsHs,day)
     Sabado = "";
     Domingo = "";
 
-    if(len > 0)
+    if(respuesta.length > 0)
     {
-      for( var i = 0; i<len; i++)
+     
+      for(const element of respuesta)
       {
         
-        var mesActualj = parseInt(respuesta[i]['mesLectura']);
-        if(i==0)
-          {
-              mesActualj = mesActualj - 1;
-              cadenaFecha =  respuesta[i]['anyoLectura']+"-"+mesv[mesActualj]+"-"+respuesta[i]['diaLectura']; 
-          }
+
           tabla+="<tr>";
-          tipoEnergia = respuesta[i]['tipoEnergia'];
-          if(respuesta[i]['dia'] == 1)
+          tipoEnergia = element['tipoEnergia'];
+          if(element['dia'] == 1)
           {
-            Domingo = respuesta[i]['datos'];
+            Domingo = element['datos'];
           }
-          if(respuesta[i]['dia'] == 2)
+          if(element['dia'] == 2)
           {
-            Lunes = respuesta[i]['datos'];
+            Lunes = element['datos'];
           }
-          if(respuesta[i]['dia'] == 3)
+          if(element['dia'] == 3)
           {
-            Martes = respuesta[i]['datos'];                     
+            Martes = element['datos'];                     
           }
-          if(respuesta[i]['dia'] == 4)
+          if(element['dia'] == 4)
           {
-            Miercoles = respuesta[i]['datos'];                     
+            Miercoles = element['datos'];                     
           }
-          if(respuesta[i]['dia'] == 5)
+          if(element['dia'] == 5)
           {
-            Jueves = respuesta[i]['datos'];                     
+            Jueves = element['datos'];                     
           }
-          if(respuesta[i]['dia'] == 6)
+          if(element['dia'] == 6)
           {
-            Viernes = respuesta[i]['datos'];                     
+            Viernes = element['datos'];                     
           }
-          if(respuesta[i]['dia'] == 7)
+          if(element['dia'] == 7)
           {
-            Sabado = respuesta[i]['datos'];                     
+            Sabado = element['datos'];                     
 
           }
-          tabla+="<td>Prom. "+respuesta[i]['tipoEnergia']+" "+semana[respuesta[i]['dia']]+" : "+parseFloat(respuesta[i]['total_dia']).toFixed(4)+" kW h</td>";
+          tabla+="<td>Prom. "+element['tipoEnergia']+" "+semana[element['dia']]+" : "+parseFloat(element['total_dia']).toFixed(2)+" kW h</td>";
           tabla+="</tr>";
       }
 
@@ -815,12 +805,11 @@ function verHistoricos(idsHs,day)
       tabla+="<td>No hay datos reportados</td>";
       tabla+="</tr>";
     }
-
-    tablaInterna(ids)
+    tablaInterna(frto)
   }
 
 
-  function addDataM(energia,Domingo,Lunes,Martes,Miercoles,Jueves,Viernes,Sabado,ids,cadenaFecha) {
+  function addDataM(energia,Dom,Lun,Mar,Mier,Jue,Vie,Sab,ids,cadenaFecha) {
    
     canvas = document.createElement('canvas');
     canvas.id = 'areaChart_'+ids;
@@ -996,7 +985,6 @@ function verHistoricos(idsHs,day)
               position: 'bottom'
             }
             };
-    //myBarChart.destroy();
     canvas = document.getElementById("areaChart_"+ids);
     ctx = canvas.getContext('2d');
     chartType = 'line';
@@ -1005,13 +993,13 @@ function verHistoricos(idsHs,day)
       data: data,
       options: options
     });
-    var lun = Lunes.split(","); 
-    var mar = Martes.split(","); 
-    var mier = Miercoles.split(","); 
-    var jue = Jueves.split(","); 
-    var vie = Viernes.split(","); 
-    var sab = Sabado.split(","); 
-    var dom = Domingo.split(","); 
+    let lun = Lun.split(","); 
+    let mar = Mar.split(","); 
+    let mier = Mier.split(","); 
+    let jue = Jue.split(","); 
+    let vie = Vie.split(","); 
+    let sab = Sab.split(","); 
+    let dom = Dom.split(","); 
     j=0;
       for(i=0;i<24;i++)
       {
@@ -1029,24 +1017,7 @@ function verHistoricos(idsHs,day)
   }
 
 
-function graphClickEvent(event, array)
-{
- 
-  var activePoints = myBarChart.getElementsAtEvent(event);
-  console.log(activePoints);
-   if (activePoints[0]) {
-     var chartData = activePoints[0]['_chart'].config.data;
-     var idx = activePoints[0]['_index'];
 
-     var label = chartData.labels[idx];
-     var value = chartData.datasets[0].data[idx];
-
-     var url = "Label=" + label + "\nValue=" + value;
-     console.log(url);
-     alert(url);
-   }
-
-}
 
 function renderHourlyBarChart(month,ids,etiquetaEnvio)
 {
