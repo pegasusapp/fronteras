@@ -348,6 +348,7 @@ document.getElementById('canvasMadre_'+fronteraDraw).appendChild(canvas);
   let res_pe = valores_pe.split(",");
   let res_ca = valores_c.split(",");
   let j=0;
+  console.log("-->"+res.length);
   if(res.length === 0){
     console.log("entro");
     myBarChart.data.datasets[0].data="";
