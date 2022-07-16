@@ -99,11 +99,12 @@ function startToBuildGraphic(frt,wordInit){
 }
 function addDays(fecha, dias,temp){
   
+  
   if(temp == "day"){
     fecha.setDate(fecha.getDate() + dias);
-  }
+  } 
   else if(temp=="month"){
-    fecha.setDate(fecha.getMonth() + dias);
+    fecha.setMonth(fecha.getMonth() + dias);
   }
  
    
