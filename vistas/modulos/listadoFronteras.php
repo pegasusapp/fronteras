@@ -45,8 +45,6 @@ table.dataTable tr.shown td.details-control:before {
                       <th scope="col"></th>
                       <th scope="col">FRONTERA</th>
                       <th scope="col">DESCRIPCION FRONTERA</th>
-                      <th scope="col">SEGUIMIENTO</th>
-                      <th scope="col">CANT. MIN KV</th>
                       <th scope="col">ACCIONES</th>
                      </tr> 
                     </thead>
@@ -58,8 +56,6 @@ table.dataTable tr.shown td.details-control:before {
                                       <td class="details-control" id="td_<?= $value["fronteraCliente"] ?>" onclick=startToBuildGraphic('<?= $value["fronteraCliente"] ?>','hoy') vlr="<?= $value["fronteraCliente"]?>"></td>
                                       <td><?= $value["fronteraCliente"] ?></td> 
                                       <td><?= $value["descripcionFrontera"] ?></td> 
-                                      <td><?= $r = ("S" == $value["seguimiento"]) ? "SI" : "NO"; ?></td> 
-                                      <td><?= $value["minimoKv"] ?></td> 
                                       <td>
                                           <div class='btn-group'>
                                             <button class='btn btn-primary px-2.5' onclick=editarFrontera('<?= $value["fronteraCliente"] ?>')  data-toggle='modal' data-target='#modalEditarFrontera'><em class='far fa-edit' aria-hidden='true'></em></button>
@@ -78,8 +74,6 @@ table.dataTable tr.shown td.details-control:before {
                         <th scope="col"></th>
                         <th scope="col">FRONTERA</th>
                         <th scope="col">DESCRIPCION FRONTERA</th>
-                        <th scope="col">SEGUIMIENTO</th>
-                        <th scope="col">CANT. MIN KV</th>
                         <th scope="col">ACCIONES</th>
                         </tr> 
                       </tfoot>
