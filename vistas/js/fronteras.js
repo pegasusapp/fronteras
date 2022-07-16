@@ -55,7 +55,7 @@ $(document).ready(function() {
 
 function operationDayIn(word){
   let number = 0
-  if(word == "ayer")
+  if(word == "ayer" || word == "atras")
      number = -1
   return number 
 }
@@ -809,13 +809,13 @@ function verHistoricos(idsHs,day)
   }
 
 
-  function addDataM(energia,Dom,Lun,Mar,Mier,Jue,Vie,Sab,ids,cadenaFecha) {
+  function addDataM(energia,Dom,Lun,Mar,Mier,Jue,Vie,Sab,FronteraMes,cadenaFechaMes) {
    
     canvas = document.createElement('canvas');
-    canvas.id = 'areaChart_'+ids;
-    var fechaImagen = cadenaFecha.split("-");
+    canvas.id = 'areaChart_'+FronteraMes;
+    let fechaImagen = cadenaFechaMes.split("-");
     document.body.appendChild(canvas); // adds the canvas to the body element
-    document.getElementById('canvasMadre_'+ids).appendChild(canvas);
+    document.getElementById('canvasMadre_'+FronteraMes).appendChild(canvas);
 
     data = {
            labels: ["01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24"],
@@ -985,7 +985,7 @@ function verHistoricos(idsHs,day)
               position: 'bottom'
             }
             };
-    canvas = document.getElementById("areaChart_"+ids);
+    canvas = document.getElementById("areaChart_"+FronteraMes);
     ctx = canvas.getContext('2d');
     chartType = 'line';
     myBarChart = new Chart(ctx, {
@@ -1000,8 +1000,8 @@ function verHistoricos(idsHs,day)
     let vie = Vie.split(","); 
     let sab = Sab.split(","); 
     let dom = Dom.split(","); 
-    j=0;
-      for(i=0;i<24;i++)
+    let j=0;
+      for(let i=0;i<24;i++)
       {
         myBarChart.data.datasets[j].data[i] = lun[i];
         myBarChart.data.datasets[j+1].data[i] = mar[i];
