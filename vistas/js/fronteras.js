@@ -729,7 +729,7 @@ function verHistoricos(idsHs,day)
           { 
              
             tabla="";
-            procesoDataMes(respuesta,ids)
+            procesoDataMes(respuesta,fronteraHistoricos)
             row.child( tabla ).show();
             addDataM(tipoEnergia,Domingo,Lunes,Martes,Miercoles,Jueves,Viernes,Sabado,fronteraHistoricos,cadenaFecha);
   
