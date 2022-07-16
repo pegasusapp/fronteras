@@ -57,7 +57,7 @@ function operationDayIn(word)
 {
   let number = 0
   if(word == "ayer")
-     number = 1
+     number = -1
   return number 
 }
 function startToBuildGraphic(frt,wordInit){
@@ -90,7 +90,6 @@ function startToBuildGraphic(frt,wordInit){
           tabla = "";
           fillArrayData(respuesta,frt)
           row.child( tabla ).show();
-         // tr.addClass('shown');
           addData(tipoEnergiaA,tipoEnergiaR,tipoEnergiaE,tipoEnergiaP,tipoEnergiaC,frt,cadenaFecha);
         }
     
@@ -107,7 +106,7 @@ function addDays(fecha, dias){
    let month = fecha.getMonth()-1;
    let year = fecha.getFullYear();
    let day = fecha.getDay();
-   
+   console.log(year+"-"+month+"-"+day);
   return year+"-"+month+"-"+day;
 }
 
