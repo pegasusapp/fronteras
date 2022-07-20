@@ -24,7 +24,6 @@ class ModeloFactorM{
 												WHERE frontera_fronteraCliente = :frontera_fronteraCliente
 												AND tipoEnergia = :tipoEnergia
 												GROUP BY frontera_fronteraCliente,tipoEnergia,YEAR(fecha),MONTH(fecha)
-												HAVING count(*) >= $dias
 												ORDER BY frontera_fronteraCliente");
 				$stmt -> bindParam(":frontera_fronteraCliente", $frontera, PDO::PARAM_STR);
 				$stmt -> bindParam(":tipoEnergia", $tipoEnergia, PDO::PARAM_STR);
