@@ -39,8 +39,10 @@ class ControladorReporteFactorM{
                        if(!$flag)
                        {
                         $factor++;
+                        $flag = false;
                        } 
                        $total = $value['cantidad'];
+                       
                     }
                     else{
                         $factor =1;
