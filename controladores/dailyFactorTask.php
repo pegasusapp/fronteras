@@ -16,9 +16,13 @@ class ControladorReporteFactorM{
         $fronteras = ModeloFronteras::mdlMostrarFronteras("frontera","","");
         foreach ($fronteras as $value){
                $array = ControladorFactorM::ctrReportDailyFactorM(Constantes::SIGLA_SING_CAPACITIVA,$value["fronteraCliente"],10);
-               if(!empty($array)){
-                   var_dump(self::ctrAsignamentFactorM($array,$fecha[0],$value["fronteraCliente"],Constantes::SIGLA_SING_CAPACITIVA));
+                   if(!empty($array)){
+                        var_dump(self::ctrAsignamentFactorM($array,$fecha[0],$value["fronteraCliente"],Constantes::SIGLA_SING_CAPACITIVA));
                             }
+               $array_p = ControladorFactorM::ctrReportDailyFactorM(Constantes::SIGLA_SING_PENALIZADA,$value["fronteraCliente"],10);
+                   if(!empty($array_p)){
+                        var_dump(self::ctrAsignamentFactorM($array,$fecha[0],$value["fronteraCliente"],Constantes::SIGLA_SING_PENALIZADA));
+                            }      
             }
         }
 
@@ -65,7 +69,7 @@ class ControladorReporteFactorM{
 //parse_str($argv[1], $params);
 
 //if (isset($params['days'])) {
-    $dias = $_GET["days"];
+    $dias = $_GET['days'];
     $task = new ControladorReporteFactorM();
     $task -> ctrCalculateFactorM($dias);
     
