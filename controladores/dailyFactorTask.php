@@ -32,17 +32,20 @@ class ControladorReporteFactorM{
         $factor = 0;
         $arrayResultado +=["frontera"=>$frontera];
         $total=0;
-        var_dump($array);
-
+        $flag = false; 
         foreach($array as $value){
           if($value['consumo'] > 10)
                     {
+                       if(!$flag)
+                       {
                         $factor++;
-                        $total = $value['cantidad'];
+                       } 
+                       $total = $value['cantidad'];
                     }
                     else{
                         $factor =1;
                         $total = $value['cantidad'];
+                        $flag = true;
                     }
                     $arrayInsertctrFactorM = array("anyo" =>$year, 
 						 "mes"=>$value['mes'],
