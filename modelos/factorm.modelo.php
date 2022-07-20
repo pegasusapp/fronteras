@@ -20,7 +20,7 @@ class ModeloFactorM{
 	}
 
 	static public function mdlReportDailyFactorM($tabla,$tipoEnergia,$dias,$frontera){
-		$stmt = Conexion::conectar()->prepare("SELECT YEAR(fecha) as anyo,MONTH(fecha) as mes,frontera_fronteraCliente as frontera,tipoEnergia,count(*) as dias, sum(cantidad) as cantidad FROM $tabla
+		$stmt = Conexion::conectar()->prepare("SELECT YEAR(fecha) as anyo,MONTH(fecha) as mes,frontera_fronteraCliente as frontera,tipoEnergia,sum(if(cantidad > 0 ,1,0)) as consumo,sum(if(cantidad = 0 ,1,0)) as no_consumo ,sum(cantidad) as cantidad FROM $tabla
 												WHERE frontera_fronteraCliente = :frontera_fronteraCliente
 												AND tipoEnergia = :tipoEnergia
 												GROUP BY frontera_fronteraCliente,tipoEnergia,YEAR(fecha),MONTH(fecha)

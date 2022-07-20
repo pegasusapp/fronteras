@@ -17,39 +17,34 @@ class ControladorReporteFactorM{
         foreach ($fronteras as $value){
                $array = ControladorFactorM::ctrReportDailyFactorM(Constantes::SIGLA_SING_CAPACITIVA,$value["fronteraCliente"],10);
                if(!empty($array)){
-                   var_dump(self::ctrAsignamentFactorM($array,$fecha[0],$fecha[1],$value["fronteraCliente"]));
+                   var_dump(self::ctrAsignamentFactorM($array,$fecha[0],$value["fronteraCliente"],Constantes::SIGLA_SING_CAPACITIVA));
                             }
             }
         }
 
-    public function ctrAsignamentFactorM($array,$year,$month,$frontera):array{
+    public function ctrAsignamentFactorM($array,$year,$frontera,$tipoe):array{
         $arrayInsertctrFactorM = array(); 
         $arrayResultado = array();
         $factor = 0;
         $arrayResultado +=["frontera"=>$frontera];
-        $j=0;
         $total=0;
         var_dump($array);
-        for($i=1;$i<=$month;$i++){
-            echo "-->i".$i;
-            echo "--->j".$j;
-                    if(($array[$j]['mes'] == $i) && ($array[$j]['anyo'] == $year))
+
+        foreach($array as $value){
+          if($value['consumo'] > 10)
                     {
                         $factor++;
-                        $total = $array[$j]["cantidad"];
+                        $total = $value['cantidad'];
                     }
                     else{
                         $factor =1;
                         $total = 0;
-                        echo "no existe";
                     }
-                       
-                    $j++;  
                     $arrayInsertctrFactorM = array("anyo" =>$year, 
-						 "mes"=>$i,
+						 "mes"=>$value['mes'],
 						 "factor"=>$factor,
 						 "total"=>$total,
-                         "tipoEnergia"=>Constantes::SIGLA_SING_CAPACITIVA,
+                         "tipoEnergia"=>$tipoe,
 						 "frontera_fronteraCliente"=>$frontera); 
                          print("<pre>".print_r($arrayInsertctrFactorM,true)."</pre>");
 
