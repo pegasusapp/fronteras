@@ -39,14 +39,15 @@ class ModeloCtrFactorM{
 						 "factor"=>$datosLog["factor"],
 						 "total"=>$datosLog["total"],
 						 "tipoEnergia"=>$datosLog["tipoEnergia"],
-						 "frontera_fronteraCliente"=>$datosLog["frontera_fronteraCliente"]);
+						 "frontera_fronteraCliente"=>$datosLog["frontera_fronteraCliente"],
+						 "dias"=>$datosLog["dias"]);
 		if(self::mdlSearchData($valores,$tabla) == 0)
 		{
-			$stmt =  Conexion::conectar()->prepare("INSERT INTO $tabla(anyo, mes, factor, total,tipoEnergia, frontera_fronteraCliente) VALUES ( :anyo, :mes, :factor, :total, :tipoEnergia, :frontera_fronteraCliente)");
+			$stmt =  Conexion::conectar()->prepare("INSERT INTO $tabla(anyo, mes, factor, total,tipoEnergia, frontera_fronteraCliente,dias) VALUES ( :anyo, :mes, :factor, :total, :tipoEnergia, :frontera_fronteraCliente, :dias)");
 			
 		}
 		else{
-			$stmt =  Conexion::conectar()->prepare("UPDATE $tabla SET  factor = :factor, total = :total WHERE anyo = :anyo AND mes = :mes AND tipoEnergia = :tipoEnergia AND frontera_fronteraCliente = :frontera_fronteraCliente");
+			$stmt =  Conexion::conectar()->prepare("UPDATE $tabla SET  factor = :factor, total = :total, dias = :dias WHERE anyo = :anyo AND mes = :mes AND tipoEnergia = :tipoEnergia AND frontera_fronteraCliente = :frontera_fronteraCliente");
 		}	
 		    $stmt->bindParam(":factor", $datosLog["factor"], PDO::PARAM_INT);
 		    $stmt->bindParam(":total", $datosLog["total"], PDO::PARAM_STR);
@@ -54,6 +55,8 @@ class ModeloCtrFactorM{
 			$stmt->bindParam(":mes", $datosLog["mes"], PDO::PARAM_INT);
 			$stmt->bindParam(":frontera_fronteraCliente", $datosLog["frontera_fronteraCliente"], PDO::PARAM_STR);
 			$stmt->bindParam(":tipoEnergia", $datosLog["tipoEnergia"], PDO::PARAM_STR);
+			$stmt->bindParam(":dias", $datosLog["dias"], PDO::PARAM_INT);
+
 			return $stmt->execute();		  
 		
 

@@ -45,7 +45,8 @@ class ControladorReporteFactorM{
 						 "factor"=>$factor,
 						 "total"=>$total,
                          "tipoEnergia"=>$tipoe,
-						 "frontera_fronteraCliente"=>$frontera); 
+						 "frontera_fronteraCliente"=>$frontera,
+                         "dias"=>$value['consumo']); 
                          print("<pre>".print_r($arrayInsertctrFactorM,true)."</pre>");
 
                    $arrayResultado  += ["resultado"=> ControladorCtrFactorM::ctrCrearctrFactorM($arrayInsertctrFactorM)];
