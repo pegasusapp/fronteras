@@ -38,7 +38,7 @@ class ControladorReporteFactorM{
                     }
                     else{
                         $factor =1;
-                        $total = 0;
+                        $total = $value['cantidad'];
                     }
                     $arrayInsertctrFactorM = array("anyo" =>$year, 
 						 "mes"=>$value['mes'],
