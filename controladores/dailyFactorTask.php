@@ -32,7 +32,6 @@ class ControladorReporteFactorM{
         $factor = 0;
         $arrayResultado +=["frontera"=>$frontera];
         $total=0;
-        var_dump($array);
         $flag = false; 
         foreach($array as $value){
           if($value['consumo'] > 10)
