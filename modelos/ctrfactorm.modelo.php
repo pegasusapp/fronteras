@@ -24,9 +24,10 @@ class ModeloCtrFactorM{
 
 	static public function mdlSearchData($dataIn,$tabla):int{
         
-		$stmt = Conexion::conectar()->prepare("SELECT count(*) FROM $tabla WHERE anyo = :anyo AND mes = :mes  AND frontera_fronteraCliente = :frontera_fronteraCliente");
+		$stmt = Conexion::conectar()->prepare("SELECT count(*) FROM $tabla WHERE anyo = :anyo AND mes = :mes AND tipoEnergia = :tipoEnergia  AND frontera_fronteraCliente = :frontera_fronteraCliente");
 		$stmt->bindParam(":anyo", $dataIn["anyo"], PDO::PARAM_INT);
 		$stmt->bindParam(":mes", $dataIn["mes"], PDO::PARAM_INT);
+		$stmt->bindParam(":tipoEnergia", $dataIn["tipoEnergia"], PDO::PARAM_STR);
 		$stmt->bindParam(":frontera_fronteraCliente", $dataIn["frontera_fronteraCliente"], PDO::PARAM_STR);
 		$stmt -> execute();
 		return  $stmt->fetchColumn();
