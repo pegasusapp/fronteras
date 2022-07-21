@@ -1,24 +1,18 @@
 <?php
-
 require_once 'dompdf/autoload.inc.php';
 require dirname(__FILE__)."/../modelos/fronteras.modelo.php";
 require dirname(__FILE__)."/../modelos/factorm.modelo.php";
 require dirname(__FILE__)."/../modelos/desviacion.modelo.php";
-
 require "utilidades.controlador.php";
 require "constantes.controlador.php";
 require "fronteras.controlador.php";
 require "factorm.controlador.php";
 require "desviacion.controlador.php";
-
 use Dompdf\Dompdf;
-
 $dompdf = new Dompdf();
-
 $item ="";
 $valor="";
 $arrayFrontera = ControladorFronteras::ctrMostrarFronteras($item,$valor);
-
 foreach($arrayFrontera as $valor){
     $arrayAvg = array();
     $arrayLastDay = array(); 
@@ -27,7 +21,6 @@ foreach($arrayFrontera as $valor){
     //Note php result: 0=Sunday, 1=Monday, 2=Tuesday, 3=Wednesday, 4=Thursday, 5=Friday, 6=Saturday.
     //$fecha = explode("-",ControladorUtilidades::anyoMesDia(1));	
     $dayToday = ControladorUtilidades::getDayToMysql(ControladorUtilidades::getNumberday(ControladorUtilidades::anyoMesDia(1)));
-
     $total_dia_avg=0;
     foreach($arrayAvg as $data)
     {
@@ -36,8 +29,6 @@ foreach($arrayFrontera as $valor){
       }
     }
     $arrayLastDay = ControladorFronteras::ctrMostrarEnergiasFronteraDia($valor["fronteraCliente"],1);
-    echo($arrayLastDay);
-    var_dump($arrayLastDay);
     $total_dia_last=0;
     foreach($arrayLastDay as $data)
     {
@@ -59,7 +50,6 @@ foreach($arrayFrontera as $valor){
     if($total_dia_last >= $tope_min && $total_dia_last <= $tope_max){
         $desviado="NO";
     }
-
     $data = array("frontera" => $valor["fronteraCliente"],"consumoPromedio" =>$total_dia_avg,"consumoAnterior"=>$total_dia_last ,"desviado" => $desviado, "productPrice" => "20", "deliveryDate" => "2150");
     ob_start();
     require_once("template/template.php");
@@ -70,6 +60,4 @@ foreach($arrayFrontera as $valor){
     $dompdf->stream("invoice");
     file_put_contents("pdfs/invoice-" . $valor["fronteraCliente"] . ".pdf",  $dompdf->output());
 }
-
-
 ?>
