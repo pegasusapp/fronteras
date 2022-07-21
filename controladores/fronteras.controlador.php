@@ -19,10 +19,22 @@ class ControladorFronteras
 	
 	} 
 
+	static public function ctrMostrarEnergiasFronteraDia($valor,$time)
+	{
+
+		return ModeloFronteras::mdlMostrarEnergiaFronteraxDia($valor,$time);
+	
+	}
+
 
 	static public function ctrMostrarEnergiasFronteraM($valor,$anyo_curso,$mes_curso,$energia)
 	{
 		return ModeloFronteras::mdlMostrarEnergiasFronteraMes($valor,$anyo_curso,$mes_curso,$energia);
+	} 
+
+	static public function ctrMostrarAvgEnergiasFrontera($valor,$energia,$time)
+	{
+		return ModeloFronteras::mdlMostrarAvgEnergiasFrontera($valor,$energia,$time);
 	} 
 
 	static public function ctrMostrarEnergiasFronteraProm($valor,$anyo_curso)

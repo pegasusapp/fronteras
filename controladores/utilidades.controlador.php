@@ -100,6 +100,20 @@ class ControladorUtilidades
 
 	 }
 
+	 static public function getNumberday($date):int{
+		return date('w', strtotime($date));
+	 }
+	 static public function getDayToMysql($dia):int{
+		if($dia == 7)
+		{
+		 $dayAvg = $dia-6;
+		}
+		else{
+		 $dayAvg = $dia+1;
+		}
+		return $dayAvg;
+	 }
+
 	
 
  
