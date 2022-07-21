@@ -54,10 +54,10 @@ foreach($arrayFrontera as $valor){
     ob_start();
     require_once("template/template.php");
     $template = ob_get_clean();
+    $dompdf->setBasePath(realpath(dirname(__FILE__).'/controladores/template/'));
     $dompdf->loadHtml($template);
     $dompdf->setPaper('A4', 'landscape');
     $dompdf->render();
-    //$dompdf->stream("invoice");
     file_put_contents("invoice-" . $valor["fronteraCliente"] . ".pdf",  $dompdf->output());
 }
 ?>

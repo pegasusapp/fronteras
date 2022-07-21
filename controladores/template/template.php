@@ -16,10 +16,8 @@
     <meta property="og:title" content="Page 2">
     <meta property="og:type" content="website">
     <body class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-header" id="sec-3983"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-        <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="245" data-image-height="86">
           <img src="images/logo-blanco-bloque.png" class="u-logo-image u-logo-image-1">
-        </a>
-      </div></header>
+       </div></header>
     <section class="skrollable skrollable-between u-align-center u-clearfix u-white u-section-1" src="" id="carousel_0ac8">
       <h2 class="u-text u-text-default-lg u-text-default-md u-text-default-xl u-text-1">Reporte diario<br>
       </h2>
