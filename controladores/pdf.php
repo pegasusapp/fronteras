@@ -3,10 +3,14 @@
 require_once 'dompdf/autoload.inc.php';
 require dirname(__FILE__)."/../modelos/fronteras.modelo.php";
 require dirname(__FILE__)."/../modelos/factorm.modelo.php";
+require dirname(__FILE__)."/../modelos/desviacion.modelo.php";
+
 require "utilidades.controlador.php";
 require "constantes.controlador.php";
 require "fronteras.controlador.php";
 require "factorm.controlador.php";
+require "desviacion.controlador.php";
+
 use Dompdf\Dompdf;
 
 $dompdf = new Dompdf();
@@ -16,12 +20,13 @@ $valor="";
 $arrayFrontera = ControladorFronteras::ctrMostrarFronteras($item,$valor);
 
 foreach($arrayFrontera as $valor){
-
+    $arrayAvg = array();
+    $arrayLastDay = array(); 
     $arrayAvg = ControladorFronteras::ctrMostrarAvgEnergiasFrontera($valor["fronteraCliente"],Constantes::SIGLA_SING_ACTIVA,1);
     //Note mysql result: 1=Sunday, 2=Monday, 3=Tuesday, 4=Wednesday, 5=Thursday, 6=Friday, 7=Saturday.
     //Note php result: 0=Sunday, 1=Monday, 2=Tuesday, 3=Wednesday, 4=Thursday, 5=Friday, 6=Saturday.
-    $fecha = explode("-",ControladorUtilidades::anyoMesDia(1));	
-    $dayToday = ControladorUtilidades::getDayToMysql(ControladorUtilidades::getNumberday($fecha));
+    //$fecha = explode("-",ControladorUtilidades::anyoMesDia(1));	
+    $dayToday = ControladorUtilidades::getDayToMysql(ControladorUtilidades::getNumberday(ControladorUtilidades::anyoMesDia(1)));
 
     $total_dia_avg=0;
     foreach($arrayAvg as $data)
