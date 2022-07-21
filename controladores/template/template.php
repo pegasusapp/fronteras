@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="​How is solar panel work?, ​Energy Freedom with Solar and Storage, ​We Have a Solar Plan for Almost Any Budget, Get In Touch">
+    <meta name="description" content="">
+    <title>Page 2</title>
     <link rel="stylesheet" href="nicepage.css" media="screen">
     <link rel="stylesheet" href="Page-2.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery-1.9.1.min.js" defer=""></script>
@@ -207,4 +214,4 @@
       <a class="u-link" href="https://nicepage.com/static-site-generator" target="_blank">
         <span>Static Site Generator</span>
       </a>. 
-    </section>
+    </section></body></html>

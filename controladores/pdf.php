@@ -57,7 +57,7 @@ foreach($arrayFrontera as $valor){
     $dompdf->loadHtml($template);
     $dompdf->setPaper('A4', 'landscape');
     $dompdf->render();
-    $dompdf->stream("invoice");
-    file_put_contents("pdfs/invoice-" . $valor["fronteraCliente"] . ".pdf",  $dompdf->output());
+    //$dompdf->stream("invoice");
+    file_put_contents("invoice-" . $valor["fronteraCliente"] . ".pdf",  $dompdf->output());
 }
 ?>
