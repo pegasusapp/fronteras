@@ -82,9 +82,6 @@ class ModeloFronteras{
 									AND tipoMedidor='P'
 									GROUP BY anyoLectura, mesLectura, diaLectura,tipoEnergia, datos");
 			$stmt ->bindParam(":frontera_fronteraCliente", $valor, PDO::PARAM_STR);
-			$stmt ->bindParam(":anyoLectura", $anyo_curso, PDO::PARAM_INT);
-			$stmt ->bindParam(":mesLectura", $mes_curso, PDO::PARAM_INT);
-			$stmt ->bindParam(":diaLectura", $dia_curso, PDO::PARAM_INT);
 			$stmt ->execute();
 			$pdo->commit();
 		}
