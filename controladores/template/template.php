@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html style="font-size: 16px;" lang="en"><head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <meta name="keywords" content="​How is solar panel work?, ​Energy Freedom with Solar and Storage, ​We Have a Solar Plan for Almost Any Budget, Get In Touch">
-    <meta name="description" content="">
-    <title>Page 2</title>
     <link rel="stylesheet" href="https://fronteras.energiaitalener.com/controladores/template/nicepage.css" media="screen">
     <link rel="stylesheet" href="https://fronteras.energiaitalener.com/controladores/template/Page-2.css" media="screen">
     <meta name="generator" content="Nicepage 4.14.7, nicepage.com">
@@ -16,7 +9,7 @@
     <body class="u-body u-xl-mode" data-lang="en">
       <header class="u-clearfix u-header u-header" id="sec-3983">
         <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-          <img src=<?php echo dirname(__FILE__)."/images/logo-blanco-bloque.png" ?> class="u-logo-image u-logo-image-1">
+          <img src="https://fronteras.energiaitalener.com/controladores/template/images/logo-blanco-bloque.png"  class="u-logo-image u-logo-image-1">
        </div></header>
     <section class="skrollable skrollable-between u-align-center u-clearfix u-white u-section-1" src="" id="carousel_0ac8">
       <h2 class="u-text u-text-default-lg u-text-default-md u-text-default-xl u-text-1">Reporte diario<br>
@@ -212,4 +205,4 @@
       <a class="u-link" href="https://nicepage.com/static-site-generator" target="_blank">
         <span>Static Site Generator</span>
       </a>. 
-    </section></body></html>
+    </section>
