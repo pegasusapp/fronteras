@@ -55,6 +55,15 @@
 {
     display:inline;
 }
+.gfg {
+                width:auto;
+                text-align:center;
+                padding:20px;
+     }
+.imgFrt {
+              max-width:100%;
+              height:auto;
+            }
 </style>
 <table id="customers" align="center" style="width:100%; font-size: 13px;" border="1" cellspacing="0" cellpadding="2" bordercolor="666633">
 	<tr>
@@ -80,19 +89,27 @@
     </tr>
     <tr>
       <td colspan="5">
-		  <img class="u-image u-image-default u-image-1" src="https://fronteras.energiaitalener.com/controladores/template/images/Frt00771_consumo.png"  >
+		   <div class = "gfg">
+              <p>
+			    <img class="imgFrt" src="https://fronteras.energiaitalener.com/controladores/template/images/'".$valor["fronteraCliente"]."'_consumo.png">
+		      </p>
+		  </div>	   
 	  </td>
     </tr>
     <tr>
 		<td colspan="5" align="center" bgcolor="#bcc1d1"><strong>DESVIACION SIGNIFICATIVA</strong></td>							
     </tr>
     <tr>
-      <td colspan="5">El consumo promedio del dia anterior con respecto al mes pasado fue de <?=$total_dia_avg ?>, el consumo del día anterior fue de <?=$total_dia_last ?>. Ud <strong><?=$desviado ?></strong>presenta desviación
+      <td colspan="5">El consumo promedio del dia anterior con respecto al mes pasado fue de <?=$total_dia_avg ?>, el consumo del día anterior fue de <?=$total_dia_last ?>. Ud <strong><?=$desviado ?></strong> presenta desviación
 	  </td>
     </tr>  
     <tr>		
 	  <td colspan="5">
-		  <img class="u-image u-image-default u-image-1" src="https://fronteras.energiaitalener.com/controladores/template/images/Frt00771_desviacion.png"  >
+		   <div class = "gfg">
+              <p>
+		        <img class="imgFrt" src="https://fronteras.energiaitalener.com/controladores/template/images/'".$valor["fronteraCliente"]."'_desviacion.png"  >
+			  </p>
+		  </div>	
 	  </td>
     </tr>
     <tr>
@@ -139,10 +156,10 @@
 		<td align="center"><h3 class="u-custom-font u-font-montserrat u-text u-text-palette-2-base u-text-7" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000"> 5.282</h3></td>
 	</tr>	
 	<tr>
-		<td align="center"><h4 class="u-custom-font u-font-montserrat u-text u-text-2">ACTIVA</h4></td>
+		<td align="center"><h4 class="u-custom-font u-font-montserrat u-text u-text-2">Activa</h4></td>
 		<td align="center"><h4 class="u-custom-font u-font-montserrat u-text u-text-4">Reactiva</h4></td>
-        <td align="center"><h4 class="u-custom-font u-font-montserrat u-text u-text-6">capacitiva</h4></td>
-        <td align="center"><h4 class="u-custom-font u-font-montserrat u-text u-text-8">penalizada</h4></td>
+        <td align="center"><h4 class="u-custom-font u-font-montserrat u-text u-text-6">Capacitiva</h4></td>
+        <td align="center"><h4 class="u-custom-font u-font-montserrat u-text u-text-8">Penalizada</h4></td>
 	</tr>
 		
 	    <tr>
@@ -153,14 +170,20 @@
     </tr> 
 	<tr >
 	  <td colspan="5" align="center">
-
-		  <img class="u-image u-image-default u-image-1" src="https://fronteras.energiaitalener.com/controladores/template/images/Frt00771_capacitiva.png"  >
+ 			<div class = "gfg">
+              <p>
+		 		 <img class="imgFrt" src="https://fronteras.energiaitalener.com/controladores/template/images/'".$valor["fronteraCliente"]."'_capacitiva.png"  >
+			 </p>
+		  </div> 	
 		</td>
 	</tr>
 	<tr>
 		 <td colspan="5" align="center">
-		  <img class="u-image u-image-default u-image-1" src="https://fronteras.energiaitalener.com/controladores/template/images/Frt00771_perdidas.png"  >
-		
+		 <div class = "gfg">
+              <p>
+		       <img class="imgFrt" src="https://fronteras.energiaitalener.com/controladores/template/images/'".$valor["fronteraCliente"]."'_perdidas.png"  >
+			 </p>
+		 </div>	 
 			</td>
     </tr>	
     </table>
