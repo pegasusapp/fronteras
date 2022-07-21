@@ -59,7 +59,7 @@ $dompdf->loadHtml($content);
 $dompdf->set_option('enable_remote', TRUE);
 $dompdf->set_option('enable_css_float', TRUE);
 $dompdf->set_option('enable_html5_parser', FALSE);
-$dompdf->setPaper('Legal', 'landscape');
+$dompdf->setPaper('A4', 'landscape');
 $dompdf->render();
 file_put_contents("invoice-" . $valor["fronteraCliente"] . ".pdf",  $dompdf->output());
 }
