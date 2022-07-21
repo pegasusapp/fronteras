@@ -66,7 +66,7 @@ class ModeloFronteras{
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
 	}
 
-	static public function mdlMostrarEnergiaFronteraxDia($valor,$time):array
+	static public function mdlMostrarEnergiaFronteraxDia($valor,$time)
 	{
 		$pdo = Conexion::conectar();
 		$pdo ->beginTransaction();

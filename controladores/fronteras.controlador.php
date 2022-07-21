@@ -19,7 +19,7 @@ class ControladorFronteras
 	
 	} 
 
-	static public function ctrMostrarEnergiasFronteraDia($valor,$time):array
+	static public function ctrMostrarEnergiasFronteraDia($valor,$time)
 	{
 
 		return ModeloFronteras::mdlMostrarEnergiaFronteraxDia($valor,$time);
