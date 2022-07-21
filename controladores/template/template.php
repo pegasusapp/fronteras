@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html style="font-size: 16px;" lang="es"><head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <title>Page 2</title>
     <link rel="stylesheet" href="nicepage.css" media="screen">
     <link rel="stylesheet" href="Page-2.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery-1.9.1.min.js" defer=""></script>
@@ -217,5 +210,3 @@
         <span>Static Site Generator</span>
       </a>. 
     </section>
-  
-</body></html>

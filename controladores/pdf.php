@@ -59,22 +59,14 @@ foreach($arrayFrontera as $valor){
     }
 
     $data = array("frontera" => $valor["fronteraCliente"],"consumoPromedio" =>$total_dia_avg,"consumoAnterior"=>$total_dia_last ,"desviado" => $desviado, "productPrice" => "20", "deliveryDate" => "2150");
-   
     ob_start();
-    
     require_once("template/template.php");
-    
     $template = ob_get_clean();
-    
-    
     $dompdf->loadHtml($template);
-     
     $dompdf->setPaper('A4', 'landscape');
-     
     $dompdf->render();
-     
     $dompdf->stream("invoice");
-    file_put_contents("pdfs/invoice-" . mt_rand(0,99999) . ".pdf",  $dompdf->output());
+    file_put_contents("pdfs/invoice-" . $valor["fronteraCliente"] . ".pdf",  $dompdf->output());
 }
 
 
