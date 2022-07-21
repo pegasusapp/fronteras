@@ -53,6 +53,7 @@ foreach($arrayFrontera as $valor){
     $data = array("frontera" => $valor["fronteraCliente"],"consumoPromedio" =>$total_dia_avg,"consumoAnterior"=>$total_dia_last ,"desviado" => $desviado, "productPrice" => "20", "deliveryDate" => "2150");
     ob_start();
     require_once("template/template.php");
+    echo "--->".dirname(__FILE__).'/controladores/template/';
     $template = ob_get_clean();
     $dompdf->setBasePath(realpath(dirname(__FILE__).'/controladores/template/'));
     $dompdf->loadHtml($template);
