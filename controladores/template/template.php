@@ -5,10 +5,8 @@
     <meta name="keywords" content="​How is solar panel work?, ​Energy Freedom with Solar and Storage, ​We Have a Solar Plan for Almost Any Budget, Get In Touch">
     <meta name="description" content="">
     <title>Page 2</title>
-    <link rel="stylesheet" href="nicepage.css" media="screen">
-    <link rel="stylesheet" href="Page-2.css" media="screen">
-    <script class="u-script" type="text/javascript" src="jquery-1.9.1.min.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <link rel="stylesheet" href=<?=dirname(__FILE__)?>"/nicepage.css" media="screen">
+    <link rel="stylesheet" href=<?=dirname(__FILE__)?>"/Page-2.css" media="screen">
     <meta name="generator" content="Nicepage 4.14.7, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
@@ -16,7 +14,7 @@
     <meta property="og:title" content="Page 2">
     <meta property="og:type" content="website">
     <body class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-header" id="sec-3983"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-          <img src="images/logo-blanco-bloque.png" class="u-logo-image u-logo-image-1">
+          <img src=<?=dirname(__FILE__)?>"/images/logo-blanco-bloque.png" class="u-logo-image u-logo-image-1">
        </div></header>
     <section class="skrollable skrollable-between u-align-center u-clearfix u-white u-section-1" src="" id="carousel_0ac8">
       <h2 class="u-text u-text-default-lg u-text-default-md u-text-default-xl u-text-1">Reporte diario<br>
