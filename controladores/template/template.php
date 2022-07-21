@@ -13,7 +13,9 @@
     <meta name="theme-color" content="#478ac9">
     <meta property="og:title" content="Page 2">
     <meta property="og:type" content="website">
-    <body class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-header" id="sec-3983"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+    <body class="u-body u-xl-mode" data-lang="en">
+      <header class="u-clearfix u-header u-header" id="sec-3983">
+        <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
           <img src=<?php echo dirname(__FILE__)."/images/logo-blanco-bloque.png" ?> class="u-logo-image u-logo-image-1">
        </div></header>
     <section class="skrollable skrollable-between u-align-center u-clearfix u-white u-section-1" src="" id="carousel_0ac8">

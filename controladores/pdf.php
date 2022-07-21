@@ -241,22 +241,26 @@ foreach($arrayFrontera as $valor){
   <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-21c8"><div class="u-clearfix u-sheet u-sheet-1">
       <p class="u-small-text u-text u-text-variant u-text-1">SoftFocus 2022<br>
       </p>
-    </div></footer>
-  <section class="u-backlink u-clearfix u-grey-80">
-    <a class="u-link" href="https://nicepage.com/website-design" target="_blank">
-      <span>Website Design</span>
-    </a>
-    <p class="u-text">
-      <span>created with</span>
-    </p>
-    <a class="u-link" href="https://nicepage.com/static-site-generator" target="_blank">
-      <span>Static Site Generator</span>
-    </a>. 
-  </section></body>';
-    $template = ob_get_clean();
-    $dompdf->loadHtml($html);
-    $dompdf->setPaper('A4', 'landscape');
-    $dompdf->render();
-    file_put_contents("invoice-" . $valor["fronteraCliente"] . ".pdf",  $dompdf->output());
+    </div></footer></body>';
+
+$dompdf->loadHtml($html);
+// (Optional) Setup the paper size and orientation
+$dompdf->setPaper('A4', 'landscape');
+// Render the HTML as PDF
+$dompdf->render();
+// Output the generated PDF to Browser
+//$dompdf->stream();
+//print the pdf file to the screen for saving
+$file_to_save = ["idorden"].'.pdf';
+//save the pdf file on the server
+file_put_contents("invoice-" . $valor["fronteraCliente"] . ".pdf",  $dompdf->output());
+
+header('Content-type: application/pdf');
+header('Content-Disposition: inline; filename="file.pdf"');
+header('Content-Transfer-Encoding: binary');
+header('Content-Length: ' . filesize($file_to_save));
+header('Accept-Ranges: bytes');
+readfile($file_to_save);
+
 }
 ?>
