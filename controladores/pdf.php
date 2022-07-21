@@ -52,8 +52,8 @@ foreach($arrayFrontera as $valor){
         $desviado="NO";
     }
     $data = array("frontera" => $valor["fronteraCliente"],"consumoPromedio" =>$total_dia_avg,"consumoAnterior"=>$total_dia_last ,"desviado" => $desviado, "productPrice" => "20", "deliveryDate" => "2150");
-  $ruta = dirname(__FILE__);
-   echo $ruta."/template/images/logo-blanco-bloque.png";
+    $ruta=$_SERVER["DOCUMENT_ROOT"];
+  
   $content='<table id="tabla_central" align="center" style="width:70%; font-size: 13px;" border="1" cellspacing="0" cellpadding="2" bordercolor="666633">
     <tr>
       <td width="15%" height="50"><img align="center" src="'.$ruta.'/template/images/logo-blanco-bloque.png"  height="100" width="150"></td>
