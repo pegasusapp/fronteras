@@ -9,11 +9,10 @@ require "fronteras.controlador.php";
 require "factorm.controlador.php";
 require "desviacion.controlador.php";
 use Dompdf\Dompdf;
-$dompdf = new Dompdf();
+
 $item ="";
 $valor="";
 $arrayFrontera = ControladorFronteras::ctrMostrarFronteras($item,$valor);
-echo "--->".dirname(__FILE__);
 foreach($arrayFrontera as $valor){
     $arrayAvg = array();
     $arrayLastDay = array(); 
@@ -53,31 +52,12 @@ foreach($arrayFrontera as $valor){
     }
     $data = array("frontera" => $valor["fronteraCliente"],"consumoPromedio" =>$total_dia_avg,"consumoAnterior"=>$total_dia_last ,"desviado" => $desviado, "productPrice" => "20", "deliveryDate" => "2150");
     $ruta=$_SERVER["DOCUMENT_ROOT"];
-  
-  $content='<table id="tabla_central" align="center" style="width:70%; font-size: 13px;" border="1" cellspacing="0" cellpadding="2" bordercolor="666633">
-    <tr>
-      <td width="15%" height="50"><img align="center" src="'.$ruta.'/template/images/logo-blanco-bloque.png"  height="100" width="150"></td>
-      <td width="33%" height="50" colspan="2" style="text-align: center;"><strong>ORDEN DE SERVICIOS - BOLIVAR</strong></td>
-       <td width="15%" height="50" align="center"><img  src="'.$ruta.'/sga/img/arlbolivar.png"  height="100" width="100"></td>
-      <td width="15%" height="50" ><div id="span1" class="t r"><label style="text-align: center;"><strong>FP-S 001</strong></label></div><div id="span2" class="t r">Versi&oacute;n:01</div></td>
-    </tr>
-    <tr>
-      <td>ORDEN #</td>
-      <td></td>
-      <td>FECHA ORDEN</td>
-      <td colspan="2">asd</td>
-    </tr>
-   </table>';
-$dompdf->set_option('enable_html5_parser', TRUE);
-$dompdf->loadHtml($content);
-// (Optional) Setup the paper size and orientation
-$dompdf->setPaper('A4', 'landscape');
-// Render the HTML as PDF
-$dompdf->render();
-// Output the generated PDF to Browser
-//$dompdf->stream();
-//print the pdf file to the screen for saving
-//save the pdf file on the server
+    $dompdf = new Dompdf();
+  $content='<table id="tabla_central" align="center" style="width:70%; font-size: 13px;" border="1" cellspacing="0" cellpadding="2" bordercolor="666633"><tr><td width="15%" height="50"><img align="center" src="'.$ruta.'/template/images/logo-blanco-bloque.png"  height="100" width="150"></td><td width="33%" height="50" colspan="2" style="text-align: center;"><strong>ORDEN DE SERVICIOS - BOLIVAR</strong></td><td width="15%" height="50" align="center"><img  src="'.$ruta.'/sga/img/arlbolivar.png"  height="100" width="100"></td><td width="15%" height="50" ><div id="span1" class="t r"><label style="text-align: center;"><strong>FP-S 001</strong></label></div><div id="span2" class="t r">Versi&oacute;n:01</div></td></tr><tr><td>ORDEN #</td><td></td><td>FECHA ORDEN</td><td colspan="2">asd</td></tr></table>';
+  $dompdf->set_option('enable_html5_parser', TRUE);
+  $dompdf->loadHtml($content);
+  $dompdf->setPaper('A4', 'landscape');
+  $dompdf->render();
 file_put_contents("invoice-" . $valor["fronteraCliente"] . ".pdf",  $dompdf->output());
 }
 ?>
