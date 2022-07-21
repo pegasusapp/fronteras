@@ -52,7 +52,6 @@ foreach($arrayFrontera as $valor){
         $desviado="NO";
     }
     $data = array("frontera" => $valor["fronteraCliente"],"consumoPromedio" =>$total_dia_avg,"consumoAnterior"=>$total_dia_last ,"desviado" => $desviado, "productPrice" => "20", "deliveryDate" => "2150");
-  //  ob_start();
   $ruta = dirname(__FILE__);
   $content='<table id="tabla_central" align="center" style="width:70%; font-size: 13px;" border="1" cellspacing="0" cellpadding="2" bordercolor="666633">
     <tr>
@@ -65,11 +64,11 @@ foreach($arrayFrontera as $valor){
       <td>ORDEN #</td>
       <td></td>
       <td>FECHA ORDEN</td>
-      <td colspan="2"></td>
+      <td colspan="2">asd</td>
     </tr>
     <tr>
       <td>CONSULTOR:</td>
-      <td colspan="4"></td>
+      <td colspan="4">asd</td>
     </tr>
     <tr><td colspan="5">
      De acuerdo a las condiciones pactadas previamente con el Cliente y con el consultor asignado se relaciona la informaci&oacute;n requerida para la prestaci&oacute;n del servicio
@@ -79,78 +78,77 @@ foreach($arrayFrontera as $valor){
     </tr>
     <tr>
       <td colspan="2">NOMBRE DE LA EMPRESA:</td>
-      <td colspan="3"></td>
+      <td colspan="3">ad</td>
     </tr>
     <tr>		
       <td colspan="2">ACTIVIDAD DE LA EMPRESA:</td>
-      <td colspan="3"></td>
+      <td colspan="3">asd</td>
     </tr>
     <tr>		
       <td colspan="2">NIT:</td>
-      <td colspan="3"></td>
+      <td colspan="3">asd</td>
     </tr>
     <tr>		
       <td colspan="2">CIUDAD:</td>
-      <td colspan="3"></td>
+      <td colspan="3">asd</td>
     </tr>
     <tr>
       <td colspan="2">DIRECCION:</td>
-      <td colspan="3"></td>
+      <td colspan="3">sad</td>
     </tr>
     <tr>	
       <td colspan="2">CONTACTO:</td>
-      <td colspan="3"></td>
+      <td colspan="3">ads</td>
     </tr>
     <tr>	
       <td colspan="2">TELEFONOS:</td>
-      <td colspan="3"></td>
+      <td colspan="3">asd</td>
     </tr>
     <tr><td colspan="5" align="center" bgcolor="#bcc1d1"><strong>DETALLE DEL SERVICIO A PRESTAR</strong></td>							
     </tr>
     <tr>
       <td colspan="2">EMPRESA AFILIADA A:</td>
-      <td colspan="3"></td>
+      <td colspan="3">asd</td>
     </tr>  
     <tr>		
     <td>POLIZA:</td>
-    <td></td>
+    <td>ads</td>
     <td>ACT PROGRAMA</td>
-    <td colspan="2"></td>
+    <td colspan="2">asd</td>
     </tr>
     <tr>	
       <td>CRONOGRAMA</td>
-      <td></td>
+      <td>asd</td>
      <td>SECUENCIA</td>
-      <td colspan="2"></td>
+      <td colspan="2">asd</td>
     </tr>
     <tr>	
      <td colspan="2">ASESOR DNPR:</td>
-     <td colspan="3"></td>
+     <td colspan="3">as</td>
      </tr>
      <tr>
       <td>OBSERVACIONES:</td>
-      <td colspan="4" bgcolor="#00FF00"></td>
+      <td colspan="4" bgcolor="#00FF00">as</td>
      </tr>
      <tr>
-       <td colspan="5" align="center" bgcolor="#bcc1d1"><strong>RELACION DE HORAS Y FECHAS</strong></td>							
+       <td colspan="5" align="center" bgcolor="#bcc1d1"><strong>RELACION DE HORAS Y FECHAS</strong>as</td>							
     </tr>
     <tr>
     <td align="center">NRO. HORAS</td><td align="center">TIPO DE ACTIVIDAD</td><td align="center">ACTIVIDAD A REALIZAR</td><td align="center">FECHA EJECUCION PROGRAMADA EN SIPAB</td><td align="center">VLR UNITARIO</td>
     </tr>
     <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>as</td>
+    <td>as</td>
+    <td>sa</td>
+    <td>as</td>
+    <td>as</td>
     </tr>
     <tr>
     <td colspan="4"><label style="margin-left:430;">TOTAL</label></td>
-    <td></td>
+    <td>as</td>
     </tr>
     </table>';
-
-    $dompdf->set_option('enable_html5_parser', TRUE);
+$dompdf->set_option('enable_html5_parser', TRUE);
 $dompdf->loadHtml($content);
 // (Optional) Setup the paper size and orientation
 $dompdf->setPaper('A4', 'landscape');
