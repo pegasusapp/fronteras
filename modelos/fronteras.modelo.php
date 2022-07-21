@@ -45,7 +45,11 @@ class ModeloFronteras{
 			
 			$stmt = $pdo->prepare("SELECT  anyoLectura, mesLectura , diaLectura, tipoEnergia ,concat(H1,',',H2,',',H3,',',H4,',',H5,',',H6,',',H7,',',H8,',',H9,',',H10,',',H11,',',H12,',',H13,',',H14,',',H15,',',H16,',',H17,',',H18,',',H19,',',H20,',',H21,',',H22,',',H23,',',H24) as datos,sum(H1+H2+H3+H4+H5+H6+H7+H8+H9+H10+H11+H12+H13+H14+H15+H16+H17+H18+H19+H20+H21+H22+H23+H24) as total_dia 
 									FROM lecturaFrontera 
-									WHERE frontera_fronteraCliente = :frontera_fronteraCliente and anyoLectura = :anyoLectura and mesLectura = :mesLectura and diaLectura = :diaLectura and tipoMedidor='P'
+									WHERE frontera_fronteraCliente = :frontera_fronteraCliente 
+									AND anyoLectura = :anyoLectura 
+									AND mesLectura = :mesLectura 
+									AND diaLectura = :diaLectura 
+									AND tipoMedidor='P'
 									GROUP BY anyoLectura, mesLectura, diaLectura,tipoEnergia, datos");
 			$stmt ->bindParam(":frontera_fronteraCliente", $valor, PDO::PARAM_STR);
 			$stmt ->bindParam(":anyoLectura", $anyo_curso, PDO::PARAM_INT);
@@ -60,6 +64,71 @@ class ModeloFronteras{
 				return $ex->getMessage();
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+	}
+
+	static public function mdlMostrarEnergiaFronteraxDia($valor,$time)
+	{
+		$pdo = Conexion::conectar();
+		$pdo ->beginTransaction();
+		try 
+		{
+			
+			$stmt = $pdo->prepare("SELECT  anyoLectura, mesLectura , diaLectura, tipoEnergia ,concat(H1,',',H2,',',H3,',',H4,',',H5,',',H6,',',H7,',',H8,',',H9,',',H10,',',H11,',',H12,',',H13,',',H14,',',H15,',',H16,',',H17,',',H18,',',H19,',',H20,',',H21,',',H22,',',H23,',',H24) as datos,sum(H1+H2+H3+H4+H5+H6+H7+H8+H9+H10+H11+H12+H13+H14+H15+H16+H17+H18+H19+H20+H21+H22+H23+H24) as total_dia 
+									FROM lecturaFrontera 
+									WHERE frontera_fronteraCliente = :frontera_fronteraCliente 
+									AND anyoLectura = YEAR(NOW()) 
+									AND mesLectura = MONTH(NOW()) 
+									AND diaLectura = DAY(NOW())-$time 
+									AND tipoMedidor='P'
+									GROUP BY anyoLectura, mesLectura, diaLectura,tipoEnergia, datos");
+			$stmt ->bindParam(":frontera_fronteraCliente", $valor, PDO::PARAM_STR);
+			$stmt ->bindParam(":anyoLectura", $anyo_curso, PDO::PARAM_INT);
+			$stmt ->bindParam(":mesLectura", $mes_curso, PDO::PARAM_INT);
+			$stmt ->bindParam(":diaLectura", $dia_curso, PDO::PARAM_INT);
+			$stmt ->execute();
+			$pdo->commit();
+		}
+		catch (PDOException $ex) 
+		{
+				$pdo->rollBack();
+				return $ex->getMessage();
+		}
+		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+	}
+
+	static public function mdlMostrarAvgEnergiasFrontera($valor,$energia,$time)
+	{
+		
+
+		$pdo = Conexion::conectar();
+		$pdo ->beginTransaction();
+		try 
+		{
+			
+					$stmt = $pdo->prepare("SELECT anyoLectura, mesLectura , frontera_fronteraCliente,tipoEnergia,DAYOFWEEK(concat( anyoLectura,'-', mesLectura,'-', diaLectura )) as dia,
+												    concat(avg(H1),',',avg(H2),',',avg(H3),',',avg(H4),',',avg(H5),',',avg(H6),',',avg(H7),',',avg(H8),',',avg(H9),',',avg(H10),',',avg(H11),',',
+														  avg(H12),',',avg(H13),',',avg(H14),',',avg(H15),',',avg(H16),',',avg(H17),',',avg(H18),',',avg(H19),',',avg(H20),',',avg(H21),',',avg(H22),',',
+														  avg(H23),',',avg(H24)) as datos,
+														  AVG((H1)+(H2)+(H3)+(H4)+(H5)+(H6)+(H7)+(H8)+(H9)+(H10)+(H11)+	(H12)+(H13)+(H14)+(H15)+(H16)+(H17)+(H18)+(H19)+(H20)+(H21)+(H22)+(H23)+(H24)) as total_dia 
+														  FROM
+															lecturaFrontera
+															WHERE frontera_fronteraCliente = :frontera_fronteraCliente
+															AND  anyoLectura = YEAR(NOW()) and mesLectura = MONTH(NOW())-$time
+															AND tipoEnergia = :tipoEnergia
+															AND tipoMedidor='P'
+															GROUP BY frontera_fronteraCliente,dia, tipoEnergia");
+					$stmt ->bindParam(":frontera_fronteraCliente", $valor, PDO::PARAM_STR);
+					$stmt ->bindParam(":tipoEnergia", $energia, PDO::PARAM_STR);
+			$stmt ->execute();
+			$pdo->commit();
+		}
+		catch (PDOException $ex) 
+		{
+				$pdo->rollBack();
+				return $ex->getMessage();
+		}
+		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+
 	}
 	static public function mdlMostrarEnergiasFronteraMes($valor,$anyo_curso,$mes_curso,$energia)
 	{
