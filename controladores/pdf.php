@@ -149,6 +149,8 @@ foreach($arrayFrontera as $valor){
     <td></td>
     </tr>
     </table>';
+
+    $dompdf->set_option('enable_html5_parser', TRUE);
 $dompdf->loadHtml($content);
 // (Optional) Setup the paper size and orientation
 $dompdf->setPaper('A4', 'landscape');
