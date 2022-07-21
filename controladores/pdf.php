@@ -13,6 +13,7 @@ $dompdf = new Dompdf();
 $item ="";
 $valor="";
 $arrayFrontera = ControladorFronteras::ctrMostrarFronteras($item,$valor);
+echo "--->".dirname(__FILE__);
 foreach($arrayFrontera as $valor){
     $arrayAvg = array();
     $arrayLastDay = array(); 
