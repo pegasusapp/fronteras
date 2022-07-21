@@ -5,8 +5,8 @@
     <meta name="keywords" content="​How is solar panel work?, ​Energy Freedom with Solar and Storage, ​We Have a Solar Plan for Almost Any Budget, Get In Touch">
     <meta name="description" content="">
     <title>Page 2</title>
-    <link rel="stylesheet" href=<?php echo dirname(__FILE__)."/nicepage.css" ?> media="screen">
-    <link rel="stylesheet" href=<?php echo dirname(__FILE__)."/Page-2.css" ?> media="screen">
+    <link rel="stylesheet" href="https://fronteras.energiaitalener.com/controladores/template/nicepage.css/nicepage.css" media="screen">
+    <link rel="stylesheet" href="https://fronteras.energiaitalener.com/controladores/template/nicepage.css/Page-2.css" media="screen">
     <meta name="generator" content="Nicepage 4.14.7, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
