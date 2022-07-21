@@ -36,6 +36,8 @@ foreach($arrayFrontera as $valor){
       }
     }
     $arrayLastDay = ControladorFronteras::ctrMostrarEnergiasFronteraDia($valor["fronteraCliente"],1);
+    echo($arrayLastDay);
+    var_dump($arrayLastDay);
     $total_dia_last=0;
     foreach($arrayLastDay as $data)
     {
