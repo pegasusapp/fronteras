@@ -9,7 +9,7 @@ require "fronteras.controlador.php";
 require "factorm.controlador.php";
 require "desviacion.controlador.php";
 use Dompdf\Dompdf;
-$dompdf = new Dompdf();
+
 $item ="";
 $valor="";
 $arrayFrontera = ControladorFronteras::ctrMostrarFronteras($item,$valor);
@@ -54,7 +54,7 @@ foreach($arrayFrontera as $valor){
     $ruta=$_SERVER["DOCUMENT_ROOT"];
   
  $content='<table id="tabla_central" align="center" style="width:70%; font-size: 13px;" border="1" cellspacing="0" cellpadding="2" bordercolor="666633"><tr><td width="15%" height="50"><img align="center" src="https://fronteras.energiaitalener.com/vistas/img/plantilla/logo-blanco-bloque.png"  height="100" width="150"></td><td width="33%" height="50" colspan="2" style="text-align: center;"><strong>ORDEN DE SERVICIOS - BOLIVAR</strong></td> <td width="15%" height="50" align="center"><img  src="https://fronteras.energiaitalener.com/vistas/img/plantilla/logo-blanco-bloque.png"  height="100" width="100"></td></tr></table>';
-$dompdf->set_option('enable_html5_parser', TRUE);
+ $dompdf = new Dompdf();
 $dompdf->loadHtml($content);
 $dompdf->set_option('enable_remote', TRUE);
 $dompdf->set_option('enable_css_float', TRUE);
