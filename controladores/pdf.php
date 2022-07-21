@@ -5,6 +5,7 @@ require dirname(__FILE__)."/../modelos/fronteras.modelo.php";
 require dirname(__FILE__)."/../modelos/factorm.modelo.php";
 require "utilidades.controlador.php";
 require "constantes.controlador.php";
+require "fronteras.controlador.php";
 require "factorm.controlador.php";
 use Dompdf\Dompdf;
 
