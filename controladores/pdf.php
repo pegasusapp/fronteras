@@ -255,12 +255,7 @@ $file_to_save = ["idorden"].'.pdf';
 //save the pdf file on the server
 file_put_contents("invoice-" . $valor["fronteraCliente"] . ".pdf",  $dompdf->output());
 
-header('Content-type: application/pdf');
-header('Content-Disposition: inline; filename="file.pdf"');
-header('Content-Transfer-Encoding: binary');
-header('Content-Length: ' . filesize($file_to_save));
-header('Accept-Ranges: bytes');
-readfile($file_to_save);
+
 
 }
 ?>
