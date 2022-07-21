@@ -1,4 +1,5 @@
 <?php
+ini_set('memory_limit', '44M');
 require_once 'dompdf/autoload.inc.php';
 require dirname(__FILE__)."/../modelos/fronteras.modelo.php";
 require dirname(__FILE__)."/../modelos/factorm.modelo.php";
