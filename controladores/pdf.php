@@ -65,7 +65,7 @@ foreach($arrayFrontera as $valor){
             elseif($vlr["dias"] >=10){
                 $bgcolor="#ff4c33";
             }
-            $htmlFactorM += '<tr>
+            $htmlFactorM .= '<tr>
                                  <td align="center">'.$vlr["anyo"].'</td> 
                                  <td align="center">'.$vlr["mes"].'</td> 
                                  <td align="center" '.$bgcolor.'>'.$vlr["factor"].'</td> 
