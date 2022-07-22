@@ -27,7 +27,7 @@ class ControladorFronteras
 	}
 	static public function ctrMostrarEnergiaFronteraMesEnergia($frontera){
 
-		return ModeloFronteras::mdlMostrarEnergiasFronteraMesEnergia(self::$tabla,$frontera)
+		return ModeloFronteras::mdlMostrarEnergiasFronteraMesEnergia(self::$tabla,$frontera);
 	}
 
 
