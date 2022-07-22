@@ -66,6 +66,30 @@ class ModeloFronteras{
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
 	}
 
+	static public function mdlMostrarEnergiasFronteraMesEnergia($tabla,$frontera){
+		$pdo = Conexion::conectar();
+		$pdo ->beginTransaction();
+		try 
+		{
+			
+			$stmt = $pdo->prepare("SELECT  frontera_fronteraCliente,anyoLectura,mesLectura,tipoEnergia, sum((H1)+(H2)+(H3)+(H4)+(H5)+(H6)+(H7)+(H8)+(H9)+(H10)+(H11)+(H12)+(H13)+(H14)+(H15)+(H16)+(H17)+(H18)+(H19)+(H20)+(H21)+(H22)+(H23)+(H24)) as total_mes 
+									FROM $tabla 
+									WHERE anyoLectura=YEAR(NOW()) 
+									AND mesLectura=MONTH(NOW())
+									AND frontera_fronteraCliente = :frontera_fronteraCliente
+									GROUP BY frontera_fronteraCliente, anyoLectura, mesLectura, tipoEnergia");
+			$stmt ->bindParam(":frontera_fronteraCliente", $frontera, PDO::PARAM_STR);
+			$stmt ->execute();
+			$pdo->commit();
+		}
+		catch (PDOException $ex) 
+		{
+				$pdo->rollBack();
+				return $ex->getMessage();
+		}
+		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+	}
+
 	static public function mdlMostrarEnergiaFronteraxDia($valor,$time)
 	{
 		$pdo = Conexion::conectar();
