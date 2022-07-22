@@ -15,6 +15,9 @@ class ControladorCtrFactorM
 				
 		
 	} 
+	static public function ctrMostrarctrFactorMLastThreMonths($frontera):array{
+		return ModeloFactorM::mdlMostrarctrFactorMLastThreMonths(self::$tabla,$frontera);
+	}
 
 	static public function ctrMostrarctrFactorM():array
 	{
