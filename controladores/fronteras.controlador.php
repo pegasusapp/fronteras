@@ -7,8 +7,8 @@ class ControladorFronteras
 
 	static public function ctrMostrarFronteras($item, $valor)
 	{
-
-		return ModeloFronteras::mdlMostrarFronteras(self::$tabla,$item, $valor);
+		$tablaFrt="frontera";	
+		return ModeloFronteras::mdlMostrarFronteras($tablaFrt,$item, $valor);
       
 	} 
 
