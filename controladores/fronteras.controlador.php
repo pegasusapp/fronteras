@@ -3,12 +3,12 @@
 class ControladorFronteras
 {
  
- 
+	private static $tabla = "lecturaFrontera";
+
 	static public function ctrMostrarFronteras($item, $valor)
 	{
 
-		$tabla = "frontera";
-		return ModeloFronteras::mdlMostrarFronteras($tabla,$item, $valor);
+		return ModeloFronteras::mdlMostrarFronteras(self::$tabla,$item, $valor);
       
 	} 
 
@@ -24,6 +24,10 @@ class ControladorFronteras
 
 		return ModeloFronteras::mdlMostrarEnergiaFronteraxDia($valor,$time);
 	
+	}
+	static public function ctrMostrarEnergiaFronteraMesEnergia($frontera){
+
+		return ModeloFronteras::mdlMostrarEnergiasFronteraMesEnergia(self::$tabla,$frontera)
 	}
 
 
@@ -59,10 +63,9 @@ class ControladorFronteras
 
 	static public function crtMostrarMatrizEnergiaDatos($item, $valor,$valor2,$valor21,$item3,$valor3)
 	{	
-		$tabla = "lecturaFrontera";
 		$valor2 = date("Y-m-d",strtotime($valor2));	
 		$valor21 = date("Y-m-d",strtotime($valor21));	
-		return ModeloFronteras::mdlMostrarMatrizEnergiaDatos($tabla,$item, $valor,$valor2,$valor21,$item3,$valor3);
+		return ModeloFronteras::mdlMostrarMatrizEnergiaDatos(self::$tabla,$item, $valor,$valor2,$valor21,$item3,$valor3);
 	
 	}
 
