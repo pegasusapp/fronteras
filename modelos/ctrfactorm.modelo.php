@@ -20,6 +20,15 @@ class ModeloCtrFactorM{
 	}
 
 
+	static public function mdlMostrarctrFactorMLastThreMonths($tabla,$frontera):array{
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla  WHERE anyo = YEAR(NOW()) AND mes in (MONTH(NOW()),MONTH(NOW())-1,MONTH(NOW())-2)   AND frontera_fronteraCliente = :frontera_fronteraCliente");
+			$stmt->bindParam(":frontera_fronteraCliente", $frontera, PDO::PARAM_STR);
+			$stmt -> execute();
+			return $stmt -> fetchAll();
+		}
+
+
 
 
 	static public function mdlSearchData($dataIn,$tabla):int{
