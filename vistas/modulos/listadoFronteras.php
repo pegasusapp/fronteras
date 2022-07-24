@@ -27,6 +27,7 @@ table.dataTable tr.shown td.details-control:before {
   $item = "clienteFrontera_nitCliente";
   $valor = $_SESSION["identificador"];
  }
+ $items = ControladorFronteras::ctrMostrarFronteras($item, $valor);
 
 
 ?>
@@ -51,8 +52,6 @@ table.dataTable tr.shown td.details-control:before {
                     </thead>
                     <tbody>
                     <?php
-                     $items = ControladorFronteras::ctrMostrarFronteras($item, $valor);
-                     var_dump($items);
                         foreach ($items as $value): ?>
                                <tr> 		                  
                                       <td class="details-control" id="td_<?= $value["fronteraCliente"] ?>"  vlr="<?= $value["fronteraCliente"]?>"></td>
