@@ -1,108 +1,59 @@
- <section class="content">
+<?php
+     
+     $valor = $_SESSION["identificador"];
+     $items = ControladorFronteras::crtMostrarTotalConsumoFronterasAnyoEnergia($valor); 
+     $name_plant="Consumo de energia activa ";
+     $items_total_csm_frt_anyo_mes = ControladorFronteras::crtMostrarTotalConsumoFronterasAnyoMesEnergia($valor);
+     $datosEstadisticos = array();
+     $anyos_comparativos = "";
+
+     $R = array(255,7,0);
+     $G = array(120,11,143);
+     $B = array(7,255,57);
+     $A = 1; 
+     $i=0;
+     foreach ($items_total_csm_frt_anyo_mes as $value)
+       {
+         
+           $datasets.= "{";
+           $datasets.= "label               : 'Año ". $value["anyoLectura"] ." kWh',
+                         backgroundColor     : 'rgba($R[$i],$G[$i],$B[$i],$A)',
+                         borderColor         : 'rgba($R[$i],$G[$i],$B[$i],".floatval($A-0.4).")',
+                         pointRadius          : true,
+                         pointColor          : 'rgba($R[$i],$G[$i],$B[$i],$A)',
+                         pointStrokeColor    : 'rgba($R[$i],$G[$i],$B[$i],".floatval($A+0.1).")',
+                         pointHighlightFill  : '#fff',
+                         pointHighlightStroke: 'rgba($R[$i],$G[$i],$B[$i],".floatval($A+0.1).")',
+                         data                : [". $value["total"]."]"; 
+           $datasets.= "},";
+           $datafills_php.="lineChartData.datasets[".$i."].fill = false;";
+           $i++;
+        }
+   
+ ?>    
+<section class="content">
     <div class="container-fluid">
          <div class="row">
-                    <?php
-                    $valor = $_SESSION["identificador"];
-                   
-                    $items = ControladorFronteras::crtMostrarTotalConsumoFronterasAnyoEnergia($valor); 
-                    $k=1;
-                    $name_plant="";
-                    foreach ($items as $key => $value)
-                      {
-                        $sourceEnergy = $value["tipoEnergia"];
-                        if($sourceEnergy == "A")
-                          {
-                           $class = "fa-bolt";
-                           $sigla = "kWh";
-                           $varColor="bg-info";
-                            echo '<div class="col-12 col-sm-6 col-md-3">
+                    
+             <?php foreach ($items as $value):?>
+                      
+                      <div class="col-12 col-sm-6 col-md-3">
                             <div class="info-box">
-                              <span class="info-box-icon '.$varColor.' elevation-1"><i class="fas '.$class.'"></i></span>
+                              <span class="info-box-icon bg-info elevation-1"><em class="fas fa-bolt"></em></span>
                                   <div class="info-box-content">
-                                  <span class="info-box-text"> '.$sigla.' consumidos
-                                    <small>
-                                        '.$value["anyoLectura"].'
-                                    </small> 
-                                  </span>
-                                  
-                                  <span class="info-box-number">
-                                  '.number_format($value["total"]),'
-                                  
-                                  </span>
-                                  
+                                    <span class="info-box-text"> kWh consumidos
+                                      <small>
+                                          <?= $value["anyoLectura"] ?>
+                                      </small> 
+                                    </span>
+                                    <span class="info-box-number">
+                                         <?= number_format($value["total"])?>'
+                                    </span>
                                   </div>
                               </div>
-                          </div>'; 
-                         
-                         }
-                      }
+                          </div> 
+              <?php endforeach;?>           
                     //  <!---------------------------------------------------fin marcadores iniciales---------------------------------------------------------------------------->
-
-                      $items = ControladorFronteras::crtMostrarTotalConsumoFronterasAnyoMesEnergia($valor);
-                      $datosEstadisticos = array();
-                      $anyos_comparativos = "";
-                     
-                      foreach ($items as $key => $value)
-                      {
-                         array_push($datosEstadisticos,array(
-                           'anyo' => $value["anyoLectura"],
-                           'mes' => $value["mesLectura"],
-                           'valor'  => $value["total"]
-                                 ));
-                                 
-                                   $name_plant ="Consumo de energia activa ";
-                               
-                                            
-                      
-                     }
-                     $result = array();
-                      foreach ($datosEstadisticos as $element) {
-                          $result[$element['anyo']][] = $element;
-                      }
-
-                      $R = array(255,7,0);
-                      $G = array(120,11,143);
-                      $B = array(7,255,57); 
-                      $datafills_php =""; 
-                      $keys = array_keys($result);
-                      $months = array('Ene.','Feb.',  'Mar.', 'Abr.',  'May',  'Jun.',  'Jul.',  'Ago.',  'Sep.',  'Oct.', 'Nov.', 'Dic.');
-                      $labels = "";
-                      $data = "";
-                      $datasets = "";
-                     
-                      $A = 1;
-					  
-             
-                      for($i = 0; $i < count($result); $i++)
-                       {
-                       
-                               $data = "";  
-                               $anyos_comparativos.=  $keys[$i]." vs ";
-							                 $arrayMeses = array('','','','','','','','','','','','');
-                              foreach($result[$keys[$i]] as $key => $value) 
-                                {
-								                   $arrayMeses[$value["mes"]-1] = round($value["valor"],3);	
-							    							   $data.= "'".round($value["valor"],3)."',"; 
-                                 }
-								               $valor_mes_por_comas = implode(",", $arrayMeses);
-								               $data =  substr( $data , 0 , -1);
-                               $datasets.= "{";
-                               $datasets.= "label               : 'Año ". $keys[$i] ." ".$sigla."',
-                                              backgroundColor     : 'rgba($R[$i],$G[$i],$B[$i],$A)',
-                                              borderColor         : 'rgba($R[$i],$G[$i],$B[$i],".floatval($A-0.4).")',
-                                              pointRadius          : true,
-                                              pointColor          : 'rgba($R[$i],$G[$i],$B[$i],$A)',
-                                              pointStrokeColor    : 'rgba($R[$i],$G[$i],$B[$i],".floatval($A+0.1).")',
-                                              pointHighlightFill  : '#fff',
-                                              pointHighlightStroke: 'rgba($R[$i],$G[$i],$B[$i],".floatval($A+0.1).")',
-                                              data                : [".$valor_mes_por_comas."]"; 
-                                $datasets.= "},";
-                                $datafills_php.="lineChartData.datasets[".$i."].fill = false;";
-                                   
-                             
-
-                          }
-                      ?>
          </div>
          <div class="row">
           <div class="col-md-12">
