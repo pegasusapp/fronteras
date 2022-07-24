@@ -2,8 +2,11 @@
      
      $valor = $_SESSION["identificador"];
      $items = ControladorFronteras::crtMostrarTotalConsumoFronterasAnyoEnergia($valor); 
+     var_dump($items);
      $name_plant="Consumo de energia activa ";
+     echo "valor-->".$valor;
      $items_total_csm_frt_anyo_mes = ControladorFronteras::crtMostrarTotalConsumoFronterasAnyoMesEnergia($valor);
+     var_dump($items_total_csm_frt_anyo_mes);
      $datosEstadisticos = array();
      $anyos_comparativos = "";
 
