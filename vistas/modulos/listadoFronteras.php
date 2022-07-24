@@ -29,6 +29,8 @@ table.dataTable tr.shown td.details-control:before {
  }
  $items = ControladorFronteras::ctrMostrarFronteras($item, $valor);
 
+ var_dump($items);
+
 ?>
 
     
@@ -51,7 +53,7 @@ table.dataTable tr.shown td.details-control:before {
                     </thead>
                     <tbody>
                     <?php
-                        foreach ($items as $key => $value): ?>
+                        foreach ($items as $value): ?>
                                <tr> 		                  
                                       <td class="details-control" id="td_<?= $value["fronteraCliente"] ?>"  vlr="<?= $value["fronteraCliente"]?>"></td>
                                       <td><?= $value["fronteraCliente"] ?></td> 
