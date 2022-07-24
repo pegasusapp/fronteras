@@ -266,9 +266,12 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 		{
 			
 			$stmt = $pdo->prepare("SELECT lecf.anyoLectura,lecf.tipoEnergia, sum(H1+H2+H3+H4+H5+H6+H7+H8+H9+H10+H11+H12+H13+H14+H15+H16+H17+H18+H19+H20+H21+H22+H23+H24) AS total 
-										  FROM lecturaFrontera lecf LEFT JOIN frontera frt ON lecf.frontera_fronteraCliente = frt.fronteraCliente 
-										  WHERE frt.clienteFrontera_nitCliente=:frontera_fronteraCliente and lecf.tipoMedidor='P' and lecf.tipoEnergia='A' and  anyoLectura BETWEEN YEAR(date_sub(date_format(curdate(), '%Y-%m-%d'), interval 24 month)) and YEAR(date_sub(date_format(curdate(), '%Y-%m-%d'), interval 0 month)) 
-										  GROUP BY lecf.anyoLectura,lecf.tipoEnergia");
+									FROM lecturaFrontera lecf LEFT JOIN frontera frt ON lecf.frontera_fronteraCliente = frt.fronteraCliente 
+									WHERE frt.clienteFrontera_nitCliente=:frontera_fronteraCliente 
+									AND lecf.tipoMedidor='P' 
+									AND lecf.tipoEnergia='A' 
+									AND  anyoLectura BETWEEN YEAR(date_sub(date_format(curdate(), '%Y-%m-%d'), interval 24 month)) and YEAR(date_sub(date_format(curdate(), '%Y-%m-%d'), interval 0 month)) 
+									GROUP BY lecf.anyoLectura,lecf.tipoEnergia");
 			$stmt ->bindParam(":frontera_fronteraCliente", $valor, PDO::PARAM_STR);
 			$stmt ->execute();
 			$pdo->commit();
@@ -287,12 +290,35 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 		$pdo ->beginTransaction();
 		try 
 		{
-			
-			$stmt = $pdo->prepare("SELECT lecf.anyoLectura,lecf.mesLectura,sum(H1+H2+H3+H4+H5+H6+H7+H8+H9+H10+H11+H12+H13+H14+H15+H16+H17+H18+H19+H20+H21+H22+H23+H24) AS total 
+			if($valor != null){
+				$stmt = $pdo->prepare("SELECT s.anyoLectura,GROUP_CONCAT(s.mesLectura) as mesLectura, GROUP_CONCAT(total) as total
+									   FROM
+									   (	
+				 					     SELECT lecf.anyoLectura,lecf.mesLectura,ROUND(sum(H1+H2+H3+H4+H5+H6+H7+H8+H9+H10+H11+H12+H13+H14+H15+H16+H17+H18+H19+H20+H21+H22+H23+H24),2) AS total 
 										  FROM lecturaFrontera lecf LEFT JOIN frontera frt ON lecf.frontera_fronteraCliente = frt.fronteraCliente 
-										  WHERE frt.clienteFrontera_nitCliente=:frontera_fronteraCliente and lecf.tipoMedidor='P' and lecf.tipoEnergia='A' and  anyoLectura BETWEEN YEAR(date_sub(date_format(curdate(), '%Y-%m-%d'), interval 24 month)) and YEAR(date_sub(date_format(curdate(), '%Y-%m-%d'), interval 0 month)) 
-										  GROUP BY lecf.anyoLectura,lecf.mesLectura");
-			$stmt ->bindParam(":frontera_fronteraCliente", $valor, PDO::PARAM_STR);
+										  WHERE frt.clienteFrontera_nitCliente=:frontera_fronteraCliente 
+										  AND lecf.tipoMedidor='P' 
+										  AND lecf.tipoEnergia='A' 
+										  AND  anyoLectura BETWEEN YEAR(date_sub(date_format(curdate(), '%Y-%m-%d'), interval 24 month)) 
+										  AND YEAR(date_sub(date_format(curdate(), '%Y-%m-%d'), interval 0 month)) 
+										  GROUP BY lecf.anyoLectura,lecf.mesLectura
+										 ) s");
+				$stmt ->bindParam(":frontera_fronteraCliente", $valor, PDO::PARAM_STR);
+
+			}
+			else{
+				$stmt = $pdo->prepare("SELECT s.anyoLectura,GROUP_CONCAT(s.mesLectura) as mesLectura, GROUP_CONCAT(total) as total
+									   FROM
+									   (
+										SELECT lecf.anyoLectura,lecf.mesLectura,ROUND(sum(H1+H2+H3+H4+H5+H6+H7+H8+H9+H10+H11+H12+H13+H14+H15+H16+H17+H18+H19+H20+H21+H22+H23+H24),2) AS total 
+										FROM lecturaFrontera lecf LEFT JOIN frontera frt ON lecf.frontera_fronteraCliente = frt.fronteraCliente 
+										WHERE lecf.tipoMedidor='P' 
+										AND lecf.tipoEnergia='A' 
+										AND anyoLectura BETWEEN YEAR(date_sub(date_format(curdate(), '%Y-%m-%d'), interval 24 month)) 
+										AND YEAR(date_sub(date_format(curdate(), '%Y-%m-%d'), interval 0 month)) 
+										GROUP BY lecf.anyoLectura,lecf.mesLectura
+									   ) s");
+			}
 			$stmt ->execute();
 			$pdo->commit();
 		}
