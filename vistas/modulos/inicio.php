@@ -6,13 +6,7 @@
       }
      
      $items = ControladorFronteras::crtMostrarTotalConsumoFronterasAnyoEnergia($valor); 
-     var_dump($items);
-     $name_plant="Consumo de energia activa ";
-     echo "valor-->".$valor;
      $items_total_csm_frt_anyo_mes = ControladorFronteras::crtMostrarTotalConsumoFronterasAnyoMesEnergia($valor);
-     var_dump($items_total_csm_frt_anyo_mes);
-     $datosEstadisticos = array();
-     $anyos_comparativos = "";
 
      $R = array(255,7,0);
      $G = array(120,11,143);
@@ -65,7 +59,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title">Indicador - <?php  echo "  "; echo $name_plant; ?> </h5>
+                <h5 class="card-title">Indicador - Consumo de energia activa  </h5>
 
                 <div class="card-tools">
                 </div>
