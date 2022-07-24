@@ -47,13 +47,12 @@
                                       </small> 
                                     </span>
                                     <span class="info-box-number">
-                                         <?= number_format($value["total"])?>'
+                                         <?= number_format($value["total"])?>
                                     </span>
                                   </div>
                               </div>
                           </div> 
               <?php endforeach;?>           
-                    //  <!---------------------------------------------------fin marcadores iniciales---------------------------------------------------------------------------->
          </div>
          <div class="row">
           <div class="col-md-12">
