@@ -302,7 +302,7 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 		$pdo ->beginTransaction();
 		try 
 		{
-			if($valor != null){
+			if($valor != ""){
 				$stmt = $pdo->prepare("SELECT s.anyoLectura,GROUP_CONCAT(s.mesLectura) as mesLectura, GROUP_CONCAT(total) as total
 									   FROM
 									   (	
