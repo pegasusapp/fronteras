@@ -1,6 +1,10 @@
 <?php
+      $valor = "";
+      if($_SESSION["perfilSesion"] <> 9)
+      {
+        $valor = $_SESSION["identificador"];
+      }
      
-     $valor = $_SESSION["identificador"];
      $items = ControladorFronteras::crtMostrarTotalConsumoFronterasAnyoEnergia($valor); 
      var_dump($items);
      $name_plant="Consumo de energia activa ";
