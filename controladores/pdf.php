@@ -118,7 +118,7 @@ function plantillaPdf($frontera,$total_dia_avg,$total_dia_last,$desviado,$htmlFa
      }
    #customers td, #customers th 
      { 
-       border: 1px solid #ddd; padding: 8px; 
+       border: 1px solid #ddd; padding: 4px; 
      }
    #customers tr:nth-child(even)
      {
@@ -164,10 +164,6 @@ function plantillaPdf($frontera,$total_dia_avg,$total_dia_last,$desviado,$htmlFa
      <td colspan="2" align="center" bgcolor="#bcc1d1"><strong>FACTOR M</strong></td> 
      <td colspan="3" align="center" bgcolor="#bcc1d1"><strong>CONSUMO DE ENERGIAS EN EL MES</strong></td>
    </tr>
-   <tr> 
-    <td colspan="2">En la siguiente tabla podra ver el historial de los ultimos TRES meses del factor M de su frontera</td> 
-    <td colspan="3">Consumos del mes al dia de hoy</td> 
-    </tr> 
     <tr> 
       <td colspan="2">
         <table align="center" style="width:100%; font-size: 15px;" border="1" cellspacing="0" cellpadding="2" bordercolor="666633">
