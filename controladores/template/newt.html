@@ -48,44 +48,49 @@
                <td colspan="2" align="center"><img class="imgFrtConsumo" src="https://fronteras.energiaitalener.com/controladores/template/images/'.$frontera.'_consumo.png"></td> 
                <td colspan="3" align="center"><img class="imgFrtDesviacion" src="https://fronteras.energiaitalener.com/controladores/template/images/'.$frontera.'_desviacion.png"  ></td>
             </tr>
-          
-             <tr>
-             <td colspan="5" style="padding-bottom: 100px;"></td>
-             </tr>
-             <tr> <td colspan="5" align="center" bgcolor="#bcc1d1"><strong>FACTOR M</strong></td> 
-             </tr>
-             <tr> 
-             <td colspan="5">En la siguiente tabla podra ver el historial de los ultimos TRES meses del factor M de su frontera</td> 
+            <tr> 
+              <td colspan="2" align="center" bgcolor="#bcc1d1"><strong>FACTOR M</strong></td> 
+              <td colspan="3" align="center" bgcolor="#bcc1d1"><strong>CONSUMO DE ENERGIAS EN EL MES</strong></td>
+            </tr>
+            <tr> 
+             <td colspan="2">En la siguiente tabla podra ver el historial de los ultimos TRES meses del factor M de su frontera</td> 
+             <td colspan="3">Consumos del mes al dia de hoy</td> 
              </tr> 
              <tr> 
-             <td align="center"><strong>ANO</strong></td>
-             <td align="center"><strong>MES</strong></td>
-             <td align="center"><strong>VALOR</strong></td>
-             <td align="center"><strong>DIAS</strong></td>
-             <td align="center"><strong>TIPO ENERGIA</strong></td>
-             </tr>'.$htmlFactorM.'<tr>
-             <td colspan="5" style="padding-bottom: 0px;"></td>
-             </tr> 
-             <tr> 
-             <td colspan="5" align="center" bgcolor="#bcc1d1"><strong>CONSUMO DE ENERGIAS EN EL MES</strong></td>
-             </tr>
-             <tr>
-             <td align="center"><img src="https://fronteras.energiaitalener.com/controladores/template/images/3103468.png"  alt=""></td>
-             <td align="center"><img src="https://fronteras.energiaitalener.com/controladores/template/images/1015595.png"  alt=""></td>
-             <td align="center"><img src="https://fronteras.energiaitalener.com/controladores/template/images/1835596.png"  alt=""></td>
-             <td align="center"><img src="https://fronteras.energiaitalener.com/controladores/template/images/4343051.png"  alt=""></td>
-             </tr>
-             <tr>
-             <td align="center"><h3 class="u-custom-font u-font-montserrat u-text u-text-palette-2-base u-text-1" >'.$totalActivaMonth.'</h3></td>
-             <td align="center"><h3 class="u-custom-font u-font-montserrat u-text u-text-palette-2-base u-text-3" >'.$totalReactivaMonth.'</h3></td>
-             <td align="center"><h3 class="u-custom-font u-font-montserrat u-text u-text-palette-2-base u-text-5" >'.$totalCapacitivaMonth.'</h3></td>
-             <td align="center"><h3 class="u-custom-font u-font-montserrat u-text u-text-palette-2-base u-text-7" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">'.$totalPerdidasMonth.'</h3></td>
-             </tr>
-             <tr>
-             <td align="center"><h4 class="u-custom-font u-font-montserrat u-text u-text-2">Activa</h4></td>
-             <td align="center"><h4 class="u-custom-font u-font-montserrat u-text u-text-4">Reactiva</h4></td>
-             <td align="center"><h4 class="u-custom-font u-font-montserrat u-text u-text-6">Capacitiva</h4></td>
-             <td align="center"><h4 class="u-custom-font u-font-montserrat u-text u-text-8">Penalizada</h4></td>
+               <td colspan="2">
+                 <table align="center" style="width:100%; font-size: 15px;" border="1" cellspacing="0" cellpadding="2" bordercolor="666633">
+                     <tr>
+                        <td align="center"><strong>AÑO-MES</strong></td>
+                        <td align="center"><strong>VALOR</strong></td>
+                        <td align="center"><strong>DIAS</strong></td>
+                        <td align="center"><strong>TIPO ENERGIA</strong></td>
+                     </tr>
+                     '.$htmlFactorM.'
+                 </table>   
+              </td>
+              <td colspan="3">
+                 <table align="center" style="font-size: 15px;" border="1" cellspacing="0" cellpadding="2" bordercolor="666633">
+                             <tr>
+                             <td align="center"><img src="https://fronteras.energiaitalener.com/controladores/template/images/3103468.png"  alt=""></td>
+                             <td align="center"><img src="https://fronteras.energiaitalener.com/controladores/template/images/1015595.png"  alt=""></td>
+                             <td align="center"><img src="https://fronteras.energiaitalener.com/controladores/template/images/1835596.png"  alt=""></td>
+                             <td align="center"><img src="https://fronteras.energiaitalener.com/controladores/template/images/4343051.png"  alt=""></td>
+                             </tr>
+                             <tr>
+                             <td align="center"><h3 class="u-custom-font u-font-montserrat u-text u-text-palette-2-base u-text-1" >'.$totalActivaMonth.'</h3></td>
+                             <td align="center"><h3 class="u-custom-font u-font-montserrat u-text u-text-palette-2-base u-text-3" >'.$totalReactivaMonth.'</h3></td>
+                             <td align="center"><h3 class="u-custom-font u-font-montserrat u-text u-text-palette-2-base u-text-5" >'.$totalCapacitivaMonth.'</h3></td>
+                             <td align="center"><h3 class="u-custom-font u-font-montserrat u-text u-text-palette-2-base u-text-7" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">'.$totalPerdidasMonth.'</h3></td>
+                             </tr>
+                             <tr>
+                             <td align="center"><h4 class="u-custom-font u-font-montserrat u-text u-text-2">Activa</h4></td>
+                             <td align="center"><h4 class="u-custom-font u-font-montserrat u-text u-text-4">Reactiva</h4></td>
+                             <td align="center"><h4 class="u-custom-font u-font-montserrat u-text u-text-6">Capacitiva</h4></td>
+                             <td align="center"><h4 class="u-custom-font u-font-montserrat u-text u-text-8">Penalizada</h4></td>
+                             </tr>
+                </table>
+                
+              </td> 
              </tr>
              <tr>
              <td colspan="5" style="padding-bottom: 10px;"></td>
