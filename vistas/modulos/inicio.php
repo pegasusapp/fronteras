@@ -96,17 +96,6 @@
       </div><!-- /.container-fluid -->
     </section>
   </div>
-  <form name="frm1"  id="frm1" method="POST" >
-    <input type="hidden" name="val_planta" id="val_planta" value="" />
-    <input type="hidden" name="item_planta" id="item_planta" value="idproyecto" />
-    <input type="hidden" name="val_tipo_energia" id="val_tipo_energia" value="" />
-    <input type="hidden" name="item_tipo_energia" id="item_tipo_energia" value="fuenteEnergia_idfuenteEnergia" />
-  </form>
-  <form name="frm2"  id="frm2" method="POST" >
-    <input type="hidden" name="fuenteEnergia_idfuenteEnergia" id="fuenteEnergia_idfuenteEnergia" value="" />
-    <input type="hidden" name="grupoProyecto_idgrupoProyecto" id="grupoProyecto_idgrupoProyecto" value="" />
-
-  </form>
   <script>
   $(function () {
     /* ChartJS

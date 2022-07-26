@@ -5,9 +5,6 @@ require_once "conexion.php";
 class ModeloFronteras{
 
 	
-	/*=============================================
-	MOSTRAR ITEMS
-	=============================================*/
 
 	static public function mdlMostrarFronteras($tabla, $item, $valor)
 	{
