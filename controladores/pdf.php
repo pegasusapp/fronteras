@@ -179,10 +179,10 @@ function plantillaPdf($frontera,$total_dia_avg,$total_dia_last,$desviado,$htmlFa
      <td colspan="3">
         <table align="center" style="font-size: 15px;" border="1" cellspacing="0" cellpadding="2" bordercolor="666633">
                     <tr>
-                    <td align="center"><h3 class="u-custom-font u-font-montserrat u-text u-text-palette-2-base u-text-1" >'.round($totalActivaMonth,2).'</h3></td>
-                    <td align="center"><h3 class="u-custom-font u-font-montserrat u-text u-text-palette-2-base u-text-3" >'.round($totalReactivaMonth,2).'</h3></td>
-                    <td align="center"><h3 class="u-custom-font u-font-montserrat u-text u-text-palette-2-base u-text-5" >'.round($totalCapacitivaMonth,2).'</h3></td>
-                    <td align="center"><h3 class="u-custom-font u-font-montserrat u-text u-text-palette-2-base u-text-7" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">'.$totalPerdidasMonth.'</h3></td>
+                    <td align="center"><h3 class="u-custom-font u-font-montserrat u-text u-text-palette-2-base u-text-1" >'.number_format(round($totalActivaMonth,2), 2, '.', ',').'</h3></td>
+                    <td align="center"><h3 class="u-custom-font u-font-montserrat u-text u-text-palette-2-base u-text-3" >'.number_format(round($totalReactivaMonth,2), 2, '.', ',').'</h3></td>
+                    <td align="center"><h3 class="u-custom-font u-font-montserrat u-text u-text-palette-2-base u-text-5" >'.number_format(round($totalCapacitivaMonth,2), 2, '.', ',').'</h3></td>
+                    <td align="center"><h3 class="u-custom-font u-font-montserrat u-text u-text-palette-2-base u-text-7" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">'.number_format(round($totalCapacitivaMonth,2), 2, '.', ',').'</h3></td>
                     </tr>
                     <tr>
                     <td align="center"><h4 class="u-custom-font u-font-montserrat u-text u-text-2">Activa</h4></td>
