@@ -26,6 +26,15 @@ class ControladorReporteFactorM{
             }
         }
 
+    /**
+     * function to asign M factor to frontera
+     *
+     * @param array $array
+     * @param int $year
+     * @param string $frontera
+     * @param string $tipoe
+     * @return array
+     */    
     public function ctrAsignamentFactorM($array,$year,$frontera,$tipoe):array{
         $arrayInsertctrFactorM = array(); 
         $arrayResultado = array();
