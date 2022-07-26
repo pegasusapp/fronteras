@@ -153,8 +153,8 @@ function plantillaPdf($frontera,$total_dia_avg,$total_dia_last,$desviado,$htmlFa
      <td colspan="3" align="center" bgcolor="#bcc1d1"><strong>DESVIACION SIGNIFICATIVA</strong></td> 
    </tr>
    <tr> 
-      <td colspan="2"> La siguiente grafica nos muestra el consumo hasta el dia de ayer, comparado con el consumo hasta el mismo dia del mes anterior. </td>
-      <td colspan="3">El consumo promedio del dia anterior con respecto al mes pasado fue de '.round($total_dia_avg,2).', el consumo del día anterior fue de '.round($total_dia_last,2).'. <strong>'.$desviado.'</strong> presenta desviación </td> 
+      <td colspan="2">Consumo hasta dia de ayer vs consumo mismo dia mes anterior. </td>
+      <td colspan="3">Promedio del dia anterior con respecto al mes pasado fue de '.round($total_dia_avg,2).', el consumo del día anterior fue de '.round($total_dia_last,2).'. <strong>'.$desviado.'</strong> presenta desviación </td> 
    </tr> 
    <tr> 
       <td colspan="2" align="center"><img class="imgFrtConsumo" src="https://fronteras.energiaitalener.com/controladores/template/images/'.$frontera.'_consumo.png"></td> 
@@ -179,15 +179,9 @@ function plantillaPdf($frontera,$total_dia_avg,$total_dia_last,$desviado,$htmlFa
      <td colspan="3">
         <table align="center" style="font-size: 15px;" border="1" cellspacing="0" cellpadding="2" bordercolor="666633">
                     <tr>
-                    <td align="center"><img src="https://fronteras.energiaitalener.com/controladores/template/images/3103468.png"  alt=""></td>
-                    <td align="center"><img src="https://fronteras.energiaitalener.com/controladores/template/images/1015595.png"  alt=""></td>
-                    <td align="center"><img src="https://fronteras.energiaitalener.com/controladores/template/images/1835596.png"  alt=""></td>
-                    <td align="center"><img src="https://fronteras.energiaitalener.com/controladores/template/images/4343051.png"  alt=""></td>
-                    </tr>
-                    <tr>
-                    <td align="center"><h3 class="u-custom-font u-font-montserrat u-text u-text-palette-2-base u-text-1" >'.$totalActivaMonth.'</h3></td>
-                    <td align="center"><h3 class="u-custom-font u-font-montserrat u-text u-text-palette-2-base u-text-3" >'.$totalReactivaMonth.'</h3></td>
-                    <td align="center"><h3 class="u-custom-font u-font-montserrat u-text u-text-palette-2-base u-text-5" >'.$totalCapacitivaMonth.'</h3></td>
+                    <td align="center"><h3 class="u-custom-font u-font-montserrat u-text u-text-palette-2-base u-text-1" >'.round($totalActivaMonth,2).'</h3></td>
+                    <td align="center"><h3 class="u-custom-font u-font-montserrat u-text u-text-palette-2-base u-text-3" >'.round($totalReactivaMonth,2).'</h3></td>
+                    <td align="center"><h3 class="u-custom-font u-font-montserrat u-text u-text-palette-2-base u-text-5" >'.round($totalCapacitivaMonth,2).'</h3></td>
                     <td align="center"><h3 class="u-custom-font u-font-montserrat u-text u-text-palette-2-base u-text-7" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">'.$totalPerdidasMonth.'</h3></td>
                     </tr>
                     <tr>
