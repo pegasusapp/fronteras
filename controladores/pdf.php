@@ -149,23 +149,23 @@ function plantillaPdf($frontera,$total_dia_avg,$total_dia_last,$desviado,$htmlFa
    </tr>
      
    <tr>
-     <td colspan="2" align="center" bgcolor="#bcc1d1"><strong>COMPARACION DE CONSUMOS</strong></td> 
+     <td colspan="3" align="center" bgcolor="#bcc1d1"><strong>COMPARACION DE CONSUMOS</strong></td> 
      <td colspan="3" align="center" bgcolor="#bcc1d1"><strong>DESVIACION SIGNIFICATIVA</strong></td> 
    </tr>
    <tr> 
-      <td colspan="2">Consumo hasta dia de ayer vs consumo mismo dia mes anterior. </td>
+      <td colspan="3">Consumo hasta dia de ayer vs consumo mismo dia mes anterior. </td>
       <td colspan="3">Promedio del dia anterior con respecto al mes pasado fue de '.round($total_dia_avg,2).', el consumo del día anterior fue de '.round($total_dia_last,2).'. <strong>'.$desviado.'</strong> presenta desviación </td> 
    </tr> 
    <tr> 
-      <td colspan="2" align="center"><img class="imgFrtConsumo" src="https://fronteras.energiaitalener.com/controladores/template/images/'.$frontera.'_consumo.png"></td> 
+      <td colspan="3" align="center"><img class="imgFrtConsumo" src="https://fronteras.energiaitalener.com/controladores/template/images/'.$frontera.'_consumo.png"></td> 
       <td colspan="3" align="center"><img class="imgFrtDesviacion" src="https://fronteras.energiaitalener.com/controladores/template/images/'.$frontera.'_desviacion.png"  ></td>
    </tr>
    <tr> 
-     <td colspan="2" align="center" bgcolor="#bcc1d1"><strong>FACTOR M</strong></td> 
+     <td colspan="3" align="center" bgcolor="#bcc1d1"><strong>FACTOR M</strong></td> 
      <td colspan="3" align="center" bgcolor="#bcc1d1"><strong>CONSUMO DE ENERGIAS EN EL MES</strong></td>
    </tr>
     <tr> 
-      <td colspan="2">
+      <td colspan="3">
         <table align="center" style="width:100%; font-size: 15px;" border="1" cellspacing="0" cellpadding="2" bordercolor="666633">
             <tr>
                <td align="center"><strong>AÑO-MES</strong></td>
@@ -198,15 +198,15 @@ function plantillaPdf($frontera,$total_dia_avg,$total_dia_last,$desviado,$htmlFa
     </tr>
 
     <tr>
-     <td colspan="2" align="center" bgcolor="#bcc1d1"><strong>COMPORTAMIENTO DE ENERGIA CAPACITIVA </strong></td> 
+     <td colspan="3" align="center" bgcolor="#bcc1d1"><strong>COMPORTAMIENTO DE ENERGIA CAPACITIVA </strong></td> 
      <td colspan="3" align="center" bgcolor="#bcc1d1"><strong>COMPORTAMIENTO DE PENALIZACIONES </strong></td> 
     </tr>
     <tr> 
-     <td colspan="2">Comportamiento generación energia capacitiva. </td>
+     <td colspan="3">Comportamiento generación energia capacitiva. </td>
      <td colspan="3">Comportamiento generación de penalizaciones. </td> 
     </tr> 
     <tr> 
-    <td colspan="2" align="center"><img class="imgFrt" src="https://fronteras.energiaitalener.com/controladores/template/images/'.$frontera.'_capacitiva.png"></td>
+    <td colspan="3" align="center"><img class="imgFrt" src="https://fronteras.energiaitalener.com/controladores/template/images/'.$frontera.'_capacitiva.png"></td>
     <td colspan="3" align="center"> <img class="imgFrt" src="https://fronteras.energiaitalener.com/controladores/template/images/'.$frontera.'_perdidas.png"></td>
     </tr>
    </table>';
