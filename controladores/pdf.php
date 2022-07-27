@@ -136,7 +136,7 @@ function plantillaPdf($frontera,$total_dia_avg,$total_dia_last,$desviado,$htmlFa
      background-color: #04AA6D; 
      color: white; 
    } 
-   .u-repeater { flex-grow: 1; flex-shrink: 1; flex-basis: auto; } .u-repeater { display: grid; grid-template-columns: repeat(4, 25%); } .u-align-center { text-align: center; } .u-section-5 .u-text-1 { font-weight: 700; font-size: 3rem; margin: 20px 0 0; } .u-text-palette-2-base, li.active > a.u-button-style.u-text-palette-2-base, li.active > a.u-button-style.u-text-palette-2-base[class*="u-border-"], a.u-button-style.u-text-palette-2-base, a.u-button-style.u-text-palette-2-base[class*="u-border-"] { color: #db545a !important; } .u-section-5 .u-icon-1 { width: 64px; background-image: none; margin: 0 auto; } .u-icon { display: block; line-height: 0; border-width: 0px; } #block_container { text-align:center; } #bloc1, #bloc2 { display:inline; } .gfg { width:auto; text-align:center; padding:20px; } .imgFrtConsumo { width:60%; height:auto; } .imgFrtDesviacion { width:60%; height:auto; } .imgFrt { width:80%; height:auto; } </style> 
+   .u-repeater { flex-grow: 1; flex-shrink: 1; flex-basis: auto; } .u-repeater { display: grid; grid-template-columns: repeat(4, 25%); } .u-align-center { text-align: center; } .u-section-5 .u-text-1 { font-weight: 700; font-size: 3rem; margin: 20px 0 0; } .u-text-palette-2-base, li.active > a.u-button-style.u-text-palette-2-base, li.active > a.u-button-style.u-text-palette-2-base[class*="u-border-"], a.u-button-style.u-text-palette-2-base, a.u-button-style.u-text-palette-2-base[class*="u-border-"] { color: #db545a !important; } .u-section-5 .u-icon-1 { width: 64px; background-image: none; margin: 0 auto; } .u-icon { display: block; line-height: 0; border-width: 0px; } #block_container { text-align:center; } #bloc1, #bloc2 { display:inline; } .gfg { width:auto; text-align:center; padding:20px; } .imgFrtConsumo { width:65%; height:auto; } .imgFrtDesviacion { width:65%; height:auto; } .imgFrt { width:65%; height:auto; } </style> 
    <table id="customers" align="center" style="width:100%; font-size: 15px;" border="1" cellspacing="0" cellpadding="2" bordercolor="666633"> 
   
    <tr> 
@@ -196,19 +196,20 @@ function plantillaPdf($frontera,$total_dia_avg,$total_dia_last,$desviado,$htmlFa
     <tr>
     <td colspan="5" style="padding-bottom: 10px;"></td>
     </tr>
+
     <tr>
-    <td colspan="5" align="center" bgcolor="#bcc1d1"><strong>COMPORTAMIENTO DE ENERGIA CAPACITIVA Y PENALIZACIONES</strong></td>
+     <td colspan="2" align="center" bgcolor="#bcc1d1"><strong>COMPORTAMIENTO DE ENERGIA CAPACITIVA </strong></td> 
+     <td colspan="3" align="center" bgcolor="#bcc1d1"><strong>COMPORTAMIENTO DE PENALIZACIONES </strong></td> 
     </tr>
-    <tr>
-    <td colspan="5">En la siguientes imagenes se pueden contemplar los comportamientos de la energia capacitiva y las penalizaciones generadas</td>
+    <tr> 
+     <td colspan="2">Comportamiento generación energia capacitiva. </td>
+     <td colspan="3">Comportamiento generación de penalizaciones. </td> 
+    </tr> 
+    <tr> 
+    <td colspan="2" align="center"><img class="imgFrt" src="https://fronteras.energiaitalener.com/controladores/template/images/'.$frontera.'_capacitiva.png"></td>
+    <td colspan="3" align="center"> <img class="imgFrt" src="https://fronteras.energiaitalener.com/controladores/template/images/'.$frontera.'_perdidas.png"></td>
     </tr>
-    <tr>
-    <td colspan="5" align="center"><img class="imgFrt" src="https://fronteras.energiaitalener.com/controladores/template/images/'.$frontera.'_capacitiva.png"></td>
-    </tr>
-    <tr>
-    <td colspan="5" align="center"> <img class="imgFrt" src="https://fronteras.energiaitalener.com/controladores/template/images/'.$frontera.'_perdidas.png"></td>
-    </tr>
-    </table>';
+   </table>';
 
 
 }
