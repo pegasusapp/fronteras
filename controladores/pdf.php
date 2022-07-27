@@ -143,15 +143,15 @@ function plantillaPdf($frontera,$total_dia_avg,$total_dia_last,$desviado,$htmlFa
      <td width="15%" height="50">
        <img align="center" src="https://fronteras.energiaitalener.com/controladores/template/images/logo-blanco-bloque.png"  >
      </td>
-     <td width="33%" height="50" colspan="5" style="text-align: center;">
+     <td width="33%" height="50" colspan="4" style="text-align: center;">
        <strong>REPORTE DIARIO RELACIONADO CON LA FRONTERA - '.$frontera.'</strong>
      </td> 
      <td width="15%" height="50" >
        <div id="span1" class="tr">
-        <label style="text-align: center;"><strong>Fecha reporte'.ControladorUtilidades::anyoMesDia(0).'.</strong></label>
+        <label style="text-align: center;"><strong>Fecha reporte: '.ControladorUtilidades::anyoMesDia(0).'</strong></label>
        </div>
        <div id="span1" class="tr">
-        <label style="text-align: center;"><strong>Fecha analisis'.ControladorUtilidades::anyoMesDia(1).'.</strong></label>
+        <label style="text-align: center;"><strong>Fecha analisis: '.ControladorUtilidades::anyoMesDia(1).'</strong></label>
        </div>
       </td>
 
