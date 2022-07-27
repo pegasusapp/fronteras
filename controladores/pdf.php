@@ -196,17 +196,20 @@ function plantillaPdf($frontera,$total_dia_avg,$total_dia_last,$desviado,$htmlFa
     <tr>
     <td colspan="5" style="padding-bottom: 10px;"></td>
     </tr>
+
     <tr>
-    <td colspan="5" align="center" bgcolor="#bcc1d1"><strong>COMPORTAMIENTO DE ENERGIA CAPACITIVA Y PENALIZACIONES</strong></td>
+     <td colspan="2" align="center" bgcolor="#bcc1d1"><strong>COMPORTAMIENTO DE ENERGIA CAPACITIVA </strong></td> 
+     <td colspan="3" align="center" bgcolor="#bcc1d1"><strong>COMPORTAMIENTO DE PENALIZACIONES </strong></td> 
     </tr>
-    <tr>
-    <td colspan="5">En la siguientes imagenes se pueden contemplar los comportamientos de la energia capacitiva y las penalizaciones generadas</td>
+    <tr> 
+     <td colspan="2">Comportamiento generación energia capacitiva. </td>
+     <td colspan="3">Comportamiento generación de penalizaciones. </td> 
+    </tr> 
+    <tr> 
+    <td colspan="2" align="center"><img class="imgFrt" src="https://fronteras.energiaitalener.com/controladores/template/images/'.$frontera.'_capacitiva.png"></td>
+    <td colspan="3" align="center"> <img class="imgFrt" src="https://fronteras.energiaitalener.com/controladores/template/images/'.$frontera.'_perdidas.png"></td>
     </tr>
-    <tr>
-    <td colspan="3" align="center"><img class="imgFrt" src="https://fronteras.energiaitalener.com/controladores/template/images/'.$frontera.'_capacitiva.png"></td>
-    <td colspan="2" align="center"> <img class="imgFrt" src="https://fronteras.energiaitalener.com/controladores/template/images/'.$frontera.'_perdidas.png"></td>
-    </tr>
-    </table>';
+   </table>';
 
 
 }
