@@ -99,7 +99,7 @@ foreach($arrayFrontera as $valor){
           $dompdf->setPaper('A4', 'landscape');
           $dompdf->render();
           $resultado = file_put_contents(dirname(__FILE__)."/"."invoice-" . $valor["fronteraCliente"] . ".pdf",  $dompdf->output());
-          echo $resultado."<br>".dirname(__FILE__)."<br>";
+          echo $resultado."<br>";
 }
 }
 
