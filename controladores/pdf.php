@@ -77,9 +77,9 @@ function resultadoFactorM($frontera):string{
             }
             $htmlFactorM .= '<tr>
                                  <td align="center">'.$vlr["anyo"].'-'.$vlr["mes"].'</td> 
-                                 <td align="center" bgcolor="'.$bgcolor.'">'.ControladorUtilidades::tipoEnergia($vlr["factor"]).'</td> 
+                                 <td align="center" bgcolor="'.$bgcolor.'">'.$vlr["factor"].'</td> 
                                  <td align="center" bgcolor="'.$bgcolor.'">'.$vlr["dias"].'</td>
-                                 <td align="center">'.$vlr["tipoEnergia"].'</td>
+                                 <td align="center">'.ControladorUtilidades::tipoEnergia($vlr["tipoEnergia"]).'</td>
                             </tr>'; 
         }
      return $htmlFactorM;   
