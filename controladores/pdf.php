@@ -12,48 +12,47 @@ require "factorm.controlador.php";
 require "desviacion.controlador.php";
 require "ctrfactorm.controlador.php";
 use Dompdf\Dompdf;
+
+function executeScriptToCreatePDF(){
 $item ="";
 $valor="";
 $arrayFrontera = ControladorFronteras::ctrMostrarFronteras($item,$valor);
 foreach($arrayFrontera as $valor){
-    $arrayAvg = array();
-    $arrayLastDay = array(); 
-    $arrayAvg = ControladorFronteras::ctrMostrarAvgEnergiasFrontera($valor["fronteraCliente"],Constantes::SIGLA_SING_ACTIVA,1);
-    //Note mysql result: 1=Sunday, 2=Monday, 3=Tuesday, 4=Wednesday, 5=Thursday, 6=Friday, 7=Saturday.
-    //Note php result: 0=Sunday, 1=Monday, 2=Tuesday, 3=Wednesday, 4=Thursday, 5=Friday, 6=Saturday.
-    //$fecha = explode("-",ControladorUtilidades::anyoMesDia(1));	
-    $dayToday = ControladorUtilidades::getDayToMysql(ControladorUtilidades::getNumberday(ControladorUtilidades::anyoMesDia(1)));
-    $total_dia_avg=0;
-    foreach($arrayAvg as $data)
-    {
-      if($dayToday == $data["dia"]){
-        $total_dia_avg = $data["total_dia"];
-      }
-    }
-    $arrayLastDay = ControladorFronteras::ctrMostrarEnergiasFronteraDia($valor["fronteraCliente"],1);
-    $total_dia_last=0;
-    foreach($arrayLastDay as $data)
-    {
-      if($data["tipoEnergia"] === "A"){
-        $total_dia_last = $data["total_dia"];
-      }
-    }
-    $vlr_minimo = 0;
-    $vlr_maximo = 0;
-    $arrayDesviacion = ControladorDesviacion::ctrMostrarDesviacion($item,$valor);
-    foreach($arrayDesviacion as $data){
-        $vlr_minimo = $data["vlrMinimo"];
-        $vlr_maximo = $data["vlrMaximo"];
-    }
-    //operation to calculate deviation
-    $tope_max = $total_dia_avg*(1+$vlr_maximo);
-    $tope_min = $total_dia_avg*(1+$vlr_minimo);
-    $desviado="SI";
-    if($total_dia_last >= $tope_min && $total_dia_last <= $tope_max){
-        $desviado="NO";
-    }
-    $htmlFactorM="";
-    $arrayDataFactorM = ControladorCtrFactorM::ctrMostrarctrFactorMLastThreMonths($valor["fronteraCliente"]);
+        $arrayAvg = array();
+        $arrayLastDay = array(); 
+        $arrayAvg = ControladorFronteras::ctrMostrarAvgEnergiasFrontera($valor["fronteraCliente"],Constantes::SIGLA_SING_ACTIVA,1);
+        $dayToday = ControladorUtilidades::getDayToMysql(ControladorUtilidades::getNumberday(ControladorUtilidades::anyoMesDia(1)));
+        $total_dia_avg=0;
+        foreach($arrayAvg as $data)
+        {
+          if($dayToday == $data["dia"]){
+            $total_dia_avg = $data["total_dia"];
+          }
+        }
+        $arrayLastDay = ControladorFronteras::ctrMostrarEnergiasFronteraDia($valor["fronteraCliente"],1);
+        $total_dia_last=0;
+        foreach($arrayLastDay as $data)
+        {
+          if($data["tipoEnergia"] === "A"){
+            $total_dia_last = $data["total_dia"];
+          }
+        }
+        $vlr_minimo = 0;
+        $vlr_maximo = 0;
+        $arrayDesviacion = ControladorDesviacion::ctrMostrarDesviacion($item,$valor);
+        foreach($arrayDesviacion as $data){
+            $vlr_minimo = $data["vlrMinimo"];
+            $vlr_maximo = $data["vlrMaximo"];
+        }
+        //operation to calculate deviation
+        $tope_max = $total_dia_avg*(1+$vlr_maximo);
+        $tope_min = $total_dia_avg*(1+$vlr_minimo);
+        $desviado="SI";
+        if($total_dia_last >= $tope_min && $total_dia_last <= $tope_max){
+            $desviado="NO";
+        }
+        $htmlFactorM="";
+        $arrayDataFactorM = ControladorCtrFactorM::ctrMostrarctrFactorMLastThreMonths($valor["fronteraCliente"]);
         
         foreach($arrayDataFactorM as $vlr){
             $bgcolor="";
@@ -72,11 +71,11 @@ foreach($arrayFrontera as $valor){
                                  <td align="center">'.$vlr["tipoEnergia"].'</td>
                             </tr>'; 
         }
-    $totalActivaMonth = 0;
-    $totalReactivaMonth = 0;
-    $totalCapacitivaMonth = 0;
-    $totalPerdidasMonth = 0;
-    $arrayTotalesByEnergyMonth = ControladorFronteras::ctrMostrarEnergiaFronteraMesEnergia($valor["fronteraCliente"]); 
+        $totalActivaMonth = 0;
+        $totalReactivaMonth = 0;
+        $totalCapacitivaMonth = 0;
+        $totalPerdidasMonth = 0;
+        $arrayTotalesByEnergyMonth = ControladorFronteras::ctrMostrarEnergiaFronteraMesEnergia($valor["fronteraCliente"]); 
         foreach($arrayTotalesByEnergyMonth as $vlr){
             if($vlr["tipoEnergia"] === "A"){
                 $totalActivaMonth = $vlr["total_mes"];
@@ -91,22 +90,18 @@ foreach($arrayFrontera as $valor){
                 $totalPerdidasMonth = $vlr["total_mes"];
               }    
         }   
-        
-    
-    
-    
-  
-$content = plantillaPdf($valor["fronteraCliente"],$total_dia_avg,$total_dia_last,$desviado,$htmlFactorM,$totalActivaMonth,$totalReactivaMonth,$totalCapacitivaMonth,$totalPerdidasMonth);
-$dompdf = new Dompdf();
-$dompdf->loadHtml($content);
-$dompdf->set_option('enable_remote', TRUE);
-$dompdf->set_option('enable_css_float', TRUE);
-$dompdf->set_option('enable_html5_parser', FALSE);
-$dompdf->setPaper('A4', 'landscape');
-$dompdf->render();
-file_put_contents("invoice-" . $valor["fronteraCliente"] . ".pdf",  $dompdf->output());
+          $content = plantillaPdf($valor["fronteraCliente"],$total_dia_avg,$total_dia_last,$desviado,$htmlFactorM,$totalActivaMonth,$totalReactivaMonth,$totalCapacitivaMonth,$totalPerdidasMonth);
+          $dompdf = new Dompdf();
+          $dompdf->loadHtml($content);
+          $dompdf->set_option('enable_remote', TRUE);
+          $dompdf->set_option('enable_css_float', TRUE);
+          $dompdf->set_option('enable_html5_parser', FALSE);
+          $dompdf->setPaper('A4', 'landscape');
+          $dompdf->render();
+          $resultado = file_put_contents("invoice-" . $valor["fronteraCliente"] . ".pdf",  $dompdf->output());
+          echo $resultado;
 }
-
+}
 
 function plantillaPdf($frontera,$total_dia_avg,$total_dia_last,$desviado,$htmlFactorM,$totalActivaMonth,$totalReactivaMonth,$totalCapacitivaMonth,$totalPerdidasMonth):string{
 
@@ -222,5 +217,8 @@ function plantillaPdf($frontera,$total_dia_avg,$total_dia_last,$desviado,$htmlFa
 
 
 }
+
+
+executeScriptToCreatePDF();
 ?>
 
