@@ -8,12 +8,12 @@ class ModeloDesviacion{
 	static public function mdlMostrarDesviacion($tabla, $item, $valor):array{
 
 		if($item != null){
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla  WHERE $item = :$item");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla  WHERE $item = :$item order by iddesviacion desc limit 1 ");
 			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
 			$stmt -> execute();
 			return $stmt -> fetch(PDO::FETCH_ASSOC);
 		}else{
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla order by iddesviacion desc limit 1");
 			$stmt -> execute();
 			return $stmt -> fetchAll();
 		}
