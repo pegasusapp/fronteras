@@ -18,59 +18,12 @@ $item ="";
 $valor="";
 $arrayFrontera = ControladorFronteras::ctrMostrarFronteras($item,$valor);
 foreach($arrayFrontera as $valor){
-        $arrayAvg = array();
-        $arrayLastDay = array(); 
+        $arrayAvg = [];
         $arrayAvg = ControladorFronteras::ctrMostrarAvgEnergiasFrontera($valor["fronteraCliente"],Constantes::SIGLA_SING_ACTIVA,1);
-        $dayToday = ControladorUtilidades::getDayToMysql(ControladorUtilidades::getNumberday(ControladorUtilidades::anyoMesDia(1)));
-        $total_dia_avg=0;
-        foreach($arrayAvg as $data)
-        {
-          if($dayToday == $data["dia"]){
-            $total_dia_avg = $data["total_dia"];
-          }
-        }
-        $arrayLastDay = ControladorFronteras::ctrMostrarEnergiasFronteraDia($valor["fronteraCliente"],1);
-        $total_dia_last=0;
-        foreach($arrayLastDay as $data)
-        {
-          if($data["tipoEnergia"] === "A"){
-            $total_dia_last = $data["total_dia"];
-          }
-        }
-        $vlr_minimo = 0;
-        $vlr_maximo = 0;
-        $arrayDesviacion = ControladorDesviacion::ctrMostrarDesviacion($item,$valor);
-        foreach($arrayDesviacion as $data){
-            $vlr_minimo = $data["vlrMinimo"];
-            $vlr_maximo = $data["vlrMaximo"];
-        }
-        //operation to calculate deviation
-        $tope_max = $total_dia_avg*(1+$vlr_maximo);
-        $tope_min = $total_dia_avg*(1+$vlr_minimo);
-        $desviado="SI";
-        if($total_dia_last >= $tope_min && $total_dia_last <= $tope_max){
-            $desviado="NO";
-        }
-        $htmlFactorM="";
-        $arrayDataFactorM = ControladorCtrFactorM::ctrMostrarctrFactorMLastThreMonths($valor["fronteraCliente"]);
-        
-        foreach($arrayDataFactorM as $vlr){
-            $bgcolor="";
-
-            if($vlr["dias"] >5 && $vlr["dias"] < 10)
-            {
-                $bgcolor="#ffd433";
-            }
-            elseif($vlr["dias"] >=10){
-                $bgcolor="#ff4c33";
-            }
-            $htmlFactorM .= '<tr>
-                                 <td align="center">'.$vlr["anyo"].'-'.$vlr["mes"].'</td> 
-                                 <td align="center" bgcolor="'.$bgcolor.'">'.$vlr["factor"].'</td> 
-                                 <td align="center" bgcolor="'.$bgcolor.'">'.$vlr["dias"].'</td>
-                                 <td align="center">'.$vlr["tipoEnergia"].'</td>
-                            </tr>'; 
-        }
+        $total_dia_avg = desviacionFronteras($arrayAvg);
+        $total_dia_last = totalAnteriorDiaFrontera($valor["fronteraCliente"]);
+        $desviado = resultadoDesviado($total_dia_avg,$total_dia_last);
+        $htmlFactorM= resultadoFactorM($valor["fronteraCliente"]);
         $totalActivaMonth = 0;
         $totalReactivaMonth = 0;
         $totalCapacitivaMonth = 0;
@@ -91,18 +44,92 @@ foreach($arrayFrontera as $valor){
               }    
         }   
           $content = plantillaPdf($valor["fronteraCliente"],$total_dia_avg,$total_dia_last,$desviado,$htmlFactorM,$totalActivaMonth,$totalReactivaMonth,$totalCapacitivaMonth,$totalPerdidasMonth);
-          $dompdf = new Dompdf();
-          $dompdf->loadHtml($content);
-          $dompdf->set_option('enable_remote', TRUE);
-          $dompdf->set_option('enable_css_float', TRUE);
-          $dompdf->set_option('enable_html5_parser', FALSE);
-          $dompdf->setPaper('A4', 'landscape');
-          $dompdf->render();
-          $resultado = file_put_contents(dirname(__FILE__)."/"."invoice-" . $valor["fronteraCliente"] . ".pdf",  $dompdf->output());
-          echo $resultado."<br>";
-}
+          createPDF($content,$valor["fronteraCliente"]);
+          
 }
 
+}
+
+function createPDF($content,$frontera){
+  $dompdf = new Dompdf();
+  $dompdf->loadHtml($content);
+  $dompdf->set_option('enable_remote', TRUE);
+  $dompdf->set_option('enable_css_float', TRUE);
+  $dompdf->set_option('enable_html5_parser', FALSE);
+  $dompdf->setPaper('A4', 'landscape');
+  $dompdf->render();
+  $resultado = file_put_contents(dirname(__FILE__)."/"."invoice-" . $frontera . ".pdf",  $dompdf->output());
+  echo $resultado."<br>";
+}
+
+function resultadoFactorM($frontera):string{
+  $arrayDataFactorM = ControladorCtrFactorM::ctrMostrarctrFactorMLastThreMonths($frontera);
+  $htmlFactorM="";      
+  foreach($arrayDataFactorM as $vlr){
+            $bgcolor="";
+
+            if($vlr["dias"] >5 && $vlr["dias"] < 10)
+            {
+                $bgcolor="#ffd433";
+            }
+            elseif($vlr["dias"] >=10){
+                $bgcolor="#ff4c33";
+            }
+            $htmlFactorM .= '<tr>
+                                 <td align="center">'.$vlr["anyo"].'-'.$vlr["mes"].'</td> 
+                                 <td align="center" bgcolor="'.$bgcolor.'">'.$vlr["factor"].'</td> 
+                                 <td align="center" bgcolor="'.$bgcolor.'">'.$vlr["dias"].'</td>
+                                 <td align="center">'.$vlr["tipoEnergia"].'</td>
+                            </tr>'; 
+        }
+     return $htmlFactorM;   
+}
+
+function desviacionFronteras($arrayAvg){
+  $dayToday = ControladorUtilidades::getDayToMysql(ControladorUtilidades::getNumberday(ControladorUtilidades::anyoMesDia(1)));
+  $total_dia_avg = [];
+  foreach($arrayAvg as $data)
+  {
+    if($dayToday == $data["dia"]){
+      $total_dia_avg = $data["total_dia"];
+    }
+  }
+
+  return $total_dia_avg;
+
+
+}
+
+function totalAnteriorDiaFrontera($frontera):float{
+  $arrayLastDay = []; 
+  $arrayLastDay = ControladorFronteras::ctrMostrarEnergiasFronteraDia($frontera,1);
+  $total_dia_last=0;
+  foreach($arrayLastDay as $data)
+  {
+    if($data["tipoEnergia"] === "A"){
+      $total_dia_last = $data["total_dia"];
+    }
+  }
+  return $total_dia_last;
+}
+
+function resultadoDesviado($total_dia_avg,$total_dia_last):string{
+        $vlr_minimo = 0;
+        $vlr_maximo = 0;
+        $arrayDesviacion = ControladorDesviacion::ctrMostrarDesviacion(null,null);
+        foreach($arrayDesviacion as $data){
+            $vlr_minimo = $data["vlrMinimo"];
+            $vlr_maximo = $data["vlrMaximo"];
+        }
+        //operation to calculate deviation
+        $tope_max = $total_dia_avg*(1+$vlr_maximo);
+        $tope_min = $total_dia_avg*(1+$vlr_minimo);
+        $desviado="SI";
+        if($total_dia_last >= $tope_min && $total_dia_last <= $tope_max){
+            $desviado="NO";
+        }
+        return $desviado;
+}
 function plantillaPdf($frontera,$total_dia_avg,$total_dia_last,$desviado,$htmlFactorM,$totalActivaMonth,$totalReactivaMonth,$totalCapacitivaMonth,$totalPerdidasMonth):string{
 
    return '<style> 
@@ -217,7 +244,6 @@ function plantillaPdf($frontera,$total_dia_avg,$total_dia_last,$desviado,$htmlFa
 
 
 }
-
 
 executeScriptToCreatePDF();
 ?>
