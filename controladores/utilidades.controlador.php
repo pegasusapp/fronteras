@@ -114,6 +114,29 @@ class ControladorUtilidades
 		return $dayAvg;
 	 }
 
+	 static public function tipoEnergia($sigla):string{
+        $tEnergia="";
+		
+		if($sigla === "C"){
+			$tEnergia = "Capacitiva";
+		}
+		elseif($sigla === "P"){
+		   $tEnergia = "Penalizada Inductiva";
+		}
+		elseif($sigla === "A"){
+			$tEnergia = "Activa";
+		}
+		elseif($sigla === "R"){
+			$tEnergia = "Reactiva";
+		}
+		elseif($sigla === "E"){
+			$tEnergia = "Exportada";
+		 }  
+
+		 return $tEnergia;
+
+	 }
+
 	
 
  
