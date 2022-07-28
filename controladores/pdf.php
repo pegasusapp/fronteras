@@ -98,8 +98,8 @@ foreach($arrayFrontera as $valor){
           $dompdf->set_option('enable_html5_parser', FALSE);
           $dompdf->setPaper('A4', 'landscape');
           $dompdf->render();
-          $resultado = file_put_contents("invoice-" . $valor["fronteraCliente"] . ".pdf",  $dompdf->output());
-          echo $resultado."<br>";
+          $resultado = file_put_contents(dirname(__FILE__)."/invoice-" . $valor["fronteraCliente"] . ".pdf",  $dompdf->output());
+          echo $resultado."<br>".dirname(__FILE__)."<br>";
 }
 }
 
