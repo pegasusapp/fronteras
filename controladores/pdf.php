@@ -59,7 +59,7 @@ function createPDF($content,$frontera){
   $dompdf->setOptions($options);
   $dompdf->setPaper('A4', 'landscape');
   $dompdf->render();
-  $resultado = file_put_contents(dirname(__FILE__)."/"."invoice-" . $frontera . ".pdf",  $dompdf->output());
+  $resultado = file_put_contents(dirname(__FILE__)."/../files/pdf/"."file-" . $frontera . ".pdf",  $dompdf->output());
   echo $resultado."<br>";
 }
 
@@ -186,8 +186,8 @@ function plantillaPdf($frontera,$total_dia_avg,$total_dia_last,$desviado,$htmlFa
       <td colspan="3">Promedio del dia anterior con respecto al mes pasado fue de '.round($total_dia_avg,2).', el consumo del día anterior fue de '.round($total_dia_last,2).'. <strong>'.$desviado.'</strong> presenta desviación </td> 
   </tr>
   <tr>
-      <td colspan="3" align="center"><img class="imgFrtConsumo" src="https://fronteras.energiaitalener.com/controladores/template/images/'.$frontera.'_consumo.png"></td> 
-      <td colspan="3" align="center"><img class="imgFrtDesviacion" src="https://fronteras.energiaitalener.com/controladores/template/images/'.$frontera.'_desviacion.png"  ></td>
+      <td colspan="3" align="center"><img class="imgFrtConsumo" src="https://fronteras.energiaitalener.com/files/imgFrt/'.$frontera.'_consumo.png"></td> 
+      <td colspan="3" align="center"><img class="imgFrtDesviacion" src="https://fronteras.energiaitalener.com/files/imgFrt/'.$frontera.'_desviacion.png"  ></td>
   </tr>
   <tr>
     <td colspan="3" align="center" bgcolor="#bcc1d1"><strong>FACTOR M</strong></td>
@@ -234,8 +234,8 @@ function plantillaPdf($frontera,$total_dia_avg,$total_dia_last,$desviado,$htmlFa
     <td colspan="3">Comportamiento generación de penalizaciones. </td>
     </tr>
     <tr>
-    <td colspan="3" align="center"><img class="imgFrt" src="https://fronteras.energiaitalener.com/controladores/template/images/'.$frontera.'_capacitiva.png"></td>
-    <td colspan="3" align="center"> <img class="imgFrt" src="https://fronteras.energiaitalener.com/controladores/template/images/'.$frontera.'_perdidas.png"></td>
+    <td colspan="3" align="center"><img class="imgFrt" src="https://fronteras.energiaitalener.com/files/imgFrt/'.$frontera.'_capacitiva.png"></td>
+    <td colspan="3" align="center"> <img class="imgFrt" src="https://fronteras.energiaitalener.com/files/imgFrt/'.$frontera.'_perdidas.png"></td>
     </tr>
   </table>';
 }
