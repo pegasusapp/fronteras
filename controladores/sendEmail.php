@@ -17,4 +17,5 @@ foreach($arrayFrontera as $valor){
     echo ControladorUtilidades::sendMail("Reporte diario de la frontera ".$valor["fronteraCliente"],$mailDestiny,"Adjunto a este correo encontrará el reporte del día anterior de la frontera ".$valor["clienteFrontera_nitCliente"],$dataFile);
 }
 }
+executeScriptToSendPDF();
 ?>
