@@ -24,5 +24,4 @@ class Constantes{
 	const SIGLA_SING_PENALIZADA = "P";
 	const SIGLA_EXPORTADA = "kWhR";
 	const URL_WS = "https://medicion.telmetergy.com.co/xmlrpc/2/object";
-	
 }

@@ -6,46 +6,33 @@ require_once 'PHPMailer-master/src/PHPMailer.php';
 require_once 'PHPMailer-master/src/SMTP.php';
 class ControladorUtilidades
 {
-
-
-
-
-	/*============================================
-	 Respuesta generica
-	 =============================================*/
-	 static public function answerScript($texto,$back):string{
-
+	static public function answerScript($texto,$back):string{
 		return '<script>
-
 					swal("¡'.$texto.'!", {
-						buttons: 
+						buttons:
 						{
-						 catch: 
-						   {
-						   text: "Cerrar",
-						   value: "ok",
-						   }
+							catch:
+								{
+								text: "Cerrar",
+								value: "ok",
+								}
 						},
-					  })
-					  .then((value) => {
-						switch (value)
-						{
-					        case "ok":
-						            window.location = "'.$back.'";
+					})
+					.then((value) => {
+						switch (value){
+							case "ok":
+							window.location = "'.$back.'";
 							break;
-					   
-						    default:
-						            window.location = "'.$back.'";
+							default:
+							window.location = "'.$back.'";
 						}
-					  });
-
-
+									});
 					</script>';
 
 
-	 }	
+}
 
-	 static public function answerBad($error):string{
+static public function answerBad($error):string{
 		return "<script>
 						Swal.fire({
 									icon: 'error',
@@ -54,10 +41,10 @@ class ControladorUtilidades
 									footer: '<a href=\"errores\">Por favor reportar este error</a>'
 								})
 				</script>";
-	 }
+	}
 
-	 static public function sendMail($subject,$emailDestino,$mensajeBody)
-	 {
+static public function sendMail($subject,$emailDestino,$mensajeBody,$dataFile):bool
+{
 	// La cuenta está bloqueada.
 		$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 		try {
@@ -70,46 +57,57 @@ class ControladorUtilidades
 				$mail->Port = 587;                                     // TCP port to connect to
 				$mail->From = Constantes::EMAIL_COMPANY;
 				$mail->FromName = Constantes::FROM_NAME_EMAIL;
-				$mail->addAddress($emailDestino, 'Usuario :');     // Add a recipient
+				$mail->addAddress($emailDestino, 'Usuario :');
+				if(!empty($dataFile)){
+				$mail->AddAttachment($dataFile["ubication"].$dataFile["nameFile"].".".$dataFile["extension"], $dataFile["nameFile"].".".$dataFile["extension"]);
+				}
 				$mail->isHTML(true);                                                      // Set email format to HTML
 				$mail->Subject = $subject;
 				$mail->Body    = $mensajeBody;
-				$mail->send();
-				
-			} 
+				return $mail->send();
+			}
 		catch (Exception $e)
 			{
-					echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+				$arrayError = [];
+				$arrayError = array("emailDestino"=>$emailDestino,"errorInfo"=>$mail->ErrorInfo);
+				self::log_message_array($_SESSION["identificador"],$arrayError);
+				return false;
 			}
-	 }
-
-	 ///// RETORNA DIA MES AÑO ACTUAL separados por guion
-
-	 static public function anyoMesDia($dia):string{
+}
 
 
+
+
+	/**
+	 * Return date day-month-Year
+	 *
+	 * @param int $dia
+	 * @return string
+	 */
+	static public function anyoMesDia($dia):string{
 		$fecha_actual = date("d-m-Y");
-		
-		$dateFix = explode("-",date("Y-n-j",strtotime($fecha_actual."- ".$dia." days"))); 
-
+		$dateFix = explode("-",date("Y-n-j",strtotime($fecha_actual."- ".$dia." days")));
 		$anyo = $dateFix[0];
 		$mes =  $dateFix[1];
 		$dia =  $dateFix[2];
-
 		return $anyo."-".$mes."-".$dia;
+	}
 
-	 }
+	function log_message_array(String $userName,Array $arr_Message){
+		$logmessage =  '[' . date('Y-m-d h:i:s') .' '.$userName.'] '. print_r($arr_Message,true) . "\n";
+		error_log($logmessage, 3,  'logFileControlador.log');
+	}
 
-	 static public function getNumberday($date):int{
+	static public function getNumberday($date):int{
 		return date('w', strtotime($date));
-	 }
-	 static public function getDayToMysql($dia):int{
-		if($dia == 7)
-		{
-		 $dayAvg = $dia-6;
+	}
+
+	static public function getDayToMysql($dia):int{
+		if($dia == 7){
+		$dayAvg = $dia-6;
 		}
 		else{
-		 $dayAvg = $dia+1;
+		$dayAvg = $dia+1;
 		}
 		return $dayAvg;
 	 }
