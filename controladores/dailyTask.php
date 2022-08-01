@@ -32,7 +32,7 @@ class ControladorFronterasWS{
            }
            if($dias == 1)
            {
-            ControladorUtilidades::sendMail("Reporte diario de lecturas","oscar.2001601@gmail.com","Estas son las lecturas del día $resultado_gral");
+            ControladorUtilidades::sendMail("Reporte diario de lecturas","oscar.2001601@gmail.com","Estas son las lecturas del día $resultado_gral","");
            }
        }
 
@@ -270,7 +270,6 @@ if (isset($params['days'])) {
     $dias = $params["days"];
     $task = new ControladorFronterasWS();
     $task -> ctrPrepareDataToSendWS($dias);
-    
 }
 
 ?>
