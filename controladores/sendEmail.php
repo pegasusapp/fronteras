@@ -15,8 +15,11 @@ foreach($arrayFrontera as $valor){
     $arrayCliente = [];
     $dataFile = array("nameFile" =>"file-".$valor["fronteraCliente"],"extension"=>"pdf","ubication"=>dirname(__FILE__)."/../files/pdf/");
     $arrayCliente = ControladorClientesFrontera::ctrMostrarClientesFrontera("nitCliente", $valor["clienteFrontera_nitCliente"]);
-    $mailDestiny = "oscar.2001601@gmail.com";
-    echo ControladorUtilidades::sendMail("Reporte diario de la frontera ".$valor["fronteraCliente"],$mailDestiny,"Adjunto a este correo encontrará el reporte del día anterior de la frontera ".$valor["clienteFrontera_nitCliente"],$dataFile);
+    $mailDestiny = $arrayCliente["emailCliente"];
+    if( $mailDestiny === "" ||  $mailDestiny == null ){
+        $mailDestiny="luzguevara@italcol.com";
+    }
+    echo ControladorUtilidades::sendMail("Reporte diario de la frontera ".$valor["fronteraCliente"],$mailDestiny,"Adjunto a este correo encontrará el reporte del día ".ControladorUtilidades::anyoMesDia(1)." de la frontera ".$valor["fronteraCliente"],$dataFile);
 }
 }
 executeScriptToSendPDF();
