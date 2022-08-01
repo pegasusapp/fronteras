@@ -1,11 +1,11 @@
 <?php
 ini_set('max_execution_time', '300');
 require dirname(__FILE__)."/../modelos/fronteras.modelo.php";
-require dirname(__FILE__)."/../modelos/clienteFronteras.modelo.php";
+require dirname(__FILE__)."/../modelos/clienteFrontera.modelo.php";
 require "utilidades.controlador.php";
 require "constantes.controlador.php";
 require "fronteras.controlador.php";
-require "clienteFronteras.controlador.php";
+require "clienteFrontera.controlador.php";
 function executeScriptToSendPDF(){
 $item ="";
 $valor="";
