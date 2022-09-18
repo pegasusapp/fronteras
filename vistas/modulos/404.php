@@ -17,9 +17,7 @@
     </ol>
 
   </section>
-
   <section class="content">
-
     <div class="error-page">
       
       <h2 class="headline text-primary">404</h2> 
