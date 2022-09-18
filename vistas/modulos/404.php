@@ -15,7 +15,6 @@
       <li class="active">Página no encontrada</li>
     
     </ol>
-
   </section>
   <section class="content">
     <div class="error-page">
