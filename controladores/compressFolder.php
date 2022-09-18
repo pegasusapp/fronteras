@@ -2,8 +2,6 @@
 require "utilidades.controlador.php";
 require "constantes.controlador.php";
 
-
-
 function compressFolder(){
         $pathdir =  dirname(__FILE__)."/../files/pdf/";
         $zipcreated = "pdf-".ControladorUtilidades::anyoMesDia(1).".zip";
