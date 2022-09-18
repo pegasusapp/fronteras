@@ -1,0 +1,459 @@
+[28-May-2022 21:37:06 America/Bogota] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'energia6_fronteras.factura' doesn't exist in /home1/energia6/public_html/fronteras/modelos/factura.modelo.php:100
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/modelos/factura.modelo.php(100): PDOStatement->execute()
+#1 /home1/energia6/public_html/fronteras/controladores/factura.controlador.php(161): ModeloFactura::mdlBorrarFactura('factura', 'anyo', '2022', 'mes', '1', 'frontera_fronte...', 'Frt01081')
+#2 /home1/energia6/public_html/fronteras/ajax/factura.ajax.php(28): ControladorFactura::ctrBorrarFactura('factura', 'anyo', '2022', 'mes', '1', 'frontera_fronte...', 'Frt01081')
+#3 /home1/energia6/public_html/fronteras/ajax/factura.ajax.php(75): AjaxFacturas->ajaxBorrarFactura()
+#4 {main}
+  thrown in /home1/energia6/public_html/fronteras/modelos/factura.modelo.php on line 100
+[28-May-2022 21:37:52 America/Bogota] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'energia6_fronteras.factura' doesn't exist in /home1/energia6/public_html/fronteras/modelos/factura.modelo.php:100
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/modelos/factura.modelo.php(100): PDOStatement->execute()
+#1 /home1/energia6/public_html/fronteras/controladores/factura.controlador.php(161): ModeloFactura::mdlBorrarFactura('factura', 'anyo', '2022', 'mes', '1', 'frontera_fronte...', 'Frt01081')
+#2 /home1/energia6/public_html/fronteras/ajax/factura.ajax.php(28): ControladorFactura::ctrBorrarFactura('factura', 'anyo', '2022', 'mes', '1', 'frontera_fronte...', 'Frt01081')
+#3 /home1/energia6/public_html/fronteras/ajax/factura.ajax.php(75): AjaxFacturas->ajaxBorrarFactura()
+#4 {main}
+  thrown in /home1/energia6/public_html/fronteras/modelos/factura.modelo.php on line 100
+[28-May-2022 21:39:24 America/Bogota] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'energia6_fronteras.factura' doesn't exist in /home1/energia6/public_html/fronteras/modelos/factura.modelo.php:100
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/modelos/factura.modelo.php(100): PDOStatement->execute()
+#1 /home1/energia6/public_html/fronteras/controladores/factura.controlador.php(161): ModeloFactura::mdlBorrarFactura('factura', 'anyo', '2022', 'mes', '1', 'frontera_fronte...', 'Frt01081')
+#2 /home1/energia6/public_html/fronteras/ajax/factura.ajax.php(28): ControladorFactura::ctrBorrarFactura('factura', 'anyo', '2022', 'mes', '1', 'frontera_fronte...', 'Frt01081')
+#3 /home1/energia6/public_html/fronteras/ajax/factura.ajax.php(75): AjaxFacturas->ajaxBorrarFactura()
+#4 {main}
+  thrown in /home1/energia6/public_html/fronteras/modelos/factura.modelo.php on line 100
+[28-May-2022 21:40:53 America/Bogota] PHP Warning:  unlink(docs/facturas/Frt01081/20221/): No such file or directory in /home1/energia6/public_html/fronteras/ajax/factura.ajax.php on line 34
+[28-May-2022 21:43:22 America/Bogota] PHP Warning:  unlink(docs/facturas/Frt01081/20221/): No such file or directory in /home1/energia6/public_html/fronteras/ajax/factura.ajax.php on line 34
+[28-May-2022 21:46:20 America/Bogota] PHP Warning:  unlink(docs/facturas/Frt01081/20221/CuentaCobroHorasQHSE.pdf): No such file or directory in /home1/energia6/public_html/fronteras/ajax/factura.ajax.php on line 34
+[28-May-2022 21:50:28 America/Bogota] PHP Warning:  unlink(./docs/facturas/Frt01081/20221/CuentaCobroHorasQHSE.pdf): No such file or directory in /home1/energia6/public_html/fronteras/ajax/factura.ajax.php on line 34
+[28-May-2022 21:53:29 America/Bogota] PHP Warning:  unlink(docs/facturas/Frt01081/20221/CuentaCobroHorasQHSE.pdf): No such file or directory in /home1/energia6/public_html/fronteras/ajax/factura.ajax.php on line 34
+[29-May-2022 00:36:05 America/Bogota] PHP Warning:  unlink(/home1/energia6/public_html/fronteras/docs/facturas/Frt01081/20222/archivos_claro_comprobantePago_ComprobantePag): No such file or directory in /home1/energia6/public_html/fronteras/ajax/factura.ajax.php on line 33
+[14-Jun-2022 18:01:13 America/Bogota] PHP Fatal error:  Uncaught Error: Class 'ControladorFactura' not found in /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php:22
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php(47): AjaxlogLectura->ajaxBorrarLog()
+#1 {main}
+  thrown in /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php on line 22
+[14-Jun-2022 18:02:00 America/Bogota] PHP Fatal error:  Uncaught Error: Class 'ControladorFactura' not found in /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php:22
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php(47): AjaxlogLectura->ajaxBorrarLog()
+#1 {main}
+  thrown in /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php on line 22
+[14-Jun-2022 18:02:20 America/Bogota] PHP Fatal error:  Uncaught Error: Class 'ControladorFactura' not found in /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php:22
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php(47): AjaxlogLectura->ajaxBorrarLog()
+#1 {main}
+  thrown in /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php on line 22
+[14-Jun-2022 18:02:27 America/Bogota] PHP Fatal error:  Uncaught Error: Class 'ControladorFactura' not found in /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php:22
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php(47): AjaxlogLectura->ajaxBorrarLog()
+#1 {main}
+  thrown in /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php on line 22
+[14-Jun-2022 18:02:38 America/Bogota] PHP Fatal error:  Uncaught Error: Class 'ControladorFactura' not found in /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php:22
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php(47): AjaxlogLectura->ajaxBorrarLog()
+#1 {main}
+  thrown in /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php on line 22
+[14-Jun-2022 18:06:28 America/Bogota] PHP Fatal error:  Uncaught Error: Class 'ControladorFactura' not found in /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php:22
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php(47): AjaxlogLectura->ajaxBorrarLog()
+#1 {main}
+  thrown in /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php on line 22
+[14-Jun-2022 18:06:53 America/Bogota] PHP Fatal error:  Uncaught Error: Class 'ControladorFactura' not found in /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php:22
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php(47): AjaxlogLectura->ajaxBorrarLog()
+#1 {main}
+  thrown in /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php on line 22
+[14-Jun-2022 18:12:39 America/Bogota] PHP Fatal error:  Uncaught Error: Class 'ControladorFactura' not found in /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php:22
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php(47): AjaxlogLectura->ajaxBorrarLog()
+#1 {main}
+  thrown in /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php on line 22
+[14-Jun-2022 18:15:04 America/Bogota] PHP Fatal error:  Uncaught TypeError: Return value of ModeloLogLectura::mdlBorrarLogLecturas() must be an instance of boolean, bool returned in /home1/energia6/public_html/fronteras/modelos/logLectura.modelo.php:56
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/controladores/logLectura.controlador.php(74): ModeloLogLectura::mdlBorrarLogLecturas('logLecturas', 'idLogLecturas', '1')
+#1 /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php(22): ControladorLogLectura::ctrBorrarLogLectura('logLecturas', 'idLogLecturas', '1')
+#2 /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php(47): AjaxlogLectura->ajaxBorrarLog()
+#3 {main}
+  thrown in /home1/energia6/public_html/fronteras/modelos/logLectura.modelo.php on line 56
+[14-Jun-2022 18:19:29 America/Bogota] PHP Fatal error:  Uncaught TypeError: Return value of ModeloLogLectura::mdlBorrarLogLecturas() must be an instance of boolean, bool returned in /home1/energia6/public_html/fronteras/modelos/logLectura.modelo.php:56
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/controladores/logLectura.controlador.php(75): ModeloLogLectura::mdlBorrarLogLecturas('logLecturas', 'idLogLecturas', '2')
+#1 /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php(22): ControladorLogLectura::ctrBorrarLogLectura('logLecturas', 'idLogLecturas', '2')
+#2 /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php(47): AjaxlogLectura->ajaxBorrarLog()
+#3 {main}
+  thrown in /home1/energia6/public_html/fronteras/modelos/logLectura.modelo.php on line 56
+[14-Jun-2022 19:49:04 America/Bogota] PHP Fatal error:  Uncaught TypeError: Return value of ModeloLogLectura::mdlBorrarLogLecturas() must be an instance of boolean, bool returned in /home1/energia6/public_html/fronteras/modelos/logLectura.modelo.php:56
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/controladores/logLectura.controlador.php(75): ModeloLogLectura::mdlBorrarLogLecturas('logLecturas', 'idLogLecturas', '3')
+#1 /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php(22): ControladorLogLectura::ctrBorrarLogLectura('logLecturas', 'idLogLecturas', '3')
+#2 /home1/energia6/public_html/fronteras/ajax/logLectura.ajax.php(47): AjaxlogLectura->ajaxBorrarLog()
+#3 {main}
+  thrown in /home1/energia6/public_html/fronteras/modelos/logLectura.modelo.php on line 56
+[14-Jun-2022 21:16:28 America/Bogota] PHP Fatal error:  Uncaught Error: Class 'ControladorFronteras' not found in /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php:18
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(35): AjaxInsertLectura->ajaxInsertFile()
+#1 {main}
+  thrown in /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php on line 18
+[14-Jun-2022 21:17:24 America/Bogota] PHP Fatal error:  Uncaught Error: Class 'ControladorFronteras' not found in /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php:18
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(35): AjaxInsertLectura->ajaxInsertFile()
+#1 {main}
+  thrown in /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php on line 18
+[14-Jun-2022 21:18:44 America/Bogota] PHP Fatal error:  Uncaught Error: Cannot unpack array with string keys in /home1/energia6/public_html/fronteras/modelos/fronteras.modelo.php:348
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php(183): ModeloFronteras::mdlInsertLecturasFrontera(Array, Array, Array, Array, Array)
+#1 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(18): ControladorFronteras::ctrInsertLecturasFrontera('7', '/home1/energia6...', 'teswt.csv')
+#2 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(35): AjaxInsertLectura->ajaxInsertFile()
+#3 {main}
+  thrown in /home1/energia6/public_html/fronteras/modelos/fronteras.modelo.php on line 348
+[14-Jun-2022 23:17:14 America/Bogota] PHP Warning:  fopen(9/home1/energia6/public_html/fronteras/docs/lecturas/): failed to open stream: No such file or directory in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 137
+[14-Jun-2022 23:17:36 America/Bogota] PHP Warning:  fopen(9/home1/energia6/public_html/fronteras/docs/lecturas/): failed to open stream: No such file or directory in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 137
+[14-Jun-2022 23:18:41 America/Bogota] PHP Warning:  fopen(9/home1/energia6/public_html/fronteras/docs/lecturas/): failed to open stream: No such file or directory in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 137
+[14-Jun-2022 23:21:37 America/Bogota] PHP Warning:  fopen(9/home1/energia6/public_html/fronteras/docs/lecturas/): failed to open stream: No such file or directory in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 138
+[14-Jun-2022 23:26:35 America/Bogota] PHP Warning:  fopen(9/home1/energia6/public_html/fronteras/docs/lecturas/): failed to open stream: No such file or directory in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 138
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:30:57 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:44:47 America/Bogota] PHP Warning:  Illegal offset type in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 187
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:45:40 America/Bogota] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 152
+[14-Jun-2022 23:51:16 America/Bogota] PHP Fatal error:  Uncaught Error: Call to a member function format() on bool in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php:146
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(17): ControladorFronteras::ctrInsertLecturasFrontera('/docs/lecturas/', 'teswt.csv')
+#1 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(34): AjaxInsertLectura->ajaxInsertFile()
+#2 {main}
+  thrown in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 146
+[14-Jun-2022 23:53:53 America/Bogota] PHP Fatal error:  Uncaught Error: Call to a member function format() on bool in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php:146
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(17): ControladorFronteras::ctrInsertLecturasFrontera('/docs/lecturas/', 'teswt.csv')
+#1 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(34): AjaxInsertLectura->ajaxInsertFile()
+#2 {main}
+  thrown in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 146
+[14-Jun-2022 23:54:18 America/Bogota] PHP Fatal error:  Uncaught Error: Class 'Date' not found in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php:145
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(17): ControladorFronteras::ctrInsertLecturasFrontera('/docs/lecturas/', 'teswt.csv')
+#1 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(34): AjaxInsertLectura->ajaxInsertFile()
+#2 {main}
+  thrown in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 145
+[14-Jun-2022 23:57:09 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined function createFromFormat() in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php:145
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(17): ControladorFronteras::ctrInsertLecturasFrontera('/docs/lecturas/', 'teswt.csv')
+#1 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(34): AjaxInsertLectura->ajaxInsertFile()
+#2 {main}
+  thrown in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 145
+[14-Jun-2022 23:58:58 America/Bogota] PHP Fatal error:  Uncaught Error: Call to undefined function now() in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php:145
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(17): ControladorFronteras::ctrInsertLecturasFrontera('/docs/lecturas/', 'teswt.csv')
+#1 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(34): AjaxInsertLectura->ajaxInsertFile()
+#2 {main}
+  thrown in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 145
+[15-Jun-2022 14:04:12 America/Bogota] PHP Fatal error:  Uncaught Error: Class 'ControladorLogLectura' not found in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php:199
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(17): ControladorFronteras::ctrInsertLecturasFrontera('/docs/lecturas/', 'teswt.csv', NULL)
+#1 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(30): AjaxInsertLectura->ajaxInsertFile()
+#2 {main}
+  thrown in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 199
+[15-Jun-2022 14:04:47 America/Bogota] PHP Fatal error:  Uncaught Error: Class 'ControladorLogLectura' not found in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php:199
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(17): ControladorFronteras::ctrInsertLecturasFrontera('/docs/lecturas/', 'teswt.csv', NULL)
+#1 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(30): AjaxInsertLectura->ajaxInsertFile()
+#2 {main}
+  thrown in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 199
+[15-Jun-2022 20:18:35 America/Bogota] PHP Fatal error:  Uncaught Error: Class 'ControladorLogLectura' not found in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php:199
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(17): ControladorFronteras::ctrInsertLecturasFrontera('/docs/lecturas/', 'teswt.csv', NULL)
+#1 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(30): AjaxInsertLectura->ajaxInsertFile()
+#2 {main}
+  thrown in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 199
+[15-Jun-2022 20:19:07 America/Bogota] PHP Fatal error:  Uncaught Error: Class 'ModeloLogLectura' not found in /home1/energia6/public_html/fronteras/controladores/logLectura.controlador.php:81
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php(201): ControladorLogLectura::ctrEditLogLectura('logLecturas', 'idlogLecturas', NULL)
+#1 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(17): ControladorFronteras::ctrInsertLecturasFrontera('/docs/lecturas/', 'teswt.csv', NULL)
+#2 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(30): AjaxInsertLectura->ajaxInsertFile()
+#3 {main}
+  thrown in /home1/energia6/public_html/fronteras/controladores/logLectura.controlador.php on line 81
+[15-Jun-2022 20:24:33 America/Bogota] PHP Warning:  require_once(modelos/logLectura.modelo.php): failed to open stream: No such file or directory in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 3
+[15-Jun-2022 20:24:33 America/Bogota] PHP Fatal error:  require_once(): Failed opening required 'modelos/logLectura.modelo.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 3
+[15-Jun-2022 20:27:24 America/Bogota] PHP Warning:  require_once(./modelos/logLectura.modelo.php): failed to open stream: No such file or directory in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 3
+[15-Jun-2022 20:27:24 America/Bogota] PHP Fatal error:  require_once(): Failed opening required './modelos/logLectura.modelo.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 3
+[15-Jun-2022 20:45:20 America/Bogota] PHP Fatal error:  Uncaught Error: Class 'ModeloLogLectura' not found in /home1/energia6/public_html/fronteras/controladores/logLectura.controlador.php:81
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php(201): ControladorLogLectura::ctrEditLogLectura('logLecturas', 'idlogLecturas', NULL)
+#1 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(17): ControladorFronteras::ctrInsertLecturasFrontera('/docs/lecturas/', 'teswt.csv', NULL)
+#2 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(30): AjaxInsertLectura->ajaxInsertFile()
+#3 {main}
+  thrown in /home1/energia6/public_html/fronteras/controladores/logLectura.controlador.php on line 81
+[15-Jun-2022 21:26:44 America/Bogota] PHP Fatal error:  Uncaught Error: Class 'ModeloLogLectura' not found in /home1/energia6/public_html/fronteras/controladores/logLectura.controlador.php:81
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php(201): ControladorLogLectura::ctrEditLogLectura('logLecturas', 'idlogLecturas', NULL)
+#1 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(17): ControladorFronteras::ctrInsertLecturasFrontera('/docs/lecturas/', 'teswt.csv', NULL)
+#2 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(30): AjaxInsertLectura->ajaxInsertFile()
+#3 {main}
+  thrown in /home1/energia6/public_html/fronteras/controladores/logLectura.controlador.php on line 81
+[15-Jun-2022 21:38:19 America/Bogota] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM logLecturas SET upload=1 WHERE idlogLecturas = 9' at line 1 in /home1/energia6/public_html/fronteras/modelos/logLectura.modelo.php:52
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/modelos/logLectura.modelo.php(52): PDOStatement->execute()
+#1 /home1/energia6/public_html/fronteras/controladores/logLectura.controlador.php(81): ModeloLogLectura::mdlEditLogLectura('logLecturas', 'idlogLecturas', '9')
+#2 /home1/energia6/public_html/fronteras/ajax/changeLogLectura.ajax.php(17): ControladorLogLectura::ctrEditLogLectura('logLecturas', 'idlogLecturas', '9')
+#3 /home1/energia6/public_html/fronteras/ajax/changeLogLectura.ajax.php(29): AjaxEditLogLectura->ajaxEdit()
+#4 {main}
+  thrown in /home1/energia6/public_html/fronteras/modelos/logLectura.modelo.php on line 52
+[15-Jun-2022 21:39:12 America/Bogota] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM logLecturas SET upload=1 WHERE idlogLecturas = 9' at line 1 in /home1/energia6/public_html/fronteras/modelos/logLectura.modelo.php:52
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/modelos/logLectura.modelo.php(52): PDOStatement->execute()
+#1 /home1/energia6/public_html/fronteras/controladores/logLectura.controlador.php(81): ModeloLogLectura::mdlEditLogLectura('logLecturas', 'idlogLecturas', '9')
+#2 /home1/energia6/public_html/fronteras/ajax/changeLogLectura.ajax.php(17): ControladorLogLectura::ctrEditLogLectura('logLecturas', 'idlogLecturas', '9')
+#3 /home1/energia6/public_html/fronteras/ajax/changeLogLectura.ajax.php(29): AjaxEditLogLectura->ajaxEdit()
+#4 {main}
+  thrown in /home1/energia6/public_html/fronteras/modelos/logLectura.modelo.php on line 52
+[18-Jun-2022 12:02:27 America/Bogota] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'desviacion' in 'where clause' in /home1/energia6/public_html/fronteras/modelos/desviacion.modelo.php:13
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/modelos/desviacion.modelo.php(13): PDOStatement->execute()
+#1 /home1/energia6/public_html/fronteras/controladores/desviacion.controlador.php(38): ModeloDesviacion::mdlMostrarDesviacion('desviacion', 'desviacion', 'iddesviacion')
+#2 /home1/energia6/public_html/fronteras/ajax/desviacion.ajax.php(22): ControladorDesviacion::ctrMostrarDesviacion('desviacion', 'iddesviacion', '0')
+#3 /home1/energia6/public_html/fronteras/ajax/desviacion.ajax.php(35): AjaxDesviacion->ajaxEditDesviacion()
+#4 {main}
+  thrown in /home1/energia6/public_html/fronteras/modelos/desviacion.modelo.php on line 13
+[18-Jun-2022 12:03:38 America/Bogota] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'desviacion' in 'where clause' in /home1/energia6/public_html/fronteras/modelos/desviacion.modelo.php:13
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/modelos/desviacion.modelo.php(13): PDOStatement->execute()
+#1 /home1/energia6/public_html/fronteras/controladores/desviacion.controlador.php(38): ModeloDesviacion::mdlMostrarDesviacion('desviacion', 'desviacion', 'iddesviacion')
+#2 /home1/energia6/public_html/fronteras/ajax/desviacion.ajax.php(22): ControladorDesviacion::ctrMostrarDesviacion('desviacion', 'iddesviacion', '0')
+#3 /home1/energia6/public_html/fronteras/ajax/desviacion.ajax.php(35): AjaxDesviacion->ajaxEditDesviacion()
+#4 {main}
+  thrown in /home1/energia6/public_html/fronteras/modelos/desviacion.modelo.php on line 13
+[18-Jun-2022 12:03:38 America/Bogota] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'desviacion' in 'where clause' in /home1/energia6/public_html/fronteras/modelos/desviacion.modelo.php:13
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/modelos/desviacion.modelo.php(13): PDOStatement->execute()
+#1 /home1/energia6/public_html/fronteras/controladores/desviacion.controlador.php(38): ModeloDesviacion::mdlMostrarDesviacion('desviacion', 'desviacion', 'iddesviacion')
+#2 /home1/energia6/public_html/fronteras/ajax/desviacion.ajax.php(22): ControladorDesviacion::ctrMostrarDesviacion('desviacion', 'iddesviacion', '0')
+#3 /home1/energia6/public_html/fronteras/ajax/desviacion.ajax.php(35): AjaxDesviacion->ajaxEditDesviacion()
+#4 {main}
+  thrown in /home1/energia6/public_html/fronteras/modelos/desviacion.modelo.php on line 13
+[18-Jun-2022 12:03:45 America/Bogota] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'desviacion' in 'where clause' in /home1/energia6/public_html/fronteras/modelos/desviacion.modelo.php:13
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/modelos/desviacion.modelo.php(13): PDOStatement->execute()
+#1 /home1/energia6/public_html/fronteras/controladores/desviacion.controlador.php(38): ModeloDesviacion::mdlMostrarDesviacion('desviacion', 'desviacion', 'iddesviacion')
+#2 /home1/energia6/public_html/fronteras/ajax/desviacion.ajax.php(22): ControladorDesviacion::ctrMostrarDesviacion('desviacion', 'iddesviacion', '0')
+#3 /home1/energia6/public_html/fronteras/ajax/desviacion.ajax.php(35): AjaxDesviacion->ajaxEditDesviacion()
+#4 {main}
+  thrown in /home1/energia6/public_html/fronteras/modelos/desviacion.modelo.php on line 13
+[18-Jun-2022 12:06:15 America/Bogota] PHP Fatal error:  Uncaught TypeError: Return value of ModeloDesviacion::mdlMostrarDesviacion() must be of the type array, bool returned in /home1/energia6/public_html/fronteras/modelos/desviacion.modelo.php:14
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/controladores/desviacion.controlador.php(38): ModeloDesviacion::mdlMostrarDesviacion('desviacion', 'iddesviacion', '0')
+#1 /home1/energia6/public_html/fronteras/ajax/desviacion.ajax.php(21): ControladorDesviacion::ctrMostrarDesviacion('iddesviacion', '0')
+#2 /home1/energia6/public_html/fronteras/ajax/desviacion.ajax.php(34): AjaxDesviacion->ajaxEditDesviacion()
+#3 {main}
+  thrown in /home1/energia6/public_html/fronteras/modelos/desviacion.modelo.php on line 14
+[18-Jun-2022 12:09:40 America/Bogota] PHP Fatal error:  Uncaught TypeError: Return value of ModeloDesviacion::mdlMostrarDesviacion() must be of the type array, bool returned in /home1/energia6/public_html/fronteras/modelos/desviacion.modelo.php:14
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/controladores/desviacion.controlador.php(38): ModeloDesviacion::mdlMostrarDesviacion('desviacion', 'iddesviacion', '0')
+#1 /home1/energia6/public_html/fronteras/ajax/desviacion.ajax.php(21): ControladorDesviacion::ctrMostrarDesviacion('iddesviacion', '0')
+#2 /home1/energia6/public_html/fronteras/ajax/desviacion.ajax.php(34): AjaxDesviacion->ajaxEditDesviacion()
+#3 {main}
+  thrown in /home1/energia6/public_html/fronteras/modelos/desviacion.modelo.php on line 14
+[18-Jun-2022 12:11:02 America/Bogota] PHP Fatal error:  Uncaught TypeError: Return value of ModeloDesviacion::mdlMostrarDesviacion() must be of the type array, bool returned in /home1/energia6/public_html/fronteras/modelos/desviacion.modelo.php:14
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/controladores/desviacion.controlador.php(38): ModeloDesviacion::mdlMostrarDesviacion('desviacion', 'iddesviacion', '0')
+#1 /home1/energia6/public_html/fronteras/ajax/desviacion.ajax.php(21): ControladorDesviacion::ctrMostrarDesviacion('iddesviacion', '0')
+#2 /home1/energia6/public_html/fronteras/ajax/desviacion.ajax.php(34): AjaxDesviacion->ajaxEditDesviacion()
+#3 {main}
+  thrown in /home1/energia6/public_html/fronteras/modelos/desviacion.modelo.php on line 14
+[18-Jun-2022 12:27:49 America/Bogota] PHP Fatal error:  Uncaught TypeError: Return value of ModeloDesviacion::mdlMostrarDesviacion() must be of the type array, bool returned in /home1/energia6/public_html/fronteras/modelos/desviacion.modelo.php:14
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/controladores/desviacion.controlador.php(38): ModeloDesviacion::mdlMostrarDesviacion('desviacion', 'iddesviacion', '0')
+#1 /home1/energia6/public_html/fronteras/ajax/desviacion.ajax.php(21): ControladorDesviacion::ctrMostrarDesviacion('iddesviacion', '0')
+#2 /home1/energia6/public_html/fronteras/ajax/desviacion.ajax.php(34): AjaxDesviacion->ajaxEditDesviacion()
+#3 {main}
+  thrown in /home1/energia6/public_html/fronteras/modelos/desviacion.modelo.php on line 14
+[18-Jun-2022 13:50:31 America/Bogota] PHP Fatal error:  Uncaught TypeError: Return value of ModeloDesviacion::mdlMostrarDesviacion() must be of the type array, bool returned in /home1/energia6/public_html/fronteras/modelos/desviacion.modelo.php:15
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/controladores/desviacion.controlador.php(38): ModeloDesviacion::mdlMostrarDesviacion('desviacion', 'iddesviacion', '1')
+#1 /home1/energia6/public_html/fronteras/ajax/desviacion.ajax.php(21): ControladorDesviacion::ctrMostrarDesviacion('iddesviacion', '1')
+#2 /home1/energia6/public_html/fronteras/ajax/desviacion.ajax.php(34): AjaxDesviacion->ajaxEditDesviacion()
+#3 {main}
+  thrown in /home1/energia6/public_html/fronteras/modelos/desviacion.modelo.php on line 15
+[11-Jul-2022 18:43:29 America/Bogota] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function ModeloFronteras::mdlInsertLecturasFrontera(), 5 passed in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 157 and exactly 6 expected in /home1/energia6/public_html/fronteras/modelos/fronteras.modelo.php:355
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php(157): ModeloFronteras::mdlInsertLecturasFrontera(Array, Array, Array, Array, Array)
+#1 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(17): ControladorFronteras::ctrInsertLecturasFrontera('/docs/lecturas/', 'matrizenero.csv')
+#2 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(30): AjaxInsertLectura->ajaxInsertFile()
+#3 {main}
+  thrown in /home1/energia6/public_html/fronteras/modelos/fronteras.modelo.php on line 355
+[11-Jul-2022 18:44:50 America/Bogota] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function ModeloFronteras::mdlInsertLecturasFrontera(), 5 passed in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 157 and exactly 6 expected in /home1/energia6/public_html/fronteras/modelos/fronteras.modelo.php:355
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php(157): ModeloFronteras::mdlInsertLecturasFrontera(Array, Array, Array, Array, Array)
+#1 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(17): ControladorFronteras::ctrInsertLecturasFrontera('/docs/lecturas/', 'matrizenero.csv')
+#2 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(30): AjaxInsertLectura->ajaxInsertFile()
+#3 {main}
+  thrown in /home1/energia6/public_html/fronteras/modelos/fronteras.modelo.php on line 355
+[11-Jul-2022 19:15:55 America/Bogota] PHP Fatal error:  Uncaught Error: Call to a member function format() on bool in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php:111
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(17): ControladorFronteras::ctrInsertLecturasFrontera('/docs/lecturas/', '01PALMIRAFLANDE...')
+#1 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(30): AjaxInsertLectura->ajaxInsertFile()
+#2 {main}
+  thrown in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 111
+[12-Jul-2022 20:28:24 America/Bogota] PHP Fatal error:  Uncaught Error: Class 'Constantes' not found in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php:126
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(17): ControladorFronteras::ctrInsertLecturasFrontera('/docs/lecturas/', 'matrizenero.csv')
+#1 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(30): AjaxInsertLectura->ajaxInsertFile()
+#2 {main}
+  thrown in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 126
+[12-Jul-2022 20:31:25 America/Bogota] PHP Fatal error:  Uncaught Error: Class 'ControladorFactorM' not found in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php:218
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php(132): ControladorFronteras::ctrChargePenaltyEnergy(Array, Array, 'Frt00001')
+#1 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(17): ControladorFronteras::ctrInsertLecturasFrontera('/docs/lecturas/', 'matrizenero.csv')
+#2 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(30): AjaxInsertLectura->ajaxInsertFile()
+#3 {main}
+  thrown in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 218
+[12-Jul-2022 20:34:44 America/Bogota] PHP Fatal error:  Uncaught Error: Class 'ControladorFactorM' not found in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php:218
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php(132): ControladorFronteras::ctrChargePenaltyEnergy(Array, Array, 'Frt00001')
+#1 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(17): ControladorFronteras::ctrInsertLecturasFrontera('/docs/lecturas/', 'matrizenero.csv')
+#2 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(30): AjaxInsertLectura->ajaxInsertFile()
+#3 {main}
+  thrown in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 218
+[12-Jul-2022 20:39:31 America/Bogota] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`energia6_fronteras`.`factorm`, CONSTRAINT `fk_factorm_frontera1` FOREIGN KEY (`frontera_fronteraCliente`) REFERENCES `frontera` (`fronteraCliente`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home1/energia6/public_html/fronteras/modelos/factorm.modelo.php:28
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/modelos/factorm.modelo.php(28): PDOStatement->execute()
+#1 /home1/energia6/public_html/fronteras/controladores/factorm.controlador.php(11): ModeloFactorM::mdlIngresarFactorM('factorm', Array)
+#2 /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php(172): ControladorFactorM::ctrCrearFactorM(Array)
+#3 /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php(129): ControladorFronteras::ctrChargeEnergyArray(77, 100, 'C', Array)
+#4 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(19): ControladorFrontera in /home1/energia6/public_html/fronteras/modelos/factorm.modelo.php on line 28
+[12-Jul-2022 20:42:31 America/Bogota] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`energia6_fronteras`.`factorm`, CONSTRAINT `fk_factorm_frontera1` FOREIGN KEY (`frontera_fronteraCliente`) REFERENCES `frontera` (`fronteraCliente`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home1/energia6/public_html/fronteras/modelos/factorm.modelo.php:27
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/modelos/factorm.modelo.php(27): PDOStatement->execute()
+#1 /home1/energia6/public_html/fronteras/controladores/factorm.controlador.php(11): ModeloFactorM::mdlIngresarFactorM('factorm', Array)
+#2 /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php(172): ControladorFactorM::ctrCrearFactorM(Array)
+#3 /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php(129): ControladorFronteras::ctrChargeEnergyArray(77, 100, 'C', Array)
+#4 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(19): ControladorFrontera in /home1/energia6/public_html/fronteras/modelos/factorm.modelo.php on line 27
+[12-Jul-2022 22:56:26 America/Bogota] PHP Fatal error:  Uncaught Error: Call to a member function format() on bool in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php:111
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(19): ControladorFronteras::ctrInsertLecturasFrontera('/docs/lecturas/', '01PALMIRAFLANDE...')
+#1 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(32): AjaxInsertLectura->ajaxInsertFile()
+#2 {main}
+  thrown in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 111
+[15-Jul-2022 00:07:45 America/Bogota] PHP Fatal error:  Uncaught Error: Call to a member function format() on bool in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php:111
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(19): ControladorFronteras::ctrInsertLecturasFrontera('/docs/lecturas/', '01PALMIRAFLANDE...')
+#1 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(32): AjaxInsertLectura->ajaxInsertFile()
+#2 {main}
+  thrown in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 111
+[16-Jul-2022 00:52:28 America/Bogota] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`energia6_fronteras`.`factorm`, CONSTRAINT `fk_factorm_frontera1` FOREIGN KEY (`frontera_fronteraCliente`) REFERENCES `frontera` (`fronteraCliente`) ON DELETE NO ACTION ON UPDATE NO ACTION) in /home1/energia6/public_html/fronteras/modelos/factorm.modelo.php:64
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/modelos/factorm.modelo.php(64): PDOStatement->execute()
+#1 /home1/energia6/public_html/fronteras/controladores/factorm.controlador.php(11): ModeloFactorM::mdlIngresarFactorM('factorm', Array)
+#2 /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php(175): ControladorFactorM::ctrCrearFactorM(Array)
+#3 /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php(129): ControladorFronteras::ctrChargeEnergyArray(77, 100, 'C', Array)
+#4 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(19): ControladorFrontera in /home1/energia6/public_html/fronteras/modelos/factorm.modelo.php on line 64
+[16-Jul-2022 01:17:58 America/Bogota] PHP Fatal error:  Uncaught Error: Call to a member function format() on bool in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php:111
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(19): ControladorFronteras::ctrInsertLecturasFrontera('/docs/lecturas/', '01PALMIRAFLANDE...')
+#1 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(32): AjaxInsertLectura->ajaxInsertFile()
+#2 {main}
+  thrown in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 111
+[25-Jul-2022 10:10:57 America/Bogota] PHP Fatal error:  Uncaught Error: Call to a member function format() on bool in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php:126
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(19): ControladorFronteras::ctrInsertLecturasFrontera('/docs/lecturas/', 'cms24.csv')
+#1 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(32): AjaxInsertLectura->ajaxInsertFile()
+#2 {main}
+  thrown in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 126
+[31-Aug-2022 15:19:49 America/Bogota] PHP Fatal error:  Uncaught Error: Call to a member function format() on bool in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php:107
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(19): ControladorFronteras::ctrInsertLecturasFrontera('/docs/lecturas/', 'CMS30DEAGOSTO.c...')
+#1 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(32): AjaxInsertLectura->ajaxInsertFile()
+#2 {main}
+  thrown in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 107
+[06-Sep-2022 10:31:10 America/Bogota] PHP Fatal error:  Uncaught Error: Call to a member function format() on bool in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php:100
+Stack trace:
+#0 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(19): ControladorFronteras::ctrInsertLecturasFrontera('/docs/lecturas/', 'CMS06.csv')
+#1 /home1/energia6/public_html/fronteras/ajax/insertLectura.ajax.php(32): AjaxInsertLectura->ajaxInsertFile()
+#2 {main}
+  thrown in /home1/energia6/public_html/fronteras/controladores/fronteras.controlador.php on line 100

@@ -1,0 +1,6 @@
+[2022-09-12 12:01:00 admin] Array
+(
+    [emailDestino] => oscar.2001601@gmail.com
+    [errorInfo] => Could not access file: /home1/energia6/public_html/fronteras/controladorespdf-2022-9-11.zip.zip
+)
+
