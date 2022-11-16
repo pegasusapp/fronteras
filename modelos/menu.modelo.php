@@ -1,25 +1,22 @@
 <?php
 require_once "conexion.php";
 
-class ModeloMenu{
+class ModeloMenu
+{
 
-	/*=============================================
-	CREAR MENU 
-	=============================================*/
 
-	static public function mdlMostrarMenu($valor){
+	public static function mdlMostrarMenu($valor)
+	{
 
-		if($valor != null)
-		{
-			//verificamos que haya  permisos para ese usuario
+		if ($valor != null)	{
 			
-			$sql = "Select Subproceso_idSubproceso from subproceso_has_usuario where Usuario_identificador='".$valor."'"; 
-			$result = Conexion::conectar()->prepare($sql); 
-			$result->execute(); 
+			
+			$sql = "Select Subproceso_idSubproceso from subproceso_has_usuario where Usuario_identificador='".$valor."'";
+			$result = Conexion::conectar()->prepare($sql);
+			$result->execute();
 			$number_of_rows = $result->fetchColumn();
 
-			if($number_of_rows > 0)
-			{
+			if ($number_of_rows > 0)	{
 				$stmt = Conexion::conectar()->prepare("SELECT ser.idServicio as idServicio,GROUP_CONCAT(DISTINCT pro.idProceso)  as procesos_id,GROUP_CONCAT(CONCAT(pro.idProceso,'-',sub.idSubproceso)) as subprocesos_id,
 															GROUP_CONCAT(sub.nombreSubproceso) as nombreSubproceso,GROUP_CONCAT(sub.plantillaSubproceso) as nombrePlantillas,
 															GROUP_CONCAT(DISTINCT CONCAT(pro.nombreProceso,'*',pro.iconoProceso))  As proceso_nombre,'Servicio_has_Usuario' as tabla,
@@ -34,9 +31,7 @@ class ModeloMenu{
 	
 				$stmt -> execute();
 				return $stmt -> fetchAll();
-			}
-			else 
-			{
+			} else {
 				$stmt = Conexion::conectar()->prepare("SELECT ser.idServicio, ser.nombreServicio, GROUP_CONCAT(DISTINCT(pro.idProceso)) as idProceso, GROUP_CONCAT(DISTINCT(pro.nombreProceso)) as nombreProceso, GROUP_CONCAT(DISTINCT(sub.idSubproceso)) as  idSubProceso, GROUP_CONCAT( DISTINCT(sub.nombreSubproceso)) as nombreSubproceso,ser.icono,pro.iconoProceso
 														    FROM servicio ser LEFT JOIN proceso pro on ser.idServicio = pro.Servicio_idServicio
 															                  LEFT JOIN subproceso sub on sub.Proceso_idProceso = pro.idProceso
@@ -45,41 +40,26 @@ class ModeloMenu{
 				$stmt -> execute();
 				return $stmt -> fetchAll();
 			}
-
-
-
-
-
-		}
-		else
-		{
+		} else {
 
 			$stmt = Conexion::conectar()->prepare("SELECT ser.idServicio As idServicio,GROUP_CONCAT(DISTINCT pro.idProceso)  As procesos_id,GROUP_CONCAT(CONCAT(pro.idProceso,'-',sub.idSubproceso)) As subprocesos_id,
 													GROUP_CONCAT(sub.nombreSubproceso) As nombreSubproceso,GROUP_CONCAT(sub.plantillaSubproceso) As nombrePlantillas,GROUP_CONCAT(DISTINCT pro.nombreProceso)  As proceso_nombre,
 													'Servicio_has_Usuario' As tabla,ser.nombreServicio, ser.icono,GROUP_CONCAT(pro.iconoProceso) As iconoProceso
 													FROM servicio ser  LEFT JOIN  proceso pro ON ser.idServicio = pro.Servicio_idServicio
-																	   LEFT JOIN  subproceso sub ON sub.Proceso_idProceso = pro.idProceso 	
+																	   LEFT JOIN  subproceso sub ON sub.Proceso_idProceso = pro.idProceso
 																	   GROUP BY ser.idServicio
 																	   ORDER BY ser.nombreServicio");
-																	
-	
-				$stmt -> execute();
-				return $stmt -> fetchAll();
+			$stmt -> execute();
+			return $stmt -> fetchAll();
 		}
-
-
-
 	}
 
-/*=============================================
-	EDITAR MENU
-	=============================================*/
-
-	static public function mdlEditarMenu($valor,$item){
+	public static function mdlEditarMenu($valor, $item)
+	{
 
 		try {
 			$stmt = Conexion::conectar()->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			$stmt = Conexion::conectar()->prepare("Select shu.activo,shu.lectura,shu.escritura,GROUP_CONCAT(sub.nombreSubproceso) as nombreSub,GROUP_CONCAT(sub.plantillaSubproceso) as nombrePlantillas,phu.activo as activoProceso, phu.lectura as lecturaProceso, phu.escritura as escrituraProceso, (pro.nombreProceso),pro.plantillaProceso,shus.activo as activoServicio, shus.lectura as lecturaServicio, shus.escritura as escrituraServicio,ser.idServicio,'Servicio_has_Usuario' as tabla ,ser.nombreServicio, ser.plantillaServicio,ser.icono,pro.iconoProceso  
+			$stmt = Conexion::conectar()->prepare("Select shu.activo,shu.lectura,shu.escritura,GROUP_CONCAT(sub.nombreSubproceso) as nombreSub,GROUP_CONCAT(sub.plantillaSubproceso) as nombrePlantillas,phu.activo as activoProceso, phu.lectura as lecturaProceso, phu.escritura as escrituraProceso, (pro.nombreProceso),pro.plantillaProceso,shus.activo as activoServicio, shus.lectura as lecturaServicio, shus.escritura as escrituraServicio,ser.idServicio,'Servicio_has_Usuario' as tabla ,ser.nombreServicio, ser.plantillaServicio,ser.icono,pro.iconoProceso
 			from subproceso_has_usuario shu left join subproceso sub on shu.Subproceso_idSubproceso = sub.idSubproceso
 													 left join proceso_has_usuario phu on phu.Proceso_idProceso = sub.Proceso_idProceso
 													 left join proceso pro  on phu.Proceso_idProceso = pro.idProceso
@@ -90,30 +70,14 @@ class ModeloMenu{
 													 group by ser.nombreServicio,  pro.nombreProceso
 													 Order By ser.nombreServicio");
 
-			$stmt -> bindParam(":Usuario_identificador" , $valor, PDO::PARAM_STR);
+			$stmt -> bindParam(":Usuario_identificador", $valor, PDO::PARAM_STR);
 			$stmt -> execute();
-
 			return $stmt -> fetch();
-		}
-		catch (PDOException $e) {
-			//error
+		} catch (PDOException $e) {
 			return  "Your fail message: " . $e->getMessage();
 		}
-
-		
-	
-
-		$stmt -> close();
-
-		$stmt = null;
-
 	}
-	
-	
-	/*=============================================
-	EXPAND MENU
-	=============================================*/
-	static public function mdlExpandirMenu($valor)
+	public static function mdlExpandirMenu($valor)
 	{
 		try {
 
@@ -129,31 +93,20 @@ class ModeloMenu{
 
 				$stmt -> execute();
 				return $stmt -> fetchAll();
-		}
-		catch (PDOException $e) {
-			//error
+		} catch (PDOException $e) {
 			return  "Your fail message: " . $e->getMessage();
 		}
 	}
 
-/*=============================================
-	EDITAR MENU USUARIO SERVICIOS
-	=============================================*/
-
-	static public function mdlEditarMenuServicio($item,$valor1,$valor2){
-
-		try 
-		{
-	      
-					if($valor1<>"")
-					{
+	public static function mdlEditarMenuServicio($item,$valor1,$valor2){
+		try {
+				if ($valor1<>"") {
 						$elementos_vector = explode(',', $valor1);
 						$vector_servicios = array();
 						$vector_procesos = array();
 						$vector_subprocesos = array();
-						foreach ($elementos_vector as $value)
-						{
-								$vector_separator = explode("-",$value); 
+						foreach ($elementos_vector as $value) {
+								$vector_separator = explode("-",$value);
 								if (!in_array($vector_separator[0], $vector_servicios)) {
 									array_push($vector_servicios,$vector_separator[0]);
 								}
@@ -163,15 +116,11 @@ class ModeloMenu{
 								if (!in_array($vector_separator[2], $vector_subprocesos)) {
 									array_push($vector_subprocesos,$vector_separator[2]);
 								}
-								
-								
-								
 						}
 						$stmt_e = Conexion::conectar()->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-						$stmt_e = Conexion::conectar()->prepare("SELECT * FROM subproceso_has_usuario WHERE Subproceso_idSubproceso NOT IN (".implode(",",$vector_subprocesos).") and $item = :$item");
-						$stmt_e->execute([$item => $valor2]); 
+						$stmt_e = Conexion::conectar()->prepare("SELECT * FROM subproceso_has_usuario WHERE Subproceso_idSubproceso NOT IN (".implode(",", $vector_subprocesos).") and $item = :$item");
+						$stmt_e->execute([$item => $valor2]);
 						$data_subprocesos = $stmt_e->fetchAll();
-						
 						foreach ($data_subprocesos as $valor_inactivar_subprocesos)
 						{
 							
@@ -184,24 +133,17 @@ class ModeloMenu{
 							$stmt_down_subprocesos->bindParam(":Usuario_identificador", $valor2, PDO::PARAM_STR);
 							$stmt_down_subprocesos->execute();
 						}
-						
-						
 						$stmt_down_subprocesos = null;
 						$stmt_e = null;
-						//Fin inhabilitar subprocesos
-						//Habilitamos los subprocesos
-						$valueOn=1;	
+						$valueOn=1;
 						$stmt_f = Conexion::conectar()->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-						foreach($vector_subprocesos as $id_subproceso_unitario )
-						{
+						foreach ($vector_subprocesos as $id_subproceso_unitario ) {
 							$stmt_f = Conexion::conectar()->prepare("SELECT * FROM subproceso_has_usuario WHERE Subproceso_idSubproceso=".$id_subproceso_unitario." and $item = :$item");
-							$stmt_f->execute([$item => $valor2]); 
+							$stmt_f->execute([$item => $valor2]);
 							$data_f = $stmt_f->fetchAll();
 							$cantidad_elementos = $stmt_f->rowCount();
-							if($cantidad_elementos > 0)
-							{
-								foreach ($data_f as $valor_activar_subprocesos)
-									{
+							if ($cantidad_elementos > 0) {
+								foreach ($data_f as $valor_activar_subprocesos) {
 										    $stmt_up_subprocesos = Conexion::conectar()->prepare("UPDATE subproceso_has_usuario SET activo = :activo, lectura = :lectura, escritura = :escritura, fechaActualizacion = NOW() WHERE Subproceso_idSubproceso = :Subproceso_idSubproceso AND Usuario_identificador = :Usuario_identificador");
 											$stmt_up_subprocesos->bindParam(":activo", $valueOn , PDO::PARAM_INT);
 											$stmt_up_subprocesos->bindParam(":lectura", $valueOn , PDO::PARAM_INT);
@@ -211,14 +153,12 @@ class ModeloMenu{
 											$stmt_up_subprocesos->execute();
 									
 									}
-							}
-							else
-							{
+							} else {
 							  	            date_default_timezone_set('America/Bogota');
 											$fecha = date('Y-m-d');
 											$hora = date('H:i:s');
 											$fechaActual = $fecha.' '.$hora;
-											$stmt_up_subprocesos = Conexion::conectar()->prepare("INSERT INTO subproceso_has_usuario (Subproceso_idSubproceso, Usuario_identificador, activo, lectura, escritura, fechaActualizacion) VALUES (:Subproceso_idSubproceso, :Usuario_identificador, :activo, :lectura, :escritura, :fechaActualizacion)");	
+											$stmt_up_subprocesos = Conexion::conectar()->prepare("INSERT INTO subproceso_has_usuario (Subproceso_idSubproceso, Usuario_identificador, activo, lectura, escritura, fechaActualizacion) VALUES (:Subproceso_idSubproceso, :Usuario_identificador, :activo, :lectura, :escritura, :fechaActualizacion)");
 											$stmt_up_subprocesos->bindParam(":Subproceso_idSubproceso",$id_subproceso_unitario, PDO::PARAM_INT);
 											$stmt_up_subprocesos->bindParam(":Usuario_identificador", $valor2, PDO::PARAM_STR);
 											$stmt_up_subprocesos->bindParam(":activo", $valueOn , PDO::PARAM_INT);
@@ -228,28 +168,19 @@ class ModeloMenu{
 											$stmt_up_subprocesos->execute();
 											
 
-							}	
+							}
 								
-	
 						}
-						
-
-							$stmt_up_subprocesos = null;
-							$stmt_f = null;
-							
-						//Fin habilitar subprocesos	
-						return "ok";							
-					}
-					else
-					{
+						return "ok";
+					} else {
 						$stmt_all_down = Conexion::conectar()->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 						$stmt_all_down = Conexion::conectar()->prepare("SELECT * FROM servicio_has_usuario WHERE  $item = :$item");
-						$stmt_all_down->execute([$item => $valor2]); 
+						$stmt_all_down->execute([$item => $valor2]);
 						$data_all_down = $stmt_all_down->fetchAll();
-						$cont=0;			
+						$cont=0;
 						foreach ($data_all_down as $valor_desactivar)
 							{
-								$cont++;		
+								$cont++;
 								$valueOff=0;
 								$stmt_all_down_service = Conexion::conectar()->prepare("UPDATE servicio_has_usuario SET activo = :activo, lectura = :lectura, escritura = :escritura, fechaActualizacion = NOW()  WHERE Servicio_idServicio = :Servicio_idServicio and  Usuario_identificador = :Usuario_identificador");
 								$stmt_all_down_service->bindParam(":activo", $valueOff , PDO::PARAM_INT);
@@ -261,28 +192,13 @@ class ModeloMenu{
 							
 							}
 						$stmt_all_down = null;
-						$stmt_all_down_service = null; 
+						$stmt_all_down_service = null;
 						return "ok";
-					}	
+					}
 					
-		}
-		catch (PDOException $e) {
-			//error
+		} catch (PDOException $e) {
 			return  "Your fail message: " . $e->getMessage();
 		}
 
-		
-	
-
-		
-
 	}
-
-
-
-
-	
-
-
-
 }
