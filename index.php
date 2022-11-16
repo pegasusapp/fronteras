@@ -35,5 +35,3 @@ require_once "modelos/ctrfactorm.modelo.php";
 
 $plantilla = new ControladorPlantilla();
 $plantilla -> ctrPlantilla();
-
-?>
