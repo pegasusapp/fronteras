@@ -68,9 +68,6 @@ class ModeloMenu{
 		}
 
 
-		$stmt -> close();
-
-		$stmt = null;
 
 	}
 
