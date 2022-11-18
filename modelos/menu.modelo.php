@@ -219,19 +219,5 @@ class ModeloMenu
 			//error
 			return  "Your fail message: " . $e->getMessage();
 		}
-
-		
-	
-
-		
-
 	}
-
-
-
-
-	
-
-
-
 }
