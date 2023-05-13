@@ -1,2 +1,0 @@
-# fronteras chingona
-fronteras
