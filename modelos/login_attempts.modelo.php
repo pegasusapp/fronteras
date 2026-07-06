@@ -57,9 +57,9 @@ class ModeloLogin_attempts{
 
 		if($Usuario_identificador != null){
 
-			$stmt = Conexion::conectar()->prepare("SELECT count(*) as total FROM login_attempts WHERE Usuario_identificador = '$Usuario_identificador' AND fecha > '$tiempo'");
-
-			//$stmt -> bindParam(":".$Usuario_identificador, $valor, PDO::PARAM_STR);
+			$stmt = Conexion::conectar()->prepare("SELECT count(*) as total FROM login_attempts WHERE Usuario_identificador = :usuario AND fecha > :tiempo");
+			$stmt -> bindParam(":usuario", $Usuario_identificador, PDO::PARAM_STR);
+			$stmt -> bindParam(":tiempo", $tiempo, PDO::PARAM_STR);
 
 			$stmt -> execute();
 			$count = $stmt->fetchColumn();
@@ -100,7 +100,7 @@ class ModeloLogin_attempts{
 		}
 		catch (PDOException $e) {
 			//error
-			return  "Your fail message: " . $e->getMessage();
+			error_log($e->getMessage()); return "error";
 		}
 		
 

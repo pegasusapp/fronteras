@@ -52,7 +52,7 @@ class ModeloFactura{
 		catch (PDOException $ex) 
 			{
 				$pdo->rollBack();
-				return "Error presentado en: ".$ex->getMessage();
+				error_log($ex->getMessage()); return "error";
 			}
 		return "ok";		
    

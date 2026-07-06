@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__ . "/_guard.php";
 require_once "../controladores/logLectura.controlador.php";
 require_once "../modelos/logLectura.modelo.php";
 
@@ -17,16 +17,25 @@ class AjaxlogLectura{
 		$tabla = "logLecturas";
 		$item = "idLogLecturas";
 		$valor = $this->idlog;
-		$file_pointer = $this->file;
+		$file_pointer = basename($this->file);
 
 		if(ControladorLogLectura::ctrBorrarLogLectura($tabla,$item, $valor)){
-			
-  			// Use unlink() function to delete a file
-			if (!unlink($_SERVER['DOCUMENT_ROOT']."/docs/lecturas/".$file_pointer)) {
+			// Validar que la ruta se mantiene dentro de docs/lecturas
+			$baseDir = realpath($_SERVER['DOCUMENT_ROOT'] . "/docs/lecturas");
+			$targetPath = realpath($baseDir . "/" . $file_pointer);
+			if ($baseDir !== false && $targetPath !== false && strpos($targetPath, $baseDir) === 0) {
+				$ext = strtolower(pathinfo($targetPath, PATHINFO_EXTENSION));
+				if (in_array($ext, array('csv', 'txt', 'tsv'))) {
+					if (!unlink($targetPath)) {
+						echo json_encode(false);
+					} else {
+						echo json_encode(true);
+					}
+				} else {
+					echo json_encode(false);
+				}
+			} else {
 				echo json_encode(false);
-			}
-			else {
-				echo json_encode(true);
 			}
 		}
 
@@ -45,5 +54,3 @@ if(isset($_POST["id"])){
 	$borrar -> ajaxBorrarLog();
 
 }
-
-

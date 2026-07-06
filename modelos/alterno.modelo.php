@@ -40,7 +40,7 @@ class ModeloAlterno{
 		{
 			$pdo->rollBack();
 			//return "Error presentado en: ".$ex->__toString();
-			return "Error presentado en: ".$ex->getMessage();
+			error_log($ex->getMessage()); return "error";
 		}
 		//return $stmt->fetchAll(PDO::FETCH_ASSOC);
 		$pdo = null;
@@ -133,7 +133,7 @@ class ModeloAlterno{
 		{
 			$pdo->rollBack();
 			return "Error presentado en: ".$ex->__toString();
-			//return "Error presentado en: ".$ex->getMessage();
+			//error_log($ex->getMessage()); return "error";
 		}
 		return "ok";
 		$pdo = null;

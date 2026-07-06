@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__ . "/_guard.php";
 require_once "../controladores/factura.controlador.php";
 require_once "../modelos/factura.modelo.php";
 
@@ -28,13 +28,26 @@ class AjaxFacturas{
 		$respuesta = ControladorFactura::ctrBorrarFactura($tabla,$item, $valor,$item1, $valor1,$item2, $valor2);
 		$folder = $this->anyo.$this->mes;
 		if($respuesta){
-			$file_pointer = $this->filename;
-  			// Use unlink() function to delete a file
-			if (!unlink($_SERVER['DOCUMENT_ROOT']."/docs/facturas/".$this->frontera."/".$folder."/".$file_pointer)) {
+			$file_pointer = basename($this->filename);
+			$safeFrontera = basename($this->frontera);
+			$safeFolder = basename($folder);
+			// Construir y validar la ruta
+			$baseDir = realpath($_SERVER['DOCUMENT_ROOT'] . "/docs/facturas");
+			$targetPath = realpath($baseDir . "/" . $safeFrontera . "/" . $safeFolder . "/" . $file_pointer);
+			if ($baseDir !== false && $targetPath !== false && strpos($targetPath, $baseDir) === 0) {
+				// Validar extensión segura (solo PDF)
+				$ext = strtolower(pathinfo($targetPath, PATHINFO_EXTENSION));
+				if (in_array($ext, array('pdf'))) {
+					if (!unlink($targetPath)) {
+						echo json_encode(false);
+					} else {
+						echo json_encode(true);
+					}
+				} else {
+					echo json_encode(false);
+				}
+			} else {
 				echo json_encode(false);
-			}
-			else {
-				echo json_encode(true);
 			}
 		}
 
@@ -57,5 +70,3 @@ if(isset($_POST["anyo"]) && isset($_POST["mes"]) && isset($_POST["frontera"])){
 	$borrar -> ajaxBorrarFactura();
 
 }
-
-

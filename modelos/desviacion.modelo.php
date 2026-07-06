@@ -26,7 +26,7 @@ class ModeloDesviacion{
 			$stmt->bindParam(":vlrMinimo", $datosLog["vlrMinimo"], PDO::PARAM_INT);
 			return $stmt->execute();
 		}catch(Exception $e){
-			echo $e->getMessage();
+			error_log($e->getMessage());
 		}
 		
 	}

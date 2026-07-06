@@ -1,5 +1,15 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    $secure = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443);
+    session_set_cookie_params([
+        'lifetime' => 0,
+        'path' => '/',
+        'httponly' => true,
+        'samesite' => 'Lax',
+        'secure' => $secure,
+    ]);
+    session_start();
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -137,7 +147,6 @@ $("#treeview").on("CheckUncheckDone", function(){
 <?php
  $paginaNiveles =  $_SERVER["REQUEST_URI"];
  $paginaSesion = explode("/", $paginaNiveles);
- echo "---->".$_GET["ruta"];
  $items = ControladorMenu::ctrMostrarMenuExpandido($_GET["ruta"]);
  foreach ($items as $key => $value)
  {

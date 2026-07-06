@@ -32,7 +32,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="inicio">Home</a></li>
-              <li class="breadcrumb-item active">Permisos a <?php echo $_POST["identificadorMenu"] ?></li>
+              <li class="breadcrumb-item active">Permisos a <?php echo htmlspecialchars($_POST["identificadorMenu"], ENT_QUOTES, 'UTF-8') ?></li>
             </ol>
           </div>
         </div>
@@ -67,7 +67,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-            <input type="hidden" name="usuario_sesionado" id="usuario_sesionado" value="<?php echo $_POST["identificadorMenu"] ?>" />
+            <input type="hidden" name="usuario_sesionado" id="usuario_sesionado" value="<?php echo htmlspecialchars($_POST["identificadorMenu"], ENT_QUOTES, 'UTF-8') ?>" />
             <div id="treeview_container" class="hummingbird-treeview well h-scroll-large">
                      <ul id="treeview" class="hummingbird-base">
                      <?php 

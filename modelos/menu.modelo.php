@@ -11,8 +11,9 @@ class ModeloMenu
 		if ($valor != null) {
 			
 			
-			$sql = "Select Subproceso_idSubproceso from subproceso_has_usuario where Usuario_identificador='".$valor."'";
+			$sql = "Select Subproceso_idSubproceso from subproceso_has_usuario where Usuario_identificador = :valor";
 			$result = Conexion::conectar()->prepare($sql);
+			$result->bindParam(":valor", $valor, PDO::PARAM_STR);
 			$result->execute();
 			$numberOfRows = $result->fetchColumn();
 
@@ -24,11 +25,12 @@ class ModeloMenu
 														    FROM servicio ser LEFT JOIN  proceso pro on  ser.idServicio	=  pro.Servicio_idServicio
 														                  LEFT JOIN subproceso sub on sub.Proceso_idProceso = pro.idProceso
 																		  LEFT JOIN subproceso_has_usuario shu on shu.Subproceso_idSubproceso = sub.idSubproceso
-																		  WHERE shu.Usuario_identificador = '".$valor."' and shu.activo=1
+																		  WHERE shu.Usuario_identificador = :valor and shu.activo=1
 																		  GROUP BY ser.idServicio
 																		  ORDER BY ser.nombreServicio");
 																	
 	
+				$stmt -> bindParam(":valor", $valor, PDO::PARAM_STR);
 				$stmt -> execute();
 				return $stmt -> fetchAll();
 			} else {
@@ -74,7 +76,7 @@ class ModeloMenu
 			$stmt -> execute();
 			return $stmt -> fetch();
 		} catch (PDOException $e) {
-			return  "Your fail message: " . $e->getMessage();
+			error_log($e->getMessage()); return "error";
 		}
 	}
 	
@@ -89,13 +91,15 @@ class ModeloMenu
 														INNER JOIN proceso pro on sub.Proceso_idProceso=pro.idProceso
 														INNER JOIN servicio ser on pro.Servicio_idServicio=ser.idServicio
 														LEFT JOIN acciones acc on sub.idSubproceso=acc.subproceso_id
-													WHERE plantillaSubproceso = '".$valor."' or plantillaAccion='".$valor."'
+													WHERE plantillaSubproceso = :valor1 or plantillaAccion = :valor2
 													order by ser.nombreServicio");
 
+				$stmt -> bindParam(":valor1", $valor, PDO::PARAM_STR);
+				$stmt -> bindParam(":valor2", $valor, PDO::PARAM_STR);
 				$stmt -> execute();
 				return $stmt -> fetchAll();
 		} catch (PDOException $e) {
-			return  "Your fail message: " . $e->getMessage();
+			error_log($e->getMessage()); return "error";
 		}
 	}
 
@@ -128,7 +132,7 @@ class ModeloMenu
 								
 						}
 						$stmt_e = Conexion::conectar()->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-						$stmt_e = Conexion::conectar()->prepare("SELECT * FROM subproceso_has_usuario WHERE Subproceso_idSubproceso NOT IN (".implode(",",$vector_subprocesos).") and $item = :$item");
+						$stmt_e = Conexion::conectar()->prepare("SELECT * FROM subproceso_has_usuario WHERE Subproceso_idSubproceso NOT IN (".implode(",",array_map('intval',$vector_subprocesos)).") and $item = :$item");
 						$stmt_e->execute([$item => $valor2]);
 						$data_subprocesos = $stmt_e->fetchAll();
 						
@@ -153,7 +157,7 @@ class ModeloMenu
 						$valueOn=1;
 						$stmt_f = Conexion::conectar()->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 						foreach ($vector_subprocesos as $id_subproceso_unitario ) {
-							$stmt_f = Conexion::conectar()->prepare("SELECT * FROM subproceso_has_usuario WHERE Subproceso_idSubproceso=".$id_subproceso_unitario." and $item = :$item");
+							$stmt_f = Conexion::conectar()->prepare("SELECT * FROM subproceso_has_usuario WHERE Subproceso_idSubproceso=".intval($id_subproceso_unitario)." and $item = :$item");
 							$stmt_f->execute([$item => $valor2]);
 							$data_f = $stmt_f->fetchAll();
 							$cantidad_elementos = $stmt_f->rowCount();
@@ -217,7 +221,7 @@ class ModeloMenu
 		}
 		catch (PDOException $e) {
 			//error
-			return  "Your fail message: " . $e->getMessage();
+			error_log($e->getMessage()); return "error";
 		}
 	}
 }

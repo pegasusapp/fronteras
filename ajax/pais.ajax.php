@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/_guard.php";
 require_once "../modelos/pais.modelo.php";
 
 class AjaxPais
