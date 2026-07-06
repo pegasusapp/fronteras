@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__ . "/_guard.php";
 require_once "../controladores/perfiles.controlador.php";
 require_once "../modelos/perfiles.modelo.php";
 

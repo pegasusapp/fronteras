@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__ . "/_guard.php";
 require_once "../controladores/fronteras.controlador.php";
 require_once "../modelos/fronteras.modelo.php";
 require_once "../controladores/factorm.controlador.php";
@@ -32,5 +32,4 @@ if(isset($_POST["id"])){
 	$borrar -> ajaxInsertFile();
 
 }
-
 

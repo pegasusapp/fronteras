@@ -21,10 +21,32 @@ class ControladorValidaciones
 	/*=============================================
 	Validar tipo de archivo pdf
 	=============================================*/
- 
-	static public function validateFile($file,$fileType): bool
+
+	static public function validateFile($file,$allowedMimes,$allowedExtensions = []): bool
 	{
-		return in_array($file,$fileType);
+		if (!file_exists($file) || !is_readable($file)) {
+			return false;
+		}
+		// Validar el MIME real del archivo
+		$finfo = finfo_open(FILEINFO_MIME_TYPE);
+		$detectedMime = finfo_file($finfo, $file);
+		finfo_close($finfo);
+
+		$mimeValid = in_array($detectedMime, $allowedMimes, true);
+
+		// Validar extensión si se especifica
+		$extValid = true;
+		if (!empty($allowedExtensions)) {
+			$ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+			$extValid = in_array($ext, $allowedExtensions, true);
+		} else {
+			// Si no se especifican extensiones, deducir del nombre original
+			$origExt = strtolower(pathinfo(basename($file), PATHINFO_EXTENSION));
+			// Bloquear extensiones peligrosas
+			$extValid = !in_array($origExt, ['php','phtml','php7','phar','shtml','cgi','pl','py','sh']);
+		}
+
+		return $mimeValid && $extValid;
 	}
 
 	static public function monthSelect($month):string{
@@ -37,4 +59,3 @@ class ControladorValidaciones
 
 
 }
-

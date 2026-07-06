@@ -49,12 +49,12 @@ class ControladorFronterasWS{
                </param>
                <param>
                    <value>
-                       <int>".Constantes::USER_WS."</int>
+                       <int>".Constantes::USER_WS()."</int>
                    </value>
                </param>
                <param>
                    <value>
-                       <string>".Constantes::PASSW_WS."</string>
+                       <string>".Constantes::PASSW_WS()."</string>
                    </value>
                </param>
                <param>

@@ -33,17 +33,19 @@ class ControladorFactura
 					mkdir($directorio, 0755,true);
 				}
 
-				$filetype = array('application/pdf');
+				$mimesPermitidos = array('application/pdf');
+				$extPermitidas = array('pdf');
 
 				
-				if(!ControladorValidaciones::validateFile($_FILES["nameFile"]["tmp_name"],$filetype))
+				if(!ControladorValidaciones::validateFile($_FILES["nameFile"]["tmp_name"],$mimesPermitidos,$extPermitidas))
 				{
 					echo ControladorUtilidades::answerScript("El tipo de archivo que intenta subir no es permitido","uploadFile");	
-						
+					return false;
 				}
 				if ($_FILES["nameFile"]["size"] > Constantes::FILE_SIZE) {
 
 					echo ControladorUtilidades::answerScript("El tipo de archivo que intenta subir es mayor a 5 MEGAS, baje el tamaño del archivo","uploadFile");	
+					return false;
 
 				}
 				if (file_exists($directorio."/".$_FILES["nameFile"]["name"])){
@@ -119,4 +121,3 @@ class ControladorFactura
 
 
 }
-

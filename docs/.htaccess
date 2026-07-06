@@ -1,0 +1,11 @@
+# Bloquear ejecución de PHP en el directorio docs/
+# Los archivos aquí (facturas PDF, CSV de lecturas) son solo para almacenamiento.
+<IfModule mime_module>
+  RemoveHandler .php .php7 .phtml .phar
+</IfModule>
+<IfModule php7_module>
+  php_flag engine off
+</IfModule>
+<FilesMatch "\.(php|php7|phtml|phar)$">
+  Require all denied
+</FilesMatch>

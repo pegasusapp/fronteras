@@ -1,5 +1,5 @@
 <?php 
-
+require_once __DIR__ . "/_guard.php";
 require_once "../controladores/clienteFrontera.controlador.php";
 require_once "../modelos/clienteFrontera.modelo.php";
 

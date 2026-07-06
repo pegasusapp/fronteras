@@ -35,7 +35,7 @@ class ModeloFronteras{
 		}
 		catch (PDOException $ex){
 				$pdo->rollBack();
-				return $ex->getMessage();
+				error_log($ex->getMessage()); return "error";
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
 	}
@@ -61,7 +61,7 @@ class ModeloFronteras{
 		}
 		catch (PDOException $ex){
 				$pdo->rollBack();
-				return $ex->getMessage();
+				error_log($ex->getMessage()); return "error";
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
 	}
@@ -85,7 +85,7 @@ class ModeloFronteras{
 		}
 		catch (PDOException $ex){
 				$pdo->rollBack();
-				return $ex->getMessage();
+				error_log($ex->getMessage()); return "error";
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
 	}
@@ -116,7 +116,7 @@ class ModeloFronteras{
 		catch (PDOException $ex)
 		{
 				$pdo->rollBack();
-				return $ex->getMessage();
+				error_log($ex->getMessage()); return "error";
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
 	}
@@ -147,7 +147,7 @@ class ModeloFronteras{
 		catch (PDOException $ex)
 		{
 				$pdo->rollBack();
-				return $ex->getMessage();
+				error_log($ex->getMessage()); return "error";
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
 	}
@@ -182,7 +182,7 @@ class ModeloFronteras{
 		catch (PDOException $ex)
 		{
 				$pdo->rollBack();
-				return $ex->getMessage();
+				error_log($ex->getMessage()); return "error";
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
 	}
@@ -214,7 +214,7 @@ class ModeloFronteras{
 		}
 		catch (PDOException $ex){
 				$pdo->rollBack();
-				return $ex->getMessage();
+				error_log($ex->getMessage()); return "error";
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
 	}
@@ -237,7 +237,7 @@ class ModeloFronteras{
 		catch (PDOException $ex)
 		{
 				$pdo->rollBack();
-				return $ex->getMessage();
+				error_log($ex->getMessage()); return "error";
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
 	}
@@ -291,7 +291,7 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 		catch (PDOException $ex)
 		{
 				$pdo->rollBack();
-				return $ex->getMessage();
+				error_log($ex->getMessage()); return "error";
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
 	}
@@ -325,7 +325,7 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 		catch (PDOException $ex)
 		{
 				$pdo->rollBack();
-				return $ex->getMessage();
+				error_log($ex->getMessage()); return "error";
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
 	}
@@ -369,7 +369,7 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 		catch (PDOException $ex)
 		{
 				$pdo->rollBack();
-				return $ex->getMessage();
+				error_log($ex->getMessage()); return "error";
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
 	}
@@ -392,7 +392,7 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 		catch (PDOException $ex)
 		{
 				$pdo->rollBack();
-				return $ex->getMessage();
+				error_log($ex->getMessage()); return "error";
 		}
 		return "ok";
 	}
@@ -422,7 +422,7 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 		catch (PDOException $ex)
 		{
 				$pdo->rollBack();
-				return $ex->getMessage();
+				error_log($ex->getMessage()); return "error";
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
 	}
@@ -447,7 +447,7 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 		catch (PDOException $ex)
 		{
 				$pdo->rollBack();
-				return $ex->getMessage();
+				error_log($ex->getMessage()); return "error";
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
 	}
@@ -472,7 +472,7 @@ static public function mdlMostrarEnergiasFronteraDetalleMes($fronteraEnvio,$anyo
 		catch (PDOException $ex)
 		{
 				$pdo->rollBack();
-				return $ex->getMessage();
+				error_log($ex->getMessage()); return "error";
 		}
 		return $stmt -> fetchAll(PDO::FETCH_ASSOC);
 	}

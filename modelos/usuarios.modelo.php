@@ -77,7 +77,7 @@ class ModeloUsuarios{
 		catch (PDOException $ex) 
 			{
 				$pdo->rollBack();
-				return "Error presentado en: ".$ex->getMessage();
+				error_log($ex->getMessage()); return "error";
 			}
 		return "ok";		
 
@@ -133,7 +133,7 @@ class ModeloUsuarios{
 	} 
 	catch(PDOException $e) 
 	 {
-	    return	 "An error occured: " . $e -> getMessage();
+	    error_log($e->getMessage()); return "error";
 	 }
 	}
 

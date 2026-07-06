@@ -20,9 +20,10 @@ class ControladorLogLectura
 				if (!is_dir($directorio)) {
 					mkdir($directorio, 0755,true);
 				}
-				$filetype = array('application/vnd.ms-excel','text/plain','text/csv','text/tsv');
+				$mimesPermitidos = array('text/plain','text/csv','text/tsv','application/vnd.ms-excel','text/x-csv','application/csv','text/x-comma-separated-values');
+				$extPermitidas = array('csv','txt','tsv');
 
-				if(!ControladorValidaciones::validateFile($_FILES['nameFile']['type'],$filetype))
+				if(!ControladorValidaciones::validateFile($_FILES['nameFile']['tmp_name'],$mimesPermitidos,$extPermitidas))
 				{
 					echo ControladorUtilidades::answerScript("El tipo de archivo que intenta subir no es permitido","uploadConsumo");	
 					return false;	
@@ -30,6 +31,7 @@ class ControladorLogLectura
 				if ($_FILES["nameFile"]["size"] > Constantes::FILE_SIZE) {
 
 					echo ControladorUtilidades::answerScript("El tipo de archivo que intenta subir es mayor a 5 MEGAS, baje el tamaño del archivo","uploadConsumo");	
+					return false;
 
 				}
 				if (file_exists($directorio."/".$_FILES["nameFile"]["name"])){
@@ -82,4 +84,3 @@ class ControladorLogLectura
 	}
 
 }
-

@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__ . "/_guard.php";
 require_once "../controladores/logLectura.controlador.php";
 require_once "../modelos/logLectura.modelo.php";
 
@@ -29,5 +29,4 @@ if(isset($_POST["id"])){
 	$borrar -> ajaxEdit();
 
 }
-
 

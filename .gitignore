@@ -1,2 +1,15 @@
 # Ignora la carpeta files
 files
+
+# Datos reales de clientes / operación (no deben versionarse)
+docs/lecturas/
+docs/facturas/
+
+# Logs de la aplicación
+ajax/error_log
+controladores/logFileControlador.log
+*.log
+
+# Secretos y configuración local
+config.local.php
+.env

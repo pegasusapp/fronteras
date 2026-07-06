@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__ . "/_guard.php";
 require_once "../controladores/usuarios.controlador.php";
 require_once "../modelos/usuarios.modelo.php";
 
@@ -17,7 +17,9 @@ class AjaxUsuarios{
 		$valor = $this->identificador;
 
 		$respuesta = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
-
+		if (is_array($respuesta)) {
+			unset($respuesta["password"], $respuesta["salt"]);
+		}
 		echo json_encode($respuesta);
 
 	}
@@ -56,7 +58,9 @@ class AjaxUsuarios{
 		$valor = $this->validarUsuario;
 
 		$respuesta = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
-
+		if (is_array($respuesta)) {
+			unset($respuesta["password"], $respuesta["salt"]);
+		}
 		echo json_encode($respuesta);
 
 	}

@@ -39,10 +39,15 @@ class ControladorUsuarios{
 	static public function ctrUserIn($respuesta){
 
 		date_default_timezone_set('America/Bogota');
-		$fechaActual = date('Y-m-d').' '.date('H:i:s');
+		$fechaActual = date('Y-m-d H:i:s');
 		$email_envio = $respuesta["email"];
 		$password = hash('sha512', $_POST["ingPassword"].$respuesta["salt"]);
 		if($respuesta["estado"] == 1){
+			// Verificar bloqueo temporal (más de 5 intentos en las últimas 2 horas)
+			if (self::checkbrute($respuesta["identificador"])) {
+				echo Constantes::MSG_BLOQUEO_TEMP;
+				return false;
+			}
 				if ($respuesta["password"] == $password)
 				{
 					$frtSession = [];
@@ -56,15 +61,17 @@ class ControladorUsuarios{
 									}
 				}
 				else{
-							if (self::checkbrute($_POST["ingUsuario"])){
-								$subject = "Bloqueo de usuario";
+							// Registrar intento fallido
+							$datos_fallido = array("fecha" => $fechaActual, "Usuario_identificador" => $respuesta["identificador"]);
+							ModeloLogin_attempts::mdlIngresarLoginAttemps("login_attempts", $datos_fallido);
+
+							// Solo notificar y bloquear temporalmente si se superó el umbral
+							if (self::checkbrute($respuesta["identificador"])) {
+								$subject = "Aviso de intentos fallidos";
 								$emailDestino = $email_envio;
-								$mensajeBody = "Cordial saludo. El usuario con identificador ".$_POST["ingUsuario"].", ha sido bloqueado, ha estado intentanto ingresar mas de 5 veces a la plataforma, por favor contactar con el administrador, para ser desbloqueado.";
+								$mensajeBody = "Cordial saludo. El usuario con identificador ".$respuesta["identificador"].", ha registrado mas de 5 intentos fallidos de ingreso en las últimas 2 horas. El acceso permanecerá bloqueado temporalmente hasta que transcurran 2 horas desde el primer intento.";
 								ControladorUtilidades::sendMail($subject,$emailDestino,$mensajeBody,"");
-								$cambioEstado = ModeloUsuarios::mdlActualizarUsuario("usuario", 'estado', '0', 'identificador', $respuesta["identificador"]);
-								if ($cambioEstado=="ok"){
-									echo Constantes::MSG_BLOQUEO;
-										}
+								echo Constantes::MSG_BLOQUEO_TEMP;
 							}
 						else{
 								echo Constantes::MSG_ERROR_INGRESO;
@@ -80,6 +87,10 @@ class ControladorUsuarios{
 
 static public function ctrSessionVariable($user_agent,$identify,$nombreCompleto,$foto,$idPerfil,$clave,$frtSession){
 
+		// Regenerar el id de sesión tras autenticación exitosa (anti session-fixation)
+		if (session_status() === PHP_SESSION_ACTIVE) {
+			session_regenerate_id(true);
+		}
 		$user_browser = $user_agent;
 		$_SESSION['identificador'] = $identify;
 		$_SESSION['nombreCompleto'] = $nombreCompleto;
@@ -212,9 +223,24 @@ public function ctrEditarUsuario(){
 		if(isset($_GET["idUsuario"])){
 			$tabla ="usuarios";
 			$datos = $_GET["idUsuario"];
-			if($_GET["fotoUsuario"] != ""){
-				unlink($_GET["fotoUsuario"]);
-				rmdir(Constantes::DIR_IMG_USR.$_GET["usuario"]);
+			$fotoUsuario = $_GET["fotoUsuario"];
+			$usuarioDir = $_GET["usuario"];
+			if (!empty($fotoUsuario)) {
+				// Validar que la foto está dentro del directorio de imágenes de usuarios
+				$allowedBase = realpath(Constantes::DIR_IMG_USR);
+				$fotoPath = realpath($fotoUsuario);
+				if ($fotoPath !== false && $allowedBase !== false && strpos($fotoPath, $allowedBase) === 0) {
+					unlink($fotoPath);
+				}
+				// Sanitizar y validar el directorio del usuario
+				$safeUserDir = basename($usuarioDir);
+				if (!empty($safeUserDir) && $safeUserDir !== '.' && $safeUserDir !== '..') {
+					$userDirPath = Constantes::DIR_IMG_USR . $safeUserDir;
+					$realUserDir = realpath($userDirPath);
+					if ($realUserDir !== false && $allowedBase !== false && strpos($realUserDir, $allowedBase) === 0) {
+						rmdir($realUserDir);
+					}
+				}
 			}
 			$respuesta = ModeloUsuarios::mdlBorrarUsuario($tabla, $datos);
 			if($respuesta == "ok"){
