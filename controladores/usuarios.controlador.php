@@ -8,7 +8,7 @@ class ControladorUsuarios{
  * @param string $identificador
  * @return void
  */
-	public function checkbrute($identificador){
+	public static function checkbrute($identificador){
 		$now = new DateTime();
 		$now->modify('-2 hours');
 		$tiempo= $now->format('Y-m-d H:i:s');
