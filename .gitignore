@@ -6,6 +6,7 @@ docs/lecturas/
 docs/facturas/
 
 # Logs de la aplicación
+error_log
 ajax/error_log
 controladores/logFileControlador.log
 *.log
